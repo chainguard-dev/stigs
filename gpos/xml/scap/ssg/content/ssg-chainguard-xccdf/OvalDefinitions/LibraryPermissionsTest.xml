@@ -1,0 +1,61 @@
+<oval_definitions xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5" xmlns:oval="http://oval.mitre.org/XMLSchema/oval-common-5" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://oval.mitre.org/XMLSchema/oval-definitions-5 http://oval.mitre.org/language/download/schema/version5.10.1/ovaldefinition/complete/oval-definitions-schema.xsd">
+  <generator>
+    <oval:product_name>OpenSCAP</oval:product_name>
+    <oval:product_version>1.2.16</oval:product_version>
+    <oval:schema_version>5.11.1</oval:schema_version>
+    <oval:timestamp>2024-05-29T12:00:00</oval:timestamp>
+  </generator>
+
+  <definitions>
+
+    <definition id="oval:org.LibraryPermissions:def:2" version="1" class="compliance">
+      <metadata>
+        <title>Check Library Permissions</title>
+        <description>Ensure all libraries in /usr/lib have root:root permissions.</description>
+        <reference source="CIS"/>
+        <affected family="unix">
+          <platform>Alpine Linux</platform>
+        </affected>
+      </metadata>
+      <criteria operator="AND">
+        <criterion comment="All files in /usr/lib have root:root permissions" test_ref="oval:org.LibraryPermissions:tst:1"/>
+        <criterion comment="All directories in /usr/lib have root:root permissions" test_ref="oval:org.LibraryPermissions:tst:2"/>
+      </criteria>
+    </definition>
+  </definitions> 
+
+  <tests>
+    <unix:file_test id="oval:org.LibraryPermissions:tst:1" version="1" check="all" check_existence="at_least_one_exists" comment="Check existence of /usr/lib directory" xmlns:unix="http://oval.mitre.org/XMLSchema/oval-definitions-5#unix">
+      <unix:object object_ref="oval:org.LibraryPermissions:obj:1"/>
+      
+         <unix:state state_ref="oval:org.LibraryPermissions:ste:1"/>
+    </unix:file_test>
+    <unix:file_test id="oval:org.LibraryPermissions:tst:2" version="1" check="all" check_existence="at_least_one_exists" comment="Check existence of /usr/lib directory" xmlns:unix="http://oval.mitre.org/XMLSchema/oval-definitions-5#unix">
+      <unix:object object_ref="oval:org.LibraryPermissions:obj:2"/>
+         <unix:state state_ref="oval:org.LibraryPermissions:ste:1"/>
+    </unix:file_test>
+  </tests>
+
+  <objects>
+
+   <unix:file_object id="oval:org.LibraryPermissions:obj:1" version="1" xmlns:unix="http://oval.mitre.org/XMLSchema/oval-definitions-5#unix">
+      <unix:path>/usr/lib</unix:path>
+       <!-- <unix:filename xsi:nil="true"/> -->
+       <unix:filename operation="pattern match">^.*$</unix:filename>
+    </unix:file_object>
+    <unix:file_object id="oval:org.LibraryPermissions:obj:2" version="1" xmlns:unix="http://oval.mitre.org/XMLSchema/oval-definitions-5#unix">
+       <unix:behaviors recurse="directories" recurse_direction="down"/>
+       <unix:path>/usr/lib</unix:path>
+       <unix:filename operation="pattern match">^.*$</unix:filename>
+    </unix:file_object>
+    
+  </objects>
+
+  <states>
+    <unix:file_state id="oval:org.LibraryPermissions:ste:1" version="1" xmlns:unix="http://oval.mitre.org/XMLSchema/oval-definitions-5#unix">
+      <unix:group_id datatype="int">0</unix:group_id>
+            <unix:user_id datatype="int">0</unix:user_id> 
+    </unix:file_state>
+
+  </states>
+</oval_definitions>
