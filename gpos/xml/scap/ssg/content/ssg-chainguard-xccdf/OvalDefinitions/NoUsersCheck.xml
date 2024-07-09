@@ -1,0 +1,65 @@
+<oval_definitions xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5"
+                  xmlns:oval="http://oval.mitre.org/XMLSchema/oval-common-5"
+                  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                  xsi:schemaLocation="http://oval.mitre.org/XMLSchema/oval-definitions-5 http://oval.mitre.org/language/download/schema/version5.10.1/ovaldefinition/complete/oval-definitions-schema.xsd">
+  <generator>
+    <oval:product_name>OpenSCAP</oval:product_name>
+    <oval:product_version>1.2.16</oval:product_version>
+    <oval:schema_version>5.11.1</oval:schema_version>
+    <oval:timestamp>2024-05-29T12:00:00</oval:timestamp>
+  </generator>
+
+  <definitions>
+    <definition id="oval:org.NoUsers:def:1" version="1" class="compliance">
+      <metadata>
+        <title>Check for Unauthorized Users in /etc/shadow</title>
+        <description>Ensure there are no unauthorized users in the /etc/shadow file below the 'nobody' line.</description>
+        <reference source="CIS"/>
+        <affected family="unix">
+          <platform>Alpine Linux</platform>
+        </affected>
+      </metadata>
+      <criteria operator="AND">
+        <criterion comment="Check that the 'nobody' line is present" test_ref="oval:org.NoUsers:tst:1"/>
+        <criterion comment="Check for unauthorized users after the 'nobody' line" test_ref="oval:org.NoUsers:tst:2"/>
+      </criteria>
+    </definition>
+  </definitions>
+
+  <tests>
+    <!-- Test to check the presence of 'nobody' line -->
+    <textfilecontent54_test xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#independent" check="all" check_existence="at_least_one_exists" comment="Check presence of 'nobody' line in /etc/shadow" id="oval:org.NoUsers:tst:1" version="1">
+      <object object_ref="oval:org.NoUsers:obj:1"/>
+    </textfilecontent54_test>
+    
+    <!-- Test to check for any lines after 'nobody' -->
+    <textfilecontent54_test xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#independent" check="all" check_existence="none_exist" comment="Check for unauthorized users after the 'nobody' line in /etc/shadow" id="oval:org.NoUsers:tst:2" version="1">
+      <object object_ref="oval:org.NoUsers:obj:2"/>
+    </textfilecontent54_test>
+  </tests>
+
+  <objects>
+    <!-- Object to find the 'nobody' line -->
+    <textfilecontent54_object xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#independent" id="oval:org.NoUsers:obj:1" version="1">
+      <path>/etc</path>
+      <filename>shadow</filename>
+      <pattern operation="pattern match">^nobody:.*</pattern>
+      <instance datatype="int">1</instance>
+    </textfilecontent54_object>
+
+    <!-- Object to find any lines after 'nobody' -->
+    <textfilecontent54_object xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#independent" id="oval:org.NoUsers:obj:2" version="1">
+      <path>/etc</path>
+      <filename>shadow</filename>
+      <pattern operation="pattern match">^nobody:.*\n(.+)</pattern>
+      <instance datatype="int">1</instance>
+    </textfilecontent54_object>
+  </objects>
+
+  <states>
+    <!-- No specific states needed for this NoUsers -->
+       <textfilecontent54_state xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#independent" id="oval:my_test:ste:1" version="1">
+                   <subexpression>20230201</subexpression>
+               </textfilecontent54_state>
+  </states>
+</oval_definitions>
