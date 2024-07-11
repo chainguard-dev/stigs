@@ -42,8 +42,7 @@ and available within Chainguard's openscap image, we'll refer to this as the
 docker run --name target -d cgr.dev/chainguard/wolfi-base:latest tail -f /dev/null
 
 # Run the scan image against the target image
-# NOTE: This is a highly privileged container since we're scanning a container
-being run by the host's docker daemon.
+# NOTE: This is a highly privileged container since we're scanning a container being run by the host's docker daemon.
 docker run -i --rm -u 0:0 --pid=host \
   -v /var/run/docker.sock:/var/run/docker.sock \
   -v $(pwd)/out:/out \
@@ -61,6 +60,12 @@ The results of the scan will be written to the current directory in the `out`
 directory.  The `report.html` file will contain a human-readable report of the
 scan results, and the `results.xml` file will contain the raw results of the
 scan.
+
+### Alternative Uses
+
+The SSG content in this repository can be used by any other tool that supports
+the format, such as SCAP Workbench. For an alternative walkthrough of using
+SCAP workbench, see [alternative uses](./docs/alternatives.md).
 
 ## Updates
 
