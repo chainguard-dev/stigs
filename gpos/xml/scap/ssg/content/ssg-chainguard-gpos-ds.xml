@@ -6086,9 +6086,9 @@ fi
           <criterion comment="OpenSSL FIPS module configuration file exists"
             test_ref="oval:org.OpenSsl:tst:1" />
           <criterion comment="OpenSSL configuration file exists" test_ref="oval:org.OpenSsl:tst:2" />
-          <criterion comment="openssl-config-fips package is installed"
+          <criterion comment="openssl-config-fipshardened package is installed"
             test_ref="oval:org.OpenSsl:tst:3" />
-          <criterion comment="openssl-provider-fipshardened package is installed"
+          <criterion comment="openssl-provider-fips package is installed"
             test_ref="oval:org.OpenSsl:tst:4" />
         </criteria>
       </definition>
