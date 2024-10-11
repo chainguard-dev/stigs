@@ -18,14 +18,16 @@
                         uri="#scap_org.open-scap_cref_LibraryPermissionsTest" />
                     <cat:uri name="UserPasswordConfiguredTest.xml"
                         uri="#scap_org.open-scap_cref_UserPasswordConfiguredTest" />
-                    <cat:uri name="NoUsersCheck.xml" uri="#scap_org.open-scap_cref_NoUsersCheck" />
+                    <cat:uri name="NoUsersCheck.xml" 
+                        uri="#scap_org.open-scap_cref_NoUsersCheck" />
                     <cat:uri name="RemoteAccessServicesTest.xml"
                         uri="#scap_org.open-scap_cref_RemoteAccessServicesTest" />
                     <cat:uri name="VarLogPermissionsTest.xml"
                         uri="#scap_org.open-scap_cref_VarLogPermissionsTest" />
                     <cat:uri name="DetectOpenSslTest.xml"
                         uri="#scap_org.open-scap_cref_DetectOpenSslTest" />
-                    <cat:uri name="AslrCheck.sh" uri="#scap_org.open-scap_cref_AslrCheck" />
+                    <cat:uri name="AslrCheck.sh" 
+                        uri="#scap_org.open-scap_cref_AslrCheck" />
                 </cat:catalog>
             </ds:component-ref>
         </ds:checklists>
@@ -200,8 +202,9 @@
                         are running.
 
                         For more information on inherited controls for containers see the DISA
-                        Container Hardening Process Guide.
-</ns0:rationale>
+                        Container Hardening Process Guide.</ns0:rationale>
+                    <ns0:platform idref="cpe:/o:notapplicable"/>
+
                 </ns0:Rule>
                 <ns0:Rule id="xccdf_._rule_V_203746" selected="true" severity="high">
                     <ns0:title xml:lang="en">The operating system must implement cryptographic
@@ -224,8 +227,8 @@
                         that are used by containers running on that host.
 
                         For more information on inherited controls for containers see the DISA
-                        Container Hardening Process Guide.
-</ns0:rationale>
+                        Container Hardening Process Guide.</ns0:rationale>
+                    <ns0:platform idref="cpe:/o:notapplicable"/>
                 </ns0:Rule>
                 <ns0:Rule id="xccdf_._rule_V_203745" selected="true" severity="high">
                     <ns0:title xml:lang="en">The operating system must implement cryptographic
@@ -248,8 +251,8 @@
                         that are used by containers running on that host.
 
                         For more information on inherited controls for containers see the DISA
-                        Container Hardening Process Guide.
-</ns0:rationale>
+                        Container Hardening Process Guide.</ns0:rationale>
+                    <ns0:platform idref="cpe:/o:notapplicable"/>
                 </ns0:Rule>
                 <ns0:Rule id="xccdf_._rule_V_203749" selected="true" severity="high">
                     <ns0:title xml:lang="en">The operating system must implement cryptographic
@@ -284,8 +287,8 @@
                         associated auditing and security capabilities.
 
                         For more information on inherited controls for containers see the DISA
-                        Container Hardening Process Guide.
-                    </ns0:rationale>
+                        Container Hardening Process Guide.</ns0:rationale>
+                    <ns0:platform idref="cpe:/o:notapplicable"/>
                 </ns0:Rule>
                 <ns0:Rule id="xccdf_._rule_V_203748" selected="true" severity="high">
                     <ns0:title xml:lang="en">The operating system must protect the confidentiality
@@ -315,8 +318,8 @@
                         associated auditing and security capabilities.
 
                         For more information on inherited controls for containers see the DISA
-                        Container Hardening Process Guide.
-                    </ns0:rationale>
+                        Container Hardening Process Guide.</ns0:rationale>
+                    <ns0:platform idref="cpe:/o:notapplicable"/>
                 </ns0:Rule>
                 <ns0:Rule id="xccdf_._rule_V_252688" selected="true" severity="high">
                     <ns0:title xml:lang="en">The operating system must protect the confidentiality
@@ -355,8 +358,8 @@
                         for the operation of the service).
 
                         For more information on inherited controls for containers see the DISA
-                        Container Hardening Process Guide.
-</ns0:rationale>
+                        Container Hardening Process Guide.</ns0:rationale>
+                    <ns0:platform idref="cpe:/o:notapplicable"/>
                 </ns0:Rule>
                 <ns0:Rule id="xccdf_._rule_V_203714" selected="true" severity="low">
                     <ns0:title xml:lang="en">The operating system must record time stamps for audit
@@ -379,8 +382,8 @@
                         the time used by the container.
 
                         For more information on inherited controls for containers see the DISA
-                        Container Hardening Process Guide.
-</ns0:rationale>
+                        Container Hardening Process Guide.</ns0:rationale>
+                    <ns0:platform idref="cpe:/o:notapplicable"/>
                 </ns0:Rule>
                 <ns0:Rule id="xccdf_._rule_V_203708" selected="true" severity="low">
                     <ns0:title xml:lang="en">The operating system must provide a report generation
@@ -414,8 +417,8 @@
                         are running.
 
                         For more information on inherited controls for containers see the DISA
-                        Container Hardening Process Guide.
-</ns0:rationale>
+                        Container Hardening Process Guide.</ns0:rationale>
+                    <ns0:platform idref="cpe:/o:notapplicable"/>
                 </ns0:Rule>
                 <ns0:Rule id="xccdf_._rule_V_203702" selected="true" severity="low">
                     <ns0:title xml:lang="en">The operating system must immediately notify the SA and
@@ -443,8 +446,8 @@
                         are running.
 
                         For more information on inherited controls for containers see the DISA
-                        Container Hardening Process Guide.
-</ns0:rationale>
+                        Container Hardening Process Guide.</ns0:rationale>
+                    <ns0:platform idref="cpe:/o:notapplicable"/>
                 </ns0:Rule>
                 <ns0:Rule id="xccdf_._rule_V_203701" selected="true" severity="low">
                     <ns0:title xml:lang="en">The operating system must offload audit records onto a
@@ -473,8 +476,8 @@
                         are running.
 
                         For more information on inherited controls for containers see the DISA
-                        Container Hardening Process Guide.
-</ns0:rationale>
+                        Container Hardening Process Guide.</ns0:rationale>
+                    <ns0:platform idref="cpe:/o:notapplicable"/>
                 </ns0:Rule>
                 <ns0:Rule id="xccdf_._rule_V_203700" selected="true" severity="low">
                     <ns0:title xml:lang="en">The operating system must allocate audit record storage
@@ -505,8 +508,8 @@
                         are running.
 
                         For more information on inherited controls for containers see the DISA
-                        Container Hardening Process Guide.
-</ns0:rationale>
+                        Container Hardening Process Guide.</ns0:rationale>
+                    <ns0:platform idref="cpe:/o:notapplicable"/>
                 </ns0:Rule>
                 <ns0:Rule id="xccdf_._rule_V_203707" selected="true" severity="low">
                     <ns0:title xml:lang="en">The operating system must provide a report generation
@@ -540,8 +543,8 @@
                         are running.
 
                         For more information on inherited controls for containers see the DISA
-                        Container Hardening Process Guide.
-</ns0:rationale>
+                        Container Hardening Process Guide.</ns0:rationale>
+                    <ns0:platform idref="cpe:/o:notapplicable"/>
                 </ns0:Rule>
                 <ns0:Rule id="xccdf_._rule_V_203706" selected="true" severity="low">
                     <ns0:title xml:lang="en">The operating system must provide a report generation
@@ -575,8 +578,8 @@
                         are running.
 
                         For more information on inherited controls for containers see the DISA
-                        Container Hardening Process Guide.
-</ns0:rationale>
+                        Container Hardening Process Guide.</ns0:rationale>
+                    <ns0:platform idref="cpe:/o:notapplicable"/>
                 </ns0:Rule>
                 <ns0:Rule id="xccdf_._rule_V_203705" selected="true" severity="low">
                     <ns0:title xml:lang="en">The operating system must provide an audit reduction
@@ -611,8 +614,8 @@
                         are running.
 
                         For more information on inherited controls for containers see the DISA
-                        Container Hardening Process Guide.
-</ns0:rationale>
+                        Container Hardening Process Guide.</ns0:rationale>
+                    <ns0:platform idref="cpe:/o:notapplicable"/>
                 </ns0:Rule>
                 <ns0:Rule id="xccdf_._rule_V_203704" selected="true" severity="low">
                     <ns0:title xml:lang="en">The operating system must provide an audit reduction
@@ -646,8 +649,8 @@
                         are running.
 
                         For more information on inherited controls for containers see the DISA
-                        Container Hardening Process Guide.
-</ns0:rationale>
+                        Container Hardening Process Guide.</ns0:rationale>
+                    <ns0:platform idref="cpe:/o:notapplicable"/>
                 </ns0:Rule>
                 <ns0:Rule id="xccdf_._rule_V_203730" selected="true" severity="medium">
                     <ns0:title xml:lang="en">The operating system must authenticate peripherals
@@ -665,8 +668,8 @@
                         for the operation of the service).
 
                         For more information on inherited controls for containers see the DISA
-                        Container Hardening Process Guide.
-</ns0:rationale>
+                        Container Hardening Process Guide.</ns0:rationale>
+                    <ns0:platform idref="cpe:/o:notapplicable"/>
                 </ns0:Rule>
                 <ns0:Rule id="xccdf_._rule_V_203731" selected="true" severity="medium">
                     <ns0:title xml:lang="en">The operating system must authenticate all endpoint
@@ -707,8 +710,8 @@
                         unauthorized modification of the host operating system environment.
 
                         For more information on inherited controls for containers see the DISA
-                        Container Hardening Process Guide.
-</ns0:rationale>
+                        Container Hardening Process Guide.</ns0:rationale>
+                    <ns0:platform idref="cpe:/o:notapplicable"/>
                 </ns0:Rule>
                 <ns0:Rule id="xccdf_._rule_V_203658" selected="true" severity="medium">
                     <ns0:title xml:lang="en">The operating system must manage excess capacity,
@@ -743,8 +746,8 @@
                         as configured.
 
                         For more information on inherited controls for containers see the DISA
-                        Container Hardening Process Guide.
-</ns0:rationale>
+                        Container Hardening Process Guide.</ns0:rationale>
+                    <ns0:platform idref="cpe:/o:notapplicable"/>
                 </ns0:Rule>
                 <ns0:Rule id="xccdf_._rule_V_203780" selected="true" severity="medium">
                     <ns0:title xml:lang="en">The operating system must be configured in accordance
@@ -772,8 +775,8 @@
                         executing commands against running containers.
 
                         For more information on inherited controls for containers see the DISA
-                        Container Hardening Process Guide.
-</ns0:rationale>
+                        Container Hardening Process Guide.</ns0:rationale>
+                    <ns0:platform idref="cpe:/o:notapplicable"/>
                 </ns0:Rule>
                 <ns0:Rule id="xccdf_._rule_V_203784" selected="true" severity="medium">
                     <ns0:title xml:lang="en">The operating system must enable an application
@@ -789,8 +792,8 @@
                         container is not necessary.
 
                         For more information on inherited controls for containers see the DISA
-                        Container Hardening Process Guide.
-</ns0:rationale>
+                        Container Hardening Process Guide.</ns0:rationale>
+                    <ns0:platform idref="cpe:/o:notapplicable"/>
                 </ns0:Rule>
                 <ns0:Rule id="xccdf_._rule_V_203651" selected="true" severity="medium">
                     <ns0:title xml:lang="en">The operating system must provide an audit reduction
@@ -822,8 +825,8 @@
                         are running.
 
                         For more information on inherited controls for containers see the DISA
-                        Container Hardening Process Guide.
-</ns0:rationale>
+                        Container Hardening Process Guide.</ns0:rationale>
+                    <ns0:platform idref="cpe:/o:notapplicable"/>
                 </ns0:Rule>
                 <ns0:Rule id="xccdf_._rule_V_203657" selected="true" severity="medium">
                     <ns0:title xml:lang="en">Operating systems must prevent unauthorized and
@@ -866,8 +869,8 @@
                         as configured.
 
                         For more information on inherited controls for containers see the DISA
-                        Container Hardening Process Guide.
-</ns0:rationale>
+                        Container Hardening Process Guide.</ns0:rationale>
+                    <ns0:platform idref="cpe:/o:notapplicable"/>
                 </ns0:Rule>
                 <ns0:Rule id="xccdf_._rule_V_203656" selected="true" severity="medium">
                     <ns0:title xml:lang="en">The operating system must isolate security functions
@@ -913,8 +916,8 @@
                         as configured.
 
                         For more information on inherited controls for containers see the DISA
-                        Container Hardening Process Guide.
-</ns0:rationale>
+                        Container Hardening Process Guide.</ns0:rationale>
+                    <ns0:platform idref="cpe:/o:notapplicable"/>
                 </ns0:Rule>
                 <ns0:Rule id="xccdf_._rule_V_203721" selected="true" severity="medium">
                     <ns0:title xml:lang="en">The operating system must prevent program execution in
@@ -955,8 +958,8 @@
                         unauthorized modification of the host operating system environment.
 
                         For more information on inherited controls for containers see the DISA
-                        Container Hardening Process Guide.
-</ns0:rationale>
+                        Container Hardening Process Guide.</ns0:rationale>
+                    <ns0:platform idref="cpe:/o:notapplicable"/>
                 </ns0:Rule>
                 <ns0:Rule id="xccdf_._rule_V_203722" selected="true" severity="medium">
                     <ns0:title xml:lang="en">The operating system must employ a deny-all,
@@ -995,8 +998,8 @@
                         unauthorized modification of the host operating system environment.
 
                         For more information on inherited controls for containers see the DISA
-                        Container Hardening Process Guide.
-</ns0:rationale>
+                        Container Hardening Process Guide.</ns0:rationale>
+                    <ns0:platform idref="cpe:/o:notapplicable"/>
                 </ns0:Rule>
                 <ns0:Rule id="xccdf_._rule_V_203620" selected="true" severity="medium">
                     <ns0:title xml:lang="en">The operating system must allow only the ISSM (or
@@ -1028,8 +1031,8 @@
                         are running.
 
                         For more information on inherited controls for containers see the DISA
-                        Container Hardening Process Guide.
-</ns0:rationale>
+                        Container Hardening Process Guide.</ns0:rationale>
+                    <ns0:platform idref="cpe:/o:notapplicable"/>
                 </ns0:Rule>
                 <ns0:Rule id="xccdf_._rule_V_203621" selected="true" severity="medium">
                     <ns0:title xml:lang="en">The operating system must generate audit records when
@@ -1060,8 +1063,8 @@
                         are running.
 
                         For more information on inherited controls for containers see the DISA
-                        Container Hardening Process Guide.
-</ns0:rationale>
+                        Container Hardening Process Guide.</ns0:rationale>
+                    <ns0:platform idref="cpe:/o:notapplicable"/>
                 </ns0:Rule>
                 <ns0:Rule id="xccdf_._rule_V_203755" selected="true" severity="medium">
                     <ns0:title xml:lang="en">The operating system must remove all software
@@ -1087,8 +1090,8 @@
                         unauthorized modification of the host operating system environment.
 
                         For more information on inherited controls for containers see the DISA
-                        Container Hardening Process Guide.
-</ns0:rationale>
+                        Container Hardening Process Guide.</ns0:rationale>
+                    <ns0:platform idref="cpe:/o:notapplicable"/>
                 </ns0:Rule>
                 <ns0:Rule id="xccdf_._rule_V_203688" selected="true" severity="medium">
                     <ns0:title xml:lang="en">The operating system must protect wireless access to
@@ -1115,8 +1118,8 @@
                         for the operation of the service).
 
                         For more information on inherited controls for containers see the DISA
-                        Container Hardening Process Guide.
-</ns0:rationale>
+                        Container Hardening Process Guide.</ns0:rationale>
+                    <ns0:platform idref="cpe:/o:notapplicable"/>
                 </ns0:Rule>
                 <ns0:Rule id="xccdf_._rule_V_203689" selected="true" severity="medium">
                     <ns0:title xml:lang="en">The operating system must protect wireless access to
@@ -1141,8 +1144,8 @@
                         for the operation of the service).
 
                         For more information on inherited controls for containers see the DISA
-                        Container Hardening Process Guide.
-</ns0:rationale>
+                        Container Hardening Process Guide.</ns0:rationale>
+                    <ns0:platform idref="cpe:/o:notapplicable"/>
                 </ns0:Rule>
                 <ns0:Rule id="xccdf_._rule_V_203752" selected="true" severity="medium">
                     <ns0:title xml:lang="en">The operating system must behave in a predictable and
@@ -1177,8 +1180,8 @@
                         as configured.
 
                         For more information on inherited controls for containers see the DISA
-                        Container Hardening Process Guide.
-</ns0:rationale>
+                        Container Hardening Process Guide.</ns0:rationale>
+                    <ns0:platform idref="cpe:/o:notapplicable"/>
                 </ns0:Rule>
                 <ns0:Rule id="xccdf_._rule_V_203638" selected="true" severity="medium">
                     <ns0:title xml:lang="en">The operating system must be configured to prohibit or
@@ -1210,8 +1213,8 @@
                         container is not necessary.
 
                         For more information on inherited controls for containers see the DISA
-                        Container Hardening Process Guide.
-</ns0:rationale>
+                        Container Hardening Process Guide.</ns0:rationale>
+                    <ns0:platform idref="cpe:/o:notapplicable"/>
                 </ns0:Rule>
                 <ns0:Rule id="xccdf_._rule_V_203637" selected="true" severity="medium">
                     <ns0:title xml:lang="en">The operating system must be configured to disable
@@ -1248,8 +1251,8 @@
                         unauthorized modification of the host operating system environment.
 
                         For more information on inherited controls for containers see the DISA
-                        Container Hardening Process Guide.
-</ns0:rationale>
+                        Container Hardening Process Guide.</ns0:rationale>
+                    <ns0:platform idref="cpe:/o:notapplicable"/>
                 </ns0:Rule>
                 <ns0:Rule id="xccdf_._rule_V_203747" selected="true" severity="medium">
                     <ns0:title xml:lang="en">The operating system must protect against or limit the
@@ -1287,8 +1290,8 @@
                         as configured.
 
                         For more information on inherited controls for containers see the DISA
-                        Container Hardening Process Guide.
-</ns0:rationale>
+                        Container Hardening Process Guide.</ns0:rationale>
+                    <ns0:platform idref="cpe:/o:notapplicable"/>
                 </ns0:Rule>
                 <ns0:Rule id="xccdf_._rule_V_203699" selected="true" severity="medium">
                     <ns0:title xml:lang="en">The operating system must provide the capability for
@@ -1324,8 +1327,8 @@
                         are running.
 
                         For more information on inherited controls for containers see the DISA
-                        Container Hardening Process Guide.
-</ns0:rationale>
+                        Container Hardening Process Guide.</ns0:rationale>
+                    <ns0:platform idref="cpe:/o:notapplicable"/>
                 </ns0:Rule>
                 <ns0:Rule id="xccdf_._rule_V_203694" selected="true" severity="medium">
                     <ns0:title xml:lang="en">The operating system must allow operating system admins
@@ -1364,8 +1367,8 @@
                         that are used by containers running on that host.
 
                         For more information on inherited controls for containers see the DISA
-                        Container Hardening Process Guide.
-</ns0:rationale>
+                        Container Hardening Process Guide.</ns0:rationale>
+                    <ns0:platform idref="cpe:/o:notapplicable"/>
                 </ns0:Rule>
                 <ns0:Rule id="xccdf_._rule_V_203697" selected="true" severity="medium">
                     <ns0:title xml:lang="en">The operating system must audit the execution of
@@ -1396,8 +1399,8 @@
                         are running.
 
                         For more information on inherited controls for containers see the DISA
-                        Container Hardening Process Guide.
-</ns0:rationale>
+                        Container Hardening Process Guide.</ns0:rationale>
+                    <ns0:platform idref="cpe:/o:notapplicable"/>
                 </ns0:Rule>
                 <ns0:Rule id="xccdf_._rule_V_203691" selected="true" severity="medium">
                     <ns0:title xml:lang="en">The operating system must notify system administrators
@@ -1438,8 +1441,8 @@
                         are running.
 
                         For more information on inherited controls for containers see the DISA
-                        Container Hardening Process Guide.
-</ns0:rationale>
+                        Container Hardening Process Guide.</ns0:rationale>
+                    <ns0:platform idref="cpe:/o:notapplicable"/>
                 </ns0:Rule>
                 <ns0:Rule id="xccdf_._rule_V_203690" selected="true" severity="medium">
                     <ns0:title xml:lang="en">The operating system must audit all account enabling
@@ -1472,8 +1475,8 @@
                         are running.
 
                         For more information on inherited controls for containers see the DISA
-                        Container Hardening Process Guide.
-</ns0:rationale>
+                        Container Hardening Process Guide.</ns0:rationale>
+                    <ns0:platform idref="cpe:/o:notapplicable"/>
                 </ns0:Rule>
                 <ns0:Rule id="xccdf_._rule_V_203693" selected="true" severity="medium">
                     <ns0:title xml:lang="en">The operating system must allow operating system admins
@@ -1511,8 +1514,8 @@
                         that are used by containers running on that host.
 
                         For more information on inherited controls for containers see the DISA
-                        Container Hardening Process Guide.
-</ns0:rationale>
+                        Container Hardening Process Guide.</ns0:rationale>
+                    <ns0:platform idref="cpe:/o:notapplicable"/>
                 </ns0:Rule>
                 <ns0:Rule id="xccdf_._rule_V_203593" selected="true" severity="medium">
                     <ns0:title xml:lang="en">The operating system must audit all account creations.</ns0:title>
@@ -1544,8 +1547,8 @@
                         are running.
 
                         For more information on inherited controls for containers see the DISA
-                        Container Hardening Process Guide.
-</ns0:rationale>
+                        Container Hardening Process Guide.</ns0:rationale>
+                    <ns0:platform idref="cpe:/o:notapplicable"/>
                 </ns0:Rule>
                 <ns0:Rule id="xccdf_._rule_V_203606" selected="true" severity="medium">
                     <ns0:title xml:lang="en">The operating system must produce audit records
@@ -1582,8 +1585,8 @@
                         are running.
 
                         For more information on inherited controls for containers see the DISA
-                        Container Hardening Process Guide.
-</ns0:rationale>
+                        Container Hardening Process Guide.</ns0:rationale>
+                    <ns0:platform idref="cpe:/o:notapplicable"/>
                 </ns0:Rule>
                 <ns0:Rule id="xccdf_._rule_V_203607" selected="true" severity="medium">
                     <ns0:title xml:lang="en">The operating system must produce audit records
@@ -1619,8 +1622,8 @@
                         are running.
 
                         For more information on inherited controls for containers see the DISA
-                        Container Hardening Process Guide.
-</ns0:rationale>
+                        Container Hardening Process Guide.</ns0:rationale>
+                    <ns0:platform idref="cpe:/o:notapplicable"/>
                 </ns0:Rule>
                 <ns0:Rule id="xccdf_._rule_V_203604" selected="true" severity="medium">
                     <ns0:title xml:lang="en">The operating system must produce audit records
@@ -1656,8 +1659,8 @@
                         are running.
 
                         For more information on inherited controls for containers see the DISA
-                        Container Hardening Process Guide.
-</ns0:rationale>
+                        Container Hardening Process Guide.</ns0:rationale>
+                    <ns0:platform idref="cpe:/o:notapplicable"/>
                 </ns0:Rule>
                 <ns0:Rule id="xccdf_._rule_V_203605" selected="true" severity="medium">
                     <ns0:title xml:lang="en">The operating system must produce audit records
@@ -1694,8 +1697,8 @@
                         are running.
 
                         For more information on inherited controls for containers see the DISA
-                        Container Hardening Process Guide.
-</ns0:rationale>
+                        Container Hardening Process Guide.</ns0:rationale>
+                    <ns0:platform idref="cpe:/o:notapplicable"/>
                 </ns0:Rule>
                 <ns0:Rule id="xccdf_._rule_V_203608" selected="true" severity="medium">
                     <ns0:title xml:lang="en">The operating system must produce audit records
@@ -1729,8 +1732,8 @@
                         are running.
 
                         For more information on inherited controls for containers see the DISA
-                        Container Hardening Process Guide.
-</ns0:rationale>
+                        Container Hardening Process Guide.</ns0:rationale>
+                    <ns0:platform idref="cpe:/o:notapplicable"/>
                 </ns0:Rule>
                 <ns0:Rule id="xccdf_._rule_V_203609" selected="true" severity="medium">
                     <ns0:title xml:lang="en">The operating system must generate audit records
@@ -1760,8 +1763,8 @@
                         are running.
 
                         For more information on inherited controls for containers see the DISA
-                        Container Hardening Process Guide.
-</ns0:rationale>
+                        Container Hardening Process Guide.</ns0:rationale>
+                    <ns0:platform idref="cpe:/o:notapplicable"/>
                 </ns0:Rule>
                 <ns0:Rule id="xccdf_._rule_V_203660" selected="true" severity="medium">
                     <ns0:title xml:lang="en">The operating system must fail to a secure state if
@@ -1798,8 +1801,8 @@
                         as configured.
 
                         For more information on inherited controls for containers see the DISA
-                        Container Hardening Process Guide.
-</ns0:rationale>
+                        Container Hardening Process Guide.</ns0:rationale>
+                    <ns0:platform idref="cpe:/o:notapplicable"/>
                 </ns0:Rule>
                 <ns0:Rule id="xccdf_._rule_V_203661" selected="true" severity="medium">
                     <ns0:title xml:lang="en">The operating system must protect the confidentiality
@@ -1821,8 +1824,8 @@
                         that are used by containers running on that host.
 
                         For more information on inherited controls for containers see the DISA
-                        Container Hardening Process Guide.
-</ns0:rationale>
+                        Container Hardening Process Guide.</ns0:rationale>
+                    <ns0:platform idref="cpe:/o:notapplicable"/>
                 </ns0:Rule>
                 <ns0:Rule id="xccdf_._rule_V_203662" selected="true" severity="medium">
                     <ns0:title xml:lang="en">The operating system must employ automated mechanisms
@@ -1847,8 +1850,8 @@
                         be built and deployed in the environment.
 
                         For more information on inherited controls for containers see the DISA
-                        Container Hardening Process Guide.
-</ns0:rationale>
+                        Container Hardening Process Guide.</ns0:rationale>
+                    <ns0:platform idref="cpe:/o:notapplicable"/>
                 </ns0:Rule>
                 <ns0:Rule id="xccdf_._rule_V_203663" selected="true" severity="medium">
                     <ns0:title xml:lang="en">The operating system must generate error messages that
@@ -1886,8 +1889,8 @@
                         are running.
 
                         For more information on inherited controls for containers see the DISA
-                        Container Hardening Process Guide.
-</ns0:rationale>
+                        Container Hardening Process Guide.</ns0:rationale>
+                    <ns0:platform idref="cpe:/o:notapplicable"/>
                 </ns0:Rule>
                 <ns0:Rule id="xccdf_._rule_V_203666" selected="true" severity="medium">
                     <ns0:title xml:lang="en">The operating system must audit all account
@@ -1920,8 +1923,8 @@
                         are running.
 
                         For more information on inherited controls for containers see the DISA
-                        Container Hardening Process Guide.
-</ns0:rationale>
+                        Container Hardening Process Guide.</ns0:rationale>
+                    <ns0:platform idref="cpe:/o:notapplicable"/>
                 </ns0:Rule>
                 <ns0:Rule id="xccdf_._rule_V_203667" selected="true" severity="medium">
                     <ns0:title xml:lang="en">The operating system must audit all account disabling
@@ -1958,8 +1961,8 @@
                         are running.
 
                         For more information on inherited controls for containers see the DISA
-                        Container Hardening Process Guide.
-</ns0:rationale>
+                        Container Hardening Process Guide.</ns0:rationale>
+                    <ns0:platform idref="cpe:/o:notapplicable"/>
                 </ns0:Rule>
                 <ns0:Rule id="xccdf_._rule_V_203668" selected="true" severity="medium">
                     <ns0:title xml:lang="en">The operating system must audit all account removal
@@ -1996,8 +1999,8 @@
                         are running.
 
                         For more information on inherited controls for containers see the DISA
-                        Container Hardening Process Guide.
-</ns0:rationale>
+                        Container Hardening Process Guide.</ns0:rationale>
+                    <ns0:platform idref="cpe:/o:notapplicable"/>
                 </ns0:Rule>
                 <ns0:Rule id="xccdf_._rule_V_203756" selected="true" severity="medium">
                     <ns0:title xml:lang="en">The operating system must verify correct operation of
@@ -2034,8 +2037,8 @@
                         are running.
 
                         For more information on inherited controls for containers see the DISA
-                        Container Hardening Process Guide.
-</ns0:rationale>
+                        Container Hardening Process Guide.</ns0:rationale>
+                    <ns0:platform idref="cpe:/o:notapplicable"/>
                 </ns0:Rule>
                 <ns0:Rule id="xccdf_._rule_V_203757" selected="true" severity="medium">
                     <ns0:title xml:lang="en">The operating system must perform verification of the
@@ -2078,8 +2081,8 @@
                         are running.
 
                         For more information on inherited controls for containers see the DISA
-                        Container Hardening Process Guide.
-</ns0:rationale>
+                        Container Hardening Process Guide.</ns0:rationale>
+                    <ns0:platform idref="cpe:/o:notapplicable"/>
                 </ns0:Rule>
                 <ns0:Rule id="xccdf_._rule_V_203615" selected="true" severity="medium">
                     <ns0:title xml:lang="en">The operating system must use internal system clocks to
@@ -2102,8 +2105,8 @@
                         the time used by the container.
 
                         For more information on inherited controls for containers see the DISA
-                        Container Hardening Process Guide.
-</ns0:rationale>
+                        Container Hardening Process Guide.</ns0:rationale>
+                    <ns0:platform idref="cpe:/o:notapplicable"/>
                 </ns0:Rule>
                 <ns0:Rule id="xccdf_._rule_V_203614" selected="true" severity="medium">
                     <ns0:title xml:lang="en">The operating system must provide the capability to
@@ -2145,8 +2148,8 @@
                         are running.
 
                         For more information on inherited controls for containers see the DISA
-                        Container Hardening Process Guide.
-</ns0:rationale>
+                        Container Hardening Process Guide.</ns0:rationale>
+                    <ns0:platform idref="cpe:/o:notapplicable"/>
                 </ns0:Rule>
                 <ns0:Rule id="xccdf_._rule_V_203611" selected="true" severity="medium">
                     <ns0:title xml:lang="en">The operating system must alert the ISSO and SA (at a
@@ -2184,8 +2187,8 @@
                         are running.
 
                         For more information on inherited controls for containers see the DISA
-                        Container Hardening Process Guide.
-</ns0:rationale>
+                        Container Hardening Process Guide.</ns0:rationale>
+                    <ns0:platform idref="cpe:/o:notapplicable"/>
                 </ns0:Rule>
                 <ns0:Rule id="xccdf_._rule_V_203613" selected="true" severity="medium">
                     <ns0:title xml:lang="en">The operating system must provide the capability to
@@ -2224,8 +2227,8 @@
                         are running.
 
                         For more information on inherited controls for containers see the DISA
-                        Container Hardening Process Guide.
-</ns0:rationale>
+                        Container Hardening Process Guide.</ns0:rationale>
+                    <ns0:platform idref="cpe:/o:notapplicable"/>
                 </ns0:Rule>
                 <ns0:Rule id="xccdf_._rule_V_203612" selected="true" severity="medium">
                     <ns0:title xml:lang="en">The operating system must shut down by default upon
@@ -2270,8 +2273,8 @@
                         are running.
 
                         For more information on inherited controls for containers see the DISA
-                        Container Hardening Process Guide.
-</ns0:rationale>
+                        Container Hardening Process Guide.</ns0:rationale>
+                    <ns0:platform idref="cpe:/o:notapplicable"/>
                 </ns0:Rule>
                 <ns0:Rule id="xccdf_._rule_V_203619" selected="true" severity="medium">
                     <ns0:title xml:lang="en">The operating system must provide audit record
@@ -2323,8 +2326,8 @@
                         are running.
 
                         For more information on inherited controls for containers see the DISA
-                        Container Hardening Process Guide.
-</ns0:rationale>
+                        Container Hardening Process Guide.</ns0:rationale>
+                    <ns0:platform idref="cpe:/o:notapplicable"/>
                 </ns0:Rule>
                 <ns0:Rule id="xccdf_._rule_V_203618" selected="true" severity="medium">
                     <ns0:title xml:lang="en">The operating system must protect audit information
@@ -2360,8 +2363,8 @@
                         are running.
 
                         For more information on inherited controls for containers see the DISA
-                        Container Hardening Process Guide.
-</ns0:rationale>
+                        Container Hardening Process Guide.</ns0:rationale>
+                    <ns0:platform idref="cpe:/o:notapplicable"/>
                 </ns0:Rule>
                 <ns0:Rule id="xccdf_._rule_V_203673" selected="true" severity="medium">
                     <ns0:title xml:lang="en">The operating system must protect audit tools from
@@ -2399,8 +2402,8 @@
                         are running.
 
                         For more information on inherited controls for containers see the DISA
-                        Container Hardening Process Guide.
-</ns0:rationale>
+                        Container Hardening Process Guide.</ns0:rationale>
+                    <ns0:platform idref="cpe:/o:notapplicable"/>
                 </ns0:Rule>
                 <ns0:Rule id="xccdf_._rule_V_203672" selected="true" severity="medium">
                     <ns0:title xml:lang="en">The operating system must protect audit tools from
@@ -2438,8 +2441,8 @@
                         are running.
 
                         For more information on inherited controls for containers see the DISA
-                        Container Hardening Process Guide.
-</ns0:rationale>
+                        Container Hardening Process Guide.</ns0:rationale>
+                    <ns0:platform idref="cpe:/o:notapplicable"/>
                 </ns0:Rule>
                 <ns0:Rule id="xccdf_._rule_V_203671" selected="true" severity="medium">
                     <ns0:title xml:lang="en">The operating system must produce audit records
@@ -2468,8 +2471,8 @@
                         are running.
 
                         For more information on inherited controls for containers see the DISA
-                        Container Hardening Process Guide.
-</ns0:rationale>
+                        Container Hardening Process Guide.</ns0:rationale>
+                    <ns0:platform idref="cpe:/o:notapplicable"/>
                 </ns0:Rule>
                 <ns0:Rule id="xccdf_._rule_V_203670" selected="true" severity="medium">
                     <ns0:title xml:lang="en">The operating system must initiate session audits at
@@ -2497,8 +2500,8 @@
                         are running.
 
                         For more information on inherited controls for containers see the DISA
-                        Container Hardening Process Guide.
-</ns0:rationale>
+                        Container Hardening Process Guide.</ns0:rationale>
+                    <ns0:platform idref="cpe:/o:notapplicable"/>
                 </ns0:Rule>
                 <ns0:Rule id="xccdf_._rule_V_203677" selected="true" severity="medium">
                     <ns0:title xml:lang="en">In the event of a system failure, the operating system
@@ -2533,8 +2536,8 @@
                         are running.
 
                         For more information on inherited controls for containers see the DISA
-                        Container Hardening Process Guide.
-</ns0:rationale>
+                        Container Hardening Process Guide.</ns0:rationale>
+                    <ns0:platform idref="cpe:/o:notapplicable"/>
                 </ns0:Rule>
                 <ns0:Rule id="xccdf_._rule_V_203674" selected="true" severity="medium">
                     <ns0:title xml:lang="en">The operating system must protect audit tools from
@@ -2572,8 +2575,8 @@
                         are running.
 
                         For more information on inherited controls for containers see the DISA
-                        Container Hardening Process Guide.
-</ns0:rationale>
+                        Container Hardening Process Guide.</ns0:rationale>
+                    <ns0:platform idref="cpe:/o:notapplicable"/>
                 </ns0:Rule>
                 <ns0:Rule id="xccdf_._rule_V_203758" selected="true" severity="medium">
                     <ns0:title xml:lang="en">The operating system must shut down the information
@@ -2617,8 +2620,8 @@
                         are running.
 
                         For more information on inherited controls for containers see the DISA
-                        Container Hardening Process Guide.
-</ns0:rationale>
+                        Container Hardening Process Guide.</ns0:rationale>
+                    <ns0:platform idref="cpe:/o:notapplicable"/>
                 </ns0:Rule>
                 <ns0:Rule id="xccdf_._rule_V_203679" selected="true" severity="medium">
                     <ns0:title xml:lang="en">The operating system must notify system administrators
@@ -2655,8 +2658,8 @@
                         are running.
 
                         For more information on inherited controls for containers see the DISA
-                        Container Hardening Process Guide.
-</ns0:rationale>
+                        Container Hardening Process Guide.</ns0:rationale>
+                    <ns0:platform idref="cpe:/o:notapplicable"/>
                 </ns0:Rule>
                 <ns0:Rule id="xccdf_._rule_V_203678" selected="true" severity="medium">
                     <ns0:title xml:lang="en">The operating system must notify system administrators
@@ -2693,8 +2696,8 @@
                         are running.
 
                         For more information on inherited controls for containers see the DISA
-                        Container Hardening Process Guide.
-</ns0:rationale>
+                        Container Hardening Process Guide.</ns0:rationale>
+                    <ns0:platform idref="cpe:/o:notapplicable"/>
                 </ns0:Rule>
                 <ns0:Rule id="xccdf_._rule_V_203759" selected="true" severity="medium">
                     <ns0:title xml:lang="en">The operating system must generate audit records when
@@ -2725,8 +2728,8 @@
                         are running.
 
                         For more information on inherited controls for containers see the DISA
-                        Container Hardening Process Guide.
-</ns0:rationale>
+                        Container Hardening Process Guide.</ns0:rationale>
+                    <ns0:platform idref="cpe:/o:notapplicable"/>
                 </ns0:Rule>
                 <ns0:Rule id="xccdf_._rule_V_203772" selected="true" severity="medium">
                     <ns0:title xml:lang="en">The operating system must generate audit records when
@@ -2757,8 +2760,8 @@
                         are running.
 
                         For more information on inherited controls for containers see the DISA
-                        Container Hardening Process Guide.
-</ns0:rationale>
+                        Container Hardening Process Guide.</ns0:rationale>
+                    <ns0:platform idref="cpe:/o:notapplicable"/>
                 </ns0:Rule>
                 <ns0:Rule id="xccdf_._rule_V_203773" selected="true" severity="medium">
                     <ns0:title xml:lang="en">The operating system must generate audit records for
@@ -2789,8 +2792,8 @@
                         are running.
 
                         For more information on inherited controls for containers see the DISA
-                        Container Hardening Process Guide.
-</ns0:rationale>
+                        Container Hardening Process Guide.</ns0:rationale>
+                    <ns0:platform idref="cpe:/o:notapplicable"/>
                 </ns0:Rule>
                 <ns0:Rule id="xccdf_._rule_V_203770" selected="true" severity="medium">
                     <ns0:title xml:lang="en">The operating system must generate audit records
@@ -2821,8 +2824,8 @@
                         are running.
 
                         For more information on inherited controls for containers see the DISA
-                        Container Hardening Process Guide.
-</ns0:rationale>
+                        Container Hardening Process Guide.</ns0:rationale>
+                    <ns0:platform idref="cpe:/o:notapplicable"/>
                 </ns0:Rule>
                 <ns0:Rule id="xccdf_._rule_V_203777" selected="true" severity="medium">
                     <ns0:title xml:lang="en">The operating system must, at a minimum, off-load audit
@@ -2852,8 +2855,8 @@
                         are running.
 
                         For more information on inherited controls for containers see the DISA
-                        Container Hardening Process Guide.
-</ns0:rationale>
+                        Container Hardening Process Guide.</ns0:rationale>
+                    <ns0:platform idref="cpe:/o:notapplicable"/>
                 </ns0:Rule>
                 <ns0:Rule id="xccdf_._rule_V_203774" selected="true" severity="medium">
                     <ns0:title xml:lang="en">The operating system must generate audit records for
@@ -2884,8 +2887,8 @@
                         are running.
 
                         For more information on inherited controls for containers see the DISA
-                        Container Hardening Process Guide.
-</ns0:rationale>
+                        Container Hardening Process Guide.</ns0:rationale>
+                    <ns0:platform idref="cpe:/o:notapplicable"/>
                 </ns0:Rule>
                 <ns0:Rule id="xccdf_._rule_V_203775" selected="true" severity="medium">
                     <ns0:title xml:lang="en">The operating system must generate audit records for
@@ -2917,8 +2920,8 @@
                         are running.
 
                         For more information on inherited controls for containers see the DISA
-                        Container Hardening Process Guide.
-</ns0:rationale>
+                        Container Hardening Process Guide.</ns0:rationale>
+                    <ns0:platform idref="cpe:/o:notapplicable"/>
                 </ns0:Rule>
                 <ns0:Rule id="xccdf_._rule_V_203647" selected="true" severity="medium">
                     <ns0:title xml:lang="en">The operating system must uniquely identify peripherals
@@ -2936,8 +2939,8 @@
                         for the operation of the service).
 
                         For more information on inherited controls for containers see the DISA
-                        Container Hardening Process Guide.
-</ns0:rationale>
+                        Container Hardening Process Guide.</ns0:rationale>
+                    <ns0:platform idref="cpe:/o:notapplicable"/>
                 </ns0:Rule>
                 <ns0:Rule id="xccdf_._rule_V_203710" selected="true" severity="medium">
                     <ns0:title xml:lang="en">The operating system must not alter original content or
@@ -2973,8 +2976,8 @@
                         are running.
 
                         For more information on inherited controls for containers see the DISA
-                        Container Hardening Process Guide.
-</ns0:rationale>
+                        Container Hardening Process Guide.</ns0:rationale>
+                    <ns0:platform idref="cpe:/o:notapplicable"/>
                 </ns0:Rule>
                 <ns0:Rule id="xccdf_._rule_V_203711" selected="true" severity="medium">
                     <ns0:title xml:lang="en">The operating system must, for networked systems,
@@ -3004,8 +3007,8 @@
                         the time used by the container.
 
                         For more information on inherited controls for containers see the DISA
-                        Container Hardening Process Guide.
-</ns0:rationale>
+                        Container Hardening Process Guide.</ns0:rationale>
+                    <ns0:platform idref="cpe:/o:notapplicable"/>
                 </ns0:Rule>
                 <ns0:Rule id="xccdf_._rule_V_203712" selected="true" severity="medium">
                     <ns0:title xml:lang="en">The operating system must synchronize internal
@@ -3036,8 +3039,8 @@
                         the time used by the container.
 
                         For more information on inherited controls for containers see the DISA
-                        Container Hardening Process Guide.
-</ns0:rationale>
+                        Container Hardening Process Guide.</ns0:rationale>
+                    <ns0:platform idref="cpe:/o:notapplicable"/>
                 </ns0:Rule>
                 <ns0:Rule id="xccdf_._rule_V_203713" selected="true" severity="medium">
                     <ns0:title xml:lang="en">The operating system must record time stamps for audit
@@ -3067,8 +3070,8 @@
                         are running.
 
                         For more information on inherited controls for containers see the DISA
-                        Container Hardening Process Guide.
-</ns0:rationale>
+                        Container Hardening Process Guide.</ns0:rationale>
+                    <ns0:platform idref="cpe:/o:notapplicable"/>
                 </ns0:Rule>
                 <ns0:Rule id="xccdf_._rule_V_203715" selected="true" severity="medium">
                     <ns0:title xml:lang="en">The operating system must enforce dual authorization
@@ -3101,8 +3104,8 @@
                         are running.
 
                         For more information on inherited controls for containers see the DISA
-                        Container Hardening Process Guide.
-</ns0:rationale>
+                        Container Hardening Process Guide.</ns0:rationale>
+                    <ns0:platform idref="cpe:/o:notapplicable"/>
                 </ns0:Rule>
                 <ns0:Rule id="xccdf_._rule_V_203717" selected="true" severity="medium">
                     <ns0:title xml:lang="en">The operating system must notify designated personnel
@@ -3137,8 +3140,8 @@
                         are running.
 
                         For more information on inherited controls for containers see the DISA
-                        Container Hardening Process Guide.
-</ns0:rationale>
+                        Container Hardening Process Guide.</ns0:rationale>
+                    <ns0:platform idref="cpe:/o:notapplicable"/>
                 </ns0:Rule>
                 <ns0:Rule id="xccdf_._rule_V_203719" selected="true" severity="medium">
                     <ns0:title xml:lang="en">The operating system must audit the enforcement actions
@@ -3172,8 +3175,8 @@
                         are running.
 
                         For more information on inherited controls for containers see the DISA
-                        Container Hardening Process Guide.
-</ns0:rationale>
+                        Container Hardening Process Guide.</ns0:rationale>
+                    <ns0:platform idref="cpe:/o:notapplicable"/>
                 </ns0:Rule>
                 <ns0:Rule id="xccdf_._rule_V_203769" selected="true" severity="medium">
                     <ns0:title xml:lang="en">The audit system must be configured to audit the
@@ -3204,8 +3207,8 @@
                         are running.
 
                         For more information on inherited controls for containers see the DISA
-                        Container Hardening Process Guide.
-</ns0:rationale>
+                        Container Hardening Process Guide.</ns0:rationale>
+                    <ns0:platform idref="cpe:/o:notapplicable"/>
                 </ns0:Rule>
                 <ns0:Rule id="xccdf_._rule_V_203768" selected="true" severity="medium">
                     <ns0:title xml:lang="en">The operating system must generate audit records for
@@ -3236,8 +3239,8 @@
                         are running.
 
                         For more information on inherited controls for containers see the DISA
-                        Container Hardening Process Guide.
-</ns0:rationale>
+                        Container Hardening Process Guide.</ns0:rationale>
+                    <ns0:platform idref="cpe:/o:notapplicable"/>
                 </ns0:Rule>
                 <ns0:Rule id="xccdf_._rule_V_203765" selected="true" severity="medium">
                     <ns0:title xml:lang="en">The operating system must generate audit records when
@@ -3268,8 +3271,8 @@
                         are running.
 
                         For more information on inherited controls for containers see the DISA
-                        Container Hardening Process Guide.
-</ns0:rationale>
+                        Container Hardening Process Guide.</ns0:rationale>
+                    <ns0:platform idref="cpe:/o:notapplicable"/>
                 </ns0:Rule>
                 <ns0:Rule id="xccdf_._rule_V_203764" selected="true" severity="medium">
                     <ns0:title xml:lang="en">The operating system must generate audit records when
@@ -3300,8 +3303,8 @@
                         are running.
 
                         For more information on inherited controls for containers see the DISA
-                        Container Hardening Process Guide.
-</ns0:rationale>
+                        Container Hardening Process Guide.</ns0:rationale>
+                    <ns0:platform idref="cpe:/o:notapplicable"/>
                 </ns0:Rule>
                 <ns0:Rule id="xccdf_._rule_V_203767" selected="true" severity="medium">
                     <ns0:title xml:lang="en">The operating system must generate audit records when
@@ -3332,8 +3335,8 @@
                         are running.
 
                         For more information on inherited controls for containers see the DISA
-                        Container Hardening Process Guide.
-</ns0:rationale>
+                        Container Hardening Process Guide.</ns0:rationale>
+                    <ns0:platform idref="cpe:/o:notapplicable"/>
                 </ns0:Rule>
                 <ns0:Rule id="xccdf_._rule_V_203766" selected="true" severity="medium">
                     <ns0:title xml:lang="en">The operating system must generate audit records when
@@ -3364,8 +3367,8 @@
                         are running.
 
                         For more information on inherited controls for containers see the DISA
-                        Container Hardening Process Guide.
-</ns0:rationale>
+                        Container Hardening Process Guide.</ns0:rationale>
+                    <ns0:platform idref="cpe:/o:notapplicable"/>
                 </ns0:Rule>
                 <ns0:Rule id="xccdf_._rule_V_203761" selected="true" severity="medium">
                     <ns0:title xml:lang="en">The operating system must generate audit records when
@@ -3396,8 +3399,8 @@
                         are running.
 
                         For more information on inherited controls for containers see the DISA
-                        Container Hardening Process Guide.
-</ns0:rationale>
+                        Container Hardening Process Guide.</ns0:rationale>
+                    <ns0:platform idref="cpe:/o:notapplicable"/>
                 </ns0:Rule>
                 <ns0:Rule id="xccdf_._rule_V_203760" selected="true" severity="medium">
                     <ns0:title xml:lang="en">The operating system must generate audit records when
@@ -3429,8 +3432,8 @@
                         are running.
 
                         For more information on inherited controls for containers see the DISA
-                        Container Hardening Process Guide.
-</ns0:rationale>
+                        Container Hardening Process Guide.</ns0:rationale>
+                    <ns0:platform idref="cpe:/o:notapplicable"/>
                 </ns0:Rule>
                 <ns0:Rule id="xccdf_._rule_V_203763" selected="true" severity="medium">
                     <ns0:title xml:lang="en">The operating system must generate audit records when
@@ -3462,8 +3465,8 @@
                         are running.
 
                         For more information on inherited controls for containers see the DISA
-                        Container Hardening Process Guide.
-</ns0:rationale>
+                        Container Hardening Process Guide.</ns0:rationale>
+                    <ns0:platform idref="cpe:/o:notapplicable"/>
                 </ns0:Rule>
                 <ns0:Rule id="xccdf_._rule_V_203762" selected="true" severity="medium">
                     <ns0:title xml:lang="en">The operating system must generate audit records when
@@ -3494,8 +3497,8 @@
                         are running.
 
                         For more information on inherited controls for containers see the DISA
-                        Container Hardening Process Guide.
-</ns0:rationale>
+                        Container Hardening Process Guide.</ns0:rationale>
+                    <ns0:platform idref="cpe:/o:notapplicable"/>
                 </ns0:Rule>
                 <ns0:Rule id="xccdf_._rule_V_203709" selected="true" severity="medium">
                     <ns0:title xml:lang="en">The operating system must not alter original content or
@@ -3534,8 +3537,8 @@
                         are running.
 
                         For more information on inherited controls for containers see the DISA
-                        Container Hardening Process Guide.
-</ns0:rationale>
+                        Container Hardening Process Guide.</ns0:rationale>
+                    <ns0:platform idref="cpe:/o:notapplicable"/>
                 </ns0:Rule>
                 <ns0:Rule id="xccdf_._rule_V_203703" selected="true" severity="medium">
                     <ns0:title xml:lang="en">The operating system must provide an immediate
@@ -3569,8 +3572,8 @@
                         are running.
 
                         For more information on inherited controls for containers see the DISA
-                        Container Hardening Process Guide.
-</ns0:rationale>
+                        Container Hardening Process Guide.</ns0:rationale>
+                    <ns0:platform idref="cpe:/o:notapplicable"/>
                 </ns0:Rule>
             </ns0:Group>
             <ns0:Group id="xccdf_._group_Open_Ssl">
@@ -6505,7 +6508,7 @@ fi
 
     <definitions>
 
-      <definition id="oval:org.example:def:2" version="1" class="compliance">
+      <definition id="oval:org.varlog:def:2" version="1" class="compliance">
         <metadata>
           <title>Check Var/Log Permissions</title>
           <description>Ensure /var/log has root:root permissions.</description>
@@ -6516,24 +6519,24 @@ fi
         </metadata>
         <criteria>
           <criterion comment="All files in /usr/lib have root:root permissions"
-            test_ref="oval:org.example:tst:5" />
+            test_ref="oval:org.varlog:tst:5" />
         </criteria>
       </definition>
     </definitions>
 
     <tests>
-      <unix:file_test id="oval:org.example:tst:5" version="1" check="all"
+      <unix:file_test id="oval:org.varlog:tst:5" version="1" check="all"
         check_existence="at_least_one_exists" comment="Check existence of /var/log directory"
         xmlns:unix="http://oval.mitre.org/XMLSchema/oval-definitions-5#unix">
-        <unix:object object_ref="oval:org.example:obj:5" />
+        <unix:object object_ref="oval:org.varlog:obj:5" />
 
-        <unix:state state_ref="oval:org.example:ste:5" />
+        <unix:state state_ref="oval:org.varlog:ste:5" />
       </unix:file_test>
     </tests>
 
     <objects>
 
-      <unix:file_object id="oval:org.example:obj:5" version="1"
+      <unix:file_object id="oval:org.varlog:obj:5" version="1"
         xmlns:unix="http://oval.mitre.org/XMLSchema/oval-definitions-5#unix">
         <unix:path>/var/log</unix:path>
         <unix:filename xsi:nil="true" />
@@ -6542,7 +6545,7 @@ fi
     </objects>
 
     <states>
-      <unix:file_state id="oval:org.example:ste:5" version="1"
+      <unix:file_state id="oval:org.varlog:ste:5" version="1"
         xmlns:unix="http://oval.mitre.org/XMLSchema/oval-definitions-5#unix">
         <unix:group_id datatype="int">0</unix:group_id>
         <unix:user_id datatype="int">0</unix:user_id>
