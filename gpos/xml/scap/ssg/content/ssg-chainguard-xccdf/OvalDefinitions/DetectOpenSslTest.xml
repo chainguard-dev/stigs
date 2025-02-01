@@ -58,14 +58,14 @@
    <textfilecontent54_object xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#independent" id="oval:org.OpenSsl:obj:3" version="1">
       <path>/lib/apk/db</path>
       <filename>installed</filename>
-      <pattern operation="pattern match">openssl-config-fips*</pattern>
+      <pattern operation="pattern match">^P:openssl-config-fipshardened(-\d+\.\d+\.\d+)?$</pattern>
       <instance datatype="int">1</instance>
     </textfilecontent54_object>
 
     <textfilecontent54_object xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#independent" id="oval:org.OpenSsl:obj:4" version="1">
       <path>/lib/apk/db</path>
       <filename>installed</filename>
-      <pattern operation="pattern match">openssl-provider-fips*</pattern>
+      <pattern operation="pattern match">^P:openssl-provider-fips(-\d+\.\d+\.\d+)?$</pattern>
       <instance datatype="int">1</instance>
     </textfilecontent54_object>
   </objects>
