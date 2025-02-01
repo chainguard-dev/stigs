@@ -12,7 +12,7 @@
   <definitions>
     <definition id="oval:org.RemoteAccessServices:def:1" version="1" class="compliance">
       <metadata>
-        <title>Check for installed Remote Acccess packages</title>
+        <title>Check for installed Remote Access packages</title>
         <description>Ensure that packages in the list are not installed on the system.</description>
         <reference source="Custom"/>
         <affected family="unix">

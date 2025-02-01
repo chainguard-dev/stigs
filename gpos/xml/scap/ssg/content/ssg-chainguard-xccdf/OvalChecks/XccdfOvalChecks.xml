@@ -1694,7 +1694,7 @@ For more information on inherited controls for containers see the DISA Container
       </description>
       <description>
         <html:pre>Script Verification:
-To manually verify, ensure that fipsmodule.cnf and openssl.cnf exist in the /ect/ssl folder. Also verify that openssl-config-fipshardened and openssl-provider-fips exist in the file /lib/apk/db/installed. </html:pre>
+To manually verify, ensure that fipsmodule.cnf and openssl.cnf exist in the /etc/ssl folder. Also verify that openssl-config-fipshardened and openssl-provider-fips exist in the file /lib/apk/db/installed. </html:pre>
       </description>
       <check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
         <check-content-ref href="../OvalDefinitions/DetectOpenSslTest.xml"/>
@@ -1707,7 +1707,7 @@ To manually verify, ensure that fipsmodule.cnf and openssl.cnf exist in the /ect
       </description>
       <description>
         <html:pre>Script Verification:
-To manually verify, ensure that fipsmodule.cnf and openssl.cnf exist in the /ect/ssl folder. Also verify that openssl-config-fipshardened and openssl-provider-fips exist in the file /lib/apk/db/installed. </html:pre>
+To manually verify, ensure that fipsmodule.cnf and openssl.cnf exist in the /etc/ssl folder. Also verify that openssl-config-fipshardened and openssl-provider-fips exist in the file /lib/apk/db/installed. </html:pre>
       </description>
       <check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
         <check-content-ref href="../OvalDefinitions/DetectOpenSslTest.xml"/>
@@ -1724,7 +1724,7 @@ Use of this requirement will be limited to situations where the data owner has a
       </description>
       <description>
         <html:pre>Script Verification:
-To manually verify, ensure that fipsmodule.cnf and openssl.cnf exist in the /ect/ssl folder. Also verify that openssl-config-fipshardened and openssl-provider-fips exist in the file /lib/apk/db/installed. </html:pre>
+To manually verify, ensure that fipsmodule.cnf and openssl.cnf exist in the /etc/ssl folder. Also verify that openssl-config-fipshardened and openssl-provider-fips exist in the file /lib/apk/db/installed. </html:pre>
       </description>
       <check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
         <check-content-ref href="../OvalDefinitions/DetectOpenSslTest.xml"/>
@@ -1741,7 +1741,7 @@ Use of this requirement will be limited to situations where the data owner has a
       </description>
       <description>
         <html:pre>Script Verification:
-To manually verify, ensure that fipsmodule.cnf and openssl.cnf exist in the /ect/ssl folder. Also verify that openssl-config-fipshardened and openssl-provider-fips exist in the file /lib/apk/db/installed. </html:pre>
+To manually verify, ensure that fipsmodule.cnf and openssl.cnf exist in the /etc/ssl folder. Also verify that openssl-config-fipshardened and openssl-provider-fips exist in the file /lib/apk/db/installed. </html:pre>
       </description>
       <check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
         <check-content-ref href="../OvalDefinitions/DetectOpenSslTest.xml"/>
@@ -1758,7 +1758,7 @@ FIPS 140-2/140-3 is the current standard for validating that mechanisms used to 
       </description>
       <description>
         <html:pre>Script Verification:
-To manually verify, ensure that fipsmodule.cnf and openssl.cnf exist in the /ect/ssl folder. Also verify that openssl-config-fipshardened and openssl-provider-fips exist in the file /lib/apk/db/installed. </html:pre>
+To manually verify, ensure that fipsmodule.cnf and openssl.cnf exist in the /etc/ssl folder. Also verify that openssl-config-fipshardened and openssl-provider-fips exist in the file /lib/apk/db/installed. </html:pre>
       </description>
       <check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
         <check-content-ref href="../OvalDefinitions/DetectOpenSslTest.xml"/>
@@ -2382,7 +2382,7 @@ To manually verify, Ensure none of the following remote access packages exist in
       </check>
     </Rule>
     <Rule id="xccdf_V-203665_rule_.oval" selected="true" severity="medium">
-      <title>Any publically accessible connection to the operating system must display the Standard Mandatory DoD Notice and Consent Banner before granting access to the system.</title>
+      <title>Any publicly accessible connection to the operating system must display the Standard Mandatory DoD Notice and Consent Banner before granting access to the system.</title>
       <description>
         <html:pre>Display of a standardized and approved use notification before granting access to the publicly accessible operating system ensures privacy and security notification verbiage used is consistent with applicable federal laws, Executive Orders, directives, policies, regulations, standards, and guidance.
 
@@ -3210,7 +3210,7 @@ This requirement applies to operating systems with software libraries that are a
       </description>
       <description>
         <html:pre>Script Verification:
-To manually verify, Ensure all directories and files in the /usr/lib foler have both owner and group values of 'root' via 'ls -ld /usr/lib' </html:pre>
+To manually verify, Ensure all directories and files in the /usr/lib folder have both owner and group values of 'root' via 'ls -ld /usr/lib' </html:pre>
       </description>
       <check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
         <check-content-ref href="../OvalDefinitions/LibraryPermissionsTest.xml"/>
@@ -3227,7 +3227,7 @@ The operating system or software configuration management utility must enforce c
       </description>
       <description>
         <html:pre>Script Verification:
-To manually verify, Ensure all directories and files in the /usr/lib foler have both owner and group values of 'root' via 'ls -ld /usr/lib' </html:pre>
+To manually verify, Ensure all directories and files in the /usr/lib folder have both owner and group values of 'root' via 'ls -ld /usr/lib' </html:pre>
       </description>
       <check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
         <check-content-ref href="../OvalDefinitions/LibraryPermissionsTest.xml"/>

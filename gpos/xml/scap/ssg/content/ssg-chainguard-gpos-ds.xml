@@ -3590,7 +3590,7 @@
                     <ns0:description>
                         <html:pre>Script Verification:
                             To manually verify, ensure that fipsmodule.cnf and openssl.cnf exist in
-                            the /ect/ssl folder. Also verify that openssl-config-fipshardened and
+                            the /etc/ssl folder. Also verify that openssl-config-fipshardened and
                             openssl-provider-fips exist in the file /lib/apk/db/installed. </html:pre>
                     </ns0:description>
                     <ns0:check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
@@ -3612,7 +3612,7 @@
                     <ns0:description>
                         <html:pre>Script Verification:
                             To manually verify, ensure that fipsmodule.cnf and openssl.cnf exist in
-                            the /ect/ssl folder. Also verify that openssl-config-fipshardened and
+                            the /etc/ssl folder. Also verify that openssl-config-fipshardened and
                             openssl-provider-fips exist in the file /lib/apk/db/installed. </html:pre>
                     </ns0:description>
                     <ns0:check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
@@ -3640,7 +3640,7 @@
                     <ns0:description>
                         <html:pre>Script Verification:
                             To manually verify, ensure that fipsmodule.cnf and openssl.cnf exist in
-                            the /ect/ssl folder. Also verify that openssl-config-fipshardened and
+                            the /etc/ssl folder. Also verify that openssl-config-fipshardened and
                             openssl-provider-fips exist in the file /lib/apk/db/installed. </html:pre>
                     </ns0:description>
                     <ns0:check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
@@ -3668,7 +3668,7 @@
                     <ns0:description>
                         <html:pre>Script Verification:
                             To manually verify, ensure that fipsmodule.cnf and openssl.cnf exist in
-                            the /ect/ssl folder. Also verify that openssl-config-fipshardened and
+                            the /etc/ssl folder. Also verify that openssl-config-fipshardened and
                             openssl-provider-fips exist in the file /lib/apk/db/installed. </html:pre>
                     </ns0:description>
                     <ns0:check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
@@ -3695,7 +3695,7 @@
                     <ns0:description>
                         <html:pre>Script Verification:
                             To manually verify, ensure that fipsmodule.cnf and openssl.cnf exist in
-                            the /ect/ssl folder. Also verify that openssl-config-fipshardened and
+                            the /etc/ssl folder. Also verify that openssl-config-fipshardened and
                             openssl-provider-fips exist in the file /lib/apk/db/installed. </html:pre>
                     </ns0:description>
                     <ns0:check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
@@ -4799,7 +4799,7 @@
                     </ns0:check>
                 </ns0:Rule>
                 <ns0:Rule id="xccdf_._rule_V_203665" selected="true" severity="medium">
-                    <ns0:title xml:lang="en">Any publically accessible connection to the operating
+                    <ns0:title xml:lang="en">Any publicly accessible connection to the operating
                         system must display the Standard Mandatory DoD Notice and Consent Banner
                         before granting access to the system.</ns0:title>
                     <ns0:description xml:lang="en">Display of a standardized and approved use
@@ -6013,7 +6013,7 @@
                     <ns0:description>
                         <html:pre>Script Verification:
                             To manually verify, Ensure all directories and files in the /usr/lib
-                            foler have both owner and group values of 'root' via 'ls -ld /usr/lib' </html:pre>
+                            folder have both owner and group values of 'root' via 'ls -ld /usr/lib' </html:pre>
                     </ns0:description>
                     <ns0:check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
                         <ns0:check-content-ref href="LibraryPermissionsTest.xml" />
@@ -6041,7 +6041,7 @@
                     <ns0:description>
                         <html:pre>Script Verification:
                             To manually verify, Ensure all directories and files in the /usr/lib
-                            foler have both owner and group values of 'root' via 'ls -ld /usr/lib' </html:pre>
+                            folder have both owner and group values of 'root' via 'ls -ld /usr/lib' </html:pre>
                     </ns0:description>
                     <ns0:check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
                         <ns0:check-content-ref href="LibraryPermissionsTest.xml" />
@@ -6388,7 +6388,7 @@ fi
     <definitions>
       <definition id="oval:org.RemoteAccessServices:def:1" version="1" class="compliance">
         <metadata>
-          <title>Check for installed Remote Acccess packages</title>
+          <title>Check for installed Remote Access packages</title>
           <description>Ensure that packages in the list are not installed on the system.</description>
           <reference source="Custom" />
           <affected family="unix">
