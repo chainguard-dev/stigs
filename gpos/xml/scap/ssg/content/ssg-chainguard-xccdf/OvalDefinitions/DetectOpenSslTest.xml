@@ -19,8 +19,8 @@
       <criteria>
         <criterion comment="OpenSSL FIPS module configuration file exists" test_ref="oval:org.OpenSsl:tst:1"/>
         <criterion comment="OpenSSL configuration file exists" test_ref="oval:org.OpenSsl:tst:2"/>
-        <criterion comment="openssl-config-fips package is installed" test_ref="oval:org.OpenSsl:tst:3"/>
-        <criterion comment="openssl-provider-fipshardened package is installed" test_ref="oval:org.OpenSsl:tst:4"/>
+        <criterion comment="openssl-config-fipshardened package is installed" test_ref="oval:org.OpenSsl:tst:3"/>
+        <criterion comment="openssl-provider-fips package is installed" test_ref="oval:org.OpenSsl:tst:4"/>
       </criteria>
     </definition>
   </definitions>
@@ -34,11 +34,11 @@
       <object object_ref="oval:org.OpenSsl:obj:2"/>
     </file_test>
 
-    <textfilecontent54_test id="oval:org.OpenSsl:tst:3" version="1" check="all" check_existence="at_least_one_exists" comment="openssl-config-fips package is installed" xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#independent">
+    <textfilecontent54_test id="oval:org.OpenSsl:tst:3" version="1" check="all" check_existence="at_least_one_exists" comment="openssl-config-fipshardened package is installed" xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#independent">
       <object object_ref="oval:org.OpenSsl:obj:3"/>
     </textfilecontent54_test>
 
-    <textfilecontent54_test id="oval:org.OpenSsl:tst:4" version="1" check="all" check_existence="at_least_one_exists" comment="openssl-provider-fipshardened package is installed" xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#independent">
+    <textfilecontent54_test id="oval:org.OpenSsl:tst:4" version="1" check="all" check_existence="at_least_one_exists" comment="openssl-provider-fips package is installed" xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#independent">
       <object object_ref="oval:org.OpenSsl:obj:4"/>
     </textfilecontent54_test>
   </tests>
@@ -58,14 +58,14 @@
    <textfilecontent54_object xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#independent" id="oval:org.OpenSsl:obj:3" version="1">
       <path>/lib/apk/db</path>
       <filename>installed</filename>
-      <pattern operation="pattern match">openssl-config-fips*</pattern>
+      <pattern operation="pattern match">^P:openssl-config-fipshardened(-\d+\.\d+\.\d+)?$</pattern>
       <instance datatype="int">1</instance>
     </textfilecontent54_object>
 
     <textfilecontent54_object xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#independent" id="oval:org.OpenSsl:obj:4" version="1">
       <path>/lib/apk/db</path>
       <filename>installed</filename>
-      <pattern operation="pattern match">openssl-provider-fips*</pattern>
+      <pattern operation="pattern match">^P:openssl-provider-fips(-\d+\.\d+\.\d+)?$</pattern>
       <instance datatype="int">1</instance>
     </textfilecontent54_object>
   </objects>
