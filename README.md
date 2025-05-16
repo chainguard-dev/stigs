@@ -73,3 +73,9 @@ The Chainguard STIG profile is re-evaluated and evolves alongside Wolfi OS and
 Chainguard images. New releases of the profile is marked by a new version
 number. The `cgr.dev/chainguard/openscap:latest` image always contains the
 latest version of the Chainguard GPOS profile.
+
+### Versioning
+
+Release versions are versioned vX.Y.Z where X.Y are based on the GPOS
+SRG verion rXvY and Z is the Chainguard iteration. For example, the
+first release based on the SRG version v3r2 would be v3.2.0.
