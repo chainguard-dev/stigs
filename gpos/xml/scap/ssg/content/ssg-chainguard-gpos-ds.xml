@@ -84,19 +84,16 @@
                 <ns0:select idref="xccdf_._rule_V_203738" selected="true" />
                 <ns0:select idref="xccdf_._rule_V_203734" selected="true" />
                 <ns0:select idref="xccdf_._rule_V_203735" selected="true" />
-                <ns0:select idref="xccdf_._rule_V_203732" selected="true" />
                 <ns0:select idref="xccdf_._rule_V_203733" selected="true" />
                 <ns0:select idref="xccdf_._rule_V_203659" selected="true" />
                 <ns0:select idref="xccdf_._rule_V_203781" selected="true" />
                 <ns0:select idref="xccdf_._rule_V_203650" selected="true" />
                 <ns0:select idref="xccdf_._rule_V_203652" selected="true" />
                 <ns0:select idref="xccdf_._rule_V_203655" selected="true" />
-                <ns0:select idref="xccdf_._rule_V_203654" selected="true" />
                 <ns0:select idref="xccdf_._rule_V_203723" selected="true" />
                 <ns0:select idref="xccdf_._rule_V_203725" selected="true" />
                 <ns0:select idref="xccdf_._rule_V_203724" selected="true" />
                 <ns0:select idref="xccdf_._rule_V_203727" selected="true" />
-                <ns0:select idref="xccdf_._rule_V_203726" selected="true" />
                 <ns0:select idref="xccdf_._rule_V_203729" selected="true" />
                 <ns0:select idref="xccdf_._rule_V_203728" selected="true" />
                 <ns0:select idref="xccdf_._rule_V_203628" selected="true" />
@@ -121,7 +118,6 @@
                 <ns0:select idref="xccdf_._rule_V_203636" selected="true" />
                 <ns0:select idref="xccdf_._rule_V_203635" selected="true" />
                 <ns0:select idref="xccdf_._rule_V_203634" selected="true" />
-                <ns0:select idref="xccdf_._rule_V_203633" selected="true" />
                 <ns0:select idref="xccdf_._rule_V_203632" selected="true" />
                 <ns0:select idref="xccdf_._rule_V_203631" selected="true" />
                 <ns0:select idref="xccdf_._rule_V_203744" selected="true" />
@@ -1827,32 +1823,6 @@
                         Container Hardening Process Guide.</ns0:rationale>
                     <ns0:platform idref="cpe:/o:notapplicable"/>
                 </ns0:Rule>
-                <ns0:Rule id="xccdf_._rule_V_203662" selected="true" severity="medium">
-                    <ns0:title xml:lang="en">The operating system must employ automated mechanisms
-                        to determine the state of system components with regard to flaw remediation
-                        using the following frequency: continuously, where Endpoint Security
-                        Solution (ESS) is used; 30 days, for any additional internal network scans
-                        not covered by ESS; and annually, for external scans by Computer Network
-                        Defense Service Provider (CNDSP).</ns0:title>
-                    <ns0:description xml:lang="en">Without the use of automated mechanisms to scan
-                        for security flaws on a continuous and/or periodic basis, the operating
-                        system or other system components may remain vulnerable to the exploits
-                        presented by undetected software flaws.
-
-                        To support this requirement, the operating system may have an integrated
-                        solution incorporating continuous scanning using ESS and periodic scanning
-                        using other tools, as specified in the requirement.</ns0:description>
-                    <ns0:rationale>Container vulnerability scanning is performed by the team
-                        deploying the container and can be executed from the host operating system
-                        or against the container image when it is stored in a registry. Continuous
-                        scanning can be used to detect vulnerabilities that have been identified /
-                        announced since the previous scan and determine when updated images should
-                        be built and deployed in the environment.
-
-                        For more information on inherited controls for containers see the DISA
-                        Container Hardening Process Guide.</ns0:rationale>
-                    <ns0:platform idref="cpe:/o:notapplicable"/>
-                </ns0:Rule>
                 <ns0:Rule id="xccdf_._rule_V_203663" selected="true" severity="medium">
                     <ns0:title xml:lang="en">The operating system must generate error messages that
                         provide information necessary for corrective actions without revealing
@@ -2208,52 +2178,6 @@
                         provide the information in a format that can be extracted and used, allowing
                         the application performing the centralization of the log records to meet
                         this requirement.</ns0:description>
-                    <ns0:rationale>Auditing capabilities for Linux containers are implemented by the
-                        underlying host's audit configuration. In Linux, the auditing program auditd
-                        leverages multiple functions in the running kernel through the Linux
-                        Auditing System to capture runtime information such as process start / stop,
-                        opening sockets, and accessing files.
-
-                        Linux containers utilize the host's kernel, making it impossible to install
-                        and operate a separate auditing package inside the container itself.
-                        Instead, auditing information must be configured and collected through the
-                        audit configuration of the host.
-
-                        Once configured, logs of container actions are written to the host's audit
-                        log files and are readable only by the host superuser account. These logs
-                        must be collected from the host for incident response and reporting. Storage
-                        capacity limits, audit process monitoring, remote upload of logs and
-                        associated alerts are the responsibility of the host where the containers
-                        are running.
-
-                        For more information on inherited controls for containers see the DISA
-                        Container Hardening Process Guide.</ns0:rationale>
-                    <ns0:platform idref="cpe:/o:notapplicable"/>
-                </ns0:Rule>
-                <ns0:Rule id="xccdf_._rule_V_203612" selected="true" severity="medium">
-                    <ns0:title xml:lang="en">The operating system must shut down by default upon
-                        audit failure (unless availability is an overriding concern).</ns0:title>
-                    <ns0:description xml:lang="en">It is critical that when the operating system is
-                        at risk of failing to process audit logs as required, it takes action to
-                        mitigate the failure. Audit processing failures include: software/hardware
-                        errors; failures in the audit capturing mechanisms; and audit storage
-                        capacity being reached or exceeded. Responses to audit failure depend upon
-                        the nature of the failure mode.
-
-                        When availability is an overriding concern, other approved actions in
-                        response to an audit failure are as follows:
-
-                        1) If the failure was caused by the lack of audit record storage capacity,
-                        the operating system must continue generating audit records if possible
-                        (automatically restarting the audit service if necessary), overwriting the
-                        oldest audit records in a first-in-first-out manner.
-
-                        2) If audit records are sent to a centralized collection server and
-                        communication with this server is lost or the server fails, the operating
-                        system must queue audit records locally until communication is restored or
-                        until the audit records are retrieved manually. Upon restoration of the
-                        connection to the centralized collection server, action should be taken to
-                        synchronize the local audit data with the collection server.</ns0:description>
                     <ns0:rationale>Auditing capabilities for Linux containers are implemented by the
                         underlying host's audit configuration. In Linux, the auditing program auditd
                         leverages multiple functions in the running kernel through the Linux
@@ -4059,35 +3983,6 @@
                         <ns0:check-content-ref href="RemoteAccessServicesTest.xml" />
                     </ns0:check>
                 </ns0:Rule>
-                <ns0:Rule id="xccdf_._rule_V_203654" selected="true" severity="medium">
-                    <ns0:title xml:lang="en">The operating system must terminate all sessions and
-                        network connections related to nonlocal maintenance when nonlocal
-                        maintenance is completed.</ns0:title>
-                    <ns0:description xml:lang="en"> If a maintenance session or connection remains
-                        open after maintenance is completed, it may be hijacked by an attacker and
-                        used to compromise or damage the system.
-
-                        Some maintenance and test tools are either standalone devices with their own
-                        operating systems or are applications bundled with an operating system.
-                        Nonlocal maintenance and diagnostic activities are those activities
-                        conducted by individuals communicating through a network, either an external
-                        network (e.g., the Internet) or an internal network. Local maintenance and
-                        diagnostic activities are those activities carried out by individuals
-                        physically present at the information system or information system component
-                        and not communicating across a network connection.</ns0:description>
-                    <ns0:description>
-                        <html:pre>Script Verification:
-                            To manually verify, Ensure none of the following remote access packages
-                            exist in the folder /lib/apk/db/ Packages: openssh, openssh-server,
-                            openssh-client, openssh-sftp-server, dropbear, tigervnc,
-                            tigervnc-server, tigervnc-viewer, xrdp, xorgxrdp, vsftpd, proftpd,
-                            webmin, cockpit, cockpit-ws, cockpit-bridge, nfs-utils, samba,
-                            samba-server, samba-client, samba-common, rsh, telnet</html:pre>
-                    </ns0:description>
-                    <ns0:check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
-                        <ns0:check-content-ref href="RemoteAccessServicesTest.xml" />
-                    </ns0:check>
-                </ns0:Rule>
                 <ns0:Rule id="xccdf_._rule_V_203723" selected="true" severity="medium">
                     <ns0:title xml:lang="en">The operating system must require users to
                         re-authenticate for privilege escalation.</ns0:title>
@@ -4139,27 +4034,6 @@
                         purpose of configuring the device itself (management).
 
                         Requires further clarification from NIST.</ns0:description>
-                    <ns0:description>
-                        <html:pre>Script Verification:
-                            To manually verify, Ensure none of the following remote access packages
-                            exist in the folder /lib/apk/db/ Packages: openssh, openssh-server,
-                            openssh-client, openssh-sftp-server, dropbear, tigervnc,
-                            tigervnc-server, tigervnc-viewer, xrdp, xorgxrdp, vsftpd, proftpd,
-                            webmin, cockpit, cockpit-ws, cockpit-bridge, nfs-utils, samba,
-                            samba-server, samba-client, samba-common, rsh, telnet</html:pre>
-                    </ns0:description>
-                    <ns0:check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
-                        <ns0:check-content-ref href="RemoteAccessServicesTest.xml" />
-                    </ns0:check>
-                </ns0:Rule>
-                <ns0:Rule id="xccdf_._rule_V_203726" selected="true" severity="medium">
-                    <ns0:title xml:lang="en">The operating system must require devices to
-                        re-authenticate when changing authenticators.</ns0:title>
-                    <ns0:description xml:lang="en">Without re-authentication, devices may access
-                        resources or perform tasks for which they do not have authorization.
-
-                        When operating systems provide the capability to change device
-                        authenticators, it is critical the device re-authenticate.</ns0:description>
                     <ns0:description>
                         <html:pre>Script Verification:
                             To manually verify, Ensure none of the following remote access packages
@@ -5219,28 +5093,6 @@
                         <ns0:check-content-ref href="UserPasswordConfiguredTest.xml" />
                     </ns0:check>
                 </ns0:Rule>
-                <ns0:Rule id="xccdf_._rule_V_203732" selected="true" severity="medium">
-                    <ns0:title xml:lang="en">The operating system must allow the use of a temporary
-                        password for system logons with an immediate change to a permanent password.</ns0:title>
-                    <ns0:description xml:lang="en">Without providing this capability, an account may
-                        be created without a password. Non-repudiation cannot be guaranteed once an
-                        account is created if a user is not forced to change the temporary password
-                        upon initial logon.
-
-                        Temporary passwords are typically used to allow access when new accounts are
-                        created or passwords are changed. It is common practice for administrators
-                        to create temporary passwords for user accounts which allow the users to log
-                        on, yet force them to change the password once they have successfully
-                        authenticated.</ns0:description>
-                    <ns0:description>
-                        <html:pre>Script Verification:
-                            To manually verify, run command 'cat /etc/shadow and verify no password
-                            fields start with a '$' indicating a hashed password</html:pre>
-                    </ns0:description>
-                    <ns0:check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
-                        <ns0:check-content-ref href="UserPasswordConfiguredTest.xml" />
-                    </ns0:check>
-                </ns0:Rule>
                 <ns0:Rule id="xccdf_._rule_V_203733" selected="true" severity="medium">
                     <ns0:title xml:lang="en">The operating system must prohibit the use of cached
                         authenticators after one day.</ns0:title>
@@ -5379,24 +5231,6 @@
                         long it takes to crack a password. Use of more characters in a password
                         helps to exponentially increase the time and/or resources required to
                         compromise the password.</ns0:description>
-                    <ns0:description>
-                        <html:pre>Script Verification:
-                            To manually verify, run command 'cat /etc/shadow and verify no password
-                            fields start with a '$' indicating a hashed password</html:pre>
-                    </ns0:description>
-                    <ns0:check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
-                        <ns0:check-content-ref href="UserPasswordConfiguredTest.xml" />
-                    </ns0:check>
-                </ns0:Rule>
-                <ns0:Rule id="xccdf_._rule_V_203633" selected="true" severity="medium">
-                    <ns0:title xml:lang="en">The operating system must prohibit password reuse for a
-                        minimum of five generations.</ns0:title>
-                    <ns0:description xml:lang="en">Password complexity, or strength, is a measure of
-                        the effectiveness of a password in resisting attempts at guessing and
-                        brute-force attacks. If the information system or application allows the
-                        user to consecutively reuse their password when that password has exceeded
-                        its defined lifetime, the end result is a password that is not changed as
-                        per policy requirements.</ns0:description>
                     <ns0:description>
                         <html:pre>Script Verification:
                             To manually verify, run command 'cat /etc/shadow and verify no password
