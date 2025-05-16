@@ -6391,8 +6391,8 @@
                         certificates.</ns0:description>
                     <ns0:description>
                         <html:pre>Script Verification:
-                            To manually verify, Ensure the ca-certificates package has been modified
-                            using apk audit</html:pre>
+                            To manually verify, Ensure the ca-certificates package has not been modified
+                            using apk audit or by ensuring the sha256 value matches the trusted value. </html:pre>
                     </ns0:description>
                     <ns0:check system="http://open-scap.org/page/SCE">
                         <ns0:check-import import-name="stdout" />
