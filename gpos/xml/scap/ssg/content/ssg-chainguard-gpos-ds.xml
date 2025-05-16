@@ -28,6 +28,8 @@
                         uri="#scap_org.open-scap_cref_DetectOpenSslTest" />
                     <cat:uri name="AslrCheck.sh"
                         uri="#scap_org.open-scap_cref_AslrCheck" />
+                    <cat:uri name="CertificateAuditTest.sh"
+                        uri="#scap_org.open-scap_cref_CertificateAuditTest" />
                 </cat:catalog>
             </ds:component-ref>
         </ds:checklists>
@@ -50,6 +52,8 @@
                 xlink:href="#scap_org_ecomp_.openssl" />
             <ds:component-ref id="scap_org.open-scap_cref_AslrCheck"
                 xlink:href="#scap_org_ecomp_.aslr" />
+            <ds:component-ref id="scap_org.open-scap_cref_CertificateAuditTest"
+                xlink:href="#scap_org_ecomp_.certificateaudit" />
         </ds:checks>
     </ds:data-stream>
     <ds:component id="scap_org.open-scap_comp_all-resolved-xccdf-dummyoval.xml"
@@ -155,8 +159,366 @@
                 <ns0:select idref="xccdf_._rule_V_203640" selected="true" />
                 <ns0:select idref="xccdf_._rule_V_203641" selected="true" />
                 <ns0:select idref="xccdf_._rule_V_203716" selected="true" />
+                <ns0:select idref="xccdf_._rule_V_263650" selected="true" />
+                <ns0:select idref="xccdf_._rule_V_263652" selected="true" />
+                <ns0:select idref="xccdf_._rule_V_263659" selected="true" />
+
+
             </ns0:Profile>
             <ns0:Group id="xccdf_._group_not_applicable_tests">
+                <ns0:Rule id="xccdf_._rule_V_263651" selected="true" severity="medium">
+                    <ns0:title xml:lang="en">The operating system must prohibit the use or
+                        connection of
+                        unauthorized hardware
+                        components.</ns0:title>
+                    <ns0:description xml:lang="en">Hardware components provide the foundation for
+                        organizational systems and the platform for the execution of authorized
+                        software
+                        programs. Managing the inventory of hardware components and controlling
+                        which
+                        hardware components are permitted to be installed or connected to
+                        organizational
+                        systems is essential to provide adequate
+                        security.</ns0:description>
+                    <ns0:rationale>Linux containers do not automatically inherit access to
+                        underlying hardware such as USB and
+                        WiFi adapters on the hosts where they operate. If these connections exist,
+                        they must be specifically configured when deploying the image on a host. A
+                        host configured to meet STIG requirements will disable unused USB
+                        connections and implement properly configured WiFi interfaces (if necessary
+                        for the operation of the service).
+
+                        For more information on inherited controls for containers see the DISA
+                        Container Hardening Process Guide.</ns0:rationale>
+                    <ns0:platform idref="cpe:/o:notapplicable" />
+                </ns0:Rule>
+                <ns0:Rule id="xccdf_._rule_V_263653" selected="true" severity="medium">
+                    <ns0:title xml:lang="en">The operating system must, for password-based
+                        authentication, verify
+                        when users
+                        create or update passwords the passwords are not found on the list of
+                        commonly-used,
+                        expected, or compromised passwords in IA-5 (1) (a).</ns0:title>
+                    <ns0:description xml:lang="en">Password-based authentication applies to
+                        passwords
+                        regardless of whether they are used in single-factor or multifactor
+                        authentication.
+                        Long passwords or passphrases are preferable over shorter passwords.
+                        Enforced
+                        composition rules provide marginal security benefits while decreasing
+                        usability.
+                        However, organizations may choose to establish certain rules for password
+                        generation
+                        (e.g., minimum character length for long passwords) under certain
+                        circumstances and
+                        can enforce this requirement in IA-5(1)(h). Account recovery can occur, for
+                        example,
+                        in situations when a password is forgotten. Cryptographically protected
+                        passwords
+                        include salted one-way cryptographic hashes of passwords. The list of
+                        commonly used,
+                        compromised, or expected passwords includes passwords obtained from previous
+                        breach
+                        corpuses, dictionary words, and repetitive or sequential characters. The
+                        list
+                        includes context-specific words, such as the name of the service, username,
+                        and
+                        derivatives
+                        thereof.</ns0:description>
+                    <ns0:rationale>The container image is built with no local user accounts other
+                        than a locked
+                        root. All interactive or programmatic access to the workload is handled by
+                        the
+                        container-orchestration platform, which enforces its own credential hygiene
+                        and MFA
+                        controls. The OS inside the container never receives, stores, or validates
+                        passwords and no
+                        password database exists against which to apply bad-password screening,
+                        forced post-recovery
+                        changes, passphrase-length rules, or password-generation aids.
+
+                        For more information on inherited controls for containers see the DISA
+                        Container Hardening Process Guide.</ns0:rationale>
+                    <ns0:platform idref="cpe:/o:notapplicable" />
+                </ns0:Rule>
+                <ns0:Rule id="xccdf_._rule_V_263654" selected="true" severity="medium">
+                    <ns0:title xml:lang="en">The operating system must for password-based
+                        authentication, require
+                        immediate
+                        selection of a new password upon account recovery.</ns0:title>
+                    <ns0:description xml:lang="en">Password-based authentication applies to
+                        passwords
+                        regardless of whether they are used in single-factor or multifactor
+                        authentication.
+                        Long passwords or passphrases are preferable over shorter passwords.
+                        Enforced
+                        composition rules provide marginal security benefits while decreasing
+                        usability.
+                        However, organizations may choose to establish certain rules for
+                        password generation
+                        (e.g., minimum character length for long passwords) under certain
+                        circumstances and
+                        can enforce this requirement in IA-5(1)(h). Account recovery can occur,
+                        for example,
+                        in situations when a password is forgotten. Cryptographically protected
+                        passwords
+                        include salted one-way cryptographic hashes of passwords. The list of
+                        commonly used,
+                        compromised, or expected passwords includes passwords obtained from
+                        previous breach
+                        corpuses, dictionary words, and repetitive or sequential characters. The
+                        list
+                        includes context-specific words, such as the name of the service,
+                        username, and
+                        derivatives
+                        thereof.</ns0:description>
+                    <ns0:rationale>The container image is built with no local user accounts
+                        other than a locked
+                        root. All interactive or programmatic access to the workload is handled
+                        by the
+                        container-orchestration platform, which enforces its own credential
+                        hygiene and MFA
+                        controls. The OS inside the container never receives, stores, or
+                        validates passwords and no
+                        password database exists against which to apply bad-password screening,
+                        forced post-recovery
+                        changes, passphrase-length rules, or password-generation aids.
+
+                        For more information on inherited controls for containers see the DISA
+                        Container Hardening Process Guide.</ns0:rationale>
+                    <ns0:platform idref="cpe:/o:notapplicable" />
+                </ns0:Rule>
+                <ns0:Rule id="xccdf_._rule_V_263655" selected="true" severity="medium">
+                    <ns0:title xml:lang="en">The operating system must for password-based
+                        authentication, allow user
+                        selection
+                        of long passwords and passphrases, including spaces and all printable
+                        characters.</ns0:title>
+                    <ns0:description xml:lang="en">Password-based authentication applies to
+                        passwords
+                        regardless of whether they are used in single-factor or multifactor
+                        authentication.
+                        Long passwords or passphrases are preferable over shorter passwords.
+                        Enforced
+                        composition rules provide marginal security benefits while decreasing
+                        usability.
+                        However, organizations may choose to establish certain rules for password
+                        generation
+                        (e.g., minimum character length for long passwords) under certain
+                        circumstances and
+                        can enforce this requirement in IA-5(1)(h). Account recovery can occur, for
+                        example,
+                        in situations when a password is forgotten. Cryptographically protected
+                        passwords
+                        include salted one-way cryptographic hashes of passwords. The list of
+                        commonly used,
+                        compromised, or expected passwords includes passwords obtained from previous
+                        breach
+                        corpuses, dictionary words, and repetitive or sequential characters. The
+                        list
+                        includes context-specific words, such as the name of the service, username,
+                        and
+                        derivatives
+                        thereof.</ns0:description>
+                    <ns0:rationale>The container image is built with no local user accounts other
+                        than a locked
+                        root. All interactive or programmatic access to the workload is handled by
+                        the
+                        container-orchestration platform, which enforces its own credential hygiene
+                        and MFA
+                        controls. The OS inside the container never receives, stores, or validates
+                        passwords and no
+                        password database exists against which to apply bad-password screening,
+                        forced post-recovery
+                        changes, passphrase-length rules, or password-generation aids.
+
+                        For more information on inherited controls for containers see the DISA
+                        Container Hardening Process Guide.</ns0:rationale>
+                    <ns0:platform idref="cpe:/o:notapplicable" />
+                </ns0:Rule>
+                <ns0:Rule id="xccdf_._rule_V_263656" selected="true" severity="medium">
+                    <ns0:title xml:lang="en">The operating system must, for password-based
+                        authentication, employ
+                        automated
+                        tools to assist the user in selecting strong password authenticators.</ns0:title>
+                    <ns0:description xml:lang="en">Password-based authentication applies to
+                        passwords
+                        regardless of whether they are used in single-factor or multifactor
+                        authentication.
+                        Long passwords or passphrases are preferable over shorter passwords.
+                        Enforced
+                        composition rules provide marginal security benefits while decreasing
+                        usability.
+                        However, organizations may choose to establish certain rules for password
+                        generation
+                        (e.g., minimum character length for long passwords) under certain
+                        circumstances and
+                        can enforce this requirement in IA-5(1)(h). Account recovery can occur, for
+                        example,
+                        in situations when a password is forgotten. Cryptographically protected
+                        passwords
+                        include salted one-way cryptographic hashes of passwords. The list of
+                        commonly used,
+                        compromised, or expected passwords includes passwords obtained from previous
+                        breach
+                        corpuses, dictionary words, and repetitive or sequential characters. The
+                        list
+                        includes context-specific words, such as the name of the service, username,
+                        and
+                        derivatives
+                        thereof.</ns0:description>
+                    <ns0:rationale>The container image is built with no local user accounts other
+                        than a locked
+                        root. All interactive or programmatic access to the workload is handled by
+                        the
+                        container-orchestration platform, which enforces its own credential hygiene
+                        and MFA
+                        controls. The OS inside the container never receives, stores, or validates
+                        passwords and no
+                        password database exists against which to apply bad-password screening,
+                        forced post-recovery
+                        changes, passphrase-length rules, or password-generation aids.
+
+                        For more information on inherited controls for containers see the DISA
+                        Container Hardening Process Guide.</ns0:rationale>
+                    <ns0:platform idref="cpe:/o:notapplicable" />
+                </ns0:Rule>
+                <ns0:Rule id="xccdf_._rule_V_263657" selected="true" severity="medium">
+                    <ns0:title xml:lang="en">The operating system must accept only external
+                        credentials that are
+                        NIST-compliant</ns0:title>
+                    <ns0:description xml:lang="en">Acceptance of only NIST-compliant external
+                        authenticators applies to organizational systems that are accessible to the
+                        public
+                        (e.g., public-facing websites). External authenticators are issued by
+                        nonfederal
+                        government entities and are compliant with [SP 800-63B]. Approved external
+                        authenticators meet or exceed the minimum federal government-wide technical,
+                        security, privacy, and organizational maturity requirements. Meeting or
+                        exceeding
+                        federal requirements allows federal government relying parties to trust
+                        external
+                        authenticators in connection with an authentication transaction at a
+                        specified
+                        authenticator assurance
+                        level.</ns0:description>
+                    <ns0:rationale>Linux containers rely on the host operating system to manage and
+                        enforce
+                        authentication mechanisms, including the validation of external credentials.
+                        Because
+                        containers delegate user authentication and identity management to the host
+                        environment, it is the host operating system that is ultimately responsible
+                        for ensuring
+                        that only NIST-compliant external authenticators are accepted.
+
+                        For more information on inherited controls for containers, see the DISA
+                        Container Hardening
+                        Process Guide.</ns0:rationale>
+                    <ns0:platform idref="cpe:/o:notapplicable" />
+                </ns0:Rule>
+                <ns0:Rule id="xccdf_._rule_V_263658" selected="true" severity="medium">
+                    <ns0:title xml:lang="en">The operating system must monitor the use of
+                        maintenance tools that
+                        execute with
+                        increased privilege</ns0:title>
+                    <ns0:description xml:lang="en">Maintenance tools that execute with increased
+                        system
+                        privilege can result in unauthorized access to organizational information
+                        and assets
+                        that would otherwise be
+                        inaccessible.</ns0:description>
+                    <ns0:rationale>Auditing capabilities for Linux containers are implemented by the
+                        underlying host's audit configuration. In Linux, the auditing program auditd
+                        leverages multiple functions in the running kernel through the Linux
+                        Auditing System to capture runtime information such as process start / stop,
+                        opening sockets, and accessing files.
+
+                        Linux containers utilize the host's kernel, making it impossible to install
+                        and operate a separate auditing package inside the container itself.
+                        Instead, auditing information must be configured and collected through the
+                        audit configuration of the host.
+
+                        Once configured, logs of container actions are written to the host's audit
+                        log files and are readable only by the host superuser account. These logs
+                        must be collected from the host for incident response and reporting. Storage
+                        capacity limits, audit process monitoring, remote upload of logs and
+                        associated alerts are the responsibility of the host where the containers
+                        are running.
+
+                        For more information on inherited controls for containers see the DISA
+                        Container Hardening Process Guide.</ns0:rationale>
+                    <ns0:platform idref="cpe:/o:notapplicable" />
+                </ns0:Rule>
+                <ns0:Rule id="xccdf_._rule_V_263660" selected="true" severity="medium">
+                    <ns0:title xml:lang="en">The operating system must provide protected storage for
+                        cryptographic
+                        keys with
+                        organization-defined safeguards and/or hardware protected key store.</ns0:title>
+                    <ns0:description xml:lang="en">A Trusted Platform Module (TPM) is an example of
+                        a
+                        hardware-protected data store that can be used to protect cryptographic
+                        keys.</ns0:description>
+                    <ns0:rationale>Linux containers utilize the host filesystem for storage of their
+                        files and
+                        configuration. Protecting data at rest inside containers from unauthorized
+                        access or
+                        modification must be configured at the host operating system such as
+                        encrypted virtual
+                        filesystems. The host filesystem is also responsible for the size,
+                        utilization, and capacity
+                        of the physical disks that are used by containers running on that host.
+
+                        For more information on inherited controls for containers see the DISA
+                        Container Hardening Process Guide.</ns0:rationale>
+                    <ns0:platform idref="cpe:/o:notapplicable" />
+                </ns0:Rule>
+                <ns0:Rule id="xccdf_._rule_V_263661" selected="true" severity="medium">
+                    <ns0:title xml:lang="en">The operating system must synchronize system clocks
+                        within and between
+                        systems or
+                        system components.</ns0:title>
+                    <ns0:description xml:lang="en">Time synchronization of system clocks is
+                        essential
+                        for the correct execution of many system services, including identification
+                        and
+                        authentication processes that involve certificates and time-of-day
+                        restrictions as
+                        part of access control. Denial of service or failure to deny expired
+                        credentials may
+                        result without properly synchronized clocks within and between systems and
+                        system
+                        components. Time is commonly expressed in Coordinated Universal Time (UTC),
+                        a modern
+                        continuation of Greenwich Mean Time (GMT), or local time with an offset from
+                        UTC.
+                        The granularity of time measurements refers to the degree of synchronization
+                        between
+                        system clocks and reference clocks, such as clocks synchronizing within
+                        hundreds of
+                        milliseconds or tens of milliseconds. Organizations may define different
+                        time
+                        granularities for system components. Time service can be critical to other
+                        security
+                        capabilities—such as access control and identification and
+                        authentication—depending
+                        on the nature of the mechanisms used to support the
+                        capabilities.</ns0:description>
+                    <ns0:rationale>Linux containers inherit the system time from the underlying host
+                        - a separate
+                        time service is not operated within the container. The host owner is
+                        responsible for
+                        configuring the host's time service to generate the timestamp used by its
+                        auditing system,
+                        perform periodic synchronization, and ensure that only authorized time
+                        servers are used as
+                        the authoritative source. Time synchronization of the host clock is
+                        automatically reflected
+                        in the time used by the container.
+
+                        For more information on inherited controls for containers see the DISA
+                        Container Hardening Process Guide.</ns0:rationale>
+                    <ns0:platform idref="cpe:/o:notapplicable" />
+                </ns0:Rule>
                 <ns0:Rule id="xccdf_._rule_V_203682" selected="true" severity="high">
                     <ns0:title xml:lang="en">The operating system must use cryptographic mechanisms
                         to protect the integrity of audit tools.</ns0:title>
@@ -3642,6 +4004,41 @@
                 </ns0:Rule>
             </ns0:Group>
             <ns0:Group id="xccdf_._group_No_Remote_Access">
+                <ns0:Rule id="xccdf_._rule_V_263652" selected="true" severity="medium">
+                    <ns0:title xml:lang="en">The operating system must implement multifactor
+                        authentication for
+                        local,
+                        network, and/or remote access to privileged accounts and/or nonprivileged
+                        accounts
+                        such that the device meets organization-defined strength of mechanism
+                        requirements.</ns0:title>
+                    <ns0:description xml:lang="en">The purpose of requiring a device separate from
+                        the
+                        system to which the user is attempting to gain access for one of the factors
+                        during
+                        multifactor authentication is to reduce the likelihood of compromising
+                        authenticators or credentials stored on the system. Adversaries may be able
+                        to
+                        compromise such authenticators or credentials and subsequently impersonate
+                        authorized users. Implementing one of the factors on a separate device
+                        (e.g., a
+                        hardware token), provides a greater strength of mechanism and an increased
+                        level of
+                        assurance in the authentication
+                        process.</ns0:description>
+                    <ns0:description>
+                        <html:pre>Script Verification:
+                            To manually verify, Ensure none of the following remote access packages
+                            exist in the folder /lib/apk/db/ Packages: openssh, openssh-server,
+                            openssh-client, openssh-sftp-server, dropbear, tigervnc,
+                            tigervnc-server, tigervnc-viewer, xrdp, xorgxrdp, vsftpd, proftpd,
+                            webmin, cockpit, cockpit-ws, cockpit-bridge, nfs-utils, samba,
+                            samba-server, samba-client, samba-common, rsh, telnet</html:pre>
+                    </ns0:description>
+                    <ns0:check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
+                        <ns0:check-content-ref href="RemoteAccessServicesTest.xml" />
+                    </ns0:check>
+                </ns0:Rule>
                 <ns0:Rule id="xccdf_._rule_V_203736" selected="true" severity="high">
                     <ns0:title xml:lang="en">The operating system must implement cryptographic
                         mechanisms to protect the integrity of nonlocal maintenance and diagnostic
@@ -4025,26 +4422,35 @@
                         a device
                         separate from the system gaining access.</ns0:title>
                     <ns0:description xml:lang="en">Using an authentication device, such as a common
-                        access card (CAC) or token that is separate from the information system, ensures
-                        that even if the information system is compromised, that compromise will not affect
+                        access card (CAC) or token that is separate from the information system,
+                        ensures
+                        that even if the information system is compromised, that compromise will not
+                        affect
                         credentials stored on the authentication device.
-        
-                        Multifactor solutions that require devices separate from information systems gaining
+
+                        Multifactor solutions that require devices separate from information systems
+                        gaining
                         access include, for example, hardware tokens providing time-based or
-                        challenge-response authenticators and smart cards such as the U.S. Government
+                        challenge-response authenticators and smart cards such as the U.S.
+                        Government
                         Personal Identity Verification (PIV) card and the DOD CAC.
-        
-                        A privileged account is defined as an information system account with authorizations
+
+                        A privileged account is defined as an information system account with
+                        authorizations
                         of a privileged user.
-        
-                        Remote access is access to DOD nonpublic information systems by an authorized user
+
+                        Remote access is access to DOD nonpublic information systems by an
+                        authorized user
                         (or an information system) communicating through an external,
-                        nonorganization-controlled network. Remote access methods include, for example,
+                        nonorganization-controlled network. Remote access methods include, for
+                        example,
                         dial-up, broadband, and wireless.
-        
-                        This requirement only applies to components where this is specific to the function
+
+                        This requirement only applies to components where this is specific to the
+                        function
                         of the device or has the concept of an organizational user (e.g., VPN, proxy
-                        capability). This does not apply to authentication for the purpose of configuring
+                        capability). This does not apply to authentication for the purpose of
+                        configuring
                         the device itself
                         (management).</ns0:description>
                     <ns0:description>
@@ -5372,6 +5778,26 @@
                 </ns0:Rule>
             </ns0:Group>
             <ns0:Group id="xccdf_._group_No_Users">
+                <ns0:Rule id="xccdf_._rule_V_263650" selected="true" severity="medium">
+                    <ns0:title xml:lang="en">The operating system must disable accounts when the
+                        accounts are no
+                        longer
+                        associated to a user.</ns0:title>
+                    <ns0:description xml:lang="en">Disabling expired, inactive, or otherwise
+                        anomalous
+                        accounts supports the concepts of least privilege and least functionality
+                        which
+                        reduce the attack surface of the
+                        system.</ns0:description>
+                    <ns0:description>
+                        <html:pre>Script Verification:
+                            To manually verify, run command 'cat /etc/shadow and verify that no
+                            additional users exist</html:pre>
+                    </ns0:description>
+                    <ns0:check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
+                        <ns0:check-content-ref href="NoUsersCheck.xml" />
+                    </ns0:check>
+                </ns0:Rule>
                 <ns0:Rule id="xccdf_._rule_V_203695" selected="true" severity="high">
                     <ns0:title xml:lang="en">The operating system must prevent nonprivileged users
                         from executing privileged functions to include disabling, circumventing, or
@@ -5944,8 +6370,50 @@
                     </ns0:check>
                 </ns0:Rule>
             </ns0:Group>
+            <ns0:Group id="xccdf_._group_Certificate_Audits">
+                <ns0:Rule id="xccdf_._rule_V_263659" selected="true" severity="medium">
+                    <ns0:title xml:lang="en">The operating system must include only approved trust
+                        anchors in trust
+                        stores or
+                        certificate stores managed by the organization.</ns0:title>
+                    <ns0:description xml:lang="en">Public key infrastructure (PKI) certificates are
+                        certificates with visibility external to organizational systems and
+                        certificates
+                        related to the internal operations of systems, such as application-specific
+                        time
+                        services. In cryptographic systems with a hierarchical structure, a trust
+                        anchor is
+                        an authoritative source (i.e., a certificate authority) for which trust is
+                        assumed
+                        and not derived. A root certificate for a PKI system is an example of a
+                        trust
+                        anchor. A trust store or certificate store maintains a list of trusted root
+                        certificates.</ns0:description>
+                    <ns0:description>
+                        <html:pre>Script Verification:
+                            To manually verify, Ensure the ca-certificates package has been modified
+                            using apk audit</html:pre>
+                    </ns0:description>
+                    <ns0:check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
+                        <ns0:check-content-ref href="CertificateAuditTest.sh" />
+                    </ns0:check>
+                </ns0:Rule>
+            </ns0:Group>
         </ns0:Benchmark>
     </ds:component>
+    <ds:extended-component xmlns:oscap-sce-xccdf-stream="http://open-scap.org/page/SCE_xccdf_stream"
+        id="scap_org_ecomp_.certificateaudit" timestamp="2016-02-23T14:36:08">
+        <oscap-sce-xccdf-stream:script>#!/bin/sh
+            modified=$(apk audit --packages | grep '^ca-certificates')
+
+            if [ -z "$modified" ]; then
+            return $XCCDF_RESULT_PASS
+            else
+            echo "ca-certificates package has been modified"
+            return $XCCDF_RESULT_FAIL
+            fi
+        </oscap-sce-xccdf-stream:script>
+    </ds:extended-component>
     <ds:extended-component xmlns:oscap-sce-xccdf-stream="http://open-scap.org/page/SCE_xccdf_stream"
         id="scap_org_ecomp_.aslr" timestamp="2016-02-23T14:36:08">
         <oscap-sce-xccdf-stream:script>#!/bin/sh
