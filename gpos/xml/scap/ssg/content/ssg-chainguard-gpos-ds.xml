@@ -4,13 +4,13 @@
     xmlns:ds="http://scap.nist.gov/schema/scap/source/1.2"
     xmlns:xlink="http://www.w3.org/1999/xlink"
     xmlns:cat="urn:oasis:names:tc:entity:xmlns:xml:catalog"
-    id="scap_org.open-scap_collection_from_xccdf_all-resolved-xccdf-dummyoval.xml"
+    id="scap_org.open-scap_collection_from_xccdf_all-resolved-xccdf-v3r2.xml"
     schematron-version="1.2">
-    <ds:data-stream id="scap_org.open-scap_datastream_from_xccdf_all-resolved-xccdf-dummyoval.xml"
+    <ds:data-stream id="scap_org.open-scap_datastream_from_xccdf_all-resolved-xccdf-v3r2.xml"
         scap-version="1.2" use-case="OTHER">
         <ds:checklists>
-            <ds:component-ref id="scap_org.open-scap_cref_all-resolved-xccdf-dummyoval.xml"
-                xlink:href="#scap_org.open-scap_comp_all-resolved-xccdf-dummyoval.xml">
+            <ds:component-ref id="scap_org.open-scap_cref_all-resolved-xccdf-v3r2.xml"
+                xlink:href="#scap_org.open-scap_comp_all-resolved-xccdf-v3r2.xml">
                 <cat:catalog>
                     <cat:uri name="PackageSignatureTest.xml"
                         uri="#scap_org.open-scap_cref_PackageSignatureTest" />
@@ -53,15 +53,15 @@
             <ds:component-ref id="scap_org.open-scap_cref_AslrCheck"
                 xlink:href="#scap_org_ecomp_.aslr" />
             <ds:component-ref id="scap_org.open-scap_cref_CertificateAuditTest"
-                xlink:href="#scap_org_ecomp_.certificateaudit" />
+                xlink:href="#scap_org_ecomp_.certaudit" />
         </ds:checks>
     </ds:data-stream>
-    <ds:component id="scap_org.open-scap_comp_all-resolved-xccdf-dummyoval.xml"
+    <ds:component id="scap_org.open-scap_comp_all-resolved-xccdf-v3r2.xml"
         timestamp="2016-02-23T14:39:05">
         <ns0:Benchmark xmlns:html="http://www.w3.org/1999/xhtml"
             id="xccdf_org.open-scap.sce-community-content_benchmark_all" resolved="1" xml:lang="en">
             <ns0:status date="2016-02-23">draft</ns0:status>
-            <ns0:title xml:lang="en">Datastream XCCDF Checklist Beta</ns0:title>
+            <ns0:title xml:lang="en">Datastream XCCDF Checklist Beta GPOS v3r2</ns0:title>
             <ns0:description>This XCCDF document provides a basic security check for a Linux system.</ns0:description>
             <ns0:notice id="disclaimer" xml:lang="en" />
             <ns0:front-matter xml:lang="en" />
@@ -6394,22 +6394,25 @@
                             To manually verify, Ensure the ca-certificates package has been modified
                             using apk audit</html:pre>
                     </ns0:description>
-                    <ns0:check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
-                        <ns0:check-content-ref href="CertificateAuditTest.sh" />
+                    <ns0:check system="http://open-scap.org/page/SCE">
+                        <ns0:check-import import-name="stdout" />
+                        <ns0:check-content-ref href="./CertificateAuditTest.sh" />
                     </ns0:check>
                 </ns0:Rule>
             </ns0:Group>
         </ns0:Benchmark>
     </ds:component>
     <ds:extended-component xmlns:oscap-sce-xccdf-stream="http://open-scap.org/page/SCE_xccdf_stream"
-        id="scap_org_ecomp_.certificateaudit" timestamp="2016-02-23T14:36:08">
+        id="scap_org_ecomp_.certaudit" timestamp="2016-02-23T14:36:08">
         <oscap-sce-xccdf-stream:script>#!/bin/sh
-            modified=$(apk audit --packages | grep '^ca-certificates')
+            EXPECTED_HASH="756cdfe4c3affc2e460278cc65ab01f67c3f4fc05d43fc683d7ebbdeb644e5f4"
+            ACTUAL_HASH=$(sha256sum /etc/ssl/certs/ca-certificates.crt | awk '{print $1}')
 
-            if [ -z "$modified" ]; then
+            if [ "$ACTUAL_HASH" = "$EXPECTED_HASH" ]; then
+            echo "PASS: Hash matches approved CA bundle"
             return $XCCDF_RESULT_PASS
             else
-            echo "ca-certificates package has been modified"
+            echo "FAIL: Hash does not match approved CA bundle: $ACTUAL_HASH"
             return $XCCDF_RESULT_FAIL
             fi
         </oscap-sce-xccdf-stream:script>
@@ -6425,7 +6428,7 @@
             echo "ASLR not configured correctly"
             return $XCCDF_RESULT_FAIL
             fi
-</oscap-sce-xccdf-stream:script>
+        </oscap-sce-xccdf-stream:script>
     </ds:extended-component>
     <ds:extended-component id="scap_org_ecomp_.openssl" timestamp="2024-05-29T12:00:00">
         <oval_definitions xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5"
