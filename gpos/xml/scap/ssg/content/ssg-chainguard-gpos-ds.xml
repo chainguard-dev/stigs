@@ -5,9 +5,9 @@
     xmlns:xlink="http://www.w3.org/1999/xlink"
     xmlns:cat="urn:oasis:names:tc:entity:xmlns:xml:catalog"
     id="scap_org.open-scap_collection_from_xccdf_all-resolved-xccdf-v3r2.xml"
-    schematron-version="1.2">
+    schematron-version="1.3">
     <ds:data-stream id="scap_org.open-scap_datastream_from_xccdf_all-resolved-xccdf-v3r2.xml"
-        scap-version="1.2" use-case="OTHER">
+        scap-version="1.3" use-case="OTHER">
         <ds:checklists>
             <ds:component-ref id="scap_org.open-scap_cref_all-resolved-xccdf-v3r2.xml"
                 xlink:href="#scap_org.open-scap_comp_all-resolved-xccdf-v3r2.xml">
@@ -28,7 +28,7 @@
                         uri="#scap_org.open-scap_cref_DetectOpenSslTest" />
                     <cat:uri name="AslrCheck.sh"
                         uri="#scap_org.open-scap_cref_AslrCheck" />
-                    <cat:uri name="CertificateAuditTest.sh"
+                    <cat:uri name="CertificateAuditTest.xml"
                         uri="#scap_org.open-scap_cref_CertificateAuditTest" />
                 </cat:catalog>
             </ds:component-ref>
@@ -6391,32 +6391,18 @@
                         certificates.</ns0:description>
                     <ns0:description>
                         <html:pre>Script Verification:
-                            To manually verify, Ensure the ca-certificates package has not been modified
-                            using apk audit or by ensuring the sha256 value matches the trusted value. </html:pre>
+                            To manually verify, Ensure the ca-certificates package has not been
+                            modified
+                            using apk audit or by ensuring the sha256 value matches the trusted
+                            value. </html:pre>
                     </ns0:description>
-                    <ns0:check system="http://open-scap.org/page/SCE">
-                        <ns0:check-import import-name="stdout" />
-                        <ns0:check-content-ref href="./CertificateAuditTest.sh" />
+                    <ns0:check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
+                        <ns0:check-content-ref href="CertificateAuditTest.xml" />
                     </ns0:check>
                 </ns0:Rule>
             </ns0:Group>
         </ns0:Benchmark>
     </ds:component>
-    <ds:extended-component xmlns:oscap-sce-xccdf-stream="http://open-scap.org/page/SCE_xccdf_stream"
-        id="scap_org_ecomp_.certaudit" timestamp="2016-02-23T14:36:08">
-        <oscap-sce-xccdf-stream:script>#!/bin/sh
-            EXPECTED_HASH="756cdfe4c3affc2e460278cc65ab01f67c3f4fc05d43fc683d7ebbdeb644e5f4"
-            ACTUAL_HASH=$(sha256sum /etc/ssl/certs/ca-certificates.crt | awk '{print $1}')
-
-            if [ "$ACTUAL_HASH" = "$EXPECTED_HASH" ]; then
-            echo "PASS: Hash matches approved CA bundle"
-            return $XCCDF_RESULT_PASS
-            else
-            echo "FAIL: Hash does not match approved CA bundle: $ACTUAL_HASH"
-            return $XCCDF_RESULT_FAIL
-            fi
-        </oscap-sce-xccdf-stream:script>
-    </ds:extended-component>
     <ds:extended-component xmlns:oscap-sce-xccdf-stream="http://open-scap.org/page/SCE_xccdf_stream"
         id="scap_org_ecomp_.aslr" timestamp="2016-02-23T14:36:08">
         <oscap-sce-xccdf-stream:script>#!/bin/sh
@@ -6800,8 +6786,7 @@
                     id="oval:org.RemoteAccessServices:obj:6" version="1">
                     <path>/lib/apk/db</path>
                     <filename>installed</filename>
-                    <pattern operation="pattern match">
-                        (openssh|openssh-server|openssh-client|openssh-sftp-server|dropbear|tigervnc|tigervnc-server|tigervnc-viewer|xrdp|xorgxrdp|vsftpd|proftpd|webmin|cockpit|cockpit-ws|cockpit-bridge|nfs-utils|samba|samba-server|samba-client|samba-common|rsh|telnet)-*</pattern>
+                    <pattern operation="pattern match">(openssh|openssh-server|openssh-client|openssh-sftp-server|dropbear|tigervnc|tigervnc-server|tigervnc-viewer|xrdp|xorgxrdp|vsftpd|proftpd|webmin|cockpit|cockpit-ws|cockpit-bridge|nfs-utils|samba|samba-server|samba-client|samba-common|rsh|telnet)-*</pattern>
                     <instance datatype="int">1</instance>
                 </textfilecontent54_object>
             </objects>
@@ -6939,4 +6924,70 @@
             </states>
         </oval_definitions>
     </ds:extended-component>
+    <ds:extended-component id="scap_org_ecomp_.certaudit" timestamp="2025-05-27T12:00:00">
+        <oval_definitions xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5"
+            xmlns:oval="http://oval.mitre.org/XMLSchema/oval-common-5"
+            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+            xmlns:ind="http://oval.mitre.org/XMLSchema/oval-definitions-5#independent"
+            xmlns:unix="http://oval.mitre.org/XMLSchema/oval-definitions-5#unix"
+            xsi:schemaLocation="http://oval.mitre.org/XMLSchema/oval-definitions-5 http://oval.mitre.org/language/download/schema/version5.10.1/ovaldefinition/complete/oval-definitions-schema.xsd">
+
+            <generator>
+            <oval:product_name>Custom</oval:product_name>
+            <oval:product_version>1.0</oval:product_version>
+            <oval:schema_version>5.11.1</oval:schema_version>
+            <oval:timestamp>2025-05-27T12:00:00</oval:timestamp>
+            </generator>
+
+            <definitions>
+            <definition id="oval:org.CABundleHash:def:1" version="1" class="compliance">
+                <metadata>
+                <title>Validate SHA-256 hash of CA bundle</title>
+                <description>Passes only if the CA bundle exists and has the correct hash.</description>
+                <affected family="unix">
+                    <platform>Alpine Linux</platform>
+                </affected>
+                </metadata>
+                <criteria operator="AND">
+                <criterion test_ref="oval:org.CABundleHash:tst:1" comment="Ensure CA bundle file exists"/>
+                <criterion test_ref="oval:org.CABundleHash:tst:2" comment="Ensure CA bundle hash matches expected"/>
+                </criteria>
+            </definition>
+            </definitions>
+
+            <tests>
+            <unix:file_test id="oval:org.CABundleHash:tst:1" version="1"
+                check="all" check_existence="at_least_one_exists"
+                comment="Ensure CA bundle file exists">
+                <unix:object object_ref="oval:org.CABundleHash:obj:1"/>
+            </unix:file_test>
+
+            <ind:filehash58_test id="oval:org.CABundleHash:tst:2" version="1"
+                check="all" check_existence="at_least_one_exists"
+                comment="Check that CA bundle file matches expected SHA-256 hash">
+                <ind:object object_ref="oval:org.CABundleHash:obj:2"/>
+                <ind:state state_ref="oval:org.CABundleHash:ste:1"/>
+            </ind:filehash58_test>
+            </tests>
+
+            <objects>
+            <unix:file_object id="oval:org.CABundleHash:obj:1" version="1">
+                <unix:filepath>/etc/ssl/certs/ca-certificates.crt</unix:filepath>
+            </unix:file_object>
+
+            <ind:filehash58_object id="oval:org.CABundleHash:obj:2" version="1">
+                <ind:filepath>/etc/ssl/certs/ca-certificates.crt</ind:filepath>
+                <ind:hash_type>SHA-256</ind:hash_type>
+            </ind:filehash58_object>
+            </objects>
+
+            <states>
+            <ind:filehash58_state id="oval:org.CABundleHash:ste:1" version="1">
+                <ind:hash_type>SHA-256</ind:hash_type>
+                <ind:hash>71ad3cc35a5f1b5ba09256a997afc827885925a701c91432ea3fb20201664fb0</ind:hash>
+            </ind:filehash58_state>
+            </states>
+        </oval_definitions>
+        </ds:extended-component>
+
 </ds:data-stream-collection>
