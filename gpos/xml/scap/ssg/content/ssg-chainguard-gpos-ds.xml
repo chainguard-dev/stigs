@@ -6786,7 +6786,7 @@
                     id="oval:org.RemoteAccessServices:obj:6" version="1">
                     <path>/lib/apk/db</path>
                     <filename>installed</filename>
-                    <pattern operation="pattern match">(openssh|openssh-server|openssh-client|openssh-sftp-server|dropbear|tigervnc|tigervnc-server|tigervnc-viewer|xrdp|xorgxrdp|vsftpd|proftpd|webmin|cockpit|cockpit-ws|cockpit-bridge|nfs-utils|samba|samba-server|samba-client|samba-common|rsh|telnet)-*</pattern>
+                    <pattern operation="pattern match">^P:(openssh|openssh-server|openssh-client|openssh-sftp-server|dropbear|tigervnc|tigervnc-server|tigervnc-viewer|xrdp|xorgxrdp|vsftpd|proftpd|webmin|cockpit|cockpit-ws|cockpit-bridge|nfs-utils|samba|samba-server|samba-client|samba-common|rsh|telnet)-*</pattern>
                     <instance datatype="int">1</instance>
                 </textfilecontent54_object>
             </objects>
