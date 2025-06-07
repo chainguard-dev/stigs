@@ -37,6 +37,28 @@ and available within Chainguard's openscap image, we'll refer to this as the
 `scan` image, and the `target` image we'll be scanning will be:
 `cgr.dev/chainguard/wolfi-base:latest`.
 
+### Scanning a registry container
+
+This method scans an image in registry
+
+```bash
+docker run -i --rm -u 0:0 --pid=host \
+  -v /var/run/docker.sock:/var/run/docker.sock \
+  -v $(pwd)/out:/out \
+  --entrypoint sh \
+  cgr.dev/chainguard/openscap:latest-dev <<_END_DOCKER_RUN
+oscap-docker image cgr.dev/chainguard/wolfi-base:latest xccdf eval \
+  --profile "xccdf_basic_profile_.check" \
+  --report /out/report.html \
+  --results /out/results.xml \
+  /usr/share/xml/scap/ssg/content/ssg-chainguard-gpos-ds.xml
+_END_DOCKER_RUN
+```
+
+### Scanning a running container
+
+This method first launches an image as a running container and then scans it.
+
 ```bash
 # Start the target image (required by openscap-docker)
 docker run --name target -d cgr.dev/chainguard/wolfi-base:latest tail -f /dev/null
