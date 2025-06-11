@@ -519,6 +519,36 @@
                         Container Hardening Process Guide.</ns0:rationale>
                     <ns0:platform idref="cpe:/o:notapplicable" />
                 </ns0:Rule>
+                <ns0:Rule id="xccdf_._rule_V_259333" selected="true" severity="medium">
+                    <ns0:title xml:lang="en">The operating system must install security-relevant
+                        software updates within the time period directed by an authoritative
+                        source (e.g., IAVM, CTOs, DTMs, and STIGs).</ns0:title>
+		    <ns0:description xml:lang="en">Security flaws with operating
+			systems are discovered daily. Vendors are constantly updating
+			and patching their products to address newly discovered security
+			vulnerabilities. Organizations (including any contractor to the
+			organization) are required to promptly install security-relevant software
+			updates (e.g., patches, service packs, and hot fixes). Flaws discovered
+			during security assessments, continuous monitoring, incident response
+			activities, or information system error handling must also be addressed
+			expeditiously.</ns0:description>
+                    <ns0:rationale>Chainguard images contain only the minimal software needed for
+                        the container to perform its intended function. Non-essential capabilities
+                        such as software installers, shell environments, executables, and process
+                        launching functions have been removed from the images and may not be
+                        installed once the container is running.
+
+                        The limited implementation enables only the necessary software to operate
+                        on the running container and restricts the installation of additional
+                        software on the image during operating. For applying security relevant
+                        updates, up-to-date Chainguard images need to be incorporated into the
+                        operating environment through some form of automation or other event
+                        aware process to ensure concurrency with the latest available version.
+
+                        For more information on inherited controls for containers see the DISA
+                        Container Hardening Process Guide.</ns0:rationale>
+                    <ns0:platform idref="cpe:/o:notapplicable" />
+                </ns0:Rule>
                 <ns0:Rule id="xccdf_._rule_V_203682" selected="true" severity="high">
                     <ns0:title xml:lang="en">The operating system must use cryptographic mechanisms
                         to protect the integrity of audit tools.</ns0:title>
