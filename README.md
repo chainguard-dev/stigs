@@ -39,7 +39,7 @@ and available within Chainguard's openscap image, we'll refer to this as the
 
 ### Scanning a registry container
 
-This method scans an image in registry
+This method scans an image in registry. **Note**: The target image must be present in your local Docker daemon.
 
 ```bash
 docker run -i --rm -u 0:0 --pid=host \
