@@ -8,101 +8,101 @@
   <version>1.0</version>
   <Profile id="xccdf_basic_profile_.check">
     <title>Oval Check XCCDF Beta</title>
-    <select idref="xccdf_V-203739_rule_.oval" selected="true"/>
-    <select idref="xccdf_V-203736_rule_.oval" selected="true"/>
-    <select idref="xccdf_V-203737_rule_.oval" selected="true"/>
-    <select idref="xccdf_V-203653_rule_.oval" selected="true"/>
-    <select idref="xccdf_V-203720_rule_.oval" selected="true"/>
-    <select idref="xccdf_V-203629_rule_.oval" selected="true"/>
-    <select idref="xccdf_V-203630_rule_.oval" selected="true"/>
-    <select idref="xccdf_V-203695_rule_.oval" selected="true"/>
-    <select idref="xccdf_V-203603_rule_.oval" selected="true"/>
-    <select idref="xccdf_V-203669_rule_.oval" selected="true"/>
-    <select idref="xccdf_V-203782_rule_.oval" selected="true"/>
-    <select idref="xccdf_V-203776_rule_.oval" selected="true"/>
-    <select idref="xccdf_V-203597_rule_.oval" selected="true"/>
-    <select idref="xccdf_V-203718_rule_.oval" selected="true"/>
-    <select idref="xccdf_V-203738_rule_.oval" selected="true"/>
-    <select idref="xccdf_V-203734_rule_.oval" selected="true"/>
-    <select idref="xccdf_V-203735_rule_.oval" selected="true"/>
-    <select idref="xccdf_V-203732_rule_.oval" selected="true"/>
-    <select idref="xccdf_V-203733_rule_.oval" selected="true"/>
-    <select idref="xccdf_V-203659_rule_.oval" selected="true"/>
-    <select idref="xccdf_V-203781_rule_.oval" selected="true"/>
-    <select idref="xccdf_V-203650_rule_.oval" selected="true"/>
-    <select idref="xccdf_V-203652_rule_.oval" selected="true"/>
-    <select idref="xccdf_V-203655_rule_.oval" selected="true"/>
-    <select idref="xccdf_V-203654_rule_.oval" selected="true"/>
-    <select idref="xccdf_V-203723_rule_.oval" selected="true"/>
-    <select idref="xccdf_V-203725_rule_.oval" selected="true"/>
-    <select idref="xccdf_V-203724_rule_.oval" selected="true"/>
-    <select idref="xccdf_V-203727_rule_.oval" selected="true"/>
-    <select idref="xccdf_V-203726_rule_.oval" selected="true"/>
-    <select idref="xccdf_V-203729_rule_.oval" selected="true"/>
-    <select idref="xccdf_V-203728_rule_.oval" selected="true"/>
-    <select idref="xccdf_V-203628_rule_.oval" selected="true"/>
-    <select idref="xccdf_V-203624_rule_.oval" selected="true"/>
-    <select idref="xccdf_V-203625_rule_.oval" selected="true"/>
-    <select idref="xccdf_V-203626_rule_.oval" selected="true"/>
-    <select idref="xccdf_V-203627_rule_.oval" selected="true"/>
-    <select idref="xccdf_V-203622_rule_.oval" selected="true"/>
-    <select idref="xccdf_V-203623_rule_.oval" selected="true"/>
-    <select idref="xccdf_V-203754_rule_.oval" selected="true"/>
-    <select idref="xccdf_V-203750_rule_.oval" selected="true"/>
-    <select idref="xccdf_V-203751_rule_.oval" selected="true"/>
-    <select idref="xccdf_V-203753_rule_.oval" selected="true"/>
-    <select idref="xccdf_V-203683_rule_.oval" selected="true"/>
-    <select idref="xccdf_V-203680_rule_.oval" selected="true"/>
-    <select idref="xccdf_V-203681_rule_.oval" selected="true"/>
-    <select idref="xccdf_V-203686_rule_.oval" selected="true"/>
-    <select idref="xccdf_V-203687_rule_.oval" selected="true"/>
-    <select idref="xccdf_V-203684_rule_.oval" selected="true"/>
-    <select idref="xccdf_V-203685_rule_.oval" selected="true"/>
-    <select idref="xccdf_V-203639_rule_.oval" selected="true"/>
-    <select idref="xccdf_V-203636_rule_.oval" selected="true"/>
-    <select idref="xccdf_V-203635_rule_.oval" selected="true"/>
-    <select idref="xccdf_V-203634_rule_.oval" selected="true"/>
-    <select idref="xccdf_V-203633_rule_.oval" selected="true"/>
-    <select idref="xccdf_V-203632_rule_.oval" selected="true"/>
-    <select idref="xccdf_V-203631_rule_.oval" selected="true"/>
-    <select idref="xccdf_V-203744_rule_.oval" selected="true"/>
-    <select idref="xccdf_V-203698_rule_.oval" selected="true"/>
-    <select idref="xccdf_V-203696_rule_.oval" selected="true"/>
-    <select idref="xccdf_V-203692_rule_.oval" selected="true"/>
-    <select idref="xccdf_V-203598_rule_.oval" selected="true"/>
-    <select idref="xccdf_V-203599_rule_.oval" selected="true"/>
-    <select idref="xccdf_V-203596_rule_.oval" selected="true"/>
-    <select idref="xccdf_V-203594_rule_.oval" selected="true"/>
-    <select idref="xccdf_V-203595_rule_.oval" selected="true"/>
-    <select idref="xccdf_V-203592_rule_.oval" selected="true"/>
-    <select idref="xccdf_V-203591_rule_.oval" selected="true"/>
-    <select idref="xccdf_V-203602_rule_.oval" selected="true"/>
-    <select idref="xccdf_V-203600_rule_.oval" selected="true"/>
-    <select idref="xccdf_V-203601_rule_.oval" selected="true"/>
-    <select idref="xccdf_V-203664_rule_.oval" selected="true"/>
-    <select idref="xccdf_V-203665_rule_.oval" selected="true"/>
-    <select idref="xccdf_V-203783_rule_.oval" selected="true"/>
-    <select idref="xccdf_V-203617_rule_.oval" selected="true"/>
-    <select idref="xccdf_V-203616_rule_.oval" selected="true"/>
-    <select idref="xccdf_V-203610_rule_.oval" selected="true"/>
-    <select idref="xccdf_V-203676_rule_.oval" selected="true"/>
-    <select idref="xccdf_V-203675_rule_.oval" selected="true"/>
-    <select idref="xccdf_V-203648_rule_.oval" selected="true"/>
-    <select idref="xccdf_V-203649_rule_.oval" selected="true"/>
-    <select idref="xccdf_V-203778_rule_.oval" selected="true"/>
-    <select idref="xccdf_V-203779_rule_.oval" selected="true"/>
-    <select idref="xccdf_V-203771_rule_.oval" selected="true"/>
-    <select idref="xccdf_V-203646_rule_.oval" selected="true"/>
-    <select idref="xccdf_V-203644_rule_.oval" selected="true"/>
-    <select idref="xccdf_V-203645_rule_.oval" selected="true"/>
-    <select idref="xccdf_V-203642_rule_.oval" selected="true"/>
-    <select idref="xccdf_V-203643_rule_.oval" selected="true"/>
-    <select idref="xccdf_V-203640_rule_.oval" selected="true"/>
-    <select idref="xccdf_V-203641_rule_.oval" selected="true"/>
-    <select idref="xccdf_V-203716_rule_.oval" selected="true"/>
+    <select idref="V-203739" selected="true"/>
+    <select idref="V-203736" selected="true"/>
+    <select idref="V-203737" selected="true"/>
+    <select idref="V-203653" selected="true"/>
+    <select idref="V-203720" selected="true"/>
+    <select idref="V-203629" selected="true"/>
+    <select idref="V-203630" selected="true"/>
+    <select idref="V-203695" selected="true"/>
+    <select idref="V-203603" selected="true"/>
+    <select idref="V-203669" selected="true"/>
+    <select idref="V-203782" selected="true"/>
+    <select idref="V-203776" selected="true"/>
+    <select idref="V-203597" selected="true"/>
+    <select idref="V-203718" selected="true"/>
+    <select idref="V-203738" selected="true"/>
+    <select idref="V-203734" selected="true"/>
+    <select idref="V-203735" selected="true"/>
+    <select idref="V-203732" selected="true"/>
+    <select idref="V-203733" selected="true"/>
+    <select idref="V-203659" selected="true"/>
+    <select idref="V-203781" selected="true"/>
+    <select idref="V-203650" selected="true"/>
+    <select idref="V-203652" selected="true"/>
+    <select idref="V-203655" selected="true"/>
+    <select idref="V-203654" selected="true"/>
+    <select idref="V-203723" selected="true"/>
+    <select idref="V-203725" selected="true"/>
+    <select idref="V-203724" selected="true"/>
+    <select idref="V-203727" selected="true"/>
+    <select idref="V-203726" selected="true"/>
+    <select idref="V-203729" selected="true"/>
+    <select idref="V-203728" selected="true"/>
+    <select idref="V-203628" selected="true"/>
+    <select idref="V-203624" selected="true"/>
+    <select idref="V-203625" selected="true"/>
+    <select idref="V-203626" selected="true"/>
+    <select idref="V-203627" selected="true"/>
+    <select idref="V-203622" selected="true"/>
+    <select idref="V-203623" selected="true"/>
+    <select idref="V-203754" selected="true"/>
+    <select idref="V-203750" selected="true"/>
+    <select idref="V-203751" selected="true"/>
+    <select idref="V-203753" selected="true"/>
+    <select idref="V-203683" selected="true"/>
+    <select idref="V-203680" selected="true"/>
+    <select idref="V-203681" selected="true"/>
+    <select idref="V-203686" selected="true"/>
+    <select idref="V-203687" selected="true"/>
+    <select idref="V-203684" selected="true"/>
+    <select idref="V-203685" selected="true"/>
+    <select idref="V-203639" selected="true"/>
+    <select idref="V-203636" selected="true"/>
+    <select idref="V-203635" selected="true"/>
+    <select idref="V-203634" selected="true"/>
+    <select idref="V-203633" selected="true"/>
+    <select idref="V-203632" selected="true"/>
+    <select idref="V-203631" selected="true"/>
+    <select idref="V-203744" selected="true"/>
+    <select idref="V-203698" selected="true"/>
+    <select idref="V-203696" selected="true"/>
+    <select idref="V-203692" selected="true"/>
+    <select idref="V-203598" selected="true"/>
+    <select idref="V-203599" selected="true"/>
+    <select idref="V-203596" selected="true"/>
+    <select idref="V-203594" selected="true"/>
+    <select idref="V-203595" selected="true"/>
+    <select idref="V-203592" selected="true"/>
+    <select idref="V-203591" selected="true"/>
+    <select idref="V-203602" selected="true"/>
+    <select idref="V-203600" selected="true"/>
+    <select idref="V-203601" selected="true"/>
+    <select idref="V-203664" selected="true"/>
+    <select idref="V-203665" selected="true"/>
+    <select idref="V-203783" selected="true"/>
+    <select idref="V-203617" selected="true"/>
+    <select idref="V-203616" selected="true"/>
+    <select idref="V-203610" selected="true"/>
+    <select idref="V-203676" selected="true"/>
+    <select idref="V-203675" selected="true"/>
+    <select idref="V-203648" selected="true"/>
+    <select idref="V-203649" selected="true"/>
+    <select idref="V-203778" selected="true"/>
+    <select idref="V-203779" selected="true"/>
+    <select idref="V-203771" selected="true"/>
+    <select idref="V-203646" selected="true"/>
+    <select idref="V-203644" selected="true"/>
+    <select idref="V-203645" selected="true"/>
+    <select idref="V-203642" selected="true"/>
+    <select idref="V-203643" selected="true"/>
+    <select idref="V-203640" selected="true"/>
+    <select idref="V-203641" selected="true"/>
+    <select idref="V-203716" selected="true"/>
   </Profile>
   <Group id="xccdf_NonApplicable_group_.oval">
-    <Rule id="xccdf_V-203682_rule_.oval" selected="true" severity="high">
+    <Rule id="SV-203682r1_rule" selected="true" severity="high">
       <title>The operating system must use cryptographic mechanisms to protect the integrity of audit tools.</title>
       <description>
         <html:pre>Protecting the integrity of the tools used for auditing purposes is a critical step toward ensuring the integrity of audit information. Audit information includes all information (e.g., audit records, audit settings, and audit reports) needed to successfully audit information system activity.
@@ -122,7 +122,7 @@ Once configured, logs of container actions are written to the host's audit log f
 For more information on inherited controls for containers see the DISA Container Hardening Process Guide.
 </rationale>
     </Rule>
-    <Rule id="xccdf_V-203746_rule_.oval" selected="true" severity="high">
+    <Rule id="SV-203746r1_rule" selected="true" severity="high">
       <title>The operating system must implement cryptographic mechanisms to prevent unauthorized disclosure of all information at rest on all operating system components.</title>
       <description>
         <html:pre>Operating systems handling data requiring &quot;data at rest&quot; protections must employ cryptographic mechanisms to prevent unauthorized disclosure and modification of the information at rest.
@@ -134,7 +134,7 @@ Selection of a cryptographic mechanism is based on the need to protect the integ
 For more information on inherited controls for containers see the DISA Container Hardening Process Guide.
 </rationale>
     </Rule>
-    <Rule id="xccdf_V-203745_rule_.oval" selected="true" severity="high">
+    <Rule id="SV-203745r1_rule" selected="true" severity="high">
       <title>The operating system must implement cryptographic mechanisms to prevent unauthorized modification of all information at rest on all operating system components.</title>
       <description>
         <html:pre>Operating systems handling data requiring &quot;data at rest&quot; protections must employ cryptographic mechanisms to prevent unauthorized disclosure and modification of the information at rest.
@@ -146,7 +146,7 @@ Selection of a cryptographic mechanism is based on the need to protect the integ
 For more information on inherited controls for containers see the DISA Container Hardening Process Guide.
 </rationale>
     </Rule>
-    <Rule id="xccdf_V-203749_rule_.oval" selected="true" severity="high">
+    <Rule id="SV-203749r1_rule" selected="true" severity="high">
       <title>The operating system must implement cryptographic mechanisms to prevent unauthorized disclosure of information and/or detect changes to information during transmission unless otherwise protected by alternative physical safeguards, such as, at a minimum, a Protected Distribution System (PDS).</title>
       <description>
         <html:pre>Encrypting information for transmission protects information from unauthorized disclosure and modification. Cryptographic mechanisms implemented to protect information integrity include, for example, cryptographic hash functions which have common application in digital signatures, checksums, and message authentication codes. 
@@ -160,7 +160,7 @@ Alternative physical protection measures include PDS. PDSs are used to transmit 
 For more information on inherited controls for containers see the DISA Container Hardening Process Guide. 
 </rationale>
     </Rule>
-    <Rule id="xccdf_V-203748_rule_.oval" selected="true" severity="high">
+    <Rule id="SV-203748r1_rule" selected="true" severity="high">
       <title>The operating system must protect the confidentiality and integrity of transmitted information.</title>
       <description>
         <html:pre>Without protection of the transmitted information, confidentiality and integrity may be compromised because unprotected communications can be intercepted and either read or altered. 
@@ -174,7 +174,7 @@ Protecting the confidentiality and integrity of organizational information can b
 For more information on inherited controls for containers see the DISA Container Hardening Process Guide. 
 </rationale>
     </Rule>
-    <Rule id="xccdf_V-252688_rule_.oval" selected="true" severity="high">
+    <Rule id="SV-252688r1_rule" selected="true" severity="high">
       <title>The operating system must protect the confidentiality and integrity of communications with wireless peripherals.</title>
       <description>
         <html:pre>Without protection of communications with wireless peripherals, confidentiality and integrity may be compromised because unprotected communications can be intercepted and either read, altered, or used to compromise the operating system.
@@ -189,7 +189,7 @@ WiFi adapters on the hosts where they operate.  If these connections exist, they
 For more information on inherited controls for containers see the DISA Container Hardening Process Guide.
 </rationale>
     </Rule>
-    <Rule id="xccdf_V-203714_rule_.oval" selected="true" severity="low">
+    <Rule id="SV-203714r1_rule" selected="true" severity="low">
       <title>The operating system must record time stamps for audit records that can be mapped to Coordinated Universal Time (UTC) or Greenwich Mean Time (GMT).</title>
       <description>
         <html:pre>If time stamps are not consistently applied and there is no common time reference, it is difficult to perform forensic analysis.
@@ -201,7 +201,7 @@ Time stamps generated by the operating system include date and time. Time is com
 For more information on inherited controls for containers see the DISA Container Hardening Process Guide.
 </rationale>
     </Rule>
-    <Rule id="xccdf_V-203708_rule_.oval" selected="true" severity="low">
+    <Rule id="SV-203708r1_rule" selected="true" severity="low">
       <title>The operating system must provide a report generation capability that supports after-the-fact investigations of security incidents.</title>
       <description>
         <html:pre>If the report generation capability does not support after-the-fact investigations, it is difficult to establish, correlate, and investigate the events leading up to an outage or attack or identify those responses for one. This capability is also required to comply with applicable Federal laws and DoD policies.
@@ -217,7 +217,7 @@ Once configured, logs of container actions are written to the host's audit log f
 For more information on inherited controls for containers see the DISA Container Hardening Process Guide.
 </rationale>
     </Rule>
-    <Rule id="xccdf_V-203702_rule_.oval" selected="true" severity="low">
+    <Rule id="SV-203702r1_rule" selected="true" severity="low">
       <title>The operating system must immediately notify the SA and ISSO (at a minimum) when allocated audit record storage volume reaches 75 percent of the repository maximum audit record storage capacity.</title>
       <description>
         <html:pre>If security personnel are not notified immediately when storage volume reaches 75% utilization, they are unable to plan for audit record storage capacity expansion.</html:pre>
@@ -231,7 +231,7 @@ Once configured, logs of container actions are written to the host's audit log f
 For more information on inherited controls for containers see the DISA Container Hardening Process Guide.
 </rationale>
     </Rule>
-    <Rule id="xccdf_V-203701_rule_.oval" selected="true" severity="low">
+    <Rule id="SV-203701r1_rule" selected="true" severity="low">
       <title>The operating system must offload audit records onto a different system or media from the system being audited.</title>
       <description>
         <html:pre>Information stored in one location is vulnerable to accidental or incidental deletion or alteration.
@@ -247,7 +247,7 @@ Once configured, logs of container actions are written to the host's audit log f
 For more information on inherited controls for containers see the DISA Container Hardening Process Guide.
 </rationale>
     </Rule>
-    <Rule id="xccdf_V-203700_rule_.oval" selected="true" severity="low">
+    <Rule id="SV-203700r1_rule" selected="true" severity="low">
       <title>The operating system must allocate audit record storage capacity to store at least one week's worth of audit records, when audit records are not immediately sent to a central audit record storage facility.</title>
       <description>
         <html:pre>In order to ensure operating systems have a sufficient storage capacity in which to write the audit logs, operating systems need to be able to allocate audit record storage capacity.
@@ -263,7 +263,7 @@ Once configured, logs of container actions are written to the host's audit log f
 For more information on inherited controls for containers see the DISA Container Hardening Process Guide.
 </rationale>
     </Rule>
-    <Rule id="xccdf_V-203707_rule_.oval" selected="true" severity="low">
+    <Rule id="SV-203707r1_rule" selected="true" severity="low">
       <title>The operating system must provide a report generation capability that supports on-demand reporting requirements.</title>
       <description>
         <html:pre>The report generation capability must support on-demand reporting in order to facilitate the organization's ability to generate incident reports, as needed, to better handle larger-scale or more complex security incidents.
@@ -279,7 +279,7 @@ Once configured, logs of container actions are written to the host's audit log f
 For more information on inherited controls for containers see the DISA Container Hardening Process Guide.
 </rationale>
     </Rule>
-    <Rule id="xccdf_V-203706_rule_.oval" selected="true" severity="low">
+    <Rule id="SV-203706r1_rule" selected="true" severity="low">
       <title>The operating system must provide a report generation capability that supports on-demand audit review and analysis.</title>
       <description>
         <html:pre>The report generation capability must support on-demand review and analysis in order to facilitate the organization's ability to generate incident reports, as needed, to better handle larger-scale or more complex security incidents.
@@ -295,7 +295,7 @@ Once configured, logs of container actions are written to the host's audit log f
 For more information on inherited controls for containers see the DISA Container Hardening Process Guide.
 </rationale>
     </Rule>
-    <Rule id="xccdf_V-203705_rule_.oval" selected="true" severity="low">
+    <Rule id="SV-203705r1_rule" selected="true" severity="low">
       <title>The operating system must provide an audit reduction capability that supports after-the-fact investigations of security incidents.</title>
       <description>
         <html:pre>If the audit reduction capability does not support after-the-fact investigations, it is difficult to establish, correlate, and investigate the events leading up to an outage or attack or identify those responses for one. This capability is also required to comply with applicable Federal laws and DoD policies.
@@ -313,7 +313,7 @@ Once configured, logs of container actions are written to the host's audit log f
 For more information on inherited controls for containers see the DISA Container Hardening Process Guide.
 </rationale>
     </Rule>
-    <Rule id="xccdf_V-203704_rule_.oval" selected="true" severity="low">
+    <Rule id="SV-203704r1_rule" selected="true" severity="low">
       <title>The operating system must provide an audit reduction capability that supports on-demand audit review and analysis.</title>
       <description>
         <html:pre>The ability to perform on-demand audit review and analysis, including after the audit data has been subjected to audit reduction, greatly facilitates the organization's ability to generate incident reports, as needed, to better handle larger-scale or more complex security incidents.
@@ -329,7 +329,7 @@ Once configured, logs of container actions are written to the host's audit log f
 For more information on inherited controls for containers see the DISA Container Hardening Process Guide.
 </rationale>
     </Rule>
-    <Rule id="xccdf_V-203730_rule_.oval" selected="true" severity="medium">
+    <Rule id="SV-203730r1_rule" selected="true" severity="medium">
       <title>The operating system must authenticate peripherals before establishing a connection.</title>
       <description>
         <html:pre>Without authenticating devices, unidentified or unknown devices may be introduced, thereby facilitating malicious activity.
@@ -342,7 +342,7 @@ WiFi adapters on the hosts where they operate.  If these connections exist, they
 For more information on inherited controls for containers see the DISA Container Hardening Process Guide.
 </rationale>
     </Rule>
-    <Rule id="xccdf_V-203731_rule_.oval" selected="true" severity="medium">
+    <Rule id="SV-203731r1_rule" selected="true" severity="medium">
       <title>The operating system must authenticate all endpoint devices before establishing a local, remote, and/or network connection using bidirectional authentication that is cryptographically based.</title>
       <description>
         <html:pre>Without authenticating devices, unidentified or unknown devices may be introduced, thereby facilitating malicious activity. Bidirectional authentication provides stronger safeguards to validate the identity of other devices for connections that are of greater risk.
@@ -362,7 +362,7 @@ The host's container execution environment further reduces the risk of unauthori
 For more information on inherited controls for containers see the DISA Container Hardening Process Guide.
 </rationale>
     </Rule>
-    <Rule id="xccdf_V-203658_rule_.oval" selected="true" severity="medium">
+    <Rule id="SV-203658r1_rule" selected="true" severity="medium">
       <title>The operating system must manage excess capacity, bandwidth, or other redundancy to limit the effects of information flooding types of Denial of Service (DoS) attacks.</title>
       <description>
         <html:pre>DoS is a condition when a resource is not available for legitimate users. When this occurs, the organization either cannot accomplish its mission or must operate at degraded capacity. 
@@ -378,7 +378,7 @@ Together, namespaces and cgroups isolate security functions of the host operatin
 For more information on inherited controls for containers see the DISA Container Hardening Process Guide.
 </rationale>
     </Rule>
-    <Rule id="xccdf_V-203780_rule_.oval" selected="true" severity="medium">
+    <Rule id="SV-203780r1_rule" selected="true" severity="medium">
       <title>The operating system must be configured in accordance with the security configuration settings based on DoD security configuration or implementation guidance, including STIGs, NSA configuration guides, CTOs, and DTMs.</title>
       <description>
         <html:pre>Configuring the operating system to implement organization-wide security implementation guides and security checklists ensures compliance with federal standards and establishes a common security baseline across DoD that reflects the most restrictive security posture consistent with operational requirements.
@@ -390,7 +390,7 @@ Configuration settings are the set of parameters that can be changed in hardware
 For more information on inherited controls for containers see the DISA Container Hardening Process Guide.
 </rationale>
     </Rule>
-    <Rule id="xccdf_V-203784_rule_.oval" selected="true" severity="medium">
+    <Rule id="SV-203784r1_rule" selected="true" severity="medium">
       <title>The operating system must enable an application firewall, if available.</title>
       <description>
         <html:pre>Firewalls protect computers from network attacks by blocking or limiting access to open network ports. Application firewalls limit which applications are allowed to communicate over the network.</html:pre>
@@ -400,7 +400,7 @@ For more information on inherited controls for containers see the DISA Container
 For more information on inherited controls for containers see the DISA Container Hardening Process Guide.
 </rationale>
     </Rule>
-    <Rule id="xccdf_V-203651_rule_.oval" selected="true" severity="medium">
+    <Rule id="SV-203651r1_rule" selected="true" severity="medium">
       <title>The operating system must provide an audit reduction capability that supports on-demand reporting requirements.</title>
       <description>
         <html:pre>The ability to generate on-demand reports, including after the audit data has been subjected to audit reduction, greatly facilitates the organization's ability to generate incident reports as needed to better handle larger-scale or more complex security incidents.
@@ -416,7 +416,7 @@ Once configured, logs of container actions are written to the host's audit log f
 For more information on inherited controls for containers see the DISA Container Hardening Process Guide.
 </rationale>
     </Rule>
-    <Rule id="xccdf_V-203657_rule_.oval" selected="true" severity="medium">
+    <Rule id="SV-203657r1_rule" selected="true" severity="medium">
       <title>Operating systems must prevent unauthorized and unintended information transfer via shared system resources.</title>
       <description>
         <html:pre>Preventing unauthorized information transfers mitigates the risk of information, including encrypted representations of information, produced by the actions of prior users/roles (or the actions of processes acting on behalf of prior users/roles) from being available to any current users/roles (or current processes) that obtain access to shared system resources (e.g., registers, main memory, hard disks) after those resources have been released back to information systems. The control of information in shared resources is also commonly referred to as object reuse and residual information protection.
@@ -434,7 +434,7 @@ Together, namespaces and cgroups isolate security functions of the host operatin
 For more information on inherited controls for containers see the DISA Container Hardening Process Guide.
 </rationale>
     </Rule>
-    <Rule id="xccdf_V-203656_rule_.oval" selected="true" severity="medium">
+    <Rule id="SV-203656r1_rule" selected="true" severity="medium">
       <title>The operating system must isolate security functions from nonsecurity functions.</title>
       <description>
         <html:pre>An isolation boundary provides access control and protects the integrity of the hardware, software, and firmware that perform security functions.
@@ -452,7 +452,7 @@ Together, namespaces and cgroups isolate security functions of the host operatin
 For more information on inherited controls for containers see the DISA Container Hardening Process Guide.
 </rationale>
     </Rule>
-    <Rule id="xccdf_V-203721_rule_.oval" selected="true" severity="medium">
+    <Rule id="SV-203721r1_rule" selected="true" severity="medium">
       <title>The operating system must prevent program execution in accordance with local policies regarding software program usage and restrictions and/or rules authorizing the terms and conditions of software program usage.</title>
       <description>
         <html:pre>Control of program execution is a mechanism used to prevent execution of unauthorized programs. Some operating systems may provide a capability that runs counter to the mission or provides users with functionality that exceeds mission requirements. This includes functions and services installed at the operating system-level.
@@ -470,7 +470,7 @@ The host's container execution environment further reduces the risk of unauthori
 For more information on inherited controls for containers see the DISA Container Hardening Process Guide.
 </rationale>
     </Rule>
-    <Rule id="xccdf_V-203722_rule_.oval" selected="true" severity="medium">
+    <Rule id="SV-203722r1_rule" selected="true" severity="medium">
       <title>The operating system must employ a deny-all, permit-by-exception policy to allow the execution of authorized software programs.</title>
       <description>
         <html:pre>Utilizing a whitelist provides a configuration management method for allowing the execution of only authorized software. Using only authorized software decreases risk by limiting the number of potential vulnerabilities.
@@ -490,7 +490,7 @@ The host's container execution environment further reduces the risk of unauthori
 For more information on inherited controls for containers see the DISA Container Hardening Process Guide.
 </rationale>
     </Rule>
-    <Rule id="xccdf_V-203620_rule_.oval" selected="true" severity="medium">
+    <Rule id="SV-203620r1_rule" selected="true" severity="medium">
       <title>The operating system must allow only the ISSM (or individuals or roles appointed by the ISSM) to select which auditable events are to be audited.</title>
       <description>
         <html:pre>Without the capability to restrict which roles and individuals can select which events are audited, unauthorized personnel may be able to prevent the auditing of critical events. Misconfigured audits may degrade the system's performance by overwhelming the audit log. Misconfigured audits may also make it more difficult to establish, correlate, and investigate the events relating to an incident or identify those responsible for one.</html:pre>
@@ -504,7 +504,7 @@ Once configured, logs of container actions are written to the host's audit log f
 For more information on inherited controls for containers see the DISA Container Hardening Process Guide.
 </rationale>
     </Rule>
-    <Rule id="xccdf_V-203621_rule_.oval" selected="true" severity="medium">
+    <Rule id="SV-203621r1_rule" selected="true" severity="medium">
       <title>The operating system must generate audit records when successful/unsuccessful attempts to access privileges occur.</title>
       <description>
         <html:pre>Without generating audit records that are specific to the security and mission needs of the organization, it would be difficult to establish, correlate, and investigate the events relating to an incident or identify those responsible for one.
@@ -520,7 +520,7 @@ Once configured, logs of container actions are written to the host's audit log f
 For more information on inherited controls for containers see the DISA Container Hardening Process Guide.
 </rationale>
     </Rule>
-    <Rule id="xccdf_V-203755_rule_.oval" selected="true" severity="medium">
+    <Rule id="SV-203755r1_rule" selected="true" severity="medium">
       <title>The operating system must remove all software components after updated versions have been installed.</title>
       <description>
         <html:pre>Previous versions of software components that are not removed from the information system after updates have been installed may be exploited by adversaries. Some information technology products may remove older versions of software automatically from the information system.</html:pre>
@@ -534,7 +534,7 @@ The host's container execution environment further reduces the risk of unauthori
 For more information on inherited controls for containers see the DISA Container Hardening Process Guide.
 </rationale>
     </Rule>
-    <Rule id="xccdf_V-203688_rule_.oval" selected="true" severity="medium">
+    <Rule id="SV-203688r1_rule" selected="true" severity="medium">
       <title>The operating system must protect wireless access to and from the system using encryption.</title>
       <description>
         <html:pre>Allowing devices and users to connect to or from the system without first authenticating them allows untrusted access and can lead to a compromise or attack. Since wireless communications can be intercepted, it is necessary to use encryption to protect the confidentiality of information in transit.
@@ -549,7 +549,7 @@ WiFi adapters on the hosts where they operate.  If these connections exist, they
 For more information on inherited controls for containers see the DISA Container Hardening Process Guide.
 </rationale>
     </Rule>
-    <Rule id="xccdf_V-203689_rule_.oval" selected="true" severity="medium">
+    <Rule id="SV-203689r1_rule" selected="true" severity="medium">
       <title>The operating system must protect wireless access to the system using authentication of users and/or devices.</title>
       <description>
         <html:pre>Allowing devices and users to connect to the system without first authenticating them allows untrusted access and can lead to a compromise or attack.
@@ -564,7 +564,7 @@ WiFi adapters on the hosts where they operate.  If these connections exist, they
 For more information on inherited controls for containers see the DISA Container Hardening Process Guide.
 </rationale>
     </Rule>
-    <Rule id="xccdf_V-203752_rule_.oval" selected="true" severity="medium">
+    <Rule id="SV-203752r1_rule" selected="true" severity="medium">
       <title>The operating system must behave in a predictable and documented manner that reflects organizational and system objectives when invalid inputs are received.</title>
       <description>
         <html:pre>A common vulnerability of operating system is unpredictable behavior when invalid inputs are received. This requirement guards against adverse or unintended system behavior caused by invalid inputs, where information system responses to the invalid input may be disruptive or cause the system to fail into an unsafe state.
@@ -580,7 +580,7 @@ Together, namespaces and cgroups isolate security functions of the host operatin
 For more information on inherited controls for containers see the DISA Container Hardening Process Guide.
 </rationale>
     </Rule>
-    <Rule id="xccdf_V-203638_rule_.oval" selected="true" severity="medium">
+    <Rule id="SV-203638r1_rule" selected="true" severity="medium">
       <title>The operating system must be configured to prohibit or restrict the use of functions, ports, protocols, and/or services, as defined in the PPSM CAL and vulnerability assessments.</title>
       <description>
         <html:pre>In order to prevent unauthorized connection of devices, unauthorized transfer of information, or unauthorized tunneling (i.e., embedding of data types within data types), organizations must disable or restrict unused or unnecessary physical and logical ports/protocols on information systems.
@@ -594,7 +594,7 @@ To support the requirements and principles of least functionality, the operating
 For more information on inherited controls for containers see the DISA Container Hardening Process Guide.
 </rationale>
     </Rule>
-    <Rule id="xccdf_V-203637_rule_.oval" selected="true" severity="medium">
+    <Rule id="SV-203637r1_rule" selected="true" severity="medium">
       <title>The operating system must be configured to disable non-essential capabilities.</title>
       <description>
         <html:pre>It is detrimental for operating systems to provide, or install by default, functionality exceeding requirements or mission objectives. These unnecessary capabilities or services are often overlooked and therefore may remain unsecured. They increase the risk to the platform by providing additional attack vectors.
@@ -612,7 +612,7 @@ The host's container execution environment further reduces the risk of unauthori
 For more information on inherited controls for containers see the DISA Container Hardening Process Guide.
 </rationale>
     </Rule>
-    <Rule id="xccdf_V-203747_rule_.oval" selected="true" severity="medium">
+    <Rule id="SV-203747r1_rule" selected="true" severity="medium">
       <title>The operating system must protect against or limit the effects of Denial of Service (DoS) attacks by ensuring the operating system is implementing rate-limiting measures on impacted network interfaces.</title>
       <description>
         <html:pre>DoS is a condition when a resource is not available for legitimate users. When this occurs, the organization either cannot accomplish its mission or must operate at degraded capacity.
@@ -628,7 +628,7 @@ Together, namespaces and cgroups isolate security functions of the host operatin
 For more information on inherited controls for containers see the DISA Container Hardening Process Guide.
 </rationale>
     </Rule>
-    <Rule id="xccdf_V-203699_rule_.oval" selected="true" severity="medium">
+    <Rule id="SV-203699r1_rule" selected="true" severity="medium">
       <title>The operating system must provide the capability for assigned IMOs/ISSOs or designated SAs to change the auditing to be performed on all operating system components, based on all selectable event criteria in near real time.</title>
       <description>
         <html:pre>If authorized individuals do not have the ability to modify auditing parameters in response to a changing threat environment, the organization may not be able to effectively respond, and important forensic information may be lost.
@@ -644,7 +644,7 @@ Once configured, logs of container actions are written to the host's audit log f
 For more information on inherited controls for containers see the DISA Container Hardening Process Guide.
 </rationale>
     </Rule>
-    <Rule id="xccdf_V-203694_rule_.oval" selected="true" severity="medium">
+    <Rule id="SV-203694r1_rule" selected="true" severity="medium">
       <title>The operating system must allow operating system admins to change security attributes on users, the operating system, or the operating systems components.</title>
       <description>
         <html:pre>Discretionary Access Control (DAC) is based on the notion that individual users are &quot;owners&quot; of objects and therefore have discretion over who should be authorized to access the object and in which mode (e.g., read or write). Ownership is usually acquired as a consequence of creating the object or via specified ownership assignment. DAC allows the owner to determine who will have access to objects they control. An example of DAC includes user-controlled file permissions.
@@ -656,7 +656,7 @@ When discretionary access control policies are implemented, subjects are not con
 For more information on inherited controls for containers see the DISA Container Hardening Process Guide.
 </rationale>
     </Rule>
-    <Rule id="xccdf_V-203697_rule_.oval" selected="true" severity="medium">
+    <Rule id="SV-203697r1_rule" selected="true" severity="medium">
       <title>The operating system must audit the execution of privileged functions.</title>
       <description>
         <html:pre>Misuse of privileged functions, either intentionally or unintentionally by authorized users, or by unauthorized external entities that have compromised information system accounts, is a serious and ongoing concern and can have significant adverse impacts on organizations. Auditing the use of privileged functions is one way to detect such misuse and identify the risk from insider threats and the advanced persistent threat.</html:pre>
@@ -670,7 +670,7 @@ Once configured, logs of container actions are written to the host's audit log f
 For more information on inherited controls for containers see the DISA Container Hardening Process Guide.
 </rationale>
     </Rule>
-    <Rule id="xccdf_V-203691_rule_.oval" selected="true" severity="medium">
+    <Rule id="SV-203691r1_rule" selected="true" severity="medium">
       <title>The operating system must notify system administrators and ISSOs of account enabling actions.</title>
       <description>
         <html:pre>Once an attacker establishes access to a system, the attacker often attempts to create a persistent method of reestablishing access.  One way to accomplish this is for the attacker to enable an existing disabled account.  Sending notification of account enabling actions to the system administrator and ISSO is one method for mitigating this risk.  Such a capability greatly reduces the risk that operating system accessibility will be negatively affected for extended periods of time and also provides logging that can be used for forensic purposes.
@@ -688,7 +688,7 @@ Once configured, logs of container actions are written to the host's audit log f
 For more information on inherited controls for containers see the DISA Container Hardening Process Guide.
 </rationale>
     </Rule>
-    <Rule id="xccdf_V-203690_rule_.oval" selected="true" severity="medium">
+    <Rule id="SV-203690r1_rule" selected="true" severity="medium">
       <title>The operating system must audit all account enabling actions.</title>
       <description>
         <html:pre>Once an attacker establishes access to a system, the attacker often attempts to create a persistent method of reestablishing access.  One way to accomplish this is for the attacker to enable a new or disabled account.  Auditing account modification actions provides logging that can be used for forensic purposes. 
@@ -704,7 +704,7 @@ Once configured, logs of container actions are written to the host's audit log f
 For more information on inherited controls for containers see the DISA Container Hardening Process Guide.
 </rationale>
     </Rule>
-    <Rule id="xccdf_V-203693_rule_.oval" selected="true" severity="medium">
+    <Rule id="SV-203693r1_rule" selected="true" severity="medium">
       <title>The operating system must allow operating system admins to grant their privileges to other operating system admins.</title>
       <description>
         <html:pre>Discretionary Access Control (DAC) is based on the notion that individual users are &quot;owners&quot; of objects and therefore have discretion over who should be authorized to access the object and in which mode (e.g., read or write). Ownership is usually acquired as a consequence of creating the object or via specified ownership assignment. DAC allows the owner to determine who will have access to objects they control. An example of DAC includes user-controlled file permissions.
@@ -716,7 +716,7 @@ When discretionary access control policies are implemented, subjects are not con
 For more information on inherited controls for containers see the DISA Container Hardening Process Guide.
 </rationale>
     </Rule>
-    <Rule id="xccdf_V-203593_rule_.oval" selected="true" severity="medium">
+    <Rule id="SV-203593r1_rule" selected="true" severity="medium">
       <title>The operating system must audit all account creations.</title>
       <description>
         <html:pre>Once an attacker establishes access to a system, the attacker often attempts to create a persistent method of reestablishing access. One way to accomplish this is for the attacker to create an account. Auditing account creation actions provides logging that can be used for forensic purposes.
@@ -732,7 +732,7 @@ Once configured, logs of container actions are written to the host's audit log f
 For more information on inherited controls for containers see the DISA Container Hardening Process Guide.
 </rationale>
     </Rule>
-    <Rule id="xccdf_V-203606_rule_.oval" selected="true" severity="medium">
+    <Rule id="SV-203606r1_rule" selected="true" severity="medium">
       <title>The operating system must produce audit records containing information to establish where the events occurred.</title>
       <description>
         <html:pre>Without establishing where events occurred, it is impossible to establish, correlate, and investigate the events leading up to an outage or attack.
@@ -750,7 +750,7 @@ Once configured, logs of container actions are written to the host's audit log f
 For more information on inherited controls for containers see the DISA Container Hardening Process Guide.
 </rationale>
     </Rule>
-    <Rule id="xccdf_V-203607_rule_.oval" selected="true" severity="medium">
+    <Rule id="SV-203607r1_rule" selected="true" severity="medium">
       <title>The operating system must produce audit records containing information to establish the source of the events.</title>
       <description>
         <html:pre>Without establishing the source of the event, it is impossible to establish, correlate, and investigate the events leading up to an outage or attack.
@@ -768,7 +768,7 @@ Once configured, logs of container actions are written to the host's audit log f
 For more information on inherited controls for containers see the DISA Container Hardening Process Guide.
 </rationale>
     </Rule>
-    <Rule id="xccdf_V-203604_rule_.oval" selected="true" severity="medium">
+    <Rule id="SV-203604r1_rule" selected="true" severity="medium">
       <title>The operating system must produce audit records containing information to establish what type of events occurred.</title>
       <description>
         <html:pre>Without establishing what type of events occurred, it would be difficult to establish, correlate, and investigate the events leading up to an outage or attack.
@@ -786,7 +786,7 @@ Once configured, logs of container actions are written to the host's audit log f
 For more information on inherited controls for containers see the DISA Container Hardening Process Guide.
 </rationale>
     </Rule>
-    <Rule id="xccdf_V-203605_rule_.oval" selected="true" severity="medium">
+    <Rule id="SV-203605r1_rule" selected="true" severity="medium">
       <title>The operating system must produce audit records containing information to establish when (date and time) the events occurred.</title>
       <description>
         <html:pre>Without establishing when events occurred, it is impossible to establish, correlate, and investigate the events leading up to an outage or attack.
@@ -804,7 +804,7 @@ Once configured, logs of container actions are written to the host's audit log f
 For more information on inherited controls for containers see the DISA Container Hardening Process Guide.
 </rationale>
     </Rule>
-    <Rule id="xccdf_V-203608_rule_.oval" selected="true" severity="medium">
+    <Rule id="SV-203608r1_rule" selected="true" severity="medium">
       <title>The operating system must produce audit records containing information to establish the outcome of the events.</title>
       <description>
         <html:pre>Without information about the outcome of events, security personnel cannot make an accurate assessment as to whether an attack was successful or if changes were made to the security state of the system.
@@ -820,7 +820,7 @@ Once configured, logs of container actions are written to the host's audit log f
 For more information on inherited controls for containers see the DISA Container Hardening Process Guide.
 </rationale>
     </Rule>
-    <Rule id="xccdf_V-203609_rule_.oval" selected="true" severity="medium">
+    <Rule id="SV-203609r1_rule" selected="true" severity="medium">
       <title>The operating system must generate audit records containing the full-text recording of privileged commands.</title>
       <description>
         <html:pre>Reconstruction of harmful events or forensic analysis is not possible if audit records do not contain enough information.
@@ -836,7 +836,7 @@ Once configured, logs of container actions are written to the host's audit log f
 For more information on inherited controls for containers see the DISA Container Hardening Process Guide.
 </rationale>
     </Rule>
-    <Rule id="xccdf_V-203660_rule_.oval" selected="true" severity="medium">
+    <Rule id="SV-203660r1_rule" selected="true" severity="medium">
       <title>The operating system must fail to a secure state if system initialization fails, shutdown fails, or aborts fail.</title>
       <description>
         <html:pre>Failure to a known safe state helps prevent systems from failing to a state that may cause loss of data or unauthorized access to system resources. Operating systems that fail suddenly and with no incorporated failure state planning may leave the system available but with a reduced security protection capability. Preserving operating system state information also facilitates system restart and return to the operational mode of the organization with less disruption to mission-essential processes. 
@@ -852,7 +852,7 @@ Together, namespaces and cgroups isolate security functions of the host operatin
 For more information on inherited controls for containers see the DISA Container Hardening Process Guide.
 </rationale>
     </Rule>
-    <Rule id="xccdf_V-203661_rule_.oval" selected="true" severity="medium">
+    <Rule id="SV-203661r1_rule" selected="true" severity="medium">
       <title>The operating system must protect the confidentiality and integrity of all information at rest.</title>
       <description>
         <html:pre>Information at rest refers to the state of information when it is located on a secondary storage device (e.g., disk drive and tape drive, when used for backups) within an operating system.
@@ -864,7 +864,7 @@ This requirement addresses protection of user-generated data, as well as operati
 For more information on inherited controls for containers see the DISA Container Hardening Process Guide.
 </rationale>
     </Rule>
-    <Rule id="xccdf_V-203662_rule_.oval" selected="true" severity="medium">
+    <Rule id="SV-203662r1_rule" selected="true" severity="medium">
       <title>The operating system must employ automated mechanisms to determine the state of system components with regard to flaw remediation using the following frequency: continuously, where Endpoint Security Solution (ESS) is used; 30 days, for any additional internal network scans not covered by ESS; and annually, for external scans by Computer Network Defense Service Provider (CNDSP).</title>
       <description>
         <html:pre>Without the use of automated mechanisms to scan for security flaws on a continuous and/or periodic basis, the operating system or other system components may remain vulnerable to the exploits presented by undetected software flaws.
@@ -876,7 +876,7 @@ To support this requirement, the operating system may have an integrated solutio
 For more information on inherited controls for containers see the DISA Container Hardening Process Guide.
 </rationale>
     </Rule>
-    <Rule id="xccdf_V-203663_rule_.oval" selected="true" severity="medium">
+    <Rule id="SV-203663r1_rule" selected="true" severity="medium">
       <title>The operating system must generate error messages that provide information necessary for corrective actions without revealing information that could be exploited by adversaries.</title>
       <description>
         <html:pre> Any operating system providing too much information in error messages risks compromising the data and security of the structure, and content of error messages needs to be carefully considered by the organization.
@@ -892,7 +892,7 @@ Once configured, logs of container actions are written to the host's audit log f
 For more information on inherited controls for containers see the DISA Container Hardening Process Guide.
 </rationale>
     </Rule>
-    <Rule id="xccdf_V-203666_rule_.oval" selected="true" severity="medium">
+    <Rule id="SV-203666r1_rule" selected="true" severity="medium">
       <title>The operating system must audit all account modifications.</title>
       <description>
         <html:pre>Once an attacker establishes access to a system, the attacker often attempts to create a persistent method of reestablishing access.  One way to accomplish this is for the attacker to modify an existing account.  Auditing account modification actions provides logging that can be used for forensic purposes. 
@@ -908,7 +908,7 @@ Once configured, logs of container actions are written to the host's audit log f
 For more information on inherited controls for containers see the DISA Container Hardening Process Guide.
 </rationale>
     </Rule>
-    <Rule id="xccdf_V-203667_rule_.oval" selected="true" severity="medium">
+    <Rule id="SV-203667r1_rule" selected="true" severity="medium">
       <title>The operating system must audit all account disabling actions.</title>
       <description>
         <html:pre>When operating system accounts are disabled, user accessibility is affected. Accounts are utilized for identifying individual users or for identifying the operating system processes themselves. In order to detect and respond to events affecting user accessibility and system processing, operating systems must audit account disabling actions and, as required, notify the appropriate individuals so they can investigate the event. Such a capability greatly reduces the risk that operating system accessibility will be negatively affected for extended periods of time and provides logging that can be used for forensic purposes.
@@ -924,7 +924,7 @@ Once configured, logs of container actions are written to the host's audit log f
 For more information on inherited controls for containers see the DISA Container Hardening Process Guide.
 </rationale>
     </Rule>
-    <Rule id="xccdf_V-203668_rule_.oval" selected="true" severity="medium">
+    <Rule id="SV-203668r1_rule" selected="true" severity="medium">
       <title>The operating system must audit all account removal actions.</title>
       <description>
         <html:pre>When operating system accounts are removed, user accessibility is affected. Accounts are utilized for identifying individual users or for identifying the operating system processes themselves. In order to detect and respond to events affecting user accessibility and system processing, operating systems must audit account removal actions and, as required, notify the appropriate individuals so they can investigate the event. Such a capability greatly reduces the risk that operating system accessibility will be negatively affected for extended periods of time and provides logging that can be used for forensic purposes.
@@ -940,7 +940,7 @@ Once configured, logs of container actions are written to the host's audit log f
 For more information on inherited controls for containers see the DISA Container Hardening Process Guide.
 </rationale>
     </Rule>
-    <Rule id="xccdf_V-203756_rule_.oval" selected="true" severity="medium">
+    <Rule id="SV-203756r1_rule" selected="true" severity="medium">
       <title>The operating system must verify correct operation of all security functions.</title>
       <description>
         <html:pre>Without verification of the security functions, security functions may not operate correctly and the failure may go unnoticed. Security function is defined as the hardware, software, and/or firmware of the information system responsible for enforcing the system security policy and supporting the isolation of code and data on which the protection is based. Security functionality includes, but is not limited to, establishing system accounts, configuring access authorizations (i.e., permissions, privileges), setting events to be audited, and setting intrusion detection parameters.
@@ -956,7 +956,7 @@ Once configured, logs of container actions are written to the host's audit log f
 For more information on inherited controls for containers see the DISA Container Hardening Process Guide.
 </rationale>
     </Rule>
-    <Rule id="xccdf_V-203757_rule_.oval" selected="true" severity="medium">
+    <Rule id="SV-203757r1_rule" selected="true" severity="medium">
       <title>The operating system must perform verification of the correct operation of security functions: upon system start-up and/or restart; upon command by a user with privileged access; and/or every 30 days.</title>
       <description>
         <html:pre>Without verification of the security functions, security functions may not operate correctly and the failure may go unnoticed. Security function is defined as the hardware, software, and/or firmware of the information system responsible for enforcing the system security policy and supporting the isolation of code and data on which the protection is based. Security functionality includes, but is not limited to, establishing system accounts, configuring access authorizations (i.e., permissions, privileges), setting events to be audited, and setting intrusion detection parameters.
@@ -974,7 +974,7 @@ Once configured, logs of container actions are written to the host's audit log f
 For more information on inherited controls for containers see the DISA Container Hardening Process Guide.
 </rationale>
     </Rule>
-    <Rule id="xccdf_V-203615_rule_.oval" selected="true" severity="medium">
+    <Rule id="SV-203615r1_rule" selected="true" severity="medium">
       <title>The operating system must use internal system clocks to generate time stamps for audit records.</title>
       <description>
         <html:pre>Without an internal clock used as the reference for the time stored on each event to provide a trusted common reference for the time, forensic analysis would be impeded. Determining the correct time a particular event occurred on a system is critical when conducting forensic analysis and investigating system events.
@@ -986,7 +986,7 @@ If the internal clock is not used, the system may not be able to provide time st
 For more information on inherited controls for containers see the DISA Container Hardening Process Guide.
 </rationale>
     </Rule>
-    <Rule id="xccdf_V-203614_rule_.oval" selected="true" severity="medium">
+    <Rule id="SV-203614r1_rule" selected="true" severity="medium">
       <title>The operating system must provide the capability to filter audit records for events of interest based upon all audit fields within audit records.</title>
       <description>
         <html:pre>The ability to specify the event criteria that are of interest provides the individuals reviewing the logs with the ability to quickly isolate and identify these events without having to review entries that are of little or no consequence to the investigation. Without this capability, forensic investigations are impeded.
@@ -1004,7 +1004,7 @@ Once configured, logs of container actions are written to the host's audit log f
 For more information on inherited controls for containers see the DISA Container Hardening Process Guide.
 </rationale>
     </Rule>
-    <Rule id="xccdf_V-203611_rule_.oval" selected="true" severity="medium">
+    <Rule id="SV-203611r1_rule" selected="true" severity="medium">
       <title>The operating system must alert the ISSO and SA (at a minimum) in the event of an audit processing failure.</title>
       <description>
         <html:pre>It is critical for the appropriate personnel to be aware if a system is at risk of failing to process audit logs as required. Without this notification, the security personnel may be unaware of an impending failure of the audit capability, and system operation may be adversely affected.
@@ -1022,7 +1022,7 @@ Once configured, logs of container actions are written to the host's audit log f
 For more information on inherited controls for containers see the DISA Container Hardening Process Guide.
 </rationale>
     </Rule>
-    <Rule id="xccdf_V-203613_rule_.oval" selected="true" severity="medium">
+    <Rule id="SV-203613r1_rule" selected="true" severity="medium">
       <title>The operating system must provide the capability to centrally review and analyze audit records from multiple components within the system.</title>
       <description>
         <html:pre>Successful incident response and auditing relies on timely, accurate system information and analysis in order to allow the organization to identify and respond to potential incidents in a proficient manner. If the operating system does not provide the ability to centrally review the operating system logs, forensic analysis is negatively impacted.
@@ -1040,7 +1040,7 @@ Once configured, logs of container actions are written to the host's audit log f
 For more information on inherited controls for containers see the DISA Container Hardening Process Guide.
 </rationale>
     </Rule>
-    <Rule id="xccdf_V-203612_rule_.oval" selected="true" severity="medium">
+    <Rule id="SV-203612r1_rule" selected="true" severity="medium">
       <title>The operating system must shut down by default upon audit failure (unless availability is an overriding concern).</title>
       <description>
         <html:pre>It is critical that when the operating system is at risk of failing to process audit logs as required, it takes action to mitigate the failure. Audit processing failures include: software/hardware errors; failures in the audit capturing mechanisms; and audit storage capacity being reached or exceeded. Responses to audit failure depend upon the nature of the failure mode.
@@ -1060,7 +1060,7 @@ Once configured, logs of container actions are written to the host's audit log f
 For more information on inherited controls for containers see the DISA Container Hardening Process Guide.
 </rationale>
     </Rule>
-    <Rule id="xccdf_V-203619_rule_.oval" selected="true" severity="medium">
+    <Rule id="SV-203619r1_rule" selected="true" severity="medium">
       <title>The operating system must provide audit record generation capability for DoD-defined auditable events for all operating system components.</title>
       <description>
         <html:pre>Without the capability to generate audit records, it would be difficult to establish, correlate, and investigate the events relating to an incident or identify those responsible for one.
@@ -1088,7 +1088,7 @@ Once configured, logs of container actions are written to the host's audit log f
 For more information on inherited controls for containers see the DISA Container Hardening Process Guide.
 </rationale>
     </Rule>
-    <Rule id="xccdf_V-203618_rule_.oval" selected="true" severity="medium">
+    <Rule id="SV-203618r1_rule" selected="true" severity="medium">
       <title>The operating system must protect audit information from unauthorized deletion.</title>
       <description>
         <html:pre>If audit information were to become compromised, then forensic analysis and discovery of the true source of potentially malicious system activity is impossible to achieve.
@@ -1106,7 +1106,7 @@ Once configured, logs of container actions are written to the host's audit log f
 For more information on inherited controls for containers see the DISA Container Hardening Process Guide.
 </rationale>
     </Rule>
-    <Rule id="xccdf_V-203673_rule_.oval" selected="true" severity="medium">
+    <Rule id="SV-203673r1_rule" selected="true" severity="medium">
       <title>The operating system must protect audit tools from unauthorized modification.</title>
       <description>
         <html:pre>Protecting audit information also includes identifying and protecting the tools used to view and manipulate log data. Therefore, protecting audit tools is necessary to prevent unauthorized operation on audit information.
@@ -1124,7 +1124,7 @@ Once configured, logs of container actions are written to the host's audit log f
 For more information on inherited controls for containers see the DISA Container Hardening Process Guide.
 </rationale>
     </Rule>
-    <Rule id="xccdf_V-203672_rule_.oval" selected="true" severity="medium">
+    <Rule id="SV-203672r1_rule" selected="true" severity="medium">
       <title>The operating system must protect audit tools from unauthorized access.</title>
       <description>
         <html:pre>Protecting audit information also includes identifying and protecting the tools used to view and manipulate log data. Therefore, protecting audit tools is necessary to prevent unauthorized operation on audit information.
@@ -1142,7 +1142,7 @@ Once configured, logs of container actions are written to the host's audit log f
 For more information on inherited controls for containers see the DISA Container Hardening Process Guide.
 </rationale>
     </Rule>
-    <Rule id="xccdf_V-203671_rule_.oval" selected="true" severity="medium">
+    <Rule id="SV-203671r1_rule" selected="true" severity="medium">
       <title>The operating system must produce audit records containing information to establish the identity of any individual or process associated with the event.</title>
       <description>
         <html:pre>Without information that establishes the identity of the subjects (i.e., users or processes acting on behalf of users) associated with the events, security personnel cannot determine responsibility for the potentially harmful event.</html:pre>
@@ -1156,7 +1156,7 @@ Once configured, logs of container actions are written to the host's audit log f
 For more information on inherited controls for containers see the DISA Container Hardening Process Guide.
 </rationale>
     </Rule>
-    <Rule id="xccdf_V-203670_rule_.oval" selected="true" severity="medium">
+    <Rule id="SV-203670r1_rule" selected="true" severity="medium">
       <title>The operating system must initiate session audits at system start-up.</title>
       <description>
         <html:pre>If auditing is enabled late in the start-up process, the actions of some start-up processes may not be audited. Some audit systems also maintain state information only available if auditing is enabled before a given process is created.</html:pre>
@@ -1170,7 +1170,7 @@ Once configured, logs of container actions are written to the host's audit log f
 For more information on inherited controls for containers see the DISA Container Hardening Process Guide.
 </rationale>
     </Rule>
-    <Rule id="xccdf_V-203677_rule_.oval" selected="true" severity="medium">
+    <Rule id="SV-203677r1_rule" selected="true" severity="medium">
       <title>In the event of a system failure, the operating system must preserve any information necessary to determine cause of failure and any information necessary to return to operations with least disruption to mission processes.</title>
       <description>
         <html:pre>Failure to a known state can address safety or security in accordance with the mission/business needs of the organization. Failure to a known secure state helps prevent a loss of confidentiality, integrity, or availability in the event of a failure of the information system or a component of the system. 
@@ -1186,7 +1186,7 @@ Once configured, logs of container actions are written to the host's audit log f
 For more information on inherited controls for containers see the DISA Container Hardening Process Guide.
 </rationale>
     </Rule>
-    <Rule id="xccdf_V-203674_rule_.oval" selected="true" severity="medium">
+    <Rule id="SV-203674r1_rule" selected="true" severity="medium">
       <title>The operating system must protect audit tools from unauthorized deletion.</title>
       <description>
         <html:pre>Protecting audit information also includes identifying and protecting the tools used to view and manipulate log data. Therefore, protecting audit tools is necessary to prevent unauthorized operation on audit information.
@@ -1204,7 +1204,7 @@ Once configured, logs of container actions are written to the host's audit log f
 For more information on inherited controls for containers see the DISA Container Hardening Process Guide.
 </rationale>
     </Rule>
-    <Rule id="xccdf_V-203758_rule_.oval" selected="true" severity="medium">
+    <Rule id="SV-203758r1_rule" selected="true" severity="medium">
       <title>The operating system must shut down the information system, restart the information system, and/or notify the system administrator when anomalies in the operation of any security functions are discovered.</title>
       <description>
         <html:pre>If anomalies are not acted upon, security functions may fail to secure the system. 
@@ -1224,7 +1224,7 @@ Once configured, logs of container actions are written to the host's audit log f
 For more information on inherited controls for containers see the DISA Container Hardening Process Guide.
 </rationale>
     </Rule>
-    <Rule id="xccdf_V-203679_rule_.oval" selected="true" severity="medium">
+    <Rule id="SV-203679r1_rule" selected="true" severity="medium">
       <title>The operating system must notify system administrators and ISSOs when accounts are modified.</title>
       <description>
         <html:pre>Once an attacker establishes access to a system, the attacker often attempts to create a persistent method of reestablishing access.  One way to accomplish this is for the attacker to modify an existing account. Notification of account modification is one method for mitigating this risk. A comprehensive account management process will ensure an audit trail which documents the modification of operating system user accounts and notifies the system administrator and ISSO of changes. Such a process greatly reduces the risk that accounts will be surreptitiously created and provides logging that can be used for forensic purposes.
@@ -1240,7 +1240,7 @@ Once configured, logs of container actions are written to the host's audit log f
 For more information on inherited controls for containers see the DISA Container Hardening Process Guide.
 </rationale>
     </Rule>
-    <Rule id="xccdf_V-203678_rule_.oval" selected="true" severity="medium">
+    <Rule id="SV-203678r1_rule" selected="true" severity="medium">
       <title>The operating system must notify system administrators and ISSOs when accounts are created.</title>
       <description>
         <html:pre>Once an attacker establishes access to a system, the attacker often attempts to create a persistent method of reestablishing access.  One way to accomplish this is for the attacker to create a new account.  Notification of account creation is one method for mitigating this risk. A comprehensive account management process will ensure an audit trail which documents the creation of operating system user accounts and notifies administrators and ISSOs that it exists. Such a process greatly reduces the risk that accounts will be surreptitiously created and provides logging that can be used for forensic purposes.
@@ -1256,7 +1256,7 @@ Once configured, logs of container actions are written to the host's audit log f
 For more information on inherited controls for containers see the DISA Container Hardening Process Guide.
 </rationale>
     </Rule>
-    <Rule id="xccdf_V-203759_rule_.oval" selected="true" severity="medium">
+    <Rule id="SV-203759r1_rule" selected="true" severity="medium">
       <title>The operating system must generate audit records when successful/unsuccessful attempts to access security objects occur.</title>
       <description>
         <html:pre>Without generating audit records that are specific to the security and mission needs of the organization, it would be difficult to establish, correlate, and investigate the events relating to an incident or identify those responsible for one.
@@ -1272,7 +1272,7 @@ Once configured, logs of container actions are written to the host's audit log f
 For more information on inherited controls for containers see the DISA Container Hardening Process Guide.
 </rationale>
     </Rule>
-    <Rule id="xccdf_V-203772_rule_.oval" selected="true" severity="medium">
+    <Rule id="SV-203772r1_rule" selected="true" severity="medium">
       <title>The operating system must generate audit records when successful/unsuccessful accesses to objects occur.</title>
       <description>
         <html:pre>Without generating audit records that are specific to the security and mission needs of the organization, it would be difficult to establish, correlate, and investigate the events relating to an incident or identify those responsible for one.
@@ -1288,7 +1288,7 @@ Once configured, logs of container actions are written to the host's audit log f
 For more information on inherited controls for containers see the DISA Container Hardening Process Guide.
 </rationale>
     </Rule>
-    <Rule id="xccdf_V-203773_rule_.oval" selected="true" severity="medium">
+    <Rule id="SV-203773r1_rule" selected="true" severity="medium">
       <title>The operating system must generate audit records for all direct access to the information system.</title>
       <description>
         <html:pre>Without generating audit records that are specific to the security and mission needs of the organization, it would be difficult to establish, correlate, and investigate the events relating to an incident or identify those responsible for one.
@@ -1304,7 +1304,7 @@ Once configured, logs of container actions are written to the host's audit log f
 For more information on inherited controls for containers see the DISA Container Hardening Process Guide.
 </rationale>
     </Rule>
-    <Rule id="xccdf_V-203770_rule_.oval" selected="true" severity="medium">
+    <Rule id="SV-203770r1_rule" selected="true" severity="medium">
       <title>The operating system must generate audit records showing starting and ending time for user access to the system.</title>
       <description>
         <html:pre>Without generating audit records that are specific to the security and mission needs of the organization, it would be difficult to establish, correlate, and investigate the events relating to an incident or identify those responsible for one.
@@ -1320,7 +1320,7 @@ Once configured, logs of container actions are written to the host's audit log f
 For more information on inherited controls for containers see the DISA Container Hardening Process Guide.
 </rationale>
     </Rule>
-    <Rule id="xccdf_V-203777_rule_.oval" selected="true" severity="medium">
+    <Rule id="SV-203777r1_rule" selected="true" severity="medium">
       <title>The operating system must, at a minimum, off-load audit data from interconnected systems in real time and off-load audit data from standalone systems weekly.</title>
       <description>
         <html:pre>Information stored in one location is vulnerable to accidental or incidental deletion or alteration.
@@ -1336,7 +1336,7 @@ Once configured, logs of container actions are written to the host's audit log f
 For more information on inherited controls for containers see the DISA Container Hardening Process Guide.
 </rationale>
     </Rule>
-    <Rule id="xccdf_V-203774_rule_.oval" selected="true" severity="medium">
+    <Rule id="SV-203774r1_rule" selected="true" severity="medium">
       <title>The operating system must generate audit records for all account creations, modifications, disabling, and termination events.</title>
       <description>
         <html:pre>Without generating audit records that are specific to the security and mission needs of the organization, it would be difficult to establish, correlate, and investigate the events relating to an incident or identify those responsible for one.
@@ -1352,7 +1352,7 @@ Once configured, logs of container actions are written to the host's audit log f
 For more information on inherited controls for containers see the DISA Container Hardening Process Guide.
 </rationale>
     </Rule>
-    <Rule id="xccdf_V-203775_rule_.oval" selected="true" severity="medium">
+    <Rule id="SV-203775r1_rule" selected="true" severity="medium">
       <title>The operating system must generate audit records for all kernel module load, unload, and restart actions, and also for all program initiations.</title>
       <description>
         <html:pre>Without generating audit records that are specific to the security and mission needs of the organization, it would be difficult to establish, correlate, and investigate the events relating to an incident or identify those responsible for one.
@@ -1368,7 +1368,7 @@ Once configured, logs of container actions are written to the host's audit log f
 For more information on inherited controls for containers see the DISA Container Hardening Process Guide.
 </rationale>
     </Rule>
-    <Rule id="xccdf_V-203647_rule_.oval" selected="true" severity="medium">
+    <Rule id="SV-203647r1_rule" selected="true" severity="medium">
       <title>The operating system must uniquely identify peripherals before establishing a connection.</title>
       <description>
         <html:pre>Without identifying devices, unidentified or unknown devices may be introduced, thereby facilitating malicious activity.
@@ -1381,7 +1381,7 @@ WiFi adapters on the hosts where they operate.  If these connections exist, they
 For more information on inherited controls for containers see the DISA Container Hardening Process Guide.
 </rationale>
     </Rule>
-    <Rule id="xccdf_V-203710_rule_.oval" selected="true" severity="medium">
+    <Rule id="SV-203710r1_rule" selected="true" severity="medium">
       <title>The operating system must not alter original content or time ordering of audit records when it provides a report generation capability.</title>
       <description>
         <html:pre>If the report generation capability alters the content or time ordering of audit records, the integrity of the audit records is compromised, and the records are no longer usable for forensic analysis.
@@ -1399,7 +1399,7 @@ Once configured, logs of container actions are written to the host's audit log f
 For more information on inherited controls for containers see the DISA Container Hardening Process Guide.
 </rationale>
     </Rule>
-    <Rule id="xccdf_V-203711_rule_.oval" selected="true" severity="medium">
+    <Rule id="SV-203711r1_rule" selected="true" severity="medium">
       <title>The operating system must, for networked systems, compare internal information system clocks at least every 24 hours with a server which is synchronized to one of the redundant United States Naval Observatory (USNO) time servers, or a time server designated for the appropriate DoD network (NIPRNet/SIPRNet), and/or the Global Positioning System (GPS).</title>
       <description>
         <html:pre>Inaccurate time stamps make it more difficult to correlate events and can lead to an inaccurate analysis. Determining the correct time a particular event occurred on a system is critical when conducting forensic analysis and investigating system events. Sources outside the configured acceptable allowance (drift) may be inaccurate.
@@ -1413,7 +1413,7 @@ Organizations should consider endpoints that may not have regular access to the 
 For more information on inherited controls for containers see the DISA Container Hardening Process Guide.
 </rationale>
     </Rule>
-    <Rule id="xccdf_V-203712_rule_.oval" selected="true" severity="medium">
+    <Rule id="SV-203712r1_rule" selected="true" severity="medium">
       <title>The operating system must synchronize internal information system clocks to the authoritative time source when the time difference is greater than one second.</title>
       <description>
         <html:pre>Inaccurate time stamps make it more difficult to correlate events and can lead to an inaccurate analysis. Determining the correct time a particular event occurred on a system is critical when conducting forensic analysis and investigating system events.
@@ -1427,7 +1427,7 @@ Organizations should also consider endpoints that may not have regular access to
 For more information on inherited controls for containers see the DISA Container Hardening Process Guide.
 </rationale>
     </Rule>
-    <Rule id="xccdf_V-203713_rule_.oval" selected="true" severity="medium">
+    <Rule id="SV-203713r1_rule" selected="true" severity="medium">
       <title>The operating system must record time stamps for audit records that meet a minimum granularity of one second for a minimum degree of precision.</title>
       <description>
         <html:pre>Without sufficient granularity of time stamps, it is not possible to adequately determine the chronological order of records.
@@ -1443,7 +1443,7 @@ Once configured, logs of container actions are written to the host's audit log f
 For more information on inherited controls for containers see the DISA Container Hardening Process Guide.
 </rationale>
     </Rule>
-    <Rule id="xccdf_V-203715_rule_.oval" selected="true" severity="medium">
+    <Rule id="SV-203715r1_rule" selected="true" severity="medium">
       <title>The operating system must enforce dual authorization for movement and/or deletion of all audit information, when such movement or deletion is not part of an authorized automatic process.</title>
       <description>
         <html:pre>An authorized user may intentionally or accidentally move or delete audit records without those specific actions being authorized.
@@ -1459,7 +1459,7 @@ Once configured, logs of container actions are written to the host's audit log f
 For more information on inherited controls for containers see the DISA Container Hardening Process Guide.
 </rationale>
     </Rule>
-    <Rule id="xccdf_V-203717_rule_.oval" selected="true" severity="medium">
+    <Rule id="SV-203717r1_rule" selected="true" severity="medium">
       <title>The operating system must notify designated personnel if baseline configurations are changed in an unauthorized manner.</title>
       <description>
         <html:pre>Unauthorized changes to the baseline configuration could make the system vulnerable to various attacks or allow unauthorized access to the operating system. Changes to operating system configurations can have unintended side effects, some of which may be relevant to security.
@@ -1475,7 +1475,7 @@ Once configured, logs of container actions are written to the host's audit log f
 For more information on inherited controls for containers see the DISA Container Hardening Process Guide.
 </rationale>
     </Rule>
-    <Rule id="xccdf_V-203719_rule_.oval" selected="true" severity="medium">
+    <Rule id="SV-203719r1_rule" selected="true" severity="medium">
       <title>The operating system must audit the enforcement actions used to restrict access associated with changes to the system.</title>
       <description>
         <html:pre>Without auditing the enforcement of access restrictions against changes to the application configuration, it will be difficult to identify attempted attacks and an audit trail will not be available for forensic investigation for after-the-fact actions.
@@ -1491,7 +1491,7 @@ Once configured, logs of container actions are written to the host's audit log f
 For more information on inherited controls for containers see the DISA Container Hardening Process Guide.
 </rationale>
     </Rule>
-    <Rule id="xccdf_V-203769_rule_.oval" selected="true" severity="medium">
+    <Rule id="SV-203769r1_rule" selected="true" severity="medium">
       <title>The audit system must be configured to audit the loading and unloading of dynamic kernel modules.</title>
       <description>
         <html:pre>Without generating audit records that are specific to the security and mission needs of the organization, it would be difficult to establish, correlate, and investigate the events relating to an incident or identify those responsible for one. 
@@ -1507,7 +1507,7 @@ Once configured, logs of container actions are written to the host's audit log f
 For more information on inherited controls for containers see the DISA Container Hardening Process Guide.
 </rationale>
     </Rule>
-    <Rule id="xccdf_V-203768_rule_.oval" selected="true" severity="medium">
+    <Rule id="SV-203768r1_rule" selected="true" severity="medium">
       <title>The operating system must generate audit records for privileged activities or other system-level access.</title>
       <description>
         <html:pre>Without generating audit records that are specific to the security and mission needs of the organization, it would be difficult to establish, correlate, and investigate the events relating to an incident or identify those responsible for one.
@@ -1523,7 +1523,7 @@ Once configured, logs of container actions are written to the host's audit log f
 For more information on inherited controls for containers see the DISA Container Hardening Process Guide.
 </rationale>
     </Rule>
-    <Rule id="xccdf_V-203765_rule_.oval" selected="true" severity="medium">
+    <Rule id="SV-203765r1_rule" selected="true" severity="medium">
       <title>The operating system must generate audit records when successful/unsuccessful attempts to delete security levels occur.</title>
       <description>
         <html:pre>Without generating audit records that are specific to the security and mission needs of the organization, it would be difficult to establish, correlate, and investigate the events relating to an incident or identify those responsible for one.
@@ -1539,7 +1539,7 @@ Once configured, logs of container actions are written to the host's audit log f
 For more information on inherited controls for containers see the DISA Container Hardening Process Guide.
 </rationale>
     </Rule>
-    <Rule id="xccdf_V-203764_rule_.oval" selected="true" severity="medium">
+    <Rule id="SV-203764r1_rule" selected="true" severity="medium">
       <title>The operating system must generate audit records when successful/unsuccessful attempts to delete privileges occur.</title>
       <description>
         <html:pre>Without generating audit records that are specific to the security and mission needs of the organization, it would be difficult to establish, correlate, and investigate the events relating to an incident or identify those responsible for one.
@@ -1555,7 +1555,7 @@ Once configured, logs of container actions are written to the host's audit log f
 For more information on inherited controls for containers see the DISA Container Hardening Process Guide.
 </rationale>
     </Rule>
-    <Rule id="xccdf_V-203767_rule_.oval" selected="true" severity="medium">
+    <Rule id="SV-203767r1_rule" selected="true" severity="medium">
       <title>The operating system must generate audit records when successful/unsuccessful logon attempts occur.</title>
       <description>
         <html:pre>Without generating audit records that are specific to the security and mission needs of the organization, it would be difficult to establish, correlate, and investigate the events relating to an incident or identify those responsible for one.
@@ -1571,7 +1571,7 @@ Once configured, logs of container actions are written to the host's audit log f
 For more information on inherited controls for containers see the DISA Container Hardening Process Guide.
 </rationale>
     </Rule>
-    <Rule id="xccdf_V-203766_rule_.oval" selected="true" severity="medium">
+    <Rule id="SV-203766r1_rule" selected="true" severity="medium">
       <title>The operating system must generate audit records when successful/unsuccessful attempts to delete security objects occur.</title>
       <description>
         <html:pre>Without generating audit records that are specific to the security and mission needs of the organization, it would be difficult to establish, correlate, and investigate the events relating to an incident or identify those responsible for one.
@@ -1587,7 +1587,7 @@ Once configured, logs of container actions are written to the host's audit log f
 For more information on inherited controls for containers see the DISA Container Hardening Process Guide.
 </rationale>
     </Rule>
-    <Rule id="xccdf_V-203761_rule_.oval" selected="true" severity="medium">
+    <Rule id="SV-203761r1_rule" selected="true" severity="medium">
       <title>The operating system must generate audit records when successful/unsuccessful attempts to modify privileges occur.</title>
       <description>
         <html:pre>Without generating audit records that are specific to the security and mission needs of the organization, it would be difficult to establish, correlate, and investigate the events relating to an incident or identify those responsible for one.
@@ -1603,7 +1603,7 @@ Once configured, logs of container actions are written to the host's audit log f
 For more information on inherited controls for containers see the DISA Container Hardening Process Guide.
 </rationale>
     </Rule>
-    <Rule id="xccdf_V-203760_rule_.oval" selected="true" severity="medium">
+    <Rule id="SV-203760r1_rule" selected="true" severity="medium">
       <title>The operating system must generate audit records when successful/unsuccessful attempts to access categories of information (e.g., classification levels) occur.</title>
       <description>
         <html:pre>Without generating audit records that are specific to the security and mission needs of the organization, it would be difficult to establish, correlate, and investigate the events relating to an incident or identify those responsible for one.
@@ -1619,7 +1619,7 @@ Once configured, logs of container actions are written to the host's audit log f
 For more information on inherited controls for containers see the DISA Container Hardening Process Guide.
 </rationale>
     </Rule>
-    <Rule id="xccdf_V-203763_rule_.oval" selected="true" severity="medium">
+    <Rule id="SV-203763r1_rule" selected="true" severity="medium">
       <title>The operating system must generate audit records when successful/unsuccessful attempts to modify categories of information (e.g., classification levels) occur.</title>
       <description>
         <html:pre>Without generating audit records that are specific to the security and mission needs of the organization, it would be difficult to establish, correlate, and investigate the events relating to an incident or identify those responsible for one.
@@ -1635,7 +1635,7 @@ Once configured, logs of container actions are written to the host's audit log f
 For more information on inherited controls for containers see the DISA Container Hardening Process Guide.
 </rationale>
     </Rule>
-    <Rule id="xccdf_V-203762_rule_.oval" selected="true" severity="medium">
+    <Rule id="SV-203762r1_rule" selected="true" severity="medium">
       <title>The operating system must generate audit records when successful/unsuccessful attempts to modify security objects occur.</title>
       <description>
         <html:pre>Without generating audit records that are specific to the security and mission needs of the organization, it would be difficult to establish, correlate, and investigate the events relating to an incident or identify those responsible for one.
@@ -1651,7 +1651,7 @@ Once configured, logs of container actions are written to the host's audit log f
 For more information on inherited controls for containers see the DISA Container Hardening Process Guide.
 </rationale>
     </Rule>
-    <Rule id="xccdf_V-203709_rule_.oval" selected="true" severity="medium">
+    <Rule id="SV-203709r1_rule" selected="true" severity="medium">
       <title>The operating system must not alter original content or time ordering of audit records when it provides an audit reduction capability.</title>
       <description>
         <html:pre>If the audit reduction capability alters the content or time ordering of audit records, the integrity of the audit records is compromised, and the records are no longer usable for forensic analysis.
@@ -1669,7 +1669,7 @@ Once configured, logs of container actions are written to the host's audit log f
 For more information on inherited controls for containers see the DISA Container Hardening Process Guide.
 </rationale>
     </Rule>
-    <Rule id="xccdf_V-203703_rule_.oval" selected="true" severity="medium">
+    <Rule id="SV-203703r1_rule" selected="true" severity="medium">
       <title>The operating system must provide an immediate real-time alert to the SA and ISSO, at a minimum, of all audit failure events requiring real-time alerts.</title>
       <description>
         <html:pre>It is critical for the appropriate personnel to be aware if a system is at risk of failing to process audit logs as required. Without a real-time alert, security personnel may be unaware of an impending failure of the audit capability and system operation may be adversely affected.
@@ -1687,7 +1687,7 @@ For more information on inherited controls for containers see the DISA Container
     </Rule>
   </Group>
   <Group id="xccdf_OpenSsl_group_.oval">
-    <Rule id="xccdf_V-203739_rule_.oval" selected="true" severity="high">
+    <Rule id="SV-203739r1_rule" selected="true" severity="high">
       <title>The operating system must implement NSA-approved cryptography to protect classified information in accordance with applicable federal laws, Executive Orders, directives, policies, regulations, and standards.</title>
       <description>
         <html:pre>Use of weak or untested encryption algorithms undermines the purposes of utilizing encryption to protect data. The operating system must implement cryptographic modules adhering to the higher standards approved by the federal government since this provides assurance they have been tested and validated.</html:pre>
@@ -1700,7 +1700,7 @@ To manually verify, ensure that fipsmodule.cnf and openssl.cnf exist in the /etc
         <check-content-ref href="../OvalDefinitions/DetectOpenSslTest.xml"/>
       </check>
     </Rule>
-    <Rule id="xccdf_V-203776_rule_.oval" selected="true" severity="high">
+    <Rule id="SV-203776r1_rule" selected="true" severity="high">
       <title>The operating system must implement NIST FIPS-validated cryptography for the following: to provision digital signatures, to generate cryptographic hashes, and to protect unclassified information requiring confidentiality and cryptographic protection in accordance with applicable federal laws, Executive Orders, directives, policies, regulations, and standards.</title>
       <description>
         <html:pre>Use of weak or untested encryption algorithms undermines the purposes of utilizing encryption to protect data. The operating system must implement cryptographic modules adhering to the higher standards approved by the federal government since this provides assurance they have been tested and validated.</html:pre>
@@ -1713,7 +1713,7 @@ To manually verify, ensure that fipsmodule.cnf and openssl.cnf exist in the /etc
         <check-content-ref href="../OvalDefinitions/DetectOpenSslTest.xml"/>
       </check>
     </Rule>
-    <Rule id="xccdf_V-203750_rule_.oval" selected="true" severity="medium">
+    <Rule id="SV-203750r1_rule" selected="true" severity="medium">
       <title>The operating system must maintain the confidentiality and integrity of information during preparation for transmission.</title>
       <description>
         <html:pre>Information can be either unintentionally or maliciously disclosed or modified during preparation for transmission, for example, during aggregation, at protocol transformation points, and during packing/unpacking. These unauthorized disclosures or modifications compromise the confidentiality or integrity of the information.
@@ -1730,7 +1730,7 @@ To manually verify, ensure that fipsmodule.cnf and openssl.cnf exist in the /etc
         <check-content-ref href="../OvalDefinitions/DetectOpenSslTest.xml"/>
       </check>
     </Rule>
-    <Rule id="xccdf_V-203751_rule_.oval" selected="true" severity="medium">
+    <Rule id="SV-203751r1_rule" selected="true" severity="medium">
       <title>The operating system must maintain the confidentiality and integrity of information during reception.</title>
       <description>
         <html:pre>Information can be either unintentionally or maliciously disclosed or modified during reception, including, for example, during aggregation, at protocol transformation points, and during packing/unpacking. These unauthorized disclosures or modifications compromise the confidentiality or integrity of the information.
@@ -1747,7 +1747,7 @@ To manually verify, ensure that fipsmodule.cnf and openssl.cnf exist in the /etc
         <check-content-ref href="../OvalDefinitions/DetectOpenSslTest.xml"/>
       </check>
     </Rule>
-    <Rule id="xccdf_V-203649_rule_.oval" selected="true" severity="medium">
+    <Rule id="SV-203649r1_rule" selected="true" severity="medium">
       <title>The operating system must use mechanisms meeting the requirements of applicable federal laws, Executive orders, directives, policies, regulations, standards, and guidance for authentication to a cryptographic module.</title>
       <description>
         <html:pre>Unapproved mechanisms that are used for authentication to the cryptographic module are not verified and therefore cannot be relied upon to provide confidentiality or integrity, and DoD data may be compromised.
@@ -1766,7 +1766,7 @@ To manually verify, ensure that fipsmodule.cnf and openssl.cnf exist in the /etc
     </Rule>
   </Group>
   <Group id="xccdf_NoRemoteAccess_group_.oval">
-    <Rule id="xccdf_V-203736_rule_.oval" selected="true" severity="high">
+    <Rule id="SV-203736r1_rule" selected="true" severity="high">
       <title>The operating system must implement cryptographic mechanisms to protect the integrity of nonlocal maintenance and diagnostic communications, when used for nonlocal maintenance sessions.</title>
       <description>
         <html:pre>Privileged access contains control and configuration information and is particularly sensitive, so additional protections are necessary. This is maintained by using cryptographic mechanisms, such as a hash function or digital signature, to protect integrity. 
@@ -1783,7 +1783,7 @@ To manually verify, Ensure none of the following remote access packages exist in
         <check-content-ref href="../OvalDefinitions/RemoteAccessServicesTest.xml"/>
       </check>
     </Rule>
-    <Rule id="xccdf_V-203737_rule_.oval" selected="true" severity="high">
+    <Rule id="SV-203737r1_rule" selected="true" severity="high">
       <title>The operating system must implement cryptographic mechanisms to protect the confidentiality of nonlocal maintenance and diagnostic communications, when used for nonlocal maintenance sessions.</title>
       <description>
         <html:pre>Privileged access contains control and configuration information and is particularly sensitive, so additional protections are necessary. This is maintained by using cryptographic mechanisms such as encryption to protect confidentiality.
@@ -1802,7 +1802,7 @@ To manually verify, Ensure none of the following remote access packages exist in
         <check-content-ref href="../OvalDefinitions/RemoteAccessServicesTest.xml"/>
       </check>
     </Rule>
-    <Rule id="xccdf_V-203653_rule_.oval" selected="true" severity="high">
+    <Rule id="SV-203653r1_rule" selected="true" severity="high">
       <title>The operating system must employ strong authenticators in the establishment of nonlocal maintenance and diagnostic sessions.</title>
       <description>
         <html:pre>If maintenance tools are used by unauthorized personnel, they may accidentally or intentionally damage or compromise the system. The act of managing systems and applications includes the ability to access sensitive application information, such as system configuration details, diagnostic information, user information, and potentially sensitive application data.
@@ -1819,7 +1819,7 @@ To manually verify, Ensure none of the following remote access packages exist in
         <check-content-ref href="../OvalDefinitions/RemoteAccessServicesTest.xml"/>
       </check>
     </Rule>
-    <Rule id="xccdf_V-203603_rule_.oval" selected="true" severity="high">
+    <Rule id="SV-203603r1_rule" selected="true" severity="high">
       <title>The operating system must implement DoD-approved encryption to protect the confidentiality of remote access sessions.</title>
       <description>
         <html:pre>Without confidentiality protection mechanisms, unauthorized individuals may gain access to sensitive information via a remote access session.
@@ -1836,7 +1836,7 @@ To manually verify, Ensure none of the following remote access packages exist in
         <check-content-ref href="../OvalDefinitions/RemoteAccessServicesTest.xml"/>
       </check>
     </Rule>
-    <Rule id="xccdf_V-203669_rule_.oval" selected="true" severity="high">
+    <Rule id="SV-203669r1_rule" selected="true" severity="high">
       <title>The operating system must implement cryptography to protect the integrity of remote access sessions.</title>
       <description>
         <html:pre>Without cryptographic integrity protections, information can be altered by unauthorized users without detection.
@@ -1853,7 +1853,7 @@ To manually verify, Ensure none of the following remote access packages exist in
         <check-content-ref href="../OvalDefinitions/RemoteAccessServicesTest.xml"/>
       </check>
     </Rule>
-    <Rule id="xccdf_V-203782_rule_.oval" selected="true" severity="high">
+    <Rule id="SV-203782r1_rule" selected="true" severity="high">
       <title>The operating system must not allow an unattended or automatic logon to the system.</title>
       <description>
         <html:pre>Failure to restrict system access to authenticated users negatively impacts operating system security.</html:pre>
@@ -1866,7 +1866,7 @@ To manually verify, Ensure none of the following remote access packages exist in
         <check-content-ref href="../OvalDefinitions/RemoteAccessServicesTest.xml"/>
       </check>
     </Rule>
-    <Rule id="xccdf_V-203597_rule_.oval" selected="true" severity="low">
+    <Rule id="SV-203597r1_rule" selected="true" severity="low">
       <title>The operating system must limit the number of concurrent sessions to ten for all accounts and/or account types.</title>
       <description>
         <html:pre>Operating system management includes the ability to control the number of users and user sessions that utilize an operating system. Limiting the number of allowed users and sessions per user is helpful in reducing the risks related to DoS attacks.
@@ -1881,7 +1881,7 @@ To manually verify, Ensure none of the following remote access packages exist in
         <check-content-ref href="../OvalDefinitions/RemoteAccessServicesTest.xml"/>
       </check>
     </Rule>
-    <Rule id="xccdf_V-203718_rule_.oval" selected="true" severity="medium">
+    <Rule id="SV-203718r1_rule" selected="true" severity="medium">
       <title>The operating system must enforce access restrictions.</title>
       <description>
         <html:pre>Failure to provide logical access restrictions associated with changes to system configuration may have significant effects on the overall security of the system.
@@ -1900,7 +1900,7 @@ To manually verify, Ensure none of the following remote access packages exist in
         <check-content-ref href="../OvalDefinitions/RemoteAccessServicesTest.xml"/>
       </check>
     </Rule>
-    <Rule id="xccdf_V-203738_rule_.oval" selected="true" severity="medium">
+    <Rule id="SV-203738r1_rule" selected="true" severity="medium">
       <title>The operating system must verify remote disconnection at the termination of nonlocal maintenance and diagnostic sessions, when used for nonlocal maintenance sessions.</title>
       <description>
         <html:pre>If the remote connection is not closed and verified as closed, the session may remain open and be exploited by an attacker; this is referred to as a zombie session. Remote connections must be disconnected and verified as disconnected when nonlocal maintenance sessions have been terminated and are no longer available for use.</html:pre>
@@ -1913,7 +1913,7 @@ To manually verify, Ensure none of the following remote access packages exist in
         <check-content-ref href="../OvalDefinitions/RemoteAccessServicesTest.xml"/>
       </check>
     </Rule>
-    <Rule id="xccdf_V-203734_rule_.oval" selected="true" severity="medium">
+    <Rule id="SV-203734r1_rule" selected="true" severity="medium">
       <title>The operating system, for PKI-based authentication, must implement a local cache of revocation data to support path discovery and validation in case of the inability to access revocation information via the network.</title>
       <description>
         <html:pre>Without configuring a local cache of revocation data, there is the potential to allow access to users who are no longer authorized (users with revoked certificates).</html:pre>
@@ -1926,7 +1926,7 @@ To manually verify, Ensure none of the following remote access packages exist in
         <check-content-ref href="../OvalDefinitions/RemoteAccessServicesTest.xml"/>
       </check>
     </Rule>
-    <Rule id="xccdf_V-203735_rule_.oval" selected="true" severity="medium">
+    <Rule id="SV-203735r1_rule" selected="true" severity="medium">
       <title>The operating system must audit all activities performed during nonlocal maintenance and diagnostic sessions.</title>
       <description>
         <html:pre>If events associated with nonlocal administrative access or diagnostic sessions are not logged, a major tool for assessing and investigating attacks would not be available.
@@ -1945,7 +1945,7 @@ To manually verify, Ensure none of the following remote access packages exist in
         <check-content-ref href="../OvalDefinitions/RemoteAccessServicesTest.xml"/>
       </check>
     </Rule>
-    <Rule id="xccdf_V-203659_rule_.oval" selected="true" severity="medium">
+    <Rule id="SV-203659r1_rule" selected="true" severity="medium">
       <title>The operating system must terminate all network connections associated with a communications session at the end of the session, or as follows: for in-band management sessions (privileged sessions), the session must be terminated after 10 minutes of inactivity; and for user sessions (non-privileged session), the session must be terminated after 15 minutes of inactivity, except to fulfill documented and validated mission requirements.</title>
       <description>
         <html:pre>Terminating an idle session within a short time period reduces the window of opportunity for unauthorized personnel to take control of a management session enabled on the console or console port that has been left unattended. In addition, quickly terminating an idle session will also free up resources committed by the managed network element. 
@@ -1960,7 +1960,7 @@ To manually verify, Ensure none of the following remote access packages exist in
         <check-content-ref href="../OvalDefinitions/RemoteAccessServicesTest.xml"/>
       </check>
     </Rule>
-    <Rule id="xccdf_V-203654_rule_.oval" selected="true" severity="medium">
+    <Rule id="SV-203654r1_rule" selected="true" severity="medium">
       <title>The operating system must terminate all sessions and network connections related to nonlocal maintenance when nonlocal maintenance is completed.</title>
       <description>
         <html:pre> If a maintenance session or connection remains open after maintenance is completed, it may be hijacked by an attacker and used to compromise or damage the system.
@@ -1977,7 +1977,7 @@ To manually verify, Ensure none of the following remote access packages exist in
         <check-content-ref href="../OvalDefinitions/RemoteAccessServicesTest.xml"/>
       </check>
     </Rule>
-    <Rule id="xccdf_V-203723_rule_.oval" selected="true" severity="medium">
+    <Rule id="SV-203723r1_rule" selected="true" severity="medium">
       <title>The operating system must require users to re-authenticate for privilege escalation.</title>
       <description>
         <html:pre>Without re-authentication, users may access resources or perform tasks for which they do not have authorization. 
@@ -1992,7 +1992,7 @@ To manually verify, Ensure none of the following remote access packages exist in
         <check-content-ref href="../OvalDefinitions/RemoteAccessServicesTest.xml"/>
       </check>
     </Rule>
-    <Rule id="xccdf_V-203727_rule_.oval" selected="true" severity="medium">
+    <Rule id="SV-203727r1_rule" selected="true" severity="medium">
       <title>The operating system must implement multifactor authentication for remote access to privileged accounts in such a way that one of the factors is provided by a device separate from the system gaining access.</title>
       <description>
         <html:pre>Using an authentication device, such as a CAC or token that is separate from the information system, ensures that even if the information system is compromised, that compromise will not affect credentials stored on the authentication device.
@@ -2015,7 +2015,7 @@ To manually verify, Ensure none of the following remote access packages exist in
         <check-content-ref href="../OvalDefinitions/RemoteAccessServicesTest.xml"/>
       </check>
     </Rule>
-    <Rule id="xccdf_V-203726_rule_.oval" selected="true" severity="medium">
+    <Rule id="SV-203726r1_rule" selected="true" severity="medium">
       <title>The operating system must require devices to re-authenticate when changing authenticators.</title>
       <description>
         <html:pre>Without re-authentication, devices may access resources or perform tasks for which they do not have authorization. 
@@ -2030,7 +2030,7 @@ To manually verify, Ensure none of the following remote access packages exist in
         <check-content-ref href="../OvalDefinitions/RemoteAccessServicesTest.xml"/>
       </check>
     </Rule>
-    <Rule id="xccdf_V-203729_rule_.oval" selected="true" severity="medium">
+    <Rule id="SV-203729r1_rule" selected="true" severity="medium">
       <title>The operating system must electronically verify Personal Identity Verification (PIV) credentials.</title>
       <description>
         <html:pre>The use of PIV credentials facilitates standardization and reduces the risk of unauthorized access.
@@ -2045,7 +2045,7 @@ To manually verify, Ensure none of the following remote access packages exist in
         <check-content-ref href="../OvalDefinitions/RemoteAccessServicesTest.xml"/>
       </check>
     </Rule>
-    <Rule id="xccdf_V-203728_rule_.oval" selected="true" severity="medium">
+    <Rule id="SV-203728r1_rule" selected="true" severity="medium">
       <title>The operating system must accept Personal Identity Verification (PIV) credentials.</title>
       <description>
         <html:pre>The use of PIV credentials facilitates standardization and reduces the risk of unauthorized access.
@@ -2060,7 +2060,7 @@ To manually verify, Ensure none of the following remote access packages exist in
         <check-content-ref href="../OvalDefinitions/RemoteAccessServicesTest.xml"/>
       </check>
     </Rule>
-    <Rule id="xccdf_V-203624_rule_.oval" selected="true" severity="medium">
+    <Rule id="SV-203624r1_rule" selected="true" severity="medium">
       <title>The operating system must map the authenticated identity to the user or group account for PKI-based authentication.</title>
       <description>
         <html:pre>Without mapping the certificate used to authenticate to the user account, the ability to determine the identity of the individual user or group will not be available for forensic analysis.</html:pre>
@@ -2073,7 +2073,7 @@ To manually verify, Ensure none of the following remote access packages exist in
         <check-content-ref href="../OvalDefinitions/RemoteAccessServicesTest.xml"/>
       </check>
     </Rule>
-    <Rule id="xccdf_V-203622_rule_.oval" selected="true" severity="medium">
+    <Rule id="SV-203622r1_rule" selected="true" severity="medium">
       <title>The operating system, for PKI-based authentication, must validate certificates by constructing a certification path (which includes status information) to an accepted trust anchor.</title>
       <description>
         <html:pre>Without path validation, an informed trust decision by the relying party cannot be made when presented with any certificate not already explicitly trusted.
@@ -2092,7 +2092,7 @@ To manually verify, Ensure none of the following remote access packages exist in
         <check-content-ref href="../OvalDefinitions/RemoteAccessServicesTest.xml"/>
       </check>
     </Rule>
-    <Rule id="xccdf_V-203623_rule_.oval" selected="true" severity="medium">
+    <Rule id="SV-203623r1_rule" selected="true" severity="medium">
       <title>The operating system, for PKI-based authentication, must enforce authorized access to the corresponding private key.</title>
       <description>
         <html:pre> If the private key is discovered, an attacker can use the key to authenticate as an authorized user and gain access to the network infrastructure.
@@ -2111,7 +2111,7 @@ To manually verify, Ensure none of the following remote access packages exist in
         <check-content-ref href="../OvalDefinitions/RemoteAccessServicesTest.xml"/>
       </check>
     </Rule>
-    <Rule id="xccdf_V-203683_rule_.oval" selected="true" severity="medium">
+    <Rule id="SV-203683r1_rule" selected="true" severity="medium">
       <title>The operating system must automatically terminate a user session after inactivity time-outs have expired or at shutdown.</title>
       <description>
         <html:pre>Automatic session termination addresses the termination of user-initiated logical sessions in contrast to the termination of network connections that are associated with communications sessions (i.e., network disconnect). A logical session (for local, network, and remote access) is initiated whenever a user (or process acting on behalf of a user) accesses an organizational information system. Such user sessions can be terminated (and thus terminate user access) without terminating network sessions.
@@ -2130,7 +2130,7 @@ To manually verify, Ensure none of the following remote access packages exist in
         <check-content-ref href="../OvalDefinitions/RemoteAccessServicesTest.xml"/>
       </check>
     </Rule>
-    <Rule id="xccdf_V-203686_rule_.oval" selected="true" severity="medium">
+    <Rule id="SV-203686r1_rule" selected="true" severity="medium">
       <title>The operating system must control remote access methods.</title>
       <description>
         <html:pre>Remote access services, such as those providing remote access to network devices and information systems, which lack automated control capabilities, increase risk and make remote user access management difficult at best.
@@ -2147,7 +2147,7 @@ To manually verify, Ensure none of the following remote access packages exist in
         <check-content-ref href="../OvalDefinitions/RemoteAccessServicesTest.xml"/>
       </check>
     </Rule>
-    <Rule id="xccdf_V-203687_rule_.oval" selected="true" severity="medium">
+    <Rule id="SV-203687r1_rule" selected="true" severity="medium">
       <title>The operating system must provide the capability to immediately disconnect or disable remote access to the operating system.</title>
       <description>
         <html:pre>Without the ability to immediately disconnect or disable remote access, an attack or other compromise taking place would not be immediately stopped.
@@ -2164,7 +2164,7 @@ To manually verify, Ensure none of the following remote access packages exist in
         <check-content-ref href="../OvalDefinitions/RemoteAccessServicesTest.xml"/>
       </check>
     </Rule>
-    <Rule id="xccdf_V-203684_rule_.oval" selected="true" severity="medium">
+    <Rule id="SV-203684r1_rule" selected="true" severity="medium">
       <title>The operating system must provide a logoff capability for user-initiated communications sessions when requiring user access authentication.</title>
       <description>
         <html:pre>If a user cannot explicitly end an operating system session, the session may remain open and be exploited by an attacker; this is referred to as a zombie session.
@@ -2179,7 +2179,7 @@ To manually verify, Ensure none of the following remote access packages exist in
         <check-content-ref href="../OvalDefinitions/RemoteAccessServicesTest.xml"/>
       </check>
     </Rule>
-    <Rule id="xccdf_V-203685_rule_.oval" selected="true" severity="medium">
+    <Rule id="SV-203685r1_rule" selected="true" severity="medium">
       <title>The operating system must display an explicit logoff message to users indicating the reliable termination of authenticated communications sessions.</title>
       <description>
         <html:pre>If a user cannot explicitly end an operating system session, the session may remain open and be exploited by an attacker; this is referred to as a zombie session. Users need to be aware of whether or not the session has been terminated.
@@ -2194,7 +2194,7 @@ To manually verify, Ensure none of the following remote access packages exist in
         <check-content-ref href="../OvalDefinitions/RemoteAccessServicesTest.xml"/>
       </check>
     </Rule>
-    <Rule id="xccdf_V-203636_rule_.oval" selected="true" severity="medium">
+    <Rule id="SV-203636r1_rule" selected="true" severity="medium">
       <title>The operating system must enforce approved authorizations for logical access to information and system resources in accordance with applicable access control policies.</title>
       <description>
         <html:pre>To mitigate the risk of unauthorized access to sensitive information by entities that have been issued certificates by DoD-approved PKIs, all DoD systems (e.g., web servers and web portals) must be properly configured to incorporate access control methods that do not rely solely on the possession of a certificate for access. Successful authentication must not automatically give an entity access to an asset or security boundary. Authorization procedures and controls must be implemented to ensure each authenticated entity also has a validated and current authorization. Authorization is the process of determining whether an entity, once authenticated, is permitted to access a specific asset. Information systems use access control policies and enforcement mechanisms to implement this requirement.
@@ -2209,7 +2209,7 @@ To manually verify, Ensure none of the following remote access packages exist in
         <check-content-ref href="../OvalDefinitions/RemoteAccessServicesTest.xml"/>
       </check>
     </Rule>
-    <Rule id="xccdf_V-203744_rule_.oval" selected="true" severity="medium">
+    <Rule id="SV-203744r1_rule" selected="true" severity="medium">
       <title>The operating system must only allow the use of DoD PKI-established certificate authorities for authentication in the establishment of protected sessions to the operating system.</title>
       <description>
         <html:pre>Untrusted Certificate Authorities (CA) can issue certificates, but they may be issued by organizations or individuals that seek to compromise DoD systems or by organizations with insufficient security controls. If the CA used for verifying the certificate is not a DoD-approved CA, trust of this CA has not been established.
@@ -2224,7 +2224,7 @@ To manually verify, Ensure none of the following remote access packages exist in
         <check-content-ref href="../OvalDefinitions/RemoteAccessServicesTest.xml"/>
       </check>
     </Rule>
-    <Rule id="xccdf_V-203698_rule_.oval" selected="true" severity="medium">
+    <Rule id="SV-203698r1_rule" selected="true" severity="medium">
       <title>The operating system must automatically lock an account until the locked account is released by an administrator when three unsuccessful logon attempts in 15 minutes occur.</title>
       <description>
         <html:pre>By limiting the number of failed logon attempts, the risk of unauthorized system access via user password guessing, otherwise known as brute-forcing, is reduced. Limits are imposed by locking the account.</html:pre>
@@ -2237,7 +2237,7 @@ To manually verify, Ensure none of the following remote access packages exist in
         <check-content-ref href="../OvalDefinitions/RemoteAccessServicesTest.xml"/>
       </check>
     </Rule>
-    <Rule id="xccdf_V-203598_rule_.oval" selected="true" severity="medium">
+    <Rule id="SV-203598r1_rule" selected="true" severity="medium">
       <title>The operating system must retain a users session lock until that user reestablishes access using established identification and authentication procedures.</title>
       <description>
         <html:pre>A session lock is a temporary action taken when a user stops work and moves away from the immediate physical vicinity of the information system but does not want to log out because of the temporary nature of the absence.
@@ -2254,7 +2254,7 @@ To manually verify, Ensure none of the following remote access packages exist in
         <check-content-ref href="../OvalDefinitions/RemoteAccessServicesTest.xml"/>
       </check>
     </Rule>
-    <Rule id="xccdf_V-203599_rule_.oval" selected="true" severity="medium">
+    <Rule id="SV-203599r1_rule" selected="true" severity="medium">
       <title>The operating system must initiate a session lock after a 15-minute period of inactivity for all connection types.</title>
       <description>
         <html:pre>A session time-out lock is a temporary action taken when a user stops work and moves away from the immediate physical vicinity of the information system but does not log out because of the temporary nature of the absence. Rather than relying on the user to manually lock their operating system session prior to vacating the vicinity, operating systems need to be able to identify when a user's session has idled and take action to initiate the session lock.
@@ -2269,7 +2269,7 @@ To manually verify, Ensure none of the following remote access packages exist in
         <check-content-ref href="../OvalDefinitions/RemoteAccessServicesTest.xml"/>
       </check>
     </Rule>
-    <Rule id="xccdf_V-203596_rule_.oval" selected="true" severity="medium">
+    <Rule id="SV-203596r1_rule" selected="true" severity="medium">
       <title>The operating system must display the Standard Mandatory DoD Notice and Consent Banner until users acknowledge the usage conditions and take explicit actions to log on for further access.</title>
       <description>
         <html:pre>The banner must be acknowledged by the user prior to allowing the user access to the operating system. This provides assurance that the user has seen the message and accepted the conditions for access. If the consent banner is not acknowledged by the user, DoD will not be in compliance with system use notifications required by law.
@@ -2284,7 +2284,7 @@ To manually verify, Ensure none of the following remote access packages exist in
         <check-content-ref href="../OvalDefinitions/RemoteAccessServicesTest.xml"/>
       </check>
     </Rule>
-    <Rule id="xccdf_V-203594_rule_.oval" selected="true" severity="medium">
+    <Rule id="SV-203594r1_rule" selected="true" severity="medium">
       <title>The operating system must enforce the limit of three consecutive invalid logon attempts by a user during a 15-minute time period.</title>
       <description>
         <html:pre>By limiting the number of failed logon attempts, the risk of unauthorized system access via user password guessing, otherwise known as brute-force attacks, is reduced. Limits are imposed by locking the account.</html:pre>
@@ -2297,7 +2297,7 @@ To manually verify, Ensure none of the following remote access packages exist in
         <check-content-ref href="../OvalDefinitions/RemoteAccessServicesTest.xml"/>
       </check>
     </Rule>
-    <Rule id="xccdf_V-203595_rule_.oval" selected="true" severity="medium">
+    <Rule id="SV-203595r1_rule" selected="true" severity="medium">
       <title>The operating system must display the Standard Mandatory DoD Notice and Consent Banner before granting local or remote access to the system.</title>
       <description>
         <html:pre>Display of a standardized and approved use notification before granting access to the operating system ensures privacy and security notification verbiage used is consistent with applicable federal laws, Executive Orders, directives, policies, regulations, standards, and guidance.
@@ -2332,7 +2332,7 @@ To manually verify, Ensure none of the following remote access packages exist in
         <check-content-ref href="../OvalDefinitions/RemoteAccessServicesTest.xml"/>
       </check>
     </Rule>
-    <Rule id="xccdf_V-203602_rule_.oval" selected="true" severity="medium">
+    <Rule id="SV-203602r1_rule" selected="true" severity="medium">
       <title>The operating system must monitor remote access methods.</title>
       <description>
         <html:pre>Remote access services, such as those providing remote access to network devices and information systems, which lack automated monitoring capabilities, increase risk and make remote user access management difficult at best.
@@ -2349,7 +2349,7 @@ To manually verify, Ensure none of the following remote access packages exist in
         <check-content-ref href="../OvalDefinitions/RemoteAccessServicesTest.xml"/>
       </check>
     </Rule>
-    <Rule id="xccdf_V-203600_rule_.oval" selected="true" severity="medium">
+    <Rule id="SV-203600r1_rule" selected="true" severity="medium">
       <title>The operating system must provide the capability for users to directly initiate a session lock for all connection types.</title>
       <description>
         <html:pre>A session lock is a temporary action taken when a user stops work and moves away from the immediate physical vicinity of the information system but does not want to log out because of the temporary nature of the absence.
@@ -2364,7 +2364,7 @@ To manually verify, Ensure none of the following remote access packages exist in
         <check-content-ref href="../OvalDefinitions/RemoteAccessServicesTest.xml"/>
       </check>
     </Rule>
-    <Rule id="xccdf_V-203601_rule_.oval" selected="true" severity="medium">
+    <Rule id="SV-203601r1_rule" selected="true" severity="medium">
       <title>The operating system must conceal, via the session lock, information previously visible on the display with a publicly viewable image.</title>
       <description>
         <html:pre>A session lock is a temporary action taken when a user stops work and moves away from the immediate physical vicinity of the information system but does not log out because of the temporary nature of the absence.
@@ -2381,7 +2381,7 @@ To manually verify, Ensure none of the following remote access packages exist in
         <check-content-ref href="../OvalDefinitions/RemoteAccessServicesTest.xml"/>
       </check>
     </Rule>
-    <Rule id="xccdf_V-203665_rule_.oval" selected="true" severity="medium">
+    <Rule id="SV-203665r1_rule" selected="true" severity="medium">
       <title>Any publicly accessible connection to the operating system must display the Standard Mandatory DoD Notice and Consent Banner before granting access to the system.</title>
       <description>
         <html:pre>Display of a standardized and approved use notification before granting access to the publicly accessible operating system ensures privacy and security notification verbiage used is consistent with applicable federal laws, Executive Orders, directives, policies, regulations, standards, and guidance.
@@ -2416,7 +2416,7 @@ To manually verify, Ensure none of the following remote access packages exist in
         <check-content-ref href="../OvalDefinitions/RemoteAccessServicesTest.xml"/>
       </check>
     </Rule>
-    <Rule id="xccdf_V-203779_rule_.oval" selected="true" severity="medium">
+    <Rule id="SV-203779r1_rule" selected="true" severity="medium">
       <title>The operating system must enforce a delay of at least 4 seconds between logon prompts following a failed logon attempt.</title>
       <description>
         <html:pre>Limiting the number of logon attempts over a certain time interval reduces the chances that an unauthorized user may gain access to an account.</html:pre>
@@ -2429,7 +2429,7 @@ To manually verify, Ensure none of the following remote access packages exist in
         <check-content-ref href="../OvalDefinitions/RemoteAccessServicesTest.xml"/>
       </check>
     </Rule>
-    <Rule id="xccdf_V-203771_rule_.oval" selected="true" severity="medium">
+    <Rule id="SV-203771r1_rule" selected="true" severity="medium">
       <title>The operating system must generate audit records when concurrent logons to the same account occur from different sources.</title>
       <description>
         <html:pre>Without generating audit records that are specific to the security and mission needs of the organization, it would be difficult to establish, correlate, and investigate the events relating to an incident or identify those responsible for one.
@@ -2444,7 +2444,7 @@ To manually verify, Ensure none of the following remote access packages exist in
         <check-content-ref href="../OvalDefinitions/RemoteAccessServicesTest.xml"/>
       </check>
     </Rule>
-    <Rule id="xccdf_V-203646_rule_.oval" selected="true" severity="medium">
+    <Rule id="SV-203646r1_rule" selected="true" severity="medium">
       <title>The operating system must implement replay-resistant authentication mechanisms for network access to non-privileged accounts.</title>
       <description>
         <html:pre>A replay attack may enable an unauthorized user to gain access to the operating system. Authentication sessions between the authenticator and the operating system validating the user credentials must not be vulnerable to a replay attack.
@@ -2463,7 +2463,7 @@ To manually verify, Ensure none of the following remote access packages exist in
         <check-content-ref href="../OvalDefinitions/RemoteAccessServicesTest.xml"/>
       </check>
     </Rule>
-    <Rule id="xccdf_V-203644_rule_.oval" selected="true" severity="medium">
+    <Rule id="SV-203644r1_rule" selected="true" severity="medium">
       <title>The operating system must require individuals to be authenticated with an individual authenticator prior to using a group authenticator.</title>
       <description>
         <html:pre>To assure individual accountability and prevent unauthorized access, organizational users must be individually identified and authenticated.
@@ -2484,7 +2484,7 @@ To manually verify, Ensure none of the following remote access packages exist in
         <check-content-ref href="../OvalDefinitions/RemoteAccessServicesTest.xml"/>
       </check>
     </Rule>
-    <Rule id="xccdf_V-203645_rule_.oval" selected="true" severity="medium">
+    <Rule id="SV-203645r1_rule" selected="true" severity="medium">
       <title>The operating system must implement replay-resistant authentication mechanisms for network access to privileged accounts.</title>
       <description>
         <html:pre>A replay attack may enable an unauthorized user to gain access to the operating system. Authentication sessions between the authenticator and the operating system validating the user credentials must not be vulnerable to a replay attack.
@@ -2503,7 +2503,7 @@ To manually verify, Ensure none of the following remote access packages exist in
         <check-content-ref href="../OvalDefinitions/RemoteAccessServicesTest.xml"/>
       </check>
     </Rule>
-    <Rule id="xccdf_V-203642_rule_.oval" selected="true" severity="medium">
+    <Rule id="SV-203642r1_rule" selected="true" severity="medium">
       <title>The operating system must use multifactor authentication for local access to privileged accounts.</title>
       <description>
         <html:pre>To assure accountability and prevent unauthenticated access, privileged users must utilize multifactor authentication to prevent potential misuse and compromise of the system.
@@ -2529,7 +2529,7 @@ To manually verify, Ensure none of the following remote access packages exist in
         <check-content-ref href="../OvalDefinitions/RemoteAccessServicesTest.xml"/>
       </check>
     </Rule>
-    <Rule id="xccdf_V-203643_rule_.oval" selected="true" severity="medium">
+    <Rule id="SV-203643r1_rule" selected="true" severity="medium">
       <title>The operating system must use multifactor authentication for local access to non-privileged accounts.</title>
       <description>
         <html:pre>To assure accountability, prevent unauthenticated access, and prevent misuse of the system, non-privileged users must utilize multifactor authentication for local access.
@@ -2555,7 +2555,7 @@ To manually verify, Ensure none of the following remote access packages exist in
         <check-content-ref href="../OvalDefinitions/RemoteAccessServicesTest.xml"/>
       </check>
     </Rule>
-    <Rule id="xccdf_V-203640_rule_.oval" selected="true" severity="medium">
+    <Rule id="SV-203640r1_rule" selected="true" severity="medium">
       <title>The operating system must use multifactor authentication for network access to privileged accounts.</title>
       <description>
         <html:pre>Without the use of multifactor authentication, the ease of access to privileged functions is greatly increased.
@@ -2581,7 +2581,7 @@ To manually verify, Ensure none of the following remote access packages exist in
         <check-content-ref href="../OvalDefinitions/RemoteAccessServicesTest.xml"/>
       </check>
     </Rule>
-    <Rule id="xccdf_V-203641_rule_.oval" selected="true" severity="medium">
+    <Rule id="SV-203641r1_rule" selected="true" severity="medium">
       <title>The operating system must use multifactor authentication for network access to non-privileged accounts.</title>
       <description>
         <html:pre>To assure accountability and prevent unauthenticated access, non-privileged users must utilize multifactor authentication to prevent potential misuse and compromise of the system.
@@ -2609,7 +2609,7 @@ To manually verify, Ensure none of the following remote access packages exist in
     </Rule>
   </Group>
   <Group id="xccdf_PackageSignatureCheck_group_.oval">
-    <Rule id="xccdf_V-203720_rule_.oval" selected="true" severity="high">
+    <Rule id="SV-203720r1_rule" selected="true" severity="high">
       <title>The operating system must prevent the installation of patches, service packs, device drivers, or operating system components without verification they have been digitally signed using a certificate that is recognized and approved by the organization.</title>
       <description>
         <html:pre>Changes to any software components can have significant effects on the overall security of the operating system. This requirement ensures the software has not been tampered with and that it has been provided by a trusted vendor.
@@ -2628,7 +2628,7 @@ To manually verify, ensure all repositories in /etc/apk/repositories/ begin with
     </Rule>
   </Group>
   <Group id="xccdf_NoPasswords_group_.oval">
-    <Rule id="xccdf_V-203629_rule_.oval" selected="true" severity="high">
+    <Rule id="SV-203629r1_rule" selected="true" severity="high">
       <title>The operating system must store only encrypted representations of passwords.</title>
       <description>
         <html:pre>Passwords need to be protected at all times, and encryption is the standard method for protecting passwords. If passwords are not encrypted, they can be plainly read (i.e., clear text) and easily compromised.</html:pre>
@@ -2641,7 +2641,7 @@ To manually verify, run command 'cat /etc/shadow and verify no password fields s
         <check-content-ref href="../OvalDefinitions/UserPasswordConfiguredTest.xml"/>
       </check>
     </Rule>
-    <Rule id="xccdf_V-203630_rule_.oval" selected="true" severity="high">
+    <Rule id="SV-203630r1_rule" selected="true" severity="high">
       <title>The operating system must transmit only encrypted representations of passwords.</title>
       <description>
         <html:pre>Passwords need to be protected at all times, and encryption is the standard method for protecting passwords. If passwords are not encrypted, they can be plainly read (i.e., clear text) and easily compromised.</html:pre>
@@ -2654,7 +2654,7 @@ To manually verify, run command 'cat /etc/shadow and verify no password fields s
         <check-content-ref href="../OvalDefinitions/UserPasswordConfiguredTest.xml"/>
       </check>
     </Rule>
-    <Rule id="xccdf_V-203732_rule_.oval" selected="true" severity="medium">
+    <Rule id="SV-203732r1_rule" selected="true" severity="medium">
       <title>The operating system must allow the use of a temporary password for system logons with an immediate change to a permanent password.</title>
       <description>
         <html:pre>Without providing this capability, an account may be created without a password. Non-repudiation cannot be guaranteed once an account is created if a user is not forced to change the temporary password upon initial logon.
@@ -2669,7 +2669,7 @@ To manually verify, run command 'cat /etc/shadow and verify no password fields s
         <check-content-ref href="../OvalDefinitions/UserPasswordConfiguredTest.xml"/>
       </check>
     </Rule>
-    <Rule id="xccdf_V-203733_rule_.oval" selected="true" severity="medium">
+    <Rule id="SV-203733r1_rule" selected="true" severity="medium">
       <title>The operating system must prohibit the use of cached authenticators after one day.</title>
       <description>
         <html:pre>If cached authentication information is out-of-date, the validity of the authentication information may be questionable.</html:pre>
@@ -2682,7 +2682,7 @@ To manually verify, run command 'cat /etc/shadow and verify no password fields s
         <check-content-ref href="../OvalDefinitions/UserPasswordConfiguredTest.xml"/>
       </check>
     </Rule>
-    <Rule id="xccdf_V-203628_rule_.oval" selected="true" severity="medium">
+    <Rule id="SV-203628r1_rule" selected="true" severity="medium">
       <title>The operating system must require the change of at least 50% of the total number of characters when passwords are changed.</title>
       <description>
         <html:pre> If the operating system allows the user to consecutively reuse extensive portions of passwords, this increases the chances of password compromise by increasing the window of opportunity for attempts at guessing and brute-force attacks.
@@ -2699,7 +2699,7 @@ To manually verify, run command 'cat /etc/shadow and verify no password fields s
         <check-content-ref href="../OvalDefinitions/UserPasswordConfiguredTest.xml"/>
       </check>
     </Rule>
-    <Rule id="xccdf_V-203625_rule_.oval" selected="true" severity="medium">
+    <Rule id="SV-203625r1_rule" selected="true" severity="medium">
       <title>The operating system must enforce password complexity by requiring that at least one upper-case character be used.</title>
       <description>
         <html:pre>Use of a complex password helps to increase the time and resources required to compromise the password. Password complexity, or strength, is a measure of the effectiveness of a password in resisting attempts at guessing and brute-force attacks.
@@ -2714,7 +2714,7 @@ To manually verify, run command 'cat /etc/shadow and verify no password fields s
         <check-content-ref href="../OvalDefinitions/UserPasswordConfiguredTest.xml"/>
       </check>
     </Rule>
-    <Rule id="xccdf_V-203626_rule_.oval" selected="true" severity="medium">
+    <Rule id="SV-203626r1_rule" selected="true" severity="medium">
       <title>The operating system must enforce password complexity by requiring that at least one lower-case character be used.</title>
       <description>
         <html:pre>Use of a complex password helps to increase the time and resources required to compromise the password. Password complexity, or strength, is a measure of the effectiveness of a password in resisting attempts at guessing and brute-force attacks.
@@ -2729,7 +2729,7 @@ To manually verify, run command 'cat /etc/shadow and verify no password fields s
         <check-content-ref href="../OvalDefinitions/UserPasswordConfiguredTest.xml"/>
       </check>
     </Rule>
-    <Rule id="xccdf_V-203627_rule_.oval" selected="true" severity="medium">
+    <Rule id="SV-203627r1_rule" selected="true" severity="medium">
       <title>The operating system must enforce password complexity by requiring that at least one numeric character be used.</title>
       <description>
         <html:pre>Use of a complex password helps to increase the time and resources required to compromise the password. Password complexity, or strength, is a measure of the effectiveness of a password in resisting attempts at guessing and brute-force attacks.
@@ -2744,7 +2744,7 @@ To manually verify, run command 'cat /etc/shadow and verify no password fields s
         <check-content-ref href="../OvalDefinitions/UserPasswordConfiguredTest.xml"/>
       </check>
     </Rule>
-    <Rule id="xccdf_V-203635_rule_.oval" selected="true" severity="medium">
+    <Rule id="SV-203635r1_rule" selected="true" severity="medium">
       <title>The operating system must obscure feedback of authentication information during the authentication process to protect the information from possible exploitation/use by unauthorized individuals.</title>
       <description>
         <html:pre>To prevent the compromise of authentication information, such as passwords during the authentication process, the feedback from the operating system shall not provide any information allowing an unauthorized user to compromise the authentication mechanism.
@@ -2761,7 +2761,7 @@ To manually verify, run command 'cat /etc/shadow and verify no password fields s
         <check-content-ref href="../OvalDefinitions/UserPasswordConfiguredTest.xml"/>
       </check>
     </Rule>
-    <Rule id="xccdf_V-203634_rule_.oval" selected="true" severity="medium">
+    <Rule id="SV-203634r1_rule" selected="true" severity="medium">
       <title>The operating system must enforce a minimum 15-character password length.</title>
       <description>
         <html:pre>The shorter the password, the lower the number of possible combinations that need to be tested before the password is compromised.
@@ -2776,7 +2776,7 @@ To manually verify, run command 'cat /etc/shadow and verify no password fields s
         <check-content-ref href="../OvalDefinitions/UserPasswordConfiguredTest.xml"/>
       </check>
     </Rule>
-    <Rule id="xccdf_V-203633_rule_.oval" selected="true" severity="medium">
+    <Rule id="SV-203633r1_rule" selected="true" severity="medium">
       <title>The operating system must prohibit password reuse for a minimum of five generations.</title>
       <description>
         <html:pre>Password complexity, or strength, is a measure of the effectiveness of a password in resisting attempts at guessing and brute-force attacks. If the information system or application allows the user to consecutively reuse their password when that password has exceeded its defined lifetime, the end result is a password that is not changed as per policy requirements.</html:pre>
@@ -2789,7 +2789,7 @@ To manually verify, run command 'cat /etc/shadow and verify no password fields s
         <check-content-ref href="../OvalDefinitions/UserPasswordConfiguredTest.xml"/>
       </check>
     </Rule>
-    <Rule id="xccdf_V-203632_rule_.oval" selected="true" severity="medium">
+    <Rule id="SV-203632r1_rule" selected="true" severity="medium">
       <title>Operating systems must enforce a 60-day maximum password lifetime restriction.</title>
       <description>
         <html:pre>Any password, no matter how complex, can eventually be cracked. Therefore, passwords need to be changed periodically. If the operating system does not limit the lifetime of passwords and force users to change their passwords, there is the risk that the operating system passwords could be compromised.</html:pre>
@@ -2802,7 +2802,7 @@ To manually verify, run command 'cat /etc/shadow and verify no password fields s
         <check-content-ref href="../OvalDefinitions/UserPasswordConfiguredTest.xml"/>
       </check>
     </Rule>
-    <Rule id="xccdf_V-203631_rule_.oval" selected="true" severity="medium">
+    <Rule id="SV-203631r1_rule" selected="true" severity="medium">
       <title>Operating systems must enforce 24 hours/1 day as the minimum password lifetime.</title>
       <description>
         <html:pre>Enforcing a minimum password lifetime helps to prevent repeated password changes to defeat the password reuse or history enforcement requirement. If users are allowed to immediately and continually change their password, then the password could be repeatedly changed in a short period of time to defeat the organization's policy regarding password reuse.</html:pre>
@@ -2815,7 +2815,7 @@ To manually verify, run command 'cat /etc/shadow and verify no password fields s
         <check-content-ref href="../OvalDefinitions/UserPasswordConfiguredTest.xml"/>
       </check>
     </Rule>
-    <Rule id="xccdf_V-203676_rule_.oval" selected="true" severity="medium">
+    <Rule id="SV-203676r1_rule" selected="true" severity="medium">
       <title>The operating system must enforce password complexity by requiring that at least one special character be used.</title>
       <description>
         <html:pre>Use of a complex password helps to increase the time and resources required to compromise the password. Password complexity or strength is a measure of the effectiveness of a password in resisting attempts at guessing and brute-force attacks.
@@ -2832,7 +2832,7 @@ To manually verify, run command 'cat /etc/shadow and verify no password fields s
         <check-content-ref href="../OvalDefinitions/UserPasswordConfiguredTest.xml"/>
       </check>
     </Rule>
-    <Rule id="xccdf_V-203778_rule_.oval" selected="true" severity="medium">
+    <Rule id="SV-203778r1_rule" selected="true" severity="medium">
       <title>The operating system must prevent the use of dictionary words for passwords.</title>
       <description>
         <html:pre>If the operating system allows the user to select passwords based on dictionary words, then this increases the chances of password compromise by increasing the opportunity for successful guesses and brute-force attacks.</html:pre>
@@ -2847,7 +2847,7 @@ To manually verify, run command 'cat /etc/shadow and verify no password fields s
     </Rule>
   </Group>
   <Group id="xccdf_NoUsers_group_.oval">
-    <Rule id="xccdf_V-203695_rule_.oval" selected="true" severity="high">
+    <Rule id="SV-203695r1_rule" selected="true" severity="high">
       <title>The operating system must prevent nonprivileged users from executing privileged functions to include disabling, circumventing, or altering implemented security safeguards/countermeasures.</title>
       <description>
         <html:pre>Preventing non-privileged users from executing privileged functions mitigates the risk that unauthorized individuals or processes may gain unnecessary access to information or privileges.
@@ -2862,7 +2862,7 @@ To manually verify, run command 'cat /etc/shadow and verify that no additional u
         <check-content-ref href="../OvalDefinitions/NoUsersCheck.xml"/>
       </check>
     </Rule>
-    <Rule id="xccdf_V-203781_rule_.oval" selected="true" severity="medium">
+    <Rule id="SV-203781r1_rule" selected="true" severity="medium">
       <title>The operating system must define default permissions for all authenticated users in such a way that the user can only read and modify their own files.</title>
       <description>
         <html:pre>Setting the most restrictive default permissions ensures that when new accounts are created they do not have unnecessary access.</html:pre>
@@ -2875,7 +2875,7 @@ To manually verify, run command 'cat /etc/shadow and verify that no additional u
         <check-content-ref href="../OvalDefinitions/NoUsersCheck.xml"/>
       </check>
     </Rule>
-    <Rule id="xccdf_V-203650_rule_.oval" selected="true" severity="medium">
+    <Rule id="SV-203650r1_rule" selected="true" severity="medium">
       <title>The operating system must uniquely identify and must authenticate non-organizational users (or processes acting on behalf of non-organizational users).</title>
       <description>
         <html:pre>Lack of authentication and identification enables non-organizational users to gain access to the application or possibly other information systems and provides an opportunity for intruders to compromise resources within the application or information system.
@@ -2892,7 +2892,7 @@ To manually verify, run command 'cat /etc/shadow and verify that no additional u
         <check-content-ref href="../OvalDefinitions/NoUsersCheck.xml"/>
       </check>
     </Rule>
-    <Rule id="xccdf_V-203652_rule_.oval" selected="true" severity="medium">
+    <Rule id="SV-203652r1_rule" selected="true" severity="medium">
       <title>The information system must automatically remove or disable emergency accounts after the crisis is resolved or 72 hours.</title>
       <description>
         <html:pre>Emergency accounts are privileged accounts that are established in response to crisis situations where the need for rapid account activation is required. Therefore, emergency account activation may bypass normal account authorization processes. If these accounts are automatically disabled, system maintenance during emergencies may not be possible, thus adversely affecting system availability. 
@@ -2909,7 +2909,7 @@ To manually verify, run command 'cat /etc/shadow and verify that no additional u
         <check-content-ref href="../OvalDefinitions/NoUsersCheck.xml"/>
       </check>
     </Rule>
-    <Rule id="xccdf_V-203655_rule_.oval" selected="true" severity="medium">
+    <Rule id="SV-203655r1_rule" selected="true" severity="medium">
       <title>The operating system must separate user functionality (including user interface services) from operating system management functionality.</title>
       <description>
         <html:pre>Operating system management functionality includes functions necessary for administration and requires privileged user access. Allowing non-privileged users to access operating system management functionality capabilities increases the risk that non-privileged users may obtain elevated privileges.
@@ -2928,7 +2928,7 @@ To manually verify, run command 'cat /etc/shadow and verify that no additional u
         <check-content-ref href="../OvalDefinitions/NoUsersCheck.xml"/>
       </check>
     </Rule>
-    <Rule id="xccdf_V-203725_rule_.oval" selected="true" severity="medium">
+    <Rule id="SV-203725r1_rule" selected="true" severity="medium">
       <title>The operating system must require users to re-authenticate when changing authenticators.</title>
       <description>
         <html:pre>Without re-authentication, users may access resources or perform tasks for which they do not have authorization. 
@@ -2943,7 +2943,7 @@ To manually verify, run command 'cat /etc/shadow and verify that no additional u
         <check-content-ref href="../OvalDefinitions/NoUsersCheck.xml"/>
       </check>
     </Rule>
-    <Rule id="xccdf_V-203724_rule_.oval" selected="true" severity="medium">
+    <Rule id="SV-203724r1_rule" selected="true" severity="medium">
       <title>The operating system must require users to re-authenticate when changing roles.</title>
       <description>
         <html:pre>Without re-authentication, users may access resources or perform tasks for which they do not have authorization. 
@@ -2958,7 +2958,7 @@ To manually verify, run command 'cat /etc/shadow and verify that no additional u
         <check-content-ref href="../OvalDefinitions/NoUsersCheck.xml"/>
       </check>
     </Rule>
-    <Rule id="xccdf_V-203680_rule_.oval" selected="true" severity="medium">
+    <Rule id="SV-203680r1_rule" selected="true" severity="medium">
       <title>The operating system must notify system administrators and ISSOs when accounts are disabled. </title>
       <description>
         <html:pre>When operating system accounts are disabled, user accessibility is affected. Accounts are utilized for identifying individual operating system users or for identifying the operating system processes themselves.  Sending notification of account disabling events to the system administrator and ISSO is one method for mitigating this risk. Such a capability greatly reduces the risk that operating system accessibility will be negatively affected for extended periods of time and also provides logging that can be used for forensic purposes. 
@@ -2973,7 +2973,7 @@ To manually verify, run command 'cat /etc/shadow and verify that no additional u
         <check-content-ref href="../OvalDefinitions/NoUsersCheck.xml"/>
       </check>
     </Rule>
-    <Rule id="xccdf_V-203681_rule_.oval" selected="true" severity="medium">
+    <Rule id="SV-203681r1_rule" selected="true" severity="medium">
       <title>The operating system must notify system administrators and ISSOs when accounts are removed.</title>
       <description>
         <html:pre>When operating system accounts are removed, user accessibility is affected. Accounts are utilized for identifying individual operating system users or for identifying the operating system processes themselves. Sending notification of account removal events to the system administrator and ISSO is one method for mitigating this risk. Such a capability greatly reduces the risk that operating system accessibility will be negatively affected for extended periods of time and also provides logging that can be used for forensic purposes.
@@ -2988,7 +2988,7 @@ To manually verify, run command 'cat /etc/shadow and verify that no additional u
         <check-content-ref href="../OvalDefinitions/NoUsersCheck.xml"/>
       </check>
     </Rule>
-    <Rule id="xccdf_V-203639_rule_.oval" selected="true" severity="medium">
+    <Rule id="SV-203639r1_rule" selected="true" severity="medium">
       <title>The operating system must uniquely identify and must authenticate organizational users (or processes acting on behalf of organizational users).</title>
       <description>
         <html:pre>To assure accountability and prevent unauthenticated access, organizational users must be identified and authenticated to prevent potential misuse and compromise of the system.
@@ -3007,7 +3007,7 @@ To manually verify, run command 'cat /etc/shadow and verify that no additional u
         <check-content-ref href="../OvalDefinitions/NoUsersCheck.xml"/>
       </check>
     </Rule>
-    <Rule id="xccdf_V-203696_rule_.oval" selected="true" severity="medium">
+    <Rule id="SV-203696r1_rule" selected="true" severity="medium">
       <title>The operating system must prevent all software from executing at higher privilege levels than users executing the software.</title>
       <description>
         <html:pre>In certain situations, software applications/programs need to execute with elevated privileges to perform required functions. However, if the privileges required for execution are at a higher level than the privileges assigned to organizational users invoking such applications/programs, those users are indirectly provided with greater privileges than assigned by the organizations.
@@ -3022,7 +3022,7 @@ To manually verify, run command 'cat /etc/shadow and verify that no additional u
         <check-content-ref href="../OvalDefinitions/NoUsersCheck.xml"/>
       </check>
     </Rule>
-    <Rule id="xccdf_V-203692_rule_.oval" selected="true" severity="medium">
+    <Rule id="SV-203692r1_rule" selected="true" severity="medium">
       <title>The operating system must allow operating system admins to pass information to any other operating system admin or user.</title>
       <description>
         <html:pre>Discretionary Access Control (DAC) is based on the notion that individual users are &quot;owners&quot; of objects and therefore have discretion over who should be authorized to access the object and in which mode (e.g., read or write). Ownership is usually acquired as a consequence of creating the object or via specified ownership assignment. DAC allows the owner to determine who will have access to objects they control. An example of DAC includes user-controlled file permissions.
@@ -3037,7 +3037,7 @@ To manually verify, run command 'cat /etc/shadow and verify that no additional u
         <check-content-ref href="../OvalDefinitions/NoUsersCheck.xml"/>
       </check>
     </Rule>
-    <Rule id="xccdf_V-203592_rule_.oval" selected="true" severity="medium">
+    <Rule id="SV-203592r1_rule" selected="true" severity="medium">
       <title>The operating system must automatically remove or disable temporary user accounts after 72 hours.</title>
       <description>
         <html:pre>If temporary user accounts remain active when no longer needed or for an excessive period, these accounts may be used to gain unauthorized access. To mitigate this risk, automated termination of all temporary accounts must be set upon account creation.
@@ -3056,7 +3056,7 @@ To manually verify, run command 'cat /etc/shadow and verify that no additional u
         <check-content-ref href="../OvalDefinitions/NoUsersCheck.xml"/>
       </check>
     </Rule>
-    <Rule id="xccdf_V-203591_rule_.oval" selected="true" severity="medium">
+    <Rule id="SV-203591r1_rule" selected="true" severity="medium">
       <title>The operating system must provide automated mechanisms for supporting account management functions.</title>
       <description>
         <html:pre>Enterprise environments make account management challenging and complex. A manual process for account management functions adds the risk of a potential oversight or other errors.
@@ -3075,7 +3075,7 @@ To manually verify, run command 'cat /etc/shadow and verify that no additional u
         <check-content-ref href="../OvalDefinitions/NoUsersCheck.xml"/>
       </check>
     </Rule>
-    <Rule id="xccdf_V-203783_rule_.oval" selected="true" severity="medium">
+    <Rule id="SV-203783r1_rule" selected="true" severity="medium">
       <title>The operating system must limit the ability of non-privileged users to grant other users direct access to the contents of their home directories/folders.</title>
       <description>
         <html:pre>Users' home directories/folders may contain information of a sensitive nature. Non-privileged users should coordinate any sharing of information with an SA through shared resources.</html:pre>
@@ -3088,7 +3088,7 @@ To manually verify, run command 'cat /etc/shadow and verify that no additional u
         <check-content-ref href="../OvalDefinitions/NoUsersCheck.xml"/>
       </check>
     </Rule>
-    <Rule id="xccdf_V-203610_rule_.oval" selected="true" severity="medium">
+    <Rule id="SV-203610r1_rule" selected="true" severity="medium">
       <title>The operating system must produce audit records containing the individual identities of group account users.</title>
       <description>
         <html:pre>Reconstruction of harmful events or forensic analysis is not possible if audit records do not contain enough information.
@@ -3103,7 +3103,7 @@ To manually verify, run command 'cat /etc/shadow and verify that no additional u
         <check-content-ref href="../OvalDefinitions/NoUsersCheck.xml"/>
       </check>
     </Rule>
-    <Rule id="xccdf_V-203648_rule_.oval" selected="true" severity="medium">
+    <Rule id="SV-203648r1_rule" selected="true" severity="medium">
       <title>The operating system must disable account identifiers (individuals, groups, roles, and devices) after 35 days of inactivity.</title>
       <description>
         <html:pre>Inactive identifiers pose a risk to systems and applications because attackers may exploit an inactive identifier and potentially obtain undetected access to the system. Owners of inactive accounts will not notice if unauthorized access to their user account has been obtained.
@@ -3120,7 +3120,7 @@ To manually verify, run command 'cat /etc/shadow and verify that no additional u
     </Rule>
   </Group>
   <Group id="xccdf_ASLR_group_.oval">
-    <Rule id="xccdf_V-203754_rule_.oval" selected="true" severity="medium">
+    <Rule id="SV-203754r1_rule" selected="true" severity="medium">
       <title>The operating system must implement address space layout randomization to protect its memory from unauthorized code execution.</title>
       <description>
         <html:pre>Some adversaries launch attacks with the intent of executing code in non-executable regions of memory or in memory locations that are prohibited. Security safeguards employed to protect memory include, for example, data execution prevention and address space layout randomization. Data execution prevention safeguards can either be hardware-enforced or software-enforced with hardware providing the greater strength of mechanism.
@@ -3135,7 +3135,7 @@ Examples of attacks are buffer overflow attacks.</html:pre>
         <check-content-ref href="../SupportingScripts/AslrCheck.sh"/>
       </check>
     </Rule>
-    <Rule id="xccdf_V-203753_rule_.oval" selected="true" severity="medium">
+    <Rule id="SV-203753r1_rule" selected="true" severity="medium">
       <title>The operating system must implement non-executable data to protect its memory from unauthorized code execution.</title>
       <description>
         <html:pre>Some adversaries launch attacks with the intent of executing code in non-executable regions of memory or in memory locations that are prohibited. Security safeguards employed to protect memory include, for example, data execution prevention and address space layout randomization. Data execution prevention safeguards can either be hardware-enforced or software-enforced with hardware providing the greater strength of mechanism.
@@ -3152,7 +3152,7 @@ Examples of attacks are buffer overflow attacks.</html:pre>
     </Rule>
   </Group>
   <Group id="xccdf_VarLog_group_.oval">
-    <Rule id="xccdf_V-203664_rule_.oval" selected="true" severity="medium">
+    <Rule id="SV-203664r1_rule" selected="true" severity="medium">
       <title>The operating system must reveal error messages only to authorized users.</title>
       <description>
         <html:pre>Only authorized personnel should be aware of errors and the details of the errors. Error messages are an indicator of an organization's operational state or can identify the operating system or platform. Additionally, Personally Identifiable Information (PII) and operational information must not be revealed through error messages to unauthorized personnel or their designated representatives.
@@ -3167,7 +3167,7 @@ To manually verify, ensure the directory /var/log has both owner and group value
         <check-content-ref href="../OvalDefinitions/VarLogPermissionsTest.xml"/>
       </check>
     </Rule>
-    <Rule id="xccdf_V-203617_rule_.oval" selected="true" severity="medium">
+    <Rule id="SV-203617r1_rule" selected="true" severity="medium">
       <title>The operating system must protect audit information from unauthorized modification.</title>
       <description>
         <html:pre>If audit information were to become compromised, then forensic analysis and discovery of the true source of potentially malicious system activity is impossible to achieve.
@@ -3184,7 +3184,7 @@ To manually verify, ensure the directory /var/log has both owner and group value
         <check-content-ref href="../OvalDefinitions/VarLogPermissionsTest.xml"/>
       </check>
     </Rule>
-    <Rule id="xccdf_V-203616_rule_.oval" selected="true" severity="medium">
+    <Rule id="SV-203616r1_rule" selected="true" severity="medium">
       <title>The operating system must protect audit information from unauthorized read access.</title>
       <description>
         <html:pre>Unauthorized disclosure of audit records can reveal system and configuration data to attackers, thus compromising its confidentiality.
@@ -3201,7 +3201,7 @@ To manually verify, ensure the directory /var/log has both owner and group value
     </Rule>
   </Group>
   <Group id="xccdf_LibraryPermissions_group_.oval">
-    <Rule id="xccdf_V-203675_rule_.oval" selected="true" severity="medium">
+    <Rule id="SV-203675r1_rule" selected="true" severity="medium">
       <title>The operating system must limit privileges to change software resident within software libraries.</title>
       <description>
         <html:pre> If the operating system were to allow any user to make changes to software libraries, then those changes might be implemented without undergoing the appropriate testing and approvals that are part of a robust change management process.
@@ -3216,7 +3216,7 @@ To manually verify, Ensure all directories and files in the /usr/lib folder have
         <check-content-ref href="../OvalDefinitions/LibraryPermissionsTest.xml"/>
       </check>
     </Rule>
-    <Rule id="xccdf_V-203716_rule_.oval" selected="true" severity="medium">
+    <Rule id="SV-203716r1_rule" selected="true" severity="medium">
       <title>The operating system must prohibit user installation of system software without explicit privileged status.</title>
       <description>
         <html:pre>Allowing regular users to install software, without explicit privileges, creates the risk that untested or potentially malicious software will be installed on the system. Explicit privileges (escalated or administrative privileges) provide the regular user with explicit capabilities and control that exceeds the rights of a regular user.
