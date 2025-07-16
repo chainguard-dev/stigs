@@ -6,6 +6,19 @@
   <notice id="legal">Copyright (c) 2023, Your Organization. All rights reserved.</notice>
   <reference href="http://yourorganization.com/security-policies">Security Policy Reference</reference>
   <version>1.0</version>
+  <metadata xmlns:dc="http://purl.org/dc/elements/1.1/">
+    <dc:creator>Chainguard</dc:creator>
+    <dc:publisher>Chainguard</dc:publisher>
+    <dc:contributor>OpenSCAP</dc:contributor>
+    <dc:source>General Purpose Operating System (GPOS) Security Requirements Guide</dc:source>
+    <dc:title>Chainguard GPOS OVAL Security Checks</dc:title>
+    <dc:description>OVAL-based security checks for Chainguard GPOS compliance validation.</dc:description>
+    <dc:type>STIG</dc:type>
+    <dc:format>XCCDF</dc:format>
+    <dc:identifier>Chainguard-GPOS-OVAL</dc:identifier>
+    <dc:language>en-US</dc:language>
+  </metadata>
+  <platform idref="cpe:/o:chainguard:chainguard_linux"/>
   <Profile id="xccdf_basic_profile_.check">
     <title>Oval Check XCCDF Beta</title>
     <select idref="xccdf_mil.disa.stig_rule_SV-203739r1_rule" selected="true"/>
@@ -102,6 +115,7 @@
     <select idref="xccdf_mil.disa.stig_rule_SV-203716r1_rule" selected="true"/>
   </Profile>
   <Group id="xccdf_NonApplicable_group_.oval">
+    <title>Non-Applicable Checks Group</title>
     <Rule id="xccdf_mil.disa.stig_rule_SV-203682r1_rule" selected="true" severity="high">
       <title>The operating system must use cryptographic mechanisms to protect the integrity of audit tools.</title>
       <description>
@@ -1687,6 +1701,7 @@ For more information on inherited controls for containers see the DISA Container
     </Rule>
   </Group>
   <Group id="xccdf_OpenSsl_group_.oval">
+    <title>OpenSSL Security Group</title>
     <Rule id="xccdf_mil.disa.stig_rule_SV-203739r1_rule" selected="true" severity="high">
       <title>The operating system must implement NSA-approved cryptography to protect classified information in accordance with applicable federal laws, Executive Orders, directives, policies, regulations, and standards.</title>
       <description>
@@ -1766,6 +1781,7 @@ To manually verify, ensure that fipsmodule.cnf and openssl.cnf exist in the /etc
     </Rule>
   </Group>
   <Group id="xccdf_NoRemoteAccess_group_.oval">
+    <title>Remote Access Controls Group</title>
     <Rule id="xccdf_mil.disa.stig_rule_SV-203736r1_rule" selected="true" severity="high">
       <title>The operating system must implement cryptographic mechanisms to protect the integrity of nonlocal maintenance and diagnostic communications, when used for nonlocal maintenance sessions.</title>
       <description>
@@ -2609,6 +2625,7 @@ To manually verify, Ensure none of the following remote access packages exist in
     </Rule>
   </Group>
   <Group id="xccdf_PackageSignatureCheck_group_.oval">
+    <title>Package Signature Verification Group</title>
     <Rule id="xccdf_mil.disa.stig_rule_SV-203720r1_rule" selected="true" severity="high">
       <title>The operating system must prevent the installation of patches, service packs, device drivers, or operating system components without verification they have been digitally signed using a certificate that is recognized and approved by the organization.</title>
       <description>
@@ -2628,6 +2645,7 @@ To manually verify, ensure all repositories in /etc/apk/repositories/ begin with
     </Rule>
   </Group>
   <Group id="xccdf_NoPasswords_group_.oval">
+    <title>Password Configuration Group</title>
     <Rule id="xccdf_mil.disa.stig_rule_SV-203629r1_rule" selected="true" severity="high">
       <title>The operating system must store only encrypted representations of passwords.</title>
       <description>
@@ -2847,6 +2865,7 @@ To manually verify, run command 'cat /etc/shadow and verify no password fields s
     </Rule>
   </Group>
   <Group id="xccdf_NoUsers_group_.oval">
+    <title>User Account Management Group</title>
     <Rule id="xccdf_mil.disa.stig_rule_SV-203695r1_rule" selected="true" severity="high">
       <title>The operating system must prevent nonprivileged users from executing privileged functions to include disabling, circumventing, or altering implemented security safeguards/countermeasures.</title>
       <description>
@@ -3120,6 +3139,7 @@ To manually verify, run command 'cat /etc/shadow and verify that no additional u
     </Rule>
   </Group>
   <Group id="xccdf_ASLR_group_.oval">
+    <title>Address Space Layout Randomization Group</title>
     <Rule id="xccdf_mil.disa.stig_rule_SV-203754r1_rule" selected="true" severity="medium">
       <title>The operating system must implement address space layout randomization to protect its memory from unauthorized code execution.</title>
       <description>
@@ -3152,6 +3172,7 @@ Examples of attacks are buffer overflow attacks.</html:pre>
     </Rule>
   </Group>
   <Group id="xccdf_VarLog_group_.oval">
+    <title>Log Directory Permissions Group</title>
     <Rule id="xccdf_mil.disa.stig_rule_SV-203664r1_rule" selected="true" severity="medium">
       <title>The operating system must reveal error messages only to authorized users.</title>
       <description>
@@ -3201,6 +3222,7 @@ To manually verify, ensure the directory /var/log has both owner and group value
     </Rule>
   </Group>
   <Group id="xccdf_LibraryPermissions_group_.oval">
+    <title>Library File Permissions Group</title>
     <Rule id="xccdf_mil.disa.stig_rule_SV-203675r1_rule" selected="true" severity="medium">
       <title>The operating system must limit privileges to change software resident within software libraries.</title>
       <description>
