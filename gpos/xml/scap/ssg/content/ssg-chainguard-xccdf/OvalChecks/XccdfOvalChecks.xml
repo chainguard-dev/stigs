@@ -5,7 +5,7 @@
   <description>This XCCDF document provides a basic security check for a Linux system.</description>
   <notice id="legal">Copyright (c) 2023, Your Organization. All rights reserved.</notice>
   <reference href="http://yourorganization.com/security-policies">Security Policy Reference</reference>
-  <platform idref="cpe:/o:linux:linux_kernel"/>
+  <platform idref="cpe:/o:chainguard:chainguard_linux"/>
   <version>1.0</version>
   <metadata xmlns:dc="http://purl.org/dc/elements/1.1/">
     <dc:creator>Chainguard</dc:creator>
