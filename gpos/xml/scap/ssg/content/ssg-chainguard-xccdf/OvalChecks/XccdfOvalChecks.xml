@@ -1,10 +1,11 @@
 <?xml version="1.0" ?>
-<Benchmark xmlns="http://checklists.nist.gov/xccdf/1.2" xmlns:html="http://www.w3.org/1999/xhtml" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="xccdf_oval_benchmark_.beta" style="SCAP_1.2" resolved="false" xml:lang="en-US" xsi:schemaLocation="http://checklists.nist.gov/xccdf/1.2 xccdf-1.2.xsd">
+<Benchmark xmlns="http://checklists.nist.gov/xccdf/1.2" xmlns:html="http://www.w3.org/1999/xhtml" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:cpe2="http://cpe.mitre.org/language/2.0" id="xccdf_oval_benchmark_.beta" style="SCAP_1.2" resolved="false" xml:lang="en-US" xsi:schemaLocation="http://checklists.nist.gov/xccdf/1.2 xccdf-1.2.xsd http://cpe.mitre.org/language/2.0 cpe-language_2.0.xsd">
   <status date="2023-04-01">draft</status>
   <title>XCCDF Checklist Beta</title>
   <description>This XCCDF document provides a basic security check for a Linux system.</description>
   <notice id="legal">Copyright (c) 2023, Your Organization. All rights reserved.</notice>
   <reference href="http://yourorganization.com/security-policies">Security Policy Reference</reference>
+  <platform idref="cpe:/o:linux:linux_kernel"/>
   <version>1.0</version>
   <metadata xmlns:dc="http://purl.org/dc/elements/1.1/">
     <dc:creator>Chainguard</dc:creator>
@@ -18,7 +19,7 @@
     <dc:identifier>Chainguard-GPOS-OVAL</dc:identifier>
     <dc:language>en-US</dc:language>
   </metadata>
-  <platform idref="cpe:/o:chainguard:chainguard_linux"/>
+  <model system="urn:xccdf:scoring:default"/>
   <Profile id="xccdf_basic_profile_.check">
     <title>Oval Check XCCDF Beta</title>
     <select idref="xccdf_mil.disa.stig_rule_SV-203739r1_rule" selected="true"/>
