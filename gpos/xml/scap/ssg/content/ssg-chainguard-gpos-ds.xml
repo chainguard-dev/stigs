@@ -3912,7 +3912,12 @@
                         undermines the purposes of utilizing encryption to protect data. The
                         operating system must implement cryptographic modules adhering to the higher
                         standards approved by the federal government since this provides assurance
-                        they have been tested and validated.</ns0:description>
+                        they have been tested and validated.
+
+<html:pre>Script Verification:
+                            To manually verify, ensure that fipsmodule.cnf and openssl.cnf exist in
+                            the /etc/ssl folder. Also verify that openssl-config-fipshardened and
+                            openssl-provider-fips exist in the file /lib/apk/db/installed. </html:pre></ns0:description>
                     <ns0:ident system="http://cyber.mil/cci">CCI-002450</ns0:ident>
                     
                     <ns0:check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
@@ -3930,7 +3935,12 @@
                         undermines the purposes of utilizing encryption to protect data. The
                         operating system must implement cryptographic modules adhering to the higher
                         standards approved by the federal government since this provides assurance
-                        they have been tested and validated.</ns0:description>
+                        they have been tested and validated.
+
+<html:pre>Script Verification:
+                            To manually verify, ensure that fipsmodule.cnf and openssl.cnf exist in
+                            the /etc/ssl folder. Also verify that openssl-config-fipshardened and
+                            openssl-provider-fips exist in the file /lib/apk/db/installed. </html:pre></ns0:description>
                     <ns0:ident system="http://cyber.mil/cci">CCI-002450</ns0:ident>
                     
                     <ns0:check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
@@ -3954,7 +3964,12 @@
                         has a strict requirement for ensuring data integrity and confidentiality is
                         maintained at every step of the data transfer and handling process. When
                         transmitting data, operating systems need to support transmission protection
-                        mechanisms such as TLS, SSL VPNs, or IPSec.</ns0:description>
+                        mechanisms such as TLS, SSL VPNs, or IPSec.
+
+<html:pre>Script Verification:
+                            To manually verify, ensure that fipsmodule.cnf and openssl.cnf exist in
+                            the /etc/ssl folder. Also verify that openssl-config-fipshardened and
+                            openssl-provider-fips exist in the file /lib/apk/db/installed. </html:pre></ns0:description>
                     <ns0:ident system="http://cyber.mil/cci">CCI-002420</ns0:ident>
                     
                     <ns0:check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
@@ -3978,7 +3993,12 @@
                         has a strict requirement for ensuring data integrity and confidentiality is
                         maintained at every step of the data transfer and handling process. When
                         receiving data, operating systems need to leverage protection mechanisms
-                        such as TLS, SSL VPNs, or IPSec.</ns0:description>
+                        such as TLS, SSL VPNs, or IPSec.
+
+<html:pre>Script Verification:
+                            To manually verify, ensure that fipsmodule.cnf and openssl.cnf exist in
+                            the /etc/ssl folder. Also verify that openssl-config-fipshardened and
+                            openssl-provider-fips exist in the file /lib/apk/db/installed. </html:pre></ns0:description>
                     <ns0:ident system="http://cyber.mil/cci">CCI-002422</ns0:ident>
                     
                     <ns0:check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
@@ -4001,7 +4021,12 @@
                         FIPS 140-2/140-3 is the current standard for validating that mechanisms used
                         to access cryptographic modules utilize authentication that meets DoD
                         requirements. This allows for Security Levels 1, 2, 3, or 4 for use on a
-                        general purpose computing system.</ns0:description>
+                        general purpose computing system.
+
+<html:pre>Script Verification:
+                            To manually verify, ensure that fipsmodule.cnf and openssl.cnf exist in
+                            the /etc/ssl folder. Also verify that openssl-config-fipshardened and
+                            openssl-provider-fips exist in the file /lib/apk/db/installed. </html:pre></ns0:description>
                     <ns0:ident system="http://cyber.mil/cci">CCI-000803</ns0:ident>
                     
                     <ns0:check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
@@ -4031,7 +4056,15 @@
                         hardware token), provides a greater strength of mechanism and an increased
                         level of
                         assurance in the authentication
-                        process.</ns0:description>
+                        process.
+
+<html:pre>Script Verification:
+                            To manually verify, Ensure none of the following remote access packages
+                            exist in the folder /lib/apk/db/ Packages: openssh, openssh-server,
+                            openssh-client, openssh-sftp-server, dropbear, tigervnc,
+                            tigervnc-server, tigervnc-viewer, xrdp, xorgxrdp, vsftpd, proftpd,
+                            webmin, cockpit, cockpit-ws, cockpit-bridge, nfs-utils, samba,
+                            samba-server, samba-client, samba-common, rsh, telnet</html:pre></ns0:description>
                     <ns0:ident system="http://cyber.mil/cci">CCI-004047</ns0:ident>
                     
                     <ns0:check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
@@ -4060,7 +4093,15 @@
                         components that may support information system maintenance, yet are a part
                         of the system (e.g., the software implementing "ping," "ls," "ipconfig," or
                         the hardware and software implementing the monitoring port of an Ethernet
-                        switch).</ns0:description>
+                        switch).
+
+<html:pre>Script Verification:
+                            To manually verify, Ensure none of the following remote access packages
+                            exist in the folder /lib/apk/db/ Packages: openssh, openssh-server,
+                            openssh-client, openssh-sftp-server, dropbear, tigervnc,
+                            tigervnc-server, tigervnc-viewer, xrdp, xorgxrdp, vsftpd, proftpd,
+                            webmin, cockpit, cockpit-ws, cockpit-bridge, nfs-utils, samba,
+                            samba-server, samba-client, samba-common, rsh, telnet</html:pre></ns0:description>
                     <ns0:ident system="http://cyber.mil/cci">CCI-002890</ns0:ident>
                     
                     <ns0:check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
@@ -4090,7 +4131,15 @@
                         software implementing the monitoring port of an Ethernet switch).
 
                         The operating system can meet this requirement through leveraging a
-                        cryptographic module.</ns0:description>
+                        cryptographic module.
+
+<html:pre>Script Verification:
+                            To manually verify, Ensure none of the following remote access packages
+                            exist in the folder /lib/apk/db/ Packages: openssh, openssh-server,
+                            openssh-client, openssh-sftp-server, dropbear, tigervnc,
+                            tigervnc-server, tigervnc-viewer, xrdp, xorgxrdp, vsftpd, proftpd,
+                            webmin, cockpit, cockpit-ws, cockpit-bridge, nfs-utils, samba,
+                            samba-server, samba-client, samba-common, rsh, telnet</html:pre></ns0:description>
                     <ns0:ident system="http://cyber.mil/cci">CCI-003123</ns0:ident>
                     
                     <ns0:check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
@@ -4118,7 +4167,15 @@
                         authentication requires authenticators that are resistant to replay attacks
                         and employ multifactor authentication. Strong authenticators include, for
                         example, PKI where certificates are stored on a token protected by a
-                        password, passphrase, or biometric.</ns0:description>
+                        password, passphrase, or biometric.
+
+<html:pre>Script Verification:
+                            To manually verify, Ensure none of the following remote access packages
+                            exist in the folder /lib/apk/db/ Packages: openssh, openssh-server,
+                            openssh-client, openssh-sftp-server, dropbear, tigervnc,
+                            tigervnc-server, tigervnc-viewer, xrdp, xorgxrdp, vsftpd, proftpd,
+                            webmin, cockpit, cockpit-ws, cockpit-bridge, nfs-utils, samba,
+                            samba-server, samba-client, samba-common, rsh, telnet</html:pre></ns0:description>
                     <ns0:ident system="http://cyber.mil/cci">CCI-000877</ns0:ident>
                     
                     <ns0:check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
@@ -4141,7 +4198,15 @@
                         unauthorized access to the data traversing the remote access connection
                         (e.g., RDP), thereby providing a degree of confidentiality. The encryption
                         strength of a mechanism is selected based on the security categorization of
-                        the information.</ns0:description>
+                        the information.
+
+<html:pre>Script Verification:
+                            To manually verify, Ensure none of the following remote access packages
+                            exist in the folder /lib/apk/db/ Packages: openssh, openssh-server,
+                            openssh-client, openssh-sftp-server, dropbear, tigervnc,
+                            tigervnc-server, tigervnc-viewer, xrdp, xorgxrdp, vsftpd, proftpd,
+                            webmin, cockpit, cockpit-ws, cockpit-bridge, nfs-utils, samba,
+                            samba-server, samba-client, samba-common, rsh, telnet</html:pre></ns0:description>
                     <ns0:ident system="http://cyber.mil/cci">CCI-000068</ns0:ident>
                     
                     <ns0:check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
@@ -4162,7 +4227,15 @@
                         Cryptographic mechanisms used for protecting the integrity of information
                         include, for example, signed hash functions using asymmetric cryptography
                         enabling distribution of the public key to verify the hash information while
-                        maintaining the confidentiality of the secret key used to generate the hash.</ns0:description>
+                        maintaining the confidentiality of the secret key used to generate the hash.
+
+<html:pre>Script Verification:
+                            To manually verify, Ensure none of the following remote access packages
+                            exist in the folder /lib/apk/db/ Packages: openssh, openssh-server,
+                            openssh-client, openssh-sftp-server, dropbear, tigervnc,
+                            tigervnc-server, tigervnc-viewer, xrdp, xorgxrdp, vsftpd, proftpd,
+                            webmin, cockpit, cockpit-ws, cockpit-bridge, nfs-utils, samba,
+                            samba-server, samba-client, samba-common, rsh, telnet</html:pre></ns0:description>
                     <ns0:ident system="http://cyber.mil/cci">CCI-001453</ns0:ident>
                     
                     <ns0:check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
@@ -4173,7 +4246,15 @@
                     <ns0:title xml:lang="en">The operating system must not allow an unattended or
                         automatic logon to the system.</ns0:title>
                     <ns0:description xml:lang="en">Failure to restrict system access to
-                        authenticated users negatively impacts operating system security.</ns0:description>
+                        authenticated users negatively impacts operating system security.
+
+<html:pre>Script Verification:
+                            To manually verify, Ensure none of the following remote access packages
+                            exist in the folder /lib/apk/db/ Packages: openssh, openssh-server,
+                            openssh-client, openssh-sftp-server, dropbear, tigervnc,
+                            tigervnc-server, tigervnc-viewer, xrdp, xorgxrdp, vsftpd, proftpd,
+                            webmin, cockpit, cockpit-ws, cockpit-bridge, nfs-utils, samba,
+                            samba-server, samba-client, samba-common, rsh, telnet</html:pre></ns0:description>
                     <ns0:ident system="http://cyber.mil/cci">CCI-000366</ns0:ident>
                     
                     <ns0:check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
@@ -4192,7 +4273,15 @@
                         accounts and does not address concurrent sessions by single users via
                         multiple system accounts. The maximum number of concurrent sessions should
                         be defined based upon mission needs and the operational environment for each
-                        system.</ns0:description>
+                        system.
+
+<html:pre>Script Verification:
+                            To manually verify, Ensure none of the following remote access packages
+                            exist in the folder /lib/apk/db/ Packages: openssh, openssh-server,
+                            openssh-client, openssh-sftp-server, dropbear, tigervnc,
+                            tigervnc-server, tigervnc-viewer, xrdp, xorgxrdp, vsftpd, proftpd,
+                            webmin, cockpit, cockpit-ws, cockpit-bridge, nfs-utils, samba,
+                            samba-server, samba-client, samba-common, rsh, telnet</html:pre></ns0:description>
                     <ns0:ident system="http://cyber.mil/cci">CCI-000054</ns0:ident>
                     
                     <ns0:check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
@@ -4218,7 +4307,15 @@
                         access to workflow automation, media libraries, abstract layers (e.g.,
                         changes implemented into third-party interfaces rather than directly into
                         information systems), and change windows (e.g., changes occur only during
-                        specified times, making unauthorized changes easy to discover).</ns0:description>
+                        specified times, making unauthorized changes easy to discover).
+
+<html:pre>Script Verification:
+                            To manually verify, Ensure none of the following remote access packages
+                            exist in the folder /lib/apk/db/ Packages: openssh, openssh-server,
+                            openssh-client, openssh-sftp-server, dropbear, tigervnc,
+                            tigervnc-server, tigervnc-viewer, xrdp, xorgxrdp, vsftpd, proftpd,
+                            webmin, cockpit, cockpit-ws, cockpit-bridge, nfs-utils, samba,
+                            samba-server, samba-client, samba-common, rsh, telnet</html:pre></ns0:description>
                     <ns0:ident system="http://cyber.mil/cci">CCI-001813</ns0:ident>
                     
                     <ns0:check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
@@ -4233,7 +4330,15 @@
                         verified as closed, the session may remain open and be exploited by an
                         attacker; this is referred to as a zombie session. Remote connections must
                         be disconnected and verified as disconnected when nonlocal maintenance
-                        sessions have been terminated and are no longer available for use.</ns0:description>
+                        sessions have been terminated and are no longer available for use.
+
+<html:pre>Script Verification:
+                            To manually verify, Ensure none of the following remote access packages
+                            exist in the folder /lib/apk/db/ Packages: openssh, openssh-server,
+                            openssh-client, openssh-sftp-server, dropbear, tigervnc,
+                            tigervnc-server, tigervnc-viewer, xrdp, xorgxrdp, vsftpd, proftpd,
+                            webmin, cockpit, cockpit-ws, cockpit-bridge, nfs-utils, samba,
+                            samba-server, samba-client, samba-common, rsh, telnet</html:pre></ns0:description>
                     <ns0:ident system="http://cyber.mil/cci">CCI-002891</ns0:ident>
                     
                     <ns0:check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
@@ -4247,7 +4352,15 @@
                         the network.</ns0:title>
                     <ns0:description xml:lang="en">Without configuring a local cache of revocation
                         data, there is the potential to allow access to users who are no longer
-                        authorized (users with revoked certificates).</ns0:description>
+                        authorized (users with revoked certificates).
+
+<html:pre>Script Verification:
+                            To manually verify, Ensure none of the following remote access packages
+                            exist in the folder /lib/apk/db/ Packages: openssh, openssh-server,
+                            openssh-client, openssh-sftp-server, dropbear, tigervnc,
+                            tigervnc-server, tigervnc-viewer, xrdp, xorgxrdp, vsftpd, proftpd,
+                            webmin, cockpit, cockpit-ws, cockpit-bridge, nfs-utils, samba,
+                            samba-server, samba-client, samba-common, rsh, telnet</html:pre></ns0:description>
                     <ns0:ident system="http://cyber.mil/cci">CCI-004068</ns0:ident>
                     
                     <ns0:check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
@@ -4276,7 +4389,15 @@
                         tools. This requirement does not cover hardware/software components that may
                         support information system maintenance, yet are a part of the system, for
                         example, the software implementing "ping," "ls," "ipconfig," or the hardware
-                        and software implementing the monitoring port of an Ethernet switch.</ns0:description>
+                        and software implementing the monitoring port of an Ethernet switch.
+
+<html:pre>Script Verification:
+                            To manually verify, Ensure none of the following remote access packages
+                            exist in the folder /lib/apk/db/ Packages: openssh, openssh-server,
+                            openssh-client, openssh-sftp-server, dropbear, tigervnc,
+                            tigervnc-server, tigervnc-viewer, xrdp, xorgxrdp, vsftpd, proftpd,
+                            webmin, cockpit, cockpit-ws, cockpit-bridge, nfs-utils, samba,
+                            samba-server, samba-client, samba-common, rsh, telnet</html:pre></ns0:description>
                     <ns0:ident system="http://cyber.mil/cci">CCI-002884</ns0:ident>
                     
                     <ns0:check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
@@ -4302,7 +4423,15 @@
                         application level if multiple application sessions are using a single
                         operating system-level network connection. This does not mean that the
                         operating system terminates all sessions or network access; it only ends the
-                        inactive session and releases the resources associated with that session.</ns0:description>
+                        inactive session and releases the resources associated with that session.
+
+<html:pre>Script Verification:
+                            To manually verify, Ensure none of the following remote access packages
+                            exist in the folder /lib/apk/db/ Packages: openssh, openssh-server,
+                            openssh-client, openssh-sftp-server, dropbear, tigervnc,
+                            tigervnc-server, tigervnc-viewer, xrdp, xorgxrdp, vsftpd, proftpd,
+                            webmin, cockpit, cockpit-ws, cockpit-bridge, nfs-utils, samba,
+                            samba-server, samba-client, samba-common, rsh, telnet</html:pre></ns0:description>
                     <ns0:ident system="http://cyber.mil/cci">CCI-001133</ns0:ident>
                     
                     <ns0:check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
@@ -4316,7 +4445,15 @@
                         resources or perform tasks for which they do not have authorization.
 
                         When operating systems provide the capability to escalate a functional
-                        capability, it is critical the user re-authenticate.</ns0:description>
+                        capability, it is critical the user re-authenticate.
+
+<html:pre>Script Verification:
+                            To manually verify, Ensure none of the following remote access packages
+                            exist in the folder /lib/apk/db/ Packages: openssh, openssh-server,
+                            openssh-client, openssh-sftp-server, dropbear, tigervnc,
+                            tigervnc-server, tigervnc-viewer, xrdp, xorgxrdp, vsftpd, proftpd,
+                            webmin, cockpit, cockpit-ws, cockpit-bridge, nfs-utils, samba,
+                            samba-server, samba-client, samba-common, rsh, telnet</html:pre></ns0:description>
                     <ns0:ident system="http://cyber.mil/cci">CCI-002038</ns0:ident>
                     
                     <ns0:check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
@@ -4350,7 +4487,15 @@
                         This requirement only applies to components where this is specific to the
                         function of the device or has the concept of an organizational user (e.g.,
                         VPN, proxy capability). This does not apply to authentication for the
-                        purpose of configuring the device itself (management).</ns0:description>
+                        purpose of configuring the device itself (management).
+
+<html:pre>Script Verification:
+                            To manually verify, Ensure none of the following remote access packages
+                            exist in the folder /lib/apk/db/ Packages: openssh, openssh-server,
+                            openssh-client, openssh-sftp-server, dropbear, tigervnc,
+                            tigervnc-server, tigervnc-viewer, xrdp, xorgxrdp, vsftpd, proftpd,
+                            webmin, cockpit, cockpit-ws, cockpit-bridge, nfs-utils, samba,
+                            samba-server, samba-client, samba-common, rsh, telnet</html:pre></ns0:description>
                     <ns0:ident system="http://cyber.mil/cci">CCI-004046</ns0:ident>
                     
                     <ns0:check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
@@ -4366,7 +4511,15 @@
                         DoD has mandated the use of the CAC to support identity management and
                         personal authentication for systems covered under Homeland Security
                         Presidential Directive (HSPD) 12, as well as making the CAC a primary
-                        component of layered protection for national security systems.</ns0:description>
+                        component of layered protection for national security systems.
+
+<html:pre>Script Verification:
+                            To manually verify, Ensure none of the following remote access packages
+                            exist in the folder /lib/apk/db/ Packages: openssh, openssh-server,
+                            openssh-client, openssh-sftp-server, dropbear, tigervnc,
+                            tigervnc-server, tigervnc-viewer, xrdp, xorgxrdp, vsftpd, proftpd,
+                            webmin, cockpit, cockpit-ws, cockpit-bridge, nfs-utils, samba,
+                            samba-server, samba-client, samba-common, rsh, telnet</html:pre></ns0:description>
                     <ns0:ident system="http://cyber.mil/cci">CCI-001954</ns0:ident>
                     
                     <ns0:check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
@@ -4382,7 +4535,15 @@
                         DoD has mandated the use of the CAC to support identity management and
                         personal authentication for systems covered under Homeland Security
                         Presidential Directive (HSPD) 12, as well as making the CAC a primary
-                        component of layered protection for national security systems.</ns0:description>
+                        component of layered protection for national security systems.
+
+<html:pre>Script Verification:
+                            To manually verify, Ensure none of the following remote access packages
+                            exist in the folder /lib/apk/db/ Packages: openssh, openssh-server,
+                            openssh-client, openssh-sftp-server, dropbear, tigervnc,
+                            tigervnc-server, tigervnc-viewer, xrdp, xorgxrdp, vsftpd, proftpd,
+                            webmin, cockpit, cockpit-ws, cockpit-bridge, nfs-utils, samba,
+                            samba-server, samba-client, samba-common, rsh, telnet</html:pre></ns0:description>
                     <ns0:ident system="http://cyber.mil/cci">CCI-001953</ns0:ident>
                     
                     <ns0:check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
@@ -4394,7 +4555,15 @@
                         identity to the user or group account for PKI-based authentication.</ns0:title>
                     <ns0:description xml:lang="en">Without mapping the certificate used to
                         authenticate to the user account, the ability to determine the identity of
-                        the individual user or group will not be available for forensic analysis.</ns0:description>
+                        the individual user or group will not be available for forensic analysis.
+
+<html:pre>Script Verification:
+                            To manually verify, Ensure none of the following remote access packages
+                            exist in the folder /lib/apk/db/ Packages: openssh, openssh-server,
+                            openssh-client, openssh-sftp-server, dropbear, tigervnc,
+                            tigervnc-server, tigervnc-viewer, xrdp, xorgxrdp, vsftpd, proftpd,
+                            webmin, cockpit, cockpit-ws, cockpit-bridge, nfs-utils, samba,
+                            samba-server, samba-client, samba-common, rsh, telnet</html:pre></ns0:description>
                     <ns0:ident system="http://cyber.mil/cci">CCI-000187</ns0:ident>
                     
                     <ns0:check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
@@ -4426,7 +4595,15 @@
                         explicitly trusted. Status information for certification paths includes
                         certificate revocation lists or online certificate status protocol
                         responses. Validation of the certificate status information is out of scope
-                        for this requirement.</ns0:description>
+                        for this requirement.
+
+<html:pre>Script Verification:
+                            To manually verify, Ensure none of the following remote access packages
+                            exist in the folder /lib/apk/db/ Packages: openssh, openssh-server,
+                            openssh-client, openssh-sftp-server, dropbear, tigervnc,
+                            tigervnc-server, tigervnc-viewer, xrdp, xorgxrdp, vsftpd, proftpd,
+                            webmin, cockpit, cockpit-ws, cockpit-bridge, nfs-utils, samba,
+                            samba-server, samba-client, samba-common, rsh, telnet</html:pre></ns0:description>
                     <ns0:ident system="http://cyber.mil/cci">CCI-000185</ns0:ident>
                     
                     <ns0:check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
@@ -4436,7 +4613,7 @@
                 <ns0:Rule id="xccdf_mil.disa.stig_rule_SV-203623r958450_rule" selected="true" severity="medium">
                     <ns0:title xml:lang="en">The operating system, for PKI-based authentication,
                         must enforce authorized access to the corresponding private key.</ns0:title>
-                    <ns0:description xml:lang="en"> If the private key is discovered, an attacker
+                    <ns0:description xml:lang="en">If the private key is discovered, an attacker
                         can use the key to authenticate as an authorized user and gain access to the
                         network infrastructure.
 
@@ -4450,7 +4627,15 @@
 
                         Both the holders of a digital certificate and the issuing authority must
                         protect the computers, storage devices, or whatever they use to keep the
-                        private keys.</ns0:description>
+                        private keys.
+
+<html:pre>Script Verification:
+                            To manually verify, Ensure none of the following remote access packages
+                            exist in the folder /lib/apk/db/ Packages: openssh, openssh-server,
+                            openssh-client, openssh-sftp-server, dropbear, tigervnc,
+                            tigervnc-server, tigervnc-viewer, xrdp, xorgxrdp, vsftpd, proftpd,
+                            webmin, cockpit, cockpit-ws, cockpit-bridge, nfs-utils, samba,
+                            samba-server, samba-client, samba-common, rsh, telnet</html:pre></ns0:description>
                     <ns0:ident system="http://cyber.mil/cci">CCI-000186</ns0:ident>
                     
                     <ns0:check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
@@ -4479,7 +4664,15 @@
 
                         This capability is typically reserved for specific operating system
                         functionality where the system owner, data owner, or organization requires
-                        additional assurance.</ns0:description>
+                        additional assurance.
+
+<html:pre>Script Verification:
+                            To manually verify, Ensure none of the following remote access packages
+                            exist in the folder /lib/apk/db/ Packages: openssh, openssh-server,
+                            openssh-client, openssh-sftp-server, dropbear, tigervnc,
+                            tigervnc-server, tigervnc-viewer, xrdp, xorgxrdp, vsftpd, proftpd,
+                            webmin, cockpit, cockpit-ws, cockpit-bridge, nfs-utils, samba,
+                            samba-server, samba-client, samba-common, rsh, telnet</html:pre></ns0:description>
                     <ns0:ident system="http://cyber.mil/cci">CCI-002361</ns0:ident>
                     
                     <ns0:check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
@@ -4504,7 +4697,15 @@
                         control of remote access sessions allows organizations to ensure ongoing
                         compliance with remote access policies by enforcing connection rules of
                         remote access applications on a variety of information system components
-                        (e.g., servers, workstations, notebook computers, smartphones, and tablets).</ns0:description>
+                        (e.g., servers, workstations, notebook computers, smartphones, and tablets).
+
+<html:pre>Script Verification:
+                            To manually verify, Ensure none of the following remote access packages
+                            exist in the folder /lib/apk/db/ Packages: openssh, openssh-server,
+                            openssh-client, openssh-sftp-server, dropbear, tigervnc,
+                            tigervnc-server, tigervnc-viewer, xrdp, xorgxrdp, vsftpd, proftpd,
+                            webmin, cockpit, cockpit-ws, cockpit-bridge, nfs-utils, samba,
+                            samba-server, samba-client, samba-common, rsh, telnet</html:pre></ns0:description>
                     <ns0:ident system="http://cyber.mil/cci">CCI-002314</ns0:ident>
                     
                     <ns0:check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
@@ -4527,7 +4728,15 @@
 
                         The remote access functionality (e.g., RDP) may implement features such as
                         automatic disconnect (or user-initiated disconnect) in case of adverse
-                        information based on an indicator of compromise or attack.</ns0:description>
+                        information based on an indicator of compromise or attack.
+
+<html:pre>Script Verification:
+                            To manually verify, Ensure none of the following remote access packages
+                            exist in the folder /lib/apk/db/ Packages: openssh, openssh-server,
+                            openssh-client, openssh-sftp-server, dropbear, tigervnc,
+                            tigervnc-server, tigervnc-viewer, xrdp, xorgxrdp, vsftpd, proftpd,
+                            webmin, cockpit, cockpit-ws, cockpit-bridge, nfs-utils, samba,
+                            samba-server, samba-client, samba-common, rsh, telnet</html:pre></ns0:description>
                     <ns0:ident system="http://cyber.mil/cci">CCI-002322</ns0:ident>
                     
                     <ns0:check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
@@ -4546,7 +4755,15 @@
                         for example, local workstations and remote services. For some types of
                         interactive sessions, including, for example, remote logon, information
                         systems typically send logoff messages as final messages prior to
-                        terminating sessions.</ns0:description>
+                        terminating sessions.
+
+<html:pre>Script Verification:
+                            To manually verify, Ensure none of the following remote access packages
+                            exist in the folder /lib/apk/db/ Packages: openssh, openssh-server,
+                            openssh-client, openssh-sftp-server, dropbear, tigervnc,
+                            tigervnc-server, tigervnc-viewer, xrdp, xorgxrdp, vsftpd, proftpd,
+                            webmin, cockpit, cockpit-ws, cockpit-bridge, nfs-utils, samba,
+                            samba-server, samba-client, samba-common, rsh, telnet</html:pre></ns0:description>
                     <ns0:ident system="http://cyber.mil/cci">CCI-002363</ns0:ident>
                     
                     <ns0:check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
@@ -4567,7 +4784,15 @@
                         displayed after authenticated sessions have been terminated. However, for
                         some types of interactive sessions, including, for example, remote logon,
                         information systems typically send logoff messages as final messages prior
-                        to terminating sessions.</ns0:description>
+                        to terminating sessions.
+
+<html:pre>Script Verification:
+                            To manually verify, Ensure none of the following remote access packages
+                            exist in the folder /lib/apk/db/ Packages: openssh, openssh-server,
+                            openssh-client, openssh-sftp-server, dropbear, tigervnc,
+                            tigervnc-server, tigervnc-viewer, xrdp, xorgxrdp, vsftpd, proftpd,
+                            webmin, cockpit, cockpit-ws, cockpit-bridge, nfs-utils, samba,
+                            samba-server, samba-client, samba-common, rsh, telnet</html:pre></ns0:description>
                     <ns0:ident system="http://cyber.mil/cci">CCI-002364</ns0:ident>
                     
                     <ns0:check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
@@ -4597,7 +4822,15 @@
                         These policies and mechanisms must be employed by the application to control
                         access between users (or processes acting on behalf of users) and objects
                         (e.g., devices, files, records, processes, programs, and domains) in the
-                        information system.</ns0:description>
+                        information system.
+
+<html:pre>Script Verification:
+                            To manually verify, Ensure none of the following remote access packages
+                            exist in the folder /lib/apk/db/ Packages: openssh, openssh-server,
+                            openssh-client, openssh-sftp-server, dropbear, tigervnc,
+                            tigervnc-server, tigervnc-viewer, xrdp, xorgxrdp, vsftpd, proftpd,
+                            webmin, cockpit, cockpit-ws, cockpit-bridge, nfs-utils, samba,
+                            samba-server, samba-client, samba-common, rsh, telnet</html:pre></ns0:description>
                     <ns0:ident system="http://cyber.mil/cci">CCI-000213</ns0:ident>
                     
                     <ns0:check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
@@ -4617,7 +4850,15 @@
                         The DoD will only accept PKI-certificates obtained from a DoD-approved
                         internal or external certificate authority. Reliance on CAs for the
                         establishment of secure sessions includes, for example, the use of SSL/TLS
-                        certificates.</ns0:description>
+                        certificates.
+
+<html:pre>Script Verification:
+                            To manually verify, Ensure none of the following remote access packages
+                            exist in the folder /lib/apk/db/ Packages: openssh, openssh-server,
+                            openssh-client, openssh-sftp-server, dropbear, tigervnc,
+                            tigervnc-server, tigervnc-viewer, xrdp, xorgxrdp, vsftpd, proftpd,
+                            webmin, cockpit, cockpit-ws, cockpit-bridge, nfs-utils, samba,
+                            samba-server, samba-client, samba-common, rsh, telnet</html:pre></ns0:description>
                     <ns0:ident system="http://cyber.mil/cci">CCI-002470</ns0:ident>
                     
                     <ns0:check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
@@ -4631,7 +4872,15 @@
                     <ns0:description xml:lang="en">By limiting the number of failed logon attempts,
                         the risk of unauthorized system access via user password guessing, otherwise
                         known as brute-forcing, is reduced. Limits are imposed by locking the
-                        account.</ns0:description>
+                        account.
+
+<html:pre>Script Verification:
+                            To manually verify, Ensure none of the following remote access packages
+                            exist in the folder /lib/apk/db/ Packages: openssh, openssh-server,
+                            openssh-client, openssh-sftp-server, dropbear, tigervnc,
+                            tigervnc-server, tigervnc-viewer, xrdp, xorgxrdp, vsftpd, proftpd,
+                            webmin, cockpit, cockpit-ws, cockpit-bridge, nfs-utils, samba,
+                            samba-server, samba-client, samba-common, rsh, telnet</html:pre></ns0:description>
                     <ns0:ident system="http://cyber.mil/cci">CCI-002238</ns0:ident>
                     
                     <ns0:check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
@@ -4653,7 +4902,15 @@
                         Regardless of where the session lock is determined and implemented, once
                         invoked, the session lock shall remain in place until the user
                         re-authenticates. No other activity aside from re-authentication shall
-                        unlock the system.</ns0:description>
+                        unlock the system.
+
+<html:pre>Script Verification:
+                            To manually verify, Ensure none of the following remote access packages
+                            exist in the folder /lib/apk/db/ Packages: openssh, openssh-server,
+                            openssh-client, openssh-sftp-server, dropbear, tigervnc,
+                            tigervnc-server, tigervnc-viewer, xrdp, xorgxrdp, vsftpd, proftpd,
+                            webmin, cockpit, cockpit-ws, cockpit-bridge, nfs-utils, samba,
+                            samba-server, samba-client, samba-common, rsh, telnet</html:pre></ns0:description>
                     <ns0:ident system="http://cyber.mil/cci">CCI-000056</ns0:ident>
                     
                     <ns0:check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
@@ -4672,7 +4929,15 @@
                         idled and take action to initiate the session lock.
 
                         The session lock is implemented at the point where session activity can be
-                        determined and/or controlled.</ns0:description>
+                        determined and/or controlled.
+
+<html:pre>Script Verification:
+                            To manually verify, Ensure none of the following remote access packages
+                            exist in the folder /lib/apk/db/ Packages: openssh, openssh-server,
+                            openssh-client, openssh-sftp-server, dropbear, tigervnc,
+                            tigervnc-server, tigervnc-viewer, xrdp, xorgxrdp, vsftpd, proftpd,
+                            webmin, cockpit, cockpit-ws, cockpit-bridge, nfs-utils, samba,
+                            samba-server, samba-client, samba-common, rsh, telnet</html:pre></ns0:description>
                     <ns0:ident system="http://cyber.mil/cci">CCI-000057</ns0:ident>
                     
                     <ns0:check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
@@ -4692,7 +4957,15 @@
                         To establish acceptance of the application usage policy, a click-through
                         banner at system logon is required. The system must prevent further activity
                         until the user executes a positive action to manifest agreement by clicking
-                        on a box indicating "OK".</ns0:description>
+                        on a box indicating "OK".
+
+<html:pre>Script Verification:
+                            To manually verify, Ensure none of the following remote access packages
+                            exist in the folder /lib/apk/db/ Packages: openssh, openssh-server,
+                            openssh-client, openssh-sftp-server, dropbear, tigervnc,
+                            tigervnc-server, tigervnc-viewer, xrdp, xorgxrdp, vsftpd, proftpd,
+                            webmin, cockpit, cockpit-ws, cockpit-bridge, nfs-utils, samba,
+                            samba-server, samba-client, samba-common, rsh, telnet</html:pre></ns0:description>
                     <ns0:ident system="http://cyber.mil/cci">CCI-000050</ns0:ident>
                     
                     <ns0:check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
@@ -4705,7 +4978,15 @@
                     <ns0:description xml:lang="en">By limiting the number of failed logon attempts,
                         the risk of unauthorized system access via user password guessing, otherwise
                         known as brute-force attacks, is reduced. Limits are imposed by locking the
-                        account.</ns0:description>
+                        account.
+
+<html:pre>Script Verification:
+                            To manually verify, Ensure none of the following remote access packages
+                            exist in the folder /lib/apk/db/ Packages: openssh, openssh-server,
+                            openssh-client, openssh-sftp-server, dropbear, tigervnc,
+                            tigervnc-server, tigervnc-viewer, xrdp, xorgxrdp, vsftpd, proftpd,
+                            webmin, cockpit, cockpit-ws, cockpit-bridge, nfs-utils, samba,
+                            samba-server, samba-client, samba-common, rsh, telnet</html:pre></ns0:description>
                     <ns0:ident system="http://cyber.mil/cci">CCI-000044</ns0:ident>
                     
                     <ns0:check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
@@ -4759,7 +5040,15 @@
 
                         Use the following verbiage for operating systems that have severe
                         limitations on the number of characters that can be displayed in the banner:
-                        "I've read &amp; consent to terms in IS user agreem't."</ns0:description>
+                        "I've read &amp; consent to terms in IS user agreem't."
+
+<html:pre>Script Verification:
+                            To manually verify, Ensure none of the following remote access packages
+                            exist in the folder /lib/apk/db/ Packages: openssh, openssh-server,
+                            openssh-client, openssh-sftp-server, dropbear, tigervnc,
+                            tigervnc-server, tigervnc-viewer, xrdp, xorgxrdp, vsftpd, proftpd,
+                            webmin, cockpit, cockpit-ws, cockpit-bridge, nfs-utils, samba,
+                            samba-server, samba-client, samba-common, rsh, telnet</html:pre></ns0:description>
                     <ns0:ident system="http://cyber.mil/cci">CCI-000048</ns0:ident>
                     
                     <ns0:check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
@@ -4784,7 +5073,15 @@
                         policies by auditing connection activities of remote access capabilities,
                         such as Remote Desktop Protocol (RDP), on a variety of information system
                         components (e.g., servers, workstations, notebook computers, smartphones,
-                        and tablets).</ns0:description>
+                        and tablets).
+
+<html:pre>Script Verification:
+                            To manually verify, Ensure none of the following remote access packages
+                            exist in the folder /lib/apk/db/ Packages: openssh, openssh-server,
+                            openssh-client, openssh-sftp-server, dropbear, tigervnc,
+                            tigervnc-server, tigervnc-viewer, xrdp, xorgxrdp, vsftpd, proftpd,
+                            webmin, cockpit, cockpit-ws, cockpit-bridge, nfs-utils, samba,
+                            samba-server, samba-client, samba-common, rsh, telnet</html:pre></ns0:description>
                     <ns0:ident system="http://cyber.mil/cci">CCI-000067</ns0:ident>
                     
                     <ns0:check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
@@ -4804,7 +5101,15 @@
                         before the user session can be locked, operating systems need to provide
                         users with the ability to manually invoke a session lock so users may secure
                         their session should the need arise for them to temporarily vacate the
-                        immediate physical vicinity.</ns0:description>
+                        immediate physical vicinity.
+
+<html:pre>Script Verification:
+                            To manually verify, Ensure none of the following remote access packages
+                            exist in the folder /lib/apk/db/ Packages: openssh, openssh-server,
+                            openssh-client, openssh-sftp-server, dropbear, tigervnc,
+                            tigervnc-server, tigervnc-viewer, xrdp, xorgxrdp, vsftpd, proftpd,
+                            webmin, cockpit, cockpit-ws, cockpit-bridge, nfs-utils, samba,
+                            samba-server, samba-client, samba-common, rsh, telnet</html:pre></ns0:description>
                     <ns0:ident system="http://cyber.mil/cci">CCI-000057</ns0:ident>
                     
                     <ns0:check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
@@ -4828,7 +5133,15 @@
                         Publicly viewable images can include static or dynamic images, for example,
                         patterns used with screen savers, photographic images, solid colors, a
                         clock, a battery life indicator, or a blank screen, with the additional
-                        caveat that none of the images convey sensitive information.</ns0:description>
+                        caveat that none of the images convey sensitive information.
+
+<html:pre>Script Verification:
+                            To manually verify, Ensure none of the following remote access packages
+                            exist in the folder /lib/apk/db/ Packages: openssh, openssh-server,
+                            openssh-client, openssh-sftp-server, dropbear, tigervnc,
+                            tigervnc-server, tigervnc-viewer, xrdp, xorgxrdp, vsftpd, proftpd,
+                            webmin, cockpit, cockpit-ws, cockpit-bridge, nfs-utils, samba,
+                            samba-server, samba-client, samba-common, rsh, telnet</html:pre></ns0:description>
                     <ns0:ident system="http://cyber.mil/cci">CCI-000060</ns0:ident>
                     
                     <ns0:check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
@@ -4882,7 +5195,15 @@
 
                         Use the following verbiage for operating systems that have severe
                         limitations on the number of characters that can be displayed in the banner:
-                        "I've read &amp; consent to terms in IS user agreem't."</ns0:description>
+                        "I've read &amp; consent to terms in IS user agreem't."
+
+<html:pre>Script Verification:
+                            To manually verify, Ensure none of the following remote access packages
+                            exist in the folder /lib/apk/db/ Packages: openssh, openssh-server,
+                            openssh-client, openssh-sftp-server, dropbear, tigervnc,
+                            tigervnc-server, tigervnc-viewer, xrdp, xorgxrdp, vsftpd, proftpd,
+                            webmin, cockpit, cockpit-ws, cockpit-bridge, nfs-utils, samba,
+                            samba-server, samba-client, samba-common, rsh, telnet</html:pre></ns0:description>
                     <ns0:ident system="http://cyber.mil/cci">CCI-001384</ns0:ident>
                     
                     <ns0:check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
@@ -4894,7 +5215,15 @@
                         seconds between logon prompts following a failed logon attempt.</ns0:title>
                     <ns0:description xml:lang="en">Limiting the number of logon attempts over a
                         certain time interval reduces the chances that an unauthorized user may gain
-                        access to an account.</ns0:description>
+                        access to an account.
+
+<html:pre>Script Verification:
+                            To manually verify, Ensure none of the following remote access packages
+                            exist in the folder /lib/apk/db/ Packages: openssh, openssh-server,
+                            openssh-client, openssh-sftp-server, dropbear, tigervnc,
+                            tigervnc-server, tigervnc-viewer, xrdp, xorgxrdp, vsftpd, proftpd,
+                            webmin, cockpit, cockpit-ws, cockpit-bridge, nfs-utils, samba,
+                            samba-server, samba-client, samba-common, rsh, telnet</html:pre></ns0:description>
                     <ns0:ident system="http://cyber.mil/cci">CCI-000366</ns0:ident>
                     
                     <ns0:check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
@@ -4910,7 +5239,15 @@
                         incident or identify those responsible for one.
 
                         Audit records can be generated from various components within the
-                        information system (e.g., module or policy filter).</ns0:description>
+                        information system (e.g., module or policy filter).
+
+<html:pre>Script Verification:
+                            To manually verify, Ensure none of the following remote access packages
+                            exist in the folder /lib/apk/db/ Packages: openssh, openssh-server,
+                            openssh-client, openssh-sftp-server, dropbear, tigervnc,
+                            tigervnc-server, tigervnc-viewer, xrdp, xorgxrdp, vsftpd, proftpd,
+                            webmin, cockpit, cockpit-ws, cockpit-bridge, nfs-utils, samba,
+                            samba-server, samba-client, samba-common, rsh, telnet</html:pre></ns0:description>
                     <ns0:ident system="http://cyber.mil/cci">CCI-000172</ns0:ident>
                     
                     <ns0:check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
@@ -4935,7 +5272,15 @@
                         Techniques used to address this include protocols using nonces (e.g.,
                         numbers generated for a specific one-time use) or challenges (e.g., TLS,
                         WS_Security). Additional techniques include time-synchronous or
-                        challenge-response one-time authenticators.</ns0:description>
+                        challenge-response one-time authenticators.
+
+<html:pre>Script Verification:
+                            To manually verify, Ensure none of the following remote access packages
+                            exist in the folder /lib/apk/db/ Packages: openssh, openssh-server,
+                            openssh-client, openssh-sftp-server, dropbear, tigervnc,
+                            tigervnc-server, tigervnc-viewer, xrdp, xorgxrdp, vsftpd, proftpd,
+                            webmin, cockpit, cockpit-ws, cockpit-bridge, nfs-utils, samba,
+                            samba-server, samba-client, samba-common, rsh, telnet</html:pre></ns0:description>
                     <ns0:ident system="http://cyber.mil/cci">CCI-001941</ns0:ident>
                     
                     <ns0:check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
@@ -4970,7 +5315,15 @@
                         authenticated with an individual authenticator prior to using a group
                         authenticator allows for traceability of actions, as well as adding an
                         additional level of protection of the actions that can be taken with
-                        group account knowledge.</ns0:description>
+                        group account knowledge.
+
+<html:pre>Script Verification:
+                            To manually verify, Ensure none of the following remote access packages
+                            exist in the folder /lib/apk/db/ Packages: openssh, openssh-server,
+                            openssh-client, openssh-sftp-server, dropbear, tigervnc,
+                            tigervnc-server, tigervnc-viewer, xrdp, xorgxrdp, vsftpd, proftpd,
+                            webmin, cockpit, cockpit-ws, cockpit-bridge, nfs-utils, samba,
+                            samba-server, samba-client, samba-common, rsh, telnet</html:pre></ns0:description>
                     <ns0:ident system="http://cyber.mil/cci">CCI-004045</ns0:ident>
                     
                     <ns0:check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
@@ -4995,7 +5348,15 @@
                         Techniques used to address this include protocols using nonces (e.g.,
                         numbers generated for a specific one-time use) or challenges (e.g., TLS,
                         WS_Security). Additional techniques include time-synchronous or
-                        challenge-response one-time authenticators.</ns0:description>
+                        challenge-response one-time authenticators.
+
+<html:pre>Script Verification:
+                            To manually verify, Ensure none of the following remote access packages
+                            exist in the folder /lib/apk/db/ Packages: openssh, openssh-server,
+                            openssh-client, openssh-sftp-server, dropbear, tigervnc,
+                            tigervnc-server, tigervnc-viewer, xrdp, xorgxrdp, vsftpd, proftpd,
+                            webmin, cockpit, cockpit-ws, cockpit-bridge, nfs-utils, samba,
+                            samba-server, samba-client, samba-common, rsh, telnet</html:pre></ns0:description>
                     <ns0:ident system="http://cyber.mil/cci">CCI-001941</ns0:ident>
                     
                     <ns0:check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
@@ -5027,7 +5388,15 @@
                         through a direct connection without the use of a network.
 
                         The DOD CAC with DOD-approved PKI is an example of multifactor
-                        authentication.</ns0:description>
+                        authentication.
+
+<html:pre>Script Verification:
+                            To manually verify, Ensure none of the following remote access packages
+                            exist in the folder /lib/apk/db/ Packages: openssh, openssh-server,
+                            openssh-client, openssh-sftp-server, dropbear, tigervnc,
+                            tigervnc-server, tigervnc-viewer, xrdp, xorgxrdp, vsftpd, proftpd,
+                            webmin, cockpit, cockpit-ws, cockpit-bridge, nfs-utils, samba,
+                            samba-server, samba-client, samba-common, rsh, telnet</html:pre></ns0:description>
                     <ns0:ident system="http://cyber.mil/cci">CCI-000765</ns0:ident>
                     
                     <ns0:check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
@@ -5058,7 +5427,15 @@
                         direct connection without the use of a network.
 
                         The DoD CAC with DoD-approved PKI is an example of multifactor
-                        authentication.</ns0:description>
+                        authentication.
+
+<html:pre>Script Verification:
+                            To manually verify, Ensure none of the following remote access packages
+                            exist in the folder /lib/apk/db/ Packages: openssh, openssh-server,
+                            openssh-client, openssh-sftp-server, dropbear, tigervnc,
+                            tigervnc-server, tigervnc-viewer, xrdp, xorgxrdp, vsftpd, proftpd,
+                            webmin, cockpit, cockpit-ws, cockpit-bridge, nfs-utils, samba,
+                            samba-server, samba-client, samba-common, rsh, telnet</html:pre></ns0:description>
                     <ns0:ident system="http://cyber.mil/cci">CCI-000766</ns0:ident>
                     
                     <ns0:check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
@@ -5088,7 +5465,15 @@
                         local area network, wide area network, or the Internet).
 
                         The DoD CAC with DoD-approved PKI is an example of multifactor
-                        authentication.</ns0:description>
+                        authentication.
+
+<html:pre>Script Verification:
+                            To manually verify, Ensure none of the following remote access packages
+                            exist in the folder /lib/apk/db/ Packages: openssh, openssh-server,
+                            openssh-client, openssh-sftp-server, dropbear, tigervnc,
+                            tigervnc-server, tigervnc-viewer, xrdp, xorgxrdp, vsftpd, proftpd,
+                            webmin, cockpit, cockpit-ws, cockpit-bridge, nfs-utils, samba,
+                            samba-server, samba-client, samba-common, rsh, telnet</html:pre></ns0:description>
                     <ns0:ident system="http://cyber.mil/cci">CCI-000765</ns0:ident>
                     
                     <ns0:check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
@@ -5118,7 +5503,15 @@
                         connection.
 
                         The DoD CAC with DoD-approved PKI is an example of multifactor
-                        authentication.</ns0:description>
+                        authentication.
+
+<html:pre>Script Verification:
+                            To manually verify, Ensure none of the following remote access packages
+                            exist in the folder /lib/apk/db/ Packages: openssh, openssh-server,
+                            openssh-client, openssh-sftp-server, dropbear, tigervnc,
+                            tigervnc-server, tigervnc-viewer, xrdp, xorgxrdp, vsftpd, proftpd,
+                            webmin, cockpit, cockpit-ws, cockpit-bridge, nfs-utils, samba,
+                            samba-server, samba-client, samba-common, rsh, telnet</html:pre></ns0:description>
                     <ns0:ident system="http://cyber.mil/cci">CCI-000766</ns0:ident>
                     
                     <ns0:check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
@@ -5146,7 +5539,11 @@
                         are disallowed by this requirement. The operating system should not
                         have to verify the software again. This requirement does not mandate
                         DOD certificates for this purpose; however, the certificate used to
-                        verify the software must be from an approved CA.</ns0:description>
+                        verify the software must be from an approved CA.
+
+<html:pre>Script Verification:
+                            To manually verify, ensure all repositories in /etc/apk/repositories/
+                            begin with 'https://'</html:pre></ns0:description>
                     <ns0:ident system="http://cyber.mil/cci">CCI-003992</ns0:ident>
                     
                     <ns0:check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
@@ -5161,7 +5558,11 @@
                     <ns0:description xml:lang="en">Passwords need to be protected at all times, and
                         encryption is the standard method for protecting passwords. If passwords are
                         not encrypted, they can be plainly read (i.e., clear text) and easily
-                        compromised.</ns0:description>
+                        compromised.
+
+<html:pre>Script Verification:
+                            To manually verify, run command 'cat /etc/shadow and verify no password
+                            fields start with a '$' indicating a hashed password</html:pre></ns0:description>
                     <ns0:ident system="http://cyber.mil/cci">CCI-004062</ns0:ident>
                     
                     <ns0:check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
@@ -5174,7 +5575,11 @@
                     <ns0:description xml:lang="en">Passwords need to be protected at all times, and
                         encryption is the standard method for protecting passwords. If passwords are
                         not encrypted, they can be plainly read (i.e., clear text) and easily
-                        compromised.</ns0:description>
+                        compromised.
+
+<html:pre>Script Verification:
+                            To manually verify, run command 'cat /etc/shadow and verify no password
+                            fields start with a '$' indicating a hashed password</html:pre></ns0:description>
                     <ns0:ident system="http://cyber.mil/cci">CCI-000197</ns0:ident>
                     
                     <ns0:check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
@@ -5186,7 +5591,11 @@
                         authenticators after one day.</ns0:title>
                     <ns0:description xml:lang="en">If cached authentication information is
                         out-of-date, the validity of the authentication information may be
-                        questionable.</ns0:description>
+                        questionable.
+
+<html:pre>Script Verification:
+                            To manually verify, run command 'cat /etc/shadow and verify no password
+                            fields start with a '$' indicating a hashed password</html:pre></ns0:description>
                     <ns0:ident system="http://cyber.mil/cci">CCI-002007</ns0:ident>
                     
                     <ns0:check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
@@ -5197,7 +5606,7 @@
                     <ns0:title xml:lang="en">The operating system must require the change of at
                         least 50 percent of the total
                         number of characters when passwords are changed.</ns0:title>
-                    <ns0:description xml:lang="en"> If the operating system allows the user to
+                    <ns0:description xml:lang="en">If the operating system allows the user to
                         consecutively reuse extensive portions of passwords, this increases the
                         chances of password compromise by increasing the window of opportunity for
                         attempts at guessing and brute-force attacks.
@@ -5209,7 +5618,11 @@
 
                         If the password length is an odd number then number of changed characters
                         must be rounded up. For example, a password length of 15 characters must
-                        require the change of at least 8 characters.</ns0:description>
+                        require the change of at least 8 characters.
+
+<html:pre>Script Verification:
+                            To manually verify, run command 'cat /etc/shadow and verify no password
+                            fields start with a '$' indicating a hashed password</html:pre></ns0:description>
                     <ns0:ident system="http://cyber.mil/cci">CCI-004066</ns0:ident>
                     
                     <ns0:check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
@@ -5227,7 +5640,11 @@
                         Password complexity is one factor of several that determines how long it
                         takes to crack a password. The more complex the password, the greater
                         the number of possible combinations that need to be tested before the
-                        password is compromised.</ns0:description>
+                        password is compromised.
+
+<html:pre>Script Verification:
+                            To manually verify, run command 'cat /etc/shadow and verify no password
+                            fields start with a '$' indicating a hashed password</html:pre></ns0:description>
                     <ns0:ident system="http://cyber.mil/cci">CCI-004066</ns0:ident>
                     
                     <ns0:check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
@@ -5245,7 +5662,11 @@
                         Password complexity is one factor of several that determines how long it
                         takes to crack a password. The more complex the password, the greater
                         the number of possible combinations that need to be tested before the
-                        password is compromised.</ns0:description>
+                        password is compromised.
+
+<html:pre>Script Verification:
+                            To manually verify, run command 'cat /etc/shadow and verify no password
+                            fields start with a '$' indicating a hashed password</html:pre></ns0:description>
                     <ns0:ident system="http://cyber.mil/cci">CCI-004066</ns0:ident>
                     
                     <ns0:check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
@@ -5263,7 +5684,11 @@
                         Password complexity is one factor of several that determines how long it
                         takes to crack a password. The more complex the password, the greater the
                         number of possible combinations that need to be tested before the password
-                        is compromised.</ns0:description>
+                        is compromised.
+
+<html:pre>Script Verification:
+                            To manually verify, run command 'cat /etc/shadow and verify no password
+                            fields start with a '$' indicating a hashed password</html:pre></ns0:description>
                     <ns0:ident system="http://cyber.mil/cci">CCI-004066</ns0:ident>
                     
                     <ns0:check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
@@ -5282,7 +5707,11 @@
                         method used when addressing this risk.
 
                         For example, displaying asterisks when a user types in a password is an
-                        example of obscuring feedback of authentication information.</ns0:description>
+                        example of obscuring feedback of authentication information.
+
+<html:pre>Script Verification:
+                            To manually verify, run command 'cat /etc/shadow and verify no password
+                            fields start with a '$' indicating a hashed password</html:pre></ns0:description>
                     <ns0:ident system="http://cyber.mil/cci">CCI-000206</ns0:ident>
                     
                     <ns0:check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
@@ -5301,7 +5730,11 @@
                         length is one factor of several that helps to determine strength and how
                         long it takes to crack a password. Use of more characters in a password
                         helps to exponentially increase the time and/or resources required to
-                        compromise the password.</ns0:description>
+                        compromise the password.
+
+<html:pre>Script Verification:
+                            To manually verify, run command 'cat /etc/shadow and verify no password
+                            fields start with a '$' indicating a hashed password</html:pre></ns0:description>
                     <ns0:ident system="http://cyber.mil/cci">CCI-004066</ns0:ident>
                     
                     <ns0:check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
@@ -5315,7 +5748,11 @@
                         can eventually be cracked; therefore, passwords need to be changed
                         periodically. If the operating system does not limit the lifetime of
                         passwords and force users to change their passwords, there is the risk
-                        that the operating system passwords could be compromised.</ns0:description>
+                        that the operating system passwords could be compromised.
+
+<html:pre>Script Verification:
+                            To manually verify, run command 'cat /etc/shadow and verify no password
+                            fields start with a '$' indicating a hashed password</html:pre></ns0:description>
                     <ns0:ident system="http://cyber.mil/cci">CCI-004066</ns0:ident>
                     
                     <ns0:check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
@@ -5330,7 +5767,11 @@
                         enforcement requirement. If users are allowed to immediately and continually
                         change their password, then the password could be repeatedly changed in a
                         short period of time to defeat the organization's policy regarding password
-                        reuse.</ns0:description>
+                        reuse.
+
+<html:pre>Script Verification:
+                            To manually verify, run command 'cat /etc/shadow and verify no password
+                            fields start with a '$' indicating a hashed password</html:pre></ns0:description>
                     <ns0:ident system="http://cyber.mil/cci">CCI-004066</ns0:ident>
                     
                     <ns0:check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
@@ -5351,7 +5792,11 @@
                         compromised.
 
                         Special characters are those characters that are not alphanumeric. Examples
-                        include: ~ ! @ # $ % ^ *.</ns0:description>
+                        include: ~ ! @ # $ % ^ *.
+
+<html:pre>Script Verification:
+                            To manually verify, run command 'cat /etc/shadow and verify no password
+                            fields start with a '$' indicating a hashed password</html:pre></ns0:description>
                     <ns0:ident system="http://cyber.mil/cci">CCI-004066</ns0:ident>
                     
                     <ns0:check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
@@ -5364,7 +5809,11 @@
                     <ns0:description xml:lang="en">If the operating system allows the user to select
                         passwords based on dictionary words, then this increases the chances of
                         password compromise by increasing the opportunity for successful guesses and
-                        brute-force attacks.</ns0:description>
+                        brute-force attacks.
+
+<html:pre>Script Verification:
+                            To manually verify, run command 'cat /etc/shadow and verify no password
+                            fields start with a '$' indicating a hashed password</html:pre></ns0:description>
                     <ns0:ident system="http://cyber.mil/cci">CCI-000366</ns0:ident>
                     
                     <ns0:check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
@@ -5379,7 +5828,11 @@
                     <ns0:description xml:lang="en">Disabling expired, inactive, or otherwise
                         anomalous accounts supports the concepts of least privilege
                         and least functionality which reduce the attack surface of the
-                        system.</ns0:description>
+                        system.
+
+<html:pre>Script Verification:
+                            To manually verify, run command 'cat /etc/shadow and verify that no
+                            additional users exist</html:pre></ns0:description>
                     <ns0:ident system="http://cyber.mil/cci">CCI-003628</ns0:ident>
                     
                     <ns0:check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
@@ -5398,7 +5851,11 @@
                         activities. Non-privileged users are individuals that do not possess
                         appropriate authorizations. Circumventing intrusion detection and prevention
                         mechanisms or malicious code protection mechanisms are examples of
-                        privileged functions that require protection from non-privileged users.</ns0:description>
+                        privileged functions that require protection from non-privileged users.
+
+<html:pre>Script Verification:
+                            To manually verify, run command 'cat /etc/shadow and verify that no
+                            additional users exist</html:pre></ns0:description>
                     <ns0:ident system="http://cyber.mil/cci">CCI-002235</ns0:ident>
                     
                     <ns0:check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
@@ -5411,7 +5868,11 @@
                         modify their own files.</ns0:title>
                     <ns0:description xml:lang="en">Setting the most restrictive default permissions
                         ensures that when new accounts are created they do not have unnecessary
-                        access.</ns0:description>
+                        access.
+
+<html:pre>Script Verification:
+                            To manually verify, run command 'cat /etc/shadow and verify that no
+                            additional users exist</html:pre></ns0:description>
                     <ns0:ident system="http://cyber.mil/cci">CCI-000366</ns0:ident>
                     
                     <ns0:check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
@@ -5434,7 +5895,11 @@
 
                         Non-organizational users shall be uniquely identified and authenticated for
                         all accesses other than those accesses explicitly identified and documented
-                        by the organization when related to the use of anonymous access.</ns0:description>
+                        by the organization when related to the use of anonymous access.
+
+<html:pre>Script Verification:
+                            To manually verify, run command 'cat /etc/shadow and verify that no
+                            additional users exist</html:pre></ns0:description>
                     <ns0:ident system="http://cyber.mil/cci">CCI-000804</ns0:ident>
                     
                     <ns0:check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
@@ -5463,7 +5928,11 @@
 
                         To address access requirements, many operating systems can be integrated
                         with enterprise-level authentication/access mechanisms that meet or exceed
-                        access control policy requirements. </ns0:description>
+                        access control policy requirements.
+
+<html:pre>Script Verification:
+                            To manually verify, run command 'cat /etc/shadow and verify that no
+                            additional users exist</html:pre></ns0:description>
                     <ns0:ident system="http://cyber.mil/cci">CCI-001682</ns0:ident>
                     
                     <ns0:check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
@@ -5495,7 +5964,11 @@
                         interfaces that use separate authentication methods for users of any other
                         information system resources. This may include isolating the administrative
                         interface on a different security domain and with additional access
-                        controls.</ns0:description>
+                        controls.
+
+<html:pre>Script Verification:
+                            To manually verify, run command 'cat /etc/shadow and verify that no
+                            additional users exist</html:pre></ns0:description>
                     <ns0:ident system="http://cyber.mil/cci">CCI-001082</ns0:ident>
                     
                     <ns0:check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
@@ -5509,7 +5982,11 @@
                         resources or perform tasks for which they do not have authorization.
 
                         When operating systems provide the capability to change user
-                        authenticators, it is critical the user reauthenticate.</ns0:description>
+                        authenticators, it is critical the user reauthenticate.
+
+<html:pre>Script Verification:
+                            To manually verify, run command 'cat /etc/shadow and verify that no
+                            additional users exist</html:pre></ns0:description>
                     <ns0:ident system="http://cyber.mil/cci">CCI-002038</ns0:ident>
                     
                     <ns0:check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
@@ -5523,7 +6000,11 @@
                         resources or perform tasks for which they do not have authorization.
 
                         When operating systems provide the capability to change security roles,
-                        it is critical the user reauthenticate.</ns0:description>
+                        it is critical the user reauthenticate.
+
+<html:pre>Script Verification:
+                            To manually verify, run command 'cat /etc/shadow and verify that no
+                            additional users exist</html:pre></ns0:description>
                     <ns0:ident system="http://cyber.mil/cci">CCI-002038</ns0:ident>
                     
                     <ns0:check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
@@ -5544,7 +6025,11 @@
 
                         To address access requirements, many operating systems can be integrated
                         with enterprise-level authentication/access/auditing mechanisms that meet or
-                        exceed access control policy requirements.</ns0:description>
+                        exceed access control policy requirements.
+
+<html:pre>Script Verification:
+                            To manually verify, run command 'cat /etc/shadow and verify that no
+                            additional users exist</html:pre></ns0:description>
                     <ns0:ident system="http://cyber.mil/cci">CCI-000015</ns0:ident>
                     
                     <ns0:check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
@@ -5565,7 +6050,11 @@
 
                         To address access requirements, many operating systems can be integrated
                         with enterprise-level authentication/access/auditing mechanisms that meet or
-                        exceed access control policy requirements.</ns0:description>
+                        exceed access control policy requirements.
+
+<html:pre>Script Verification:
+                            To manually verify, run command 'cat /etc/shadow and verify that no
+                            additional users exist</html:pre></ns0:description>
                     <ns0:ident system="http://cyber.mil/cci">CCI-000015</ns0:ident>
                     
                     <ns0:check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
@@ -5592,7 +6081,11 @@
                         2) Accesses that occur through authorized use of group authenticators
                         without individual authentication. Organizations may require unique
                         identification of individuals in group accounts (e.g., shared privilege
-                        accounts) or for detailed accountability of individual activity.</ns0:description>
+                        accounts) or for detailed accountability of individual activity.
+
+<html:pre>Script Verification:
+                            To manually verify, run command 'cat /etc/shadow and verify that no
+                            additional users exist</html:pre></ns0:description>
                     <ns0:ident system="http://cyber.mil/cci">CCI-000764</ns0:ident>
                     
                     <ns0:check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
@@ -5611,7 +6104,11 @@
 
                         Some programs and processes are required to operate at a higher privilege
                         level and therefore should be excluded from the organization-defined
-                        software list after review.</ns0:description>
+                        software list after review.
+
+<html:pre>Script Verification:
+                            To manually verify, run command 'cat /etc/shadow and verify that no
+                            additional users exist</html:pre></ns0:description>
                     <ns0:ident system="http://cyber.mil/cci">CCI-002233</ns0:ident>
                     
                     <ns0:check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
@@ -5645,7 +6142,11 @@
                         additional means may be required to ensure the constraints remain in effect.
                         While the older, more traditional definitions of discretionary access
                         control require identity-based access control, that limitation is not
-                        required for this use of discretionary access control.</ns0:description>
+                        required for this use of discretionary access control.
+
+<html:pre>Script Verification:
+                            To manually verify, run command 'cat /etc/shadow and verify that no
+                            additional users exist</html:pre></ns0:description>
                     <ns0:ident system="http://cyber.mil/cci">CCI-002165</ns0:ident>
                     
                     <ns0:check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
@@ -5670,7 +6171,11 @@
 
                         To address access requirements, many operating systems may be integrated
                         with enterprise-level authentication/access mechanisms that meet or exceed
-                        access control policy requirements.</ns0:description>
+                        access control policy requirements.
+
+<html:pre>Script Verification:
+                            To manually verify, run command 'cat /etc/shadow and verify that no
+                            additional users exist</html:pre></ns0:description>
                     <ns0:ident system="http://cyber.mil/cci">CCI-000016</ns0:ident>
                     
                     <ns0:check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
@@ -5708,7 +6213,11 @@
                         email or text messaging to automatically notify account managers when users
                         are terminated or transferred; using the information system to monitor
                         account usage; and using automated telephonic notification to report
-                        atypical system account usage.</ns0:description>
+                        atypical system account usage.
+
+<html:pre>Script Verification:
+                            To manually verify, run command 'cat /etc/shadow and verify that no
+                            additional users exist</html:pre></ns0:description>
                     <ns0:ident system="http://cyber.mil/cci">CCI-000015</ns0:ident>
                     
                     <ns0:check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
@@ -5721,7 +6230,11 @@
                         their home directories/folders.</ns0:title>
                     <ns0:description xml:lang="en">Users' home directories/folders may contain
                         information of a sensitive nature. Non-privileged users should coordinate
-                        any sharing of information with an SA through shared resources.</ns0:description>
+                        any sharing of information with an SA through shared resources.
+
+<html:pre>Script Verification:
+                            To manually verify, run command 'cat /etc/shadow and verify that no
+                            additional users exist</html:pre></ns0:description>
                     <ns0:ident system="http://cyber.mil/cci">CCI-000366</ns0:ident>
                     
                     <ns0:check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
@@ -5735,7 +6248,11 @@
                         analysis is not possible if audit records do not contain enough information.
                         At a minimum, the organization must audit the individual identities of group
                         users. The organization must maintain audit trails in sufficient detail to
-                        reconstruct events to determine the actual account involved in the activity.</ns0:description>
+                        reconstruct events to determine the actual account involved in the activity.
+
+<html:pre>Script Verification:
+                            To manually verify, run command 'cat /etc/shadow and verify that no
+                            additional users exist</html:pre></ns0:description>
                     <ns0:ident system="http://cyber.mil/cci">CCI-000135</ns0:ident>
                     
                     <ns0:check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
@@ -5752,7 +6269,11 @@
                         been obtained.
 
                         Operating systems need to track periods of inactivity and disable
-                        application identifiers after 35 days of inactivity.</ns0:description>
+                        application identifiers after 35 days of inactivity.
+
+<html:pre>Script Verification:
+                            To manually verify, run command 'cat /etc/shadow and verify that no
+                            additional users exist</html:pre></ns0:description>
                     <ns0:ident system="http://cyber.mil/cci">CCI-003627</ns0:ident>
                     
                     <ns0:check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
@@ -5856,7 +6377,7 @@
                 <ns0:Rule id="xccdf_mil.disa.stig_rule_SV-203675r991560_rule" selected="true" severity="medium">
                     <ns0:title xml:lang="en">The operating system must limit privileges to change
                         software resident within software libraries.</ns0:title>
-                    <ns0:description xml:lang="en"> If the operating system were to allow any user
+                    <ns0:description xml:lang="en">If the operating system were to allow any user
                         to make changes to software libraries, then those changes might be
                         implemented without undergoing the appropriate testing and approvals that
                         are part of a robust change management process.
@@ -5866,7 +6387,11 @@
                         Software libraries also include privileged programs which execute with
                         escalated privileges. Only qualified and authorized individuals shall be
                         allowed to obtain access to information system components for purposes of
-                        initiating changes, including upgrades and modifications.</ns0:description>
+                        initiating changes, including upgrades and modifications.
+
+<html:pre>Script Verification:
+                            To manually verify, Ensure all directories and files in the /usr/lib
+                            folder have both owner and group values of 'root' via 'ls -ld /usr/lib' </html:pre></ns0:description>
                     <ns0:ident system="http://cyber.mil/cci">CCI-001499</ns0:ident>
                     
                     <ns0:check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
@@ -5891,7 +6416,11 @@
                         software installations are permitted (e.g., updates and security patches to
                         existing software) and what types of installations are prohibited (e.g.,
                         software whose pedigree with regard to being potentially malicious is
-                        unknown or suspect) by the organization.</ns0:description>
+                        unknown or suspect) by the organization.
+
+<html:pre>Script Verification:
+                            To manually verify, Ensure all directories and files in the /usr/lib
+                            folder have both owner and group values of 'root' via 'ls -ld /usr/lib' </html:pre></ns0:description>
                     <ns0:ident system="http://cyber.mil/cci">CCI-003980</ns0:ident>
                     
                     <ns0:check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
@@ -5912,7 +6441,12 @@
                         (i.e., a certificate authority) for which trust is assumed and not
                         derived. A root certificate for a PKI system is an example of a trust
                         anchor. A trust store or certificate store maintains a list of trusted
-                        root certificates.</ns0:description>
+                        root certificates.
+
+<html:pre>Script Verification:
+                            To manually verify, Ensure the ca-certificates package has not been
+                            modified using apk audit or by ensuring the sha256 value matches
+                            the trusted value. </html:pre></ns0:description>
                     <ns0:ident system="http://cyber.mil/cci">CCI-004909</ns0:ident>
                     
                     <ns0:check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
@@ -6542,7 +7076,7 @@
             <states>
             <ind:filehash58_state id="oval:org.CABundleHash:ste:1" version="1">
                 <ind:hash_type>SHA-256</ind:hash_type>
-                <ind:hash>71ad3cc35a5f1b5ba09256a997afc827885925a701c91432ea3fb20201664fb0</ind:hash>
+                <ind:hash>8cf3f2d5222508ca469c78a347764ee1b1fab10a903172612c489ebcca05c91c</ind:hash>
             </ind:filehash58_state>
             </states>
         </oval_definitions>
