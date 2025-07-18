@@ -1,7 +1,7 @@
 <oval_definitions xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5"
-                  xmlns:oval="http://oval.mitre.org/XMLSchema/oval-common-5"
-                  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-                  xsi:schemaLocation="http://oval.mitre.org/XMLSchema/oval-definitions-5 http://oval.mitre.org/language/download/schema/version5.10.1/ovaldefinition/complete/oval-definitions-schema.xsd">
+  xmlns:oval="http://oval.mitre.org/XMLSchema/oval-common-5"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://oval.mitre.org/XMLSchema/oval-definitions-5 http://oval.mitre.org/language/download/schema/version5.10.1/ovaldefinition/complete/oval-definitions-schema.xsd">
   <generator>
     <oval:product_name>Custom</oval:product_name>
     <oval:product_version>1.2.16</oval:product_version>
@@ -14,36 +14,43 @@
       <metadata>
         <title>Check for installed Remote Access packages</title>
         <description>Ensure that packages in the list are not installed on the system.</description>
-        <reference source="Custom"/>
+        <reference source="Custom" />
         <affected family="unix">
           <platform>Alpine Linux</platform>
         </affected>
       </metadata>
       <criteria>
-        <criterion comment="Ensure packages starting with 'mypkg-' are installed" test_ref="oval:org.RemoteAccessServices:tst:1"/>
+        <criterion comment="Ensure packages starting with 'mypkg-' are installed"
+          test_ref="oval:org.RemoteAccessServices:tst:1" />
       </criteria>
     </definition>
   </definitions>
 
   <tests>
-    <textfilecontent54_test xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#independent" check="all" check_existence="none_exist" comment="Check for installed packages starting with 'mypkg-' in /lib/apk/db/installed" id="oval:org.RemoteAccessServices:tst:1" version="1">
-      <object object_ref="oval:org.RemoteAccessServices:obj:6"/>
-      <state state_ref="oval:my_test:ste:1"/>
+    <textfilecontent54_test xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#independent"
+      check="all" check_existence="none_exist"
+      comment="Check for installed packages starting with 'mypkg-' in /lib/apk/db/installed"
+      id="oval:org.RemoteAccessServices:tst:1" version="1">
+      <object object_ref="oval:org.RemoteAccessServices:obj:6" />
+      <state state_ref="oval:my_test:ste:1" />
     </textfilecontent54_test>
   </tests>
 
   <objects>
-      <textfilecontent54_object xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#independent" id="oval:org.RemoteAccessServices:obj:6" version="1">
+    <textfilecontent54_object xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#independent"
+      id="oval:org.RemoteAccessServices:obj:6" version="1">
       <path>/lib/apk/db</path>
       <filename>installed</filename>
-      <pattern operation="pattern match">(openssh|openssh-server|openssh-client|openssh-sftp-server|dropbear|tigervnc|tigervnc-server|tigervnc-viewer|xrdp|xorgxrdp|vsftpd|proftpd|webmin|cockpit|cockpit-ws|cockpit-bridge|nfs-utils|samba|samba-server|samba-client|samba-common|rsh|telnet)-*</pattern>
+      <pattern operation="pattern match">
+        (openssh|openssh-server|openssh-client|openssh-sftp-server|dropbear|tigervnc|tigervnc-server|tigervnc-viewer|xrdp|xorgxrdp|vsftpd|proftpd|webmin|cockpit|cockpit-ws|cockpit-bridge|nfs-utils|samba|samba-server|samba-client|samba-common|rsh|telnet)-*</pattern>
       <instance datatype="int">1</instance>
     </textfilecontent54_object>
   </objects>
 
   <states>
-     <textfilecontent54_state xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#independent" id="oval:my_test:ste:1" version="1">
-                   <subexpression>20230201</subexpression>
-               </textfilecontent54_state>
+    <textfilecontent54_state xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#independent"
+      id="oval:my_test:ste:1" version="1">
+      <subexpression>20230201</subexpression>
+    </textfilecontent54_state>
   </states>
 </oval_definitions>
