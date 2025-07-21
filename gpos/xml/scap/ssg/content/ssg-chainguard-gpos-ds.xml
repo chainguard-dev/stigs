@@ -6,7 +6,7 @@
     xmlns:xlink="http://www.w3.org/1999/xlink"
     xmlns:cat="urn:oasis:names:tc:entity:xmlns:xml:catalog"
     id="scap_org.open-scap_collection_from_xccdf_all-resolved-xccdf-v3r2.xml"
-    schematron-version="1.2">
+    schematron-version="1.3">
     <ds:data-stream id="scap_org.open-scap_datastream_from_xccdf_all-resolved-xccdf-v3r2.xml"
         scap-version="1.3" use-case="CONFIGURATION">
         <ds:checklists>
@@ -4023,11 +4023,12 @@
                         operating system must implement cryptographic modules adhering to the higher
                         standards approved by the federal government since this provides assurance
                         they have been tested and validated.
-
+                        <html:pre>
                         Script Verification:
                         To manually verify, ensure that fipsmodule.cnf and openssl.cnf exist in
                         the /etc/ssl folder. Also verify that openssl-config-fipshardened and
                         openssl-provider-fips exist in the file /lib/apk/db/installed.
+                        </html:pre>
                     </ns0:description>
                     <ns0:ident system="http://cyber.mil/cci">CCI-002450</ns0:ident>
 
@@ -4048,11 +4049,12 @@
                         operating system must implement cryptographic modules adhering to the higher
                         standards approved by the federal government since this provides assurance
                         they have been tested and validated.
-
+                        <html:pre>
                         Script Verification:
                         To manually verify, ensure that fipsmodule.cnf and openssl.cnf exist in
                         the /etc/ssl folder. Also verify that openssl-config-fipshardened and
                         openssl-provider-fips exist in the file /lib/apk/db/installed.
+                        </html:pre>
                     </ns0:description>
                     <ns0:ident system="http://cyber.mil/cci">CCI-002450</ns0:ident>
 
@@ -4077,11 +4079,12 @@
                         the data transfer and handling process. When transmitting data, operating
                         systems need to support transmission protection mechanisms such as TLS, SSL
                         VPNs, or IPSec.
-
+                        <html:pre>
                         Script Verification:
                         To manually verify, ensure that fipsmodule.cnf and openssl.cnf exist in
                         the /etc/ssl folder. Also verify that openssl-config-fipshardened and
                         openssl-provider-fips exist in the file /lib/apk/db/installed.
+                        </html:pre>
                     </ns0:description>
                     <ns0:ident system="http://cyber.mil/cci">CCI-002420</ns0:ident>
 
@@ -4106,11 +4109,12 @@
                         the data transfer and handling process. When receiving data, operating
                         systems need to leverage protection mechanisms such as TLS, SSL VPNs, or
                         IPSec.
-
+                        <html:pre>
                         Script Verification:
                         To manually verify, ensure that fipsmodule.cnf and openssl.cnf exist in
                         the /etc/ssl folder. Also verify that openssl-config-fipshardened and
                         openssl-provider-fips exist in the file /lib/apk/db/installed.
+                        </html:pre>
                     </ns0:description>
                     <ns0:ident system="http://cyber.mil/cci">CCI-002422</ns0:ident>
 
@@ -4133,11 +4137,12 @@
                         to access cryptographic modules utilize authentication that meets DoD
                         requirements. This allows for Security Levels 1, 2, 3, or 4 for use on a
                         general purpose computing system.
-
+                        <html:pre>
                         Script Verification:
                         To manually verify, ensure that fipsmodule.cnf and openssl.cnf exist in
                         the /etc/ssl folder. Also verify that openssl-config-fipshardened and
                         openssl-provider-fips exist in the file /lib/apk/db/installed.
+                        </html:pre>
                     </ns0:description>
                     <ns0:ident system="http://cyber.mil/cci">CCI-000803</ns0:ident>
 
@@ -4165,7 +4170,7 @@
                         on a separate device (e.g., a hardware token), provides a greater strength
                         of mechanism and an increased level of assurance in the authentication
                         process.
-
+                        <html:pre>
                         Script Verification:
                         To manually verify, Ensure none of the following remote access packages
                         exist in the folder /lib/apk/db/ Packages:
@@ -4174,6 +4179,7 @@
                         xrdp, xorgxrdp, vsftpd, proftpd, webmin, cockpit, cockpit-ws,
                         cockpit-bridge, nfs-utils, samba, samba-server, samba-client, samba-common,
                         rsh, telnet
+                        </html:pre>
                     </ns0:description>
                     <ns0:ident system="http://cyber.mil/cci">CCI-004047</ns0:ident>
 
@@ -4202,7 +4208,7 @@
                         of the system (e.g., the software implementing "ping," "ls," "ipconfig," or
                         the hardware and software implementing the monitoring port of an Ethernet
                         switch).
-
+                        <html:pre>
                         Script Verification:
                         To manually verify, Ensure none of the following remote access packages
                         exist in the folder /lib/apk/db/ Packages:
@@ -4211,6 +4217,7 @@
                         xrdp, xorgxrdp, vsftpd, proftpd, webmin, cockpit, cockpit-ws,
                         cockpit-bridge, nfs-utils, samba, samba-server, samba-client, samba-common,
                         rsh, telnet
+                        </html:pre>
                     </ns0:description>
                     <ns0:ident system="http://cyber.mil/cci">CCI-002890</ns0:ident>
 
@@ -4239,7 +4246,7 @@
                         implementing "ping," "ls," "ipconfig," or the hardware and software
                         implementing the monitoring port of an Ethernet switch). The operating
                         system can meet this requirement through leveraging a cryptographic module.
-                        
+                        <html:pre>
                         Script Verification:
                         To manually verify, Ensure none of the following remote access packages
                         exist in the folder /lib/apk/db/ Packages:
@@ -4248,6 +4255,7 @@
                         xrdp, xorgxrdp, vsftpd, proftpd, webmin, cockpit, cockpit-ws,
                         cockpit-bridge, nfs-utils, samba, samba-server, samba-client, samba-common,
                         rsh, telnet
+                        </html:pre>
                     </ns0:description>
                     <ns0:ident system="http://cyber.mil/cci">CCI-003123</ns0:ident>
 
@@ -4276,7 +4284,7 @@
                         to replay attacks and employ multifactor authentication. Strong
                         authenticators include, for example, PKI where certificates are stored on a
                         token protected by a password, passphrase, or biometric.
-
+                        <html:pre>
                         Script Verification:
                         To manually verify, Ensure none of the following remote access packages
                         exist in the folder /lib/apk/db/ Packages:
@@ -4285,6 +4293,7 @@
                         xrdp, xorgxrdp, vsftpd, proftpd, webmin, cockpit, cockpit-ws,
                         cockpit-bridge, nfs-utils, samba, samba-server, samba-client, samba-common,
                         rsh, telnet
+                        </html:pre>
                     </ns0:description>
                     <ns0:ident system="http://cyber.mil/cci">CCI-000877</ns0:ident>
 
@@ -4307,7 +4316,7 @@
                         thereby providing a degree of confidentiality. The encryption strength of a
                         mechanism is selected based on the security categorization of the
                         information.
-
+                        <html:pre>
                         Script Verification:
                         To manually verify, Ensure none of the following remote access packages
                         exist in the folder /lib/apk/db/ Packages:
@@ -4316,6 +4325,7 @@
                         xrdp, xorgxrdp, vsftpd, proftpd, webmin, cockpit, cockpit-ws,
                         cockpit-bridge, nfs-utils, samba, samba-server, samba-client, samba-common,
                         rsh, telnet
+                        </html:pre>
                     </ns0:description>
                     <ns0:ident system="http://cyber.mil/cci">CCI-000068</ns0:ident>
 
@@ -4337,7 +4347,7 @@
                         example, signed hash functions using asymmetric cryptography enabling
                         distribution of the public key to verify the hash information while
                         maintaining the confidentiality of the secret key used to generate the hash.
-                        
+                        <html:pre>
                         Script Verification:
                         To manually verify, Ensure none of the following remote access packages
                         exist in the folder /lib/apk/db/ Packages:
@@ -4346,6 +4356,7 @@
                         xrdp, xorgxrdp, vsftpd, proftpd, webmin, cockpit, cockpit-ws,
                         cockpit-bridge, nfs-utils, samba, samba-server, samba-client, samba-common,
                         rsh, telnet
+                        </html:pre>
                     </ns0:description>
                     <ns0:ident system="http://cyber.mil/cci">CCI-001453</ns0:ident>
 
@@ -4359,7 +4370,7 @@
                         automatic logon to the system.</ns0:title>
                     <ns0:description xml:lang="en">Failure to restrict system access to
                         authenticated users negatively impacts operating system security.
-
+                        <html:pre>
                         Script Verification:
                         To manually verify, Ensure none of the following remote access packages
                         exist in the folder /lib/apk/db/ Packages:
@@ -4368,6 +4379,7 @@
                         xrdp, xorgxrdp, vsftpd, proftpd, webmin, cockpit, cockpit-ws,
                         cockpit-bridge, nfs-utils, samba, samba-server, samba-client, samba-common,
                         rsh, telnet
+                        </html:pre>
                     </ns0:description>
                     <ns0:ident system="http://cyber.mil/cci">CCI-000366</ns0:ident>
 
@@ -4387,7 +4399,7 @@
                         address concurrent sessions by single users via multiple system accounts.
                         The maximum number of concurrent sessions should be defined based upon
                         mission needs and the operational environment for each system.
-
+                        <html:pre>
                         Script Verification:
                         To manually verify, Ensure none of the following remote access packages
                         exist in the folder /lib/apk/db/ Packages:
@@ -4396,6 +4408,7 @@
                         xrdp, xorgxrdp, vsftpd, proftpd, webmin, cockpit, cockpit-ws,
                         cockpit-bridge, nfs-utils, samba, samba-server, samba-client, samba-common,
                         rsh, telnet
+                        </html:pre>
                     </ns0:description>
                     <ns0:ident system="http://cyber.mil/cci">CCI-000054</ns0:ident>
 
@@ -4420,7 +4433,7 @@
                         interfaces rather than directly into information systems), and change
                         windows (e.g., changes occur only during specified times, making
                         unauthorized changes easy to discover).
-
+                        <html:pre>
                         Script Verification:
                         To manually verify, Ensure none of the following remote access packages
                         exist in the folder /lib/apk/db/ Packages:
@@ -4429,6 +4442,7 @@
                         xrdp, xorgxrdp, vsftpd, proftpd, webmin, cockpit, cockpit-ws,
                         cockpit-bridge, nfs-utils, samba, samba-server, samba-client, samba-common,
                         rsh, telnet
+                        </html:pre>
                     </ns0:description>
                     <ns0:ident system="http://cyber.mil/cci">CCI-001813</ns0:ident>
 
@@ -4446,7 +4460,7 @@
                         attacker; this is referred to as a zombie session. Remote connections must
                         be disconnected and verified as disconnected when nonlocal maintenance
                         sessions have been terminated and are no longer available for use.
-
+                        <html:pre>
                         Script Verification:
                         To manually verify, Ensure none of the following remote access packages
                         exist in the folder /lib/apk/db/ Packages:
@@ -4455,6 +4469,7 @@
                         xrdp, xorgxrdp, vsftpd, proftpd, webmin, cockpit, cockpit-ws,
                         cockpit-bridge, nfs-utils, samba, samba-server, samba-client, samba-common,
                         rsh, telnet
+                        </html:pre>
                     </ns0:description>
                     <ns0:ident system="http://cyber.mil/cci">CCI-002891</ns0:ident>
 
@@ -4471,7 +4486,7 @@
                     <ns0:description xml:lang="en">Without configuring a local cache of revocation
                         data, there is the potential to allow access to users who are no longer
                         authorized (users with revoked certificates).
-
+                        <html:pre>
                         Script Verification:
                         To manually verify, Ensure none of the following remote access packages
                         exist in the folder /lib/apk/db/ Packages:
@@ -4480,6 +4495,7 @@
                         xrdp, xorgxrdp, vsftpd, proftpd, webmin, cockpit, cockpit-ws,
                         cockpit-bridge, nfs-utils, samba, samba-server, samba-client, samba-common,
                         rsh, telnet
+                        </html:pre>
                     </ns0:description>
                     <ns0:ident system="http://cyber.mil/cci">CCI-004068</ns0:ident>
 
@@ -4507,7 +4523,7 @@
                         system maintenance, yet are a part of the system, for example, the software
                         implementing "ping," "ls," "ipconfig," or the hardware and software
                         implementing the monitoring port of an Ethernet switch.
-
+                        <html:pre>
                         Script Verification:
                         To manually verify, Ensure none of the following remote access packages
                         exist in the folder /lib/apk/db/ Packages:
@@ -4516,6 +4532,7 @@
                         xrdp, xorgxrdp, vsftpd, proftpd, webmin, cockpit, cockpit-ws,
                         cockpit-bridge, nfs-utils, samba, samba-server, samba-client, samba-common,
                         rsh, telnet
+                        </html:pre>
                     </ns0:description>
                     <ns0:ident system="http://cyber.mil/cci">CCI-002884</ns0:ident>
 
@@ -4544,7 +4561,7 @@
                         operating system-level network connection. This does not mean that the
                         operating system terminates all sessions or network access; it only ends the
                         inactive session and releases the resources associated with that session.
-                        
+                        <html:pre>
                         Script Verification:
                         To manually verify, Ensure none of the following remote access packages
                         exist in the folder /lib/apk/db/ Packages:
@@ -4553,6 +4570,7 @@
                         xrdp, xorgxrdp, vsftpd, proftpd, webmin, cockpit, cockpit-ws,
                         cockpit-bridge, nfs-utils, samba, samba-server, samba-client, samba-common,
                         rsh, telnet
+                        </html:pre>
                     </ns0:description>
                     <ns0:ident system="http://cyber.mil/cci">CCI-001133</ns0:ident>
 
@@ -4568,7 +4586,7 @@
                         resources or perform tasks for which they do not have authorization. When
                         operating systems provide the capability to escalate a functional
                         capability, it is critical the user re-authenticate.
-
+                        <html:pre>
                         Script Verification:
                         To manually verify, Ensure none of the following remote access packages
                         exist in the folder /lib/apk/db/ Packages:
@@ -4577,6 +4595,7 @@
                         xrdp, xorgxrdp, vsftpd, proftpd, webmin, cockpit, cockpit-ws,
                         cockpit-bridge, nfs-utils, samba, samba-server, samba-client, samba-common,
                         rsh, telnet
+                        </html:pre>
                     </ns0:description>
                     <ns0:ident system="http://cyber.mil/cci">CCI-002038</ns0:ident>
 
@@ -4607,7 +4626,7 @@
                         to the function of the device or has the concept of an organizational user
                         (e.g., VPN, proxy capability). This does not apply to authentication for the
                         purpose of configuring the device itself (management).
-
+                        <html:pre>
                         Script Verification:
                         To manually verify, Ensure none of the following remote access packages
                         exist in the folder /lib/apk/db/ Packages:
@@ -4616,6 +4635,7 @@
                         xrdp, xorgxrdp, vsftpd, proftpd, webmin, cockpit, cockpit-ws,
                         cockpit-bridge, nfs-utils, samba, samba-server, samba-client, samba-common,
                         rsh, telnet
+                        </html:pre>
                     </ns0:description>
                     <ns0:ident system="http://cyber.mil/cci">CCI-004046</ns0:ident>
 
@@ -4633,7 +4653,7 @@
                         authentication for systems covered under Homeland Security Presidential
                         Directive (HSPD) 12, as well as making the CAC a primary component of
                         layered protection for national security systems.
-
+                        <html:pre>
                         Script Verification:
                         To manually verify, Ensure none of the following remote access packages
                         exist in the folder /lib/apk/db/ Packages:
@@ -4642,6 +4662,7 @@
                         xrdp, xorgxrdp, vsftpd, proftpd, webmin, cockpit, cockpit-ws,
                         cockpit-bridge, nfs-utils, samba, samba-server, samba-client, samba-common,
                         rsh, telnet
+                        </html:pre>
                     </ns0:description>
                     <ns0:ident system="http://cyber.mil/cci">CCI-001954</ns0:ident>
 
@@ -4659,7 +4680,7 @@
                         authentication for systems covered under Homeland Security Presidential
                         Directive (HSPD) 12, as well as making the CAC a primary component of
                         layered protection for national security systems.
-
+                        <html:pre>
                         Script Verification:
                         To manually verify, Ensure none of the following remote access packages
                         exist in the folder /lib/apk/db/ Packages:
@@ -4668,6 +4689,7 @@
                         xrdp, xorgxrdp, vsftpd, proftpd, webmin, cockpit, cockpit-ws,
                         cockpit-bridge, nfs-utils, samba, samba-server, samba-client, samba-common,
                         rsh, telnet
+                        </html:pre>
                     </ns0:description>
                     <ns0:ident system="http://cyber.mil/cci">CCI-001953</ns0:ident>
 
@@ -4682,6 +4704,7 @@
                     <ns0:description xml:lang="en">Without mapping the certificate used to
                         authenticate to the user account, the ability to determine the identity of
                         the individual user or group will not be available for forensic analysis.
+                        <html:pre>
                         Script Verification:
                         To manually verify, Ensure none of the following remote access packages
                         exist in the folder /lib/apk/db/ Packages:
@@ -4690,6 +4713,7 @@
                         xrdp, xorgxrdp, vsftpd, proftpd, webmin, cockpit, cockpit-ws,
                         cockpit-bridge, nfs-utils, samba, samba-server, samba-client, samba-common,
                         rsh, telnet
+                        </html:pre>
                     </ns0:description>
                     <ns0:ident system="http://cyber.mil/cci">CCI-000187</ns0:ident>
 
@@ -4720,7 +4744,7 @@
                         certificate revocation lists or online certificate status protocol
                         responses. Validation of the certificate status information is out of scope
                         for this requirement.
-
+                        <html:pre>
                         Script Verification:
                         To manually verify, Ensure none of the following remote access packages
                         exist in the folder /lib/apk/db/ Packages:
@@ -4729,6 +4753,7 @@
                         xrdp, xorgxrdp, vsftpd, proftpd, webmin, cockpit, cockpit-ws,
                         cockpit-bridge, nfs-utils, samba, samba-server, samba-client, samba-common,
                         rsh, telnet
+                        </html:pre>
                     </ns0:description>
                     <ns0:ident system="http://cyber.mil/cci">CCI-000185</ns0:ident>
 
@@ -4749,7 +4774,7 @@
                         documents and pretend to be the authorized user. Both the holders of a
                         digital certificate and the issuing authority must protect the computers,
                         storage devices, or whatever they use to keep the private keys.
-
+                        <html:pre>
                         Script Verification:
                         To manually verify, Ensure none of the following remote access packages
                         exist in the folder /lib/apk/db/ Packages:
@@ -4758,6 +4783,7 @@
                         xrdp, xorgxrdp, vsftpd, proftpd, webmin, cockpit, cockpit-ws,
                         cockpit-bridge, nfs-utils, samba, samba-server, samba-client, samba-common,
                         rsh, telnet
+                        </html:pre>
                     </ns0:description>
                     <ns0:ident system="http://cyber.mil/cci">CCI-000186</ns0:ident>
 
@@ -4785,7 +4811,7 @@
                         time-of-day restrictions on information system use. This capability is
                         typically reserved for specific operating system functionality where the
                         system owner, data owner, or organization requires additional assurance.
-                        
+                        <html:pre>
                         Script Verification:
                         To manually verify, Ensure none of the following remote access packages
                         exist in the folder /lib/apk/db/ Packages:
@@ -4794,6 +4820,7 @@
                         xrdp, xorgxrdp, vsftpd, proftpd, webmin, cockpit, cockpit-ws,
                         cockpit-bridge, nfs-utils, samba, samba-server, samba-client, samba-common,
                         rsh, telnet
+                        </html:pre>
                     </ns0:description>
                     <ns0:ident system="http://cyber.mil/cci">CCI-002361</ns0:ident>
 
@@ -4818,7 +4845,7 @@
                         ongoing compliance with remote access policies by enforcing connection rules
                         of remote access applications on a variety of information system components
                         (e.g., servers, workstations, notebook computers, smartphones, and tablets).
-                        
+                        <html:pre>
                         Script Verification:
                         To manually verify, Ensure none of the following remote access packages
                         exist in the folder /lib/apk/db/ Packages:
@@ -4827,6 +4854,7 @@
                         xrdp, xorgxrdp, vsftpd, proftpd, webmin, cockpit, cockpit-ws,
                         cockpit-bridge, nfs-utils, samba, samba-server, samba-client, samba-common,
                         rsh, telnet
+                        </html:pre>
                     </ns0:description>
                     <ns0:ident system="http://cyber.mil/cci">CCI-002314</ns0:ident>
 
@@ -4849,7 +4877,7 @@
                         functionality (e.g., RDP) may implement features such as automatic
                         disconnect (or user-initiated disconnect) in case of adverse information
                         based on an indicator of compromise or attack.
-
+                        <html:pre>
                         Script Verification:
                         To manually verify, Ensure none of the following remote access packages
                         exist in the folder /lib/apk/db/ Packages:
@@ -4858,6 +4886,7 @@
                         xrdp, xorgxrdp, vsftpd, proftpd, webmin, cockpit, cockpit-ws,
                         cockpit-bridge, nfs-utils, samba, samba-server, samba-client, samba-common,
                         rsh, telnet
+                        </html:pre>
                     </ns0:description>
                     <ns0:ident system="http://cyber.mil/cci">CCI-002322</ns0:ident>
 
@@ -4877,7 +4906,7 @@
                         workstations and remote services. For some types of interactive sessions,
                         including, for example, remote logon, information systems typically send
                         logoff messages as final messages prior to terminating sessions.
-
+                        <html:pre>
                         Script Verification:
                         To manually verify, Ensure none of the following remote access packages
                         exist in the folder /lib/apk/db/ Packages:
@@ -4886,6 +4915,7 @@
                         xrdp, xorgxrdp, vsftpd, proftpd, webmin, cockpit, cockpit-ws,
                         cockpit-bridge, nfs-utils, samba, samba-server, samba-client, samba-common,
                         rsh, telnet
+                        </html:pre>
                     </ns0:description>
                     <ns0:ident system="http://cyber.mil/cci">CCI-002363</ns0:ident>
 
@@ -4908,7 +4938,7 @@
                         sessions, including, for example, remote logon, information systems
                         typically send logoff messages as final messages prior to terminating
                         sessions.
-
+                        <html:pre>
                         Script Verification:
                         To manually verify, Ensure none of the following remote access packages
                         exist in the folder /lib/apk/db/ Packages:
@@ -4917,6 +4947,7 @@
                         xrdp, xorgxrdp, vsftpd, proftpd, webmin, cockpit, cockpit-ws,
                         cockpit-bridge, nfs-utils, samba, samba-server, samba-client, samba-common,
                         rsh, telnet
+                        </html:pre>
                     </ns0:description>
                     <ns0:ident system="http://cyber.mil/cci">CCI-002364</ns0:ident>
 
@@ -4947,7 +4978,7 @@
                         by the application to control access between users (or processes acting on
                         behalf of users) and objects (e.g., devices, files, records, processes,
                         programs, and domains) in the information system.
-
+                        <html:pre>
                         Script Verification:
                         To manually verify, Ensure none of the following remote access packages
                         exist in the folder /lib/apk/db/ Packages:
@@ -4956,6 +4987,7 @@
                         xrdp, xorgxrdp, vsftpd, proftpd, webmin, cockpit, cockpit-ws,
                         cockpit-bridge, nfs-utils, samba, samba-server, samba-client, samba-common,
                         rsh, telnet
+                        </html:pre>
                     </ns0:description>
                     <ns0:ident system="http://cyber.mil/cci">CCI-000213</ns0:ident>
 
@@ -4976,7 +5008,7 @@
                         only accept PKI-certificates obtained from a DoD-approved internal or
                         external certificate authority. Reliance on CAs for the establishment of
                         secure sessions includes, for example, the use of SSL/TLS certificates.
-                        
+                        <html:pre>
                         Script Verification:
                         To manually verify, Ensure none of the following remote access packages
                         exist in the folder /lib/apk/db/ Packages:
@@ -4985,6 +5017,7 @@
                         xrdp, xorgxrdp, vsftpd, proftpd, webmin, cockpit, cockpit-ws,
                         cockpit-bridge, nfs-utils, samba, samba-server, samba-client, samba-common,
                         rsh, telnet
+                        </html:pre>
                     </ns0:description>
                     <ns0:ident system="http://cyber.mil/cci">CCI-002470</ns0:ident>
 
@@ -5001,7 +5034,7 @@
                         the risk of unauthorized system access via user password guessing, otherwise
                         known as brute-forcing, is reduced. Limits are imposed by locking the
                         account.
-
+                        <html:pre>
                         Script Verification:
                         To manually verify, Ensure none of the following remote access packages
                         exist in the folder /lib/apk/db/ Packages:
@@ -5010,6 +5043,7 @@
                         xrdp, xorgxrdp, vsftpd, proftpd, webmin, cockpit, cockpit-ws,
                         cockpit-bridge, nfs-utils, samba, samba-server, samba-client, samba-common,
                         rsh, telnet
+                        </html:pre>
                     </ns0:description>
                     <ns0:ident system="http://cyber.mil/cci">CCI-002238</ns0:ident>
 
@@ -5030,7 +5064,7 @@
                         determined and implemented, once invoked, the session lock shall remain in
                         place until the user re-authenticates. No other activity aside from
                         re-authentication shall unlock the system.
-
+                        <html:pre>
                         Script Verification:
                         To manually verify, Ensure none of the following remote access packages
                         exist in the folder /lib/apk/db/ Packages:
@@ -5039,6 +5073,7 @@
                         xrdp, xorgxrdp, vsftpd, proftpd, webmin, cockpit, cockpit-ws,
                         cockpit-bridge, nfs-utils, samba, samba-server, samba-client, samba-common,
                         rsh, telnet
+                        </html:pre>
                     </ns0:description>
                     <ns0:ident system="http://cyber.mil/cci">CCI-000056</ns0:ident>
 
@@ -5059,7 +5094,7 @@
                         idled and take action to initiate the session lock. The session lock is
                         implemented at the point where session activity can be determined and/or
                         controlled.
-
+                        <html:pre>
                         Script Verification:
                         To manually verify, Ensure none of the following remote access packages
                         exist in the folder /lib/apk/db/ Packages:
@@ -5068,6 +5103,7 @@
                         xrdp, xorgxrdp, vsftpd, proftpd, webmin, cockpit, cockpit-ws,
                         cockpit-bridge, nfs-utils, samba, samba-server, samba-client, samba-common,
                         rsh, telnet
+                        </html:pre>
                     </ns0:description>
                     <ns0:ident system="http://cyber.mil/cci">CCI-000057</ns0:ident>
 
@@ -5089,7 +5125,7 @@
                         logon is required. The system must prevent further activity until the user
                         executes a positive action to manifest agreement by clicking on a box
                         indicating "OK".
-
+                        <html:pre>
                         Script Verification:
                         To manually verify, Ensure none of the following remote access packages
                         exist in the folder /lib/apk/db/ Packages:
@@ -5098,6 +5134,7 @@
                         xrdp, xorgxrdp, vsftpd, proftpd, webmin, cockpit, cockpit-ws,
                         cockpit-bridge, nfs-utils, samba, samba-server, samba-client, samba-common,
                         rsh, telnet
+                        </html:pre>
                     </ns0:description>
                     <ns0:ident system="http://cyber.mil/cci">CCI-000050</ns0:ident>
 
@@ -5113,7 +5150,7 @@
                         the risk of unauthorized system access via user password guessing, otherwise
                         known as brute-force attacks, is reduced. Limits are imposed by locking the
                         account.
-
+                        <html:pre>
                         Script Verification:
                         To manually verify, Ensure none of the following remote access packages
                         exist in the folder /lib/apk/db/ Packages:
@@ -5122,6 +5159,7 @@
                         xrdp, xorgxrdp, vsftpd, proftpd, webmin, cockpit, cockpit-ws,
                         cockpit-bridge, nfs-utils, samba, samba-server, samba-client, samba-common,
                         rsh, telnet
+                        </html:pre>
                     </ns0:description>
                     <ns0:ident system="http://cyber.mil/cci">CCI-000044</ns0:ident>
 
@@ -5164,7 +5202,7 @@
                         that have severe limitations on the number of characters that can be
                         displayed in the banner: "I've read &amp; consent to terms in IS user
                         agreem't."
-
+                        <html:pre>
                         Script Verification:
                         To manually verify, Ensure none of the following remote access packages
                         exist in the folder /lib/apk/db/ Packages:
@@ -5173,6 +5211,7 @@
                         xrdp, xorgxrdp, vsftpd, proftpd, webmin, cockpit, cockpit-ws,
                         cockpit-bridge, nfs-utils, samba, samba-server, samba-client, samba-common,
                         rsh, telnet
+                        </html:pre>
                     </ns0:description>
                     <ns0:ident system="http://cyber.mil/cci">CCI-000048</ns0:ident>
 
@@ -5197,7 +5236,7 @@
                         access capabilities, such as Remote Desktop Protocol (RDP), on a variety of
                         information system components (e.g., servers, workstations, notebook
                         computers, smartphones, and tablets).
-
+                        <html:pre>
                         Script Verification:
                         To manually verify, Ensure none of the following remote access packages
                         exist in the folder /lib/apk/db/ Packages:
@@ -5206,6 +5245,7 @@
                         xrdp, xorgxrdp, vsftpd, proftpd, webmin, cockpit, cockpit-ws,
                         cockpit-bridge, nfs-utils, samba, samba-server, samba-client, samba-common,
                         rsh, telnet
+                        </html:pre>
                     </ns0:description>
                     <ns0:ident system="http://cyber.mil/cci">CCI-000067</ns0:ident>
 
@@ -5226,7 +5266,7 @@
                         systems need to provide users with the ability to manually invoke a session
                         lock so users may secure their session should the need arise for them to
                         temporarily vacate the immediate physical vicinity.
-
+                        <html:pre>
                         Script Verification:
                         To manually verify, Ensure none of the following remote access packages
                         exist in the folder /lib/apk/db/ Packages:
@@ -5235,6 +5275,7 @@
                         xrdp, xorgxrdp, vsftpd, proftpd, webmin, cockpit, cockpit-ws,
                         cockpit-bridge, nfs-utils, samba, samba-server, samba-client, samba-common,
                         rsh, telnet
+                        </html:pre>
                     </ns0:description>
                     <ns0:ident system="http://cyber.mil/cci">CCI-000057</ns0:ident>
 
@@ -5258,7 +5299,7 @@
                         savers, photographic images, solid colors, a clock, a battery life
                         indicator, or a blank screen, with the additional caveat that none of the
                         images convey sensitive information.
-
+                        <html:pre>
                         Script Verification:
                         To manually verify, Ensure none of the following remote access packages
                         exist in the folder /lib/apk/db/ Packages:
@@ -5267,6 +5308,7 @@
                         xrdp, xorgxrdp, vsftpd, proftpd, webmin, cockpit, cockpit-ws,
                         cockpit-bridge, nfs-utils, samba, samba-server, samba-client, samba-common,
                         rsh, telnet
+                        </html:pre>
                     </ns0:description>
                     <ns0:ident system="http://cyber.mil/cci">CCI-000060</ns0:ident>
 
@@ -5309,7 +5351,7 @@
                         verbiage for operating systems that have severe limitations on the number of
                         characters that can be displayed in the banner: "I've read &amp; consent to
                         terms in IS user agreem't."
-
+                        <html:pre>
                         Script Verification:
                         To manually verify, Ensure none of the following remote access packages
                         exist in the folder /lib/apk/db/ Packages:
@@ -5318,6 +5360,7 @@
                         xrdp, xorgxrdp, vsftpd, proftpd, webmin, cockpit, cockpit-ws,
                         cockpit-bridge, nfs-utils, samba, samba-server, samba-client, samba-common,
                         rsh, telnet
+                        </html:pre>
                     </ns0:description>
                     <ns0:ident system="http://cyber.mil/cci">CCI-001384</ns0:ident>
 
@@ -5332,7 +5375,7 @@
                     <ns0:description xml:lang="en">Limiting the number of logon attempts over a
                         certain time interval reduces the chances that an unauthorized user may gain
                         access to an account.
-
+                        <html:pre>
                         Script Verification:
                         To manually verify, Ensure none of the following remote access packages
                         exist in the folder /lib/apk/db/ Packages:
@@ -5341,6 +5384,7 @@
                         xrdp, xorgxrdp, vsftpd, proftpd, webmin, cockpit, cockpit-ws,
                         cockpit-bridge, nfs-utils, samba, samba-server, samba-client, samba-common,
                         rsh, telnet
+                        </html:pre>
                     </ns0:description>
                     <ns0:ident system="http://cyber.mil/cci">CCI-000366</ns0:ident>
 
@@ -5358,8 +5402,7 @@
                         incident or identify those responsible for one. Audit records can be
                         generated from various components within the information system (e.g.,
                         module or policy filter).
-
-
+                        <html:pre>
                         Script Verification:
                         To manually verify, Ensure none of the following remote access packages
                         exist in the folder /lib/apk/db/ Packages:
@@ -5368,6 +5411,7 @@
                         xrdp, xorgxrdp, vsftpd, proftpd, webmin, cockpit, cockpit-ws,
                         cockpit-bridge, nfs-utils, samba, samba-server, samba-client, samba-common,
                         rsh, telnet
+                        </html:pre>
                     </ns0:description>
                     <ns0:ident system="http://cyber.mil/cci">CCI-000172</ns0:ident>
 
@@ -5390,7 +5434,7 @@
                         using nonces (e.g., numbers generated for a specific one-time use) or
                         challenges (e.g., TLS, WS_Security). Additional techniques include
                         time-synchronous or challenge-response one-time authenticators.
-
+                        <html:pre>
                         Script Verification:
                         To manually verify, Ensure none of the following remote access packages
                         exist in the folder /lib/apk/db/ Packages:
@@ -5399,6 +5443,7 @@
                         xrdp, xorgxrdp, vsftpd, proftpd, webmin, cockpit, cockpit-ws,
                         cockpit-bridge, nfs-utils, samba, samba-server, samba-client, samba-common,
                         rsh, telnet
+                        </html:pre>
                     </ns0:description>
                     <ns0:ident system="http://cyber.mil/cci">CCI-001941</ns0:ident>
 
@@ -5430,7 +5475,7 @@
                         individual authenticator prior to using a group authenticator allows for
                         traceability of actions, as well as adding an additional level of protection
                         of the actions that can be taken with group account knowledge.
-
+                        <html:pre>
                         Script Verification:
                         To manually verify, Ensure none of the following remote access packages
                         exist in the folder /lib/apk/db/ Packages:
@@ -5439,6 +5484,7 @@
                         xrdp, xorgxrdp, vsftpd, proftpd, webmin, cockpit, cockpit-ws,
                         cockpit-bridge, nfs-utils, samba, samba-server, samba-client, samba-common,
                         rsh, telnet
+                        </html:pre>
                     </ns0:description>
                     <ns0:ident system="http://cyber.mil/cci">CCI-004045</ns0:ident>
 
@@ -5461,7 +5507,7 @@
                         nonces (e.g., numbers generated for a specific one-time use) or challenges
                         (e.g., TLS, WS_Security). Additional techniques include time-synchronous or
                         challenge-response one-time authenticators.
-
+                        <html:pre>
                         Script Verification:
                         To manually verify, Ensure none of the following remote access packages
                         exist in the folder /lib/apk/db/ Packages:
@@ -5470,6 +5516,7 @@
                         xrdp, xorgxrdp, vsftpd, proftpd, webmin, cockpit, cockpit-ws,
                         cockpit-bridge, nfs-utils, samba, samba-server, samba-client, samba-common,
                         rsh, telnet
+                        </html:pre>
                     </ns0:description>
                     <ns0:ident system="http://cyber.mil/cci">CCI-001941</ns0:ident>
 
@@ -5494,7 +5541,7 @@
                         information system by a user (or process acting on behalf of a user)
                         communicating through a direct connection without the use of a network. The
                         DOD CAC with DOD-approved PKI is an example of multifactor authentication.
-                        
+                        <html:pre>
                         Script Verification:
                         To manually verify, Ensure none of the following remote access packages
                         exist in the folder /lib/apk/db/ Packages:
@@ -5503,6 +5550,7 @@
                         xrdp, xorgxrdp, vsftpd, proftpd, webmin, cockpit, cockpit-ws,
                         cockpit-bridge, nfs-utils, samba, samba-server, samba-client, samba-common,
                         rsh, telnet
+                        </html:pre>
                     </ns0:description>
                     <ns0:ident system="http://cyber.mil/cci">CCI-000765</ns0:ident>
                     <ns0:check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
@@ -5525,7 +5573,7 @@
                         a user (or process acting on behalf of a user) communicating through a
                         direct connection without the use of a network. The DoD CAC with
                         DoD-approved PKI is an example of multifactor authentication.
-
+                        <html:pre>
                         Script Verification:
                         To manually verify, Ensure none of the following remote access packages
                         exist in the folder /lib/apk/db/ Packages:
@@ -5534,6 +5582,7 @@
                         xrdp, xorgxrdp, vsftpd, proftpd, webmin, cockpit, cockpit-ws,
                         cockpit-bridge, nfs-utils, samba, samba-server, samba-client, samba-common,
                         rsh, telnet
+                        </html:pre>
                     </ns0:description>
                     <ns0:ident system="http://cyber.mil/cci">CCI-000766</ns0:ident>
 
@@ -5556,7 +5605,7 @@
                         process acting on behalf of a user) communicating through a network (e.g.,
                         local area network, wide area network, or the Internet). The DoD CAC with
                         DoD-approved PKI is an example of multifactor authentication.
-
+                        <html:pre>
                         Script Verification:
                         To manually verify, Ensure none of the following remote access packages
                         exist in the folder /lib/apk/db/ Packages:
@@ -5565,6 +5614,7 @@
                         xrdp, xorgxrdp, vsftpd, proftpd, webmin, cockpit, cockpit-ws,
                         cockpit-bridge, nfs-utils, samba, samba-server, samba-client, samba-common,
                         rsh, telnet
+                        </html:pre>
                     </ns0:description>
                     <ns0:ident system="http://cyber.mil/cci">CCI-000765</ns0:ident>
 
@@ -5588,7 +5638,7 @@
                         on behalf of a user) where said access is obtained through a network
                         connection. The DoD CAC with DoD-approved PKI is an example of multifactor
                         authentication.
-
+                        <html:pre>
                         Script Verification:
                         To manually verify, Ensure none of the following remote access packages
                         exist in the folder /lib/apk/db/ Packages:
@@ -5597,6 +5647,7 @@
                         xrdp, xorgxrdp, vsftpd, proftpd, webmin, cockpit, cockpit-ws,
                         cockpit-bridge, nfs-utils, samba, samba-server, samba-client, samba-common,
                         rsh, telnet
+                        </html:pre>
                     </ns0:description>
                     <ns0:ident system="http://cyber.mil/cci">CCI-000766</ns0:ident>
 
@@ -5625,10 +5676,11 @@
                         operating system should not have to verify the software again. This
                         requirement does not mandate DOD certificates for this purpose; however, the
                         certificate used to verify the software must be from an approved CA.
-
+                        <html:pre>
                         Script Verification:
                         To manually verify, ensure all repositories in /etc/apk/repositories/ begin
                         with 'https://'
+                        </html:pre>
                     </ns0:description>
                     <ns0:ident system="http://cyber.mil/cci">CCI-003992</ns0:ident>
                     <ns0:check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
@@ -5645,10 +5697,11 @@
                         encryption is the standard method for protecting passwords. If passwords are
                         not encrypted, they can be plainly read (i.e., clear text) and easily
                         compromised.
-
+                        <html:pre>
                         Script Verification:
                         To manually verify, run command 'cat /etc/shadow and verify no password
                         fields start with a '$' indicating a hashed password
+                        </html:pre>
                     </ns0:description>
                     <ns0:ident system="http://cyber.mil/cci">CCI-004062</ns0:ident>
 
@@ -5664,10 +5717,11 @@
                         encryption is the standard method for protecting passwords. If passwords are
                         not encrypted, they can be plainly read (i.e., clear text) and easily
                         compromised.
-
+                        <html:pre>
                         Script Verification:
                         To manually verify, run command 'cat /etc/shadow and verify no password
                         fields start with a '$' indicating a hashed password
+                        </html:pre>
                     </ns0:description>
                     <ns0:ident system="http://cyber.mil/cci">CCI-000197</ns0:ident>
 
@@ -5682,10 +5736,11 @@
                     <ns0:description xml:lang="en">If cached authentication information is
                         out-of-date, the validity of the authentication information may be
                         questionable.
-
+                        <html:pre>
                         Script Verification:
                         To manually verify, run command 'cat /etc/shadow and verify no password
                         fields start with a '$' indicating a hashed password
+                        </html:pre>
                     </ns0:description>
                     <ns0:ident system="http://cyber.mil/cci">CCI-002007</ns0:ident>
 
@@ -5709,10 +5764,11 @@
                         number then number of changed characters must be rounded up. For example, a
                         password length of 15 characters must require the change of at least 8
                         characters.
-
+                        <html:pre>
                         Script Verification:
                         To manually verify, run command 'cat /etc/shadow and verify no password
                         fields start with a '$' indicating a hashed password
+                        </html:pre>
                     </ns0:description>
                     <ns0:ident system="http://cyber.mil/cci">CCI-004066</ns0:ident>
 
@@ -5731,10 +5787,11 @@
                         factor of several that determines how long it takes to crack a password. The
                         more complex the password, the greater the number of possible combinations
                         that need to be tested before the password is compromised.
-
+                        <html:pre>
                         Script Verification:
                         To manually verify, run command 'cat /etc/shadow and verify no password
                         fields start with a '$' indicating a hashed password
+                        </html:pre>
                     </ns0:description>
                     <ns0:ident system="http://cyber.mil/cci">CCI-004066</ns0:ident>
 
@@ -5753,10 +5810,11 @@
                         factor of several that determines how long it takes to crack a password. The
                         more complex the password, the greater the number of possible combinations
                         that need to be tested before the password is compromised.
-
+                        <html:pre>
                         Script Verification:
                         To manually verify, run command 'cat /etc/shadow and verify no password
                         fields start with a '$' indicating a hashed password
+                        </html:pre>
                     </ns0:description>
                     <ns0:ident system="http://cyber.mil/cci">CCI-004066</ns0:ident>
 
@@ -5775,10 +5833,11 @@
                         factor of several that determines how long it takes to crack a password. The
                         more complex the password, the greater the number of possible combinations
                         that need to be tested before the password is compromised.
-
+                        <html:pre>
                         Script Verification:
                         To manually verify, run command 'cat /etc/shadow and verify no password
                         fields start with a '$' indicating a hashed password
+                        </html:pre>
                     </ns0:description>
                     <ns0:ident system="http://cyber.mil/cci">CCI-004066</ns0:ident>
 
@@ -5799,11 +5858,11 @@
                         method used when addressing this risk. For example, displaying asterisks
                         when a user types in a password is an example of obscuring feedback of
                         authentication information.
-
-
+                        <html:pre>
                         Script Verification:
                         To manually verify, run command 'cat /etc/shadow and verify no password
                         fields start with a '$' indicating a hashed password
+                        </html:pre>
                     </ns0:description>
                     <ns0:ident system="http://cyber.mil/cci">CCI-000206</ns0:ident>
 
@@ -5823,10 +5882,11 @@
                         determine strength and how long it takes to crack a password. Use of more
                         characters in a password helps to exponentially increase the time and/or
                         resources required to compromise the password.
-
+                        <html:pre>
                         Script Verification:
                         To manually verify, run command 'cat /etc/shadow and verify no password
                         fields start with a '$' indicating a hashed password
+                        </html:pre>
                     </ns0:description>
                     <ns0:ident system="http://cyber.mil/cci">CCI-004066</ns0:ident>
 
@@ -5843,10 +5903,11 @@
                         If the operating system does not limit the lifetime of passwords and force
                         users to change their passwords, there is the risk that the operating system
                         passwords could be compromised.
-
+                        <html:pre>
                         Script Verification:
                         To manually verify, run command 'cat /etc/shadow and verify no password
                         fields start with a '$' indicating a hashed password
+                        </html:pre>
                     </ns0:description>
                     <ns0:ident system="http://cyber.mil/cci">CCI-004066</ns0:ident>
 
@@ -5864,10 +5925,11 @@
                         change their password, then the password could be repeatedly changed in a
                         short period of time to defeat the organization's policy regarding password
                         reuse.
-
+                        <html:pre>
                         Script Verification:
                         To manually verify, run command 'cat /etc/shadow and verify no password
                         fields start with a '$' indicating a hashed password
+                        </html:pre>
                     </ns0:description>
                     <ns0:ident system="http://cyber.mil/cci">CCI-004066</ns0:ident>
 
@@ -5888,10 +5950,11 @@
                         need to be tested before the password is compromised. Special characters are
                         those characters that are not alphanumeric. Examples include: ~ ! @ # $ % ^
                         *.
-
+                        <html:pre>
                         Script Verification:
                         To manually verify, run command 'cat /etc/shadow and verify no password
                         fields start with a '$' indicating a hashed password
+                        </html:pre>
                     </ns0:description>
                     <ns0:ident system="http://cyber.mil/cci">CCI-004066</ns0:ident>
 
@@ -5907,10 +5970,11 @@
                         passwords based on dictionary words, then this increases the chances of
                         password compromise by increasing the opportunity for successful guesses and
                         brute-force attacks.
-
+                        <html:pre>
                         Script Verification:
                         To manually verify, run command 'cat /etc/shadow and verify no password
                         fields start with a '$' indicating a hashed password
+                        </html:pre>
                     </ns0:description>
                     <ns0:ident system="http://cyber.mil/cci">CCI-000366</ns0:ident>
 
@@ -5927,10 +5991,11 @@
                     <ns0:description xml:lang="en">Disabling expired, inactive, or otherwise
                         anomalous accounts supports the concepts of least privilege and least
                         functionality which reduce the attack surface of the system.
-
+                        <html:pre>
                         Script Verification:
                         To manually verify, run command 'cat /etc/shadow and verify that no
                         additional users exist
+                        </html:pre>
                     </ns0:description>
                     <ns0:ident system="http://cyber.mil/cci">CCI-003628</ns0:ident>
 
@@ -5952,10 +6017,11 @@
                         appropriate authorizations. Circumventing intrusion detection and prevention
                         mechanisms or malicious code protection mechanisms are examples of
                         privileged functions that require protection from non-privileged users.
-                        
+                        <html:pre>
                         Script Verification:
                         To manually verify, run command 'cat /etc/shadow and verify that no
                         additional users exist
+                        </html:pre>
                     </ns0:description>
                     <ns0:ident system="http://cyber.mil/cci">CCI-002235</ns0:ident>
 
@@ -5971,10 +6037,11 @@
                     <ns0:description xml:lang="en">Setting the most restrictive default permissions
                         ensures that when new accounts are created they do not have unnecessary
                         access.
-
+                        <html:pre>
                         Script Verification:
                         To manually verify, run command 'cat /etc/shadow and verify that no
                         additional users exist
+                        </html:pre>
                     </ns0:description>
                     <ns0:ident system="http://cyber.mil/cci">CCI-000366</ns0:ident>
 
@@ -5998,10 +6065,11 @@
                         authenticated for all accesses other than those accesses explicitly
                         identified and documented by the organization when related to the use of
                         anonymous access.
-
+                        <html:pre>
                         Script Verification:
                         To manually verify, run command 'cat /etc/shadow and verify that no
                         additional users exist
+                        </html:pre>
                     </ns0:description>
                     <ns0:ident system="http://cyber.mil/cci">CCI-000804</ns0:ident>
 
@@ -6031,10 +6099,11 @@
                         operating systems can be integrated with enterprise-level
                         authentication/access mechanisms that meet or exceed access control policy
                         requirements.
-
+                        <html:pre>
                         Script Verification:
                         To manually verify, run command 'cat /etc/shadow and verify that no
                         additional users exist
+                        </html:pre>
                     </ns0:description>
                     <ns0:ident system="http://cyber.mil/cci">CCI-001682</ns0:ident>
 
@@ -6064,10 +6133,11 @@
                         for users of any other information system resources. This may include
                         isolating the administrative interface on a different security domain and
                         with additional access controls.
-
+                        <html:pre>
                         Script Verification:
                         To manually verify, run command 'cat /etc/shadow and verify that no
                         dditional users exist
+                        </html:pre>
                     </ns0:description>
                     <ns0:ident system="http://cyber.mil/cci">CCI-001082</ns0:ident>
 
@@ -6083,10 +6153,11 @@
                         resources or perform tasks for which they do not have authorization. When
                         operating systems provide the capability to change user authenticators, it
                         is critical the user reauthenticate.
-
+                        <html:pre>
                         Script Verification:
                         To manually verify, run command 'cat /etc/shadow and verify that no
                         additional users exist
+                        </html:pre>
                     </ns0:description>
                     <ns0:ident system="http://cyber.mil/cci">CCI-002038</ns0:ident>
 
@@ -6102,10 +6173,11 @@
                         resources or perform tasks for which they do not have authorization. When
                         operating systems provide the capability to change security roles, it is
                         critical the user reauthenticate.
-
+                        <html:pre>
                         Script Verification:
                         To manually verify, run command 'cat /etc/shadow and verify that no
                         additional users exist
+                        </html:pre>
                     </ns0:description>
                     <ns0:ident system="http://cyber.mil/cci">CCI-002038</ns0:ident>
 
@@ -6128,10 +6200,11 @@
                         requirements, many operating systems can be integrated with enterprise-level
                         authentication/access/auditing mechanisms that meet or exceed access control
                         policy requirements.
-
+                        <html:pre>
                         Script Verification:
                         To manually verify, run command 'cat /etc/shadow and verify that no
                         additional users exist
+                        </html:pre>
                     </ns0:description>
                     <ns0:ident system="http://cyber.mil/cci">CCI-000015</ns0:ident>
 
@@ -6154,10 +6227,11 @@
                         requirements, many operating systems can be integrated with enterprise-level
                         authentication/access/auditing mechanisms that meet or exceed access control
                         policy requirements.
-
+                        <html:pre>
                         Script Verification:
                         To manually verify, run command 'cat /etc/shadow and verify that no
                         additional users exist
+                        </html:pre>
                     </ns0:description>
                     <ns0:ident system="http://cyber.mil/cci">CCI-000015</ns0:ident>
 
@@ -6184,10 +6258,11 @@
                         authenticators without individual authentication. Organizations may require
                         unique identification of individuals in group accounts (e.g., shared
                         privilege accounts) or for detailed accountability of individual activity.
-                        
+                        <html:pre>
                         Script Verification:
                         To manually verify, run command 'cat /etc/shadow and verify that no
                         additional users exist
+                        </html:pre>
                     </ns0:description>
                     <ns0:ident system="http://cyber.mil/cci">CCI-000764</ns0:ident>
 
@@ -6245,10 +6320,11 @@
                         more traditional definitions of discretionary access control require
                         identity-based access control, that limitation is not required for this use
                         of discretionary access control.
-
+                        <html:pre>
                         Script Verification:
                         To manually verify, run command 'cat /etc/shadow and verify that no
                         additional users exist
+                        </html:pre>
                     </ns0:description>
                     <ns0:ident system="http://cyber.mil/cci">CCI-002165</ns0:ident>
 
@@ -6272,10 +6348,11 @@
                         operating systems may be integrated with enterprise-level
                         authentication/access mechanisms that meet or exceed access control policy
                         requirements.
-
+                        <html:pre>
                         Script Verification:
                         To manually verify, run command 'cat /etc/shadow and verify that no
                         additional users exist
+                        </html:pre>
                     </ns0:description>
                     <ns0:ident system="http://cyber.mil/cci">CCI-000016</ns0:ident>
 
@@ -6311,10 +6388,11 @@
                         transferred; using the information system to monitor account usage; and
                         using automated telephonic notification to report atypical system account
                         usage.
-
+                        <html:pre>
                         Script Verification:
                         To manually verify, run command 'cat /etc/shadow and verify that no
                         additional users exist
+                        </html:pre>
                     </ns0:description>
                     <ns0:ident system="http://cyber.mil/cci">CCI-000015</ns0:ident>
 
@@ -6330,10 +6408,11 @@
                     <ns0:description xml:lang="en">Users' home directories/folders may contain
                         information of a sensitive nature. Non-privileged users should coordinate
                         any sharing of information with an SA through shared resources.
-
+                        <html:pre>
                         Script Verification:
                         To manually verify, run command 'cat /etc/shadow and verify that no
                         additional users exist
+                        </html:pre>
                     </ns0:description>
                     <ns0:ident system="http://cyber.mil/cci">CCI-000366</ns0:ident>
 
@@ -6350,10 +6429,11 @@
                         At a minimum, the organization must audit the individual identities of group
                         users. The organization must maintain audit trails in sufficient detail to
                         reconstruct events to determine the actual account involved in the activity.
-                        
+                        <html:pre>
                         Script Verification:
                         To manually verify, run command 'cat /etc/shadow and verify that no
                         additional users exist
+                        </html:pre>
                     </ns0:description>
                     <ns0:ident system="http://cyber.mil/cci">CCI-000135</ns0:ident>
 
@@ -6371,10 +6451,11 @@
                         accounts will not notice if unauthorized access to their user account has
                         been obtained. Operating systems need to track periods of inactivity and
                         disable application identifiers after 35 days of inactivity.
-
+                        <html:pre>
                         Script Verification:
                         To manually verify, run command 'cat /etc/shadow and verify that no
                         additional users exist
+                        </html:pre>
                     </ns0:description>
                     <ns0:ident system="http://cyber.mil/cci">CCI-003627</ns0:ident>
 
@@ -6500,10 +6581,11 @@
                         escalated privileges. Only qualified and authorized individuals shall be
                         allowed to obtain access to information system components for purposes of
                         initiating changes, including upgrades and modifications.
-
+                        <html:pre>
                         Script Verification:
                         To manually verify, Ensure all directories and files in the /usr/lib
                         folder have both owner and group values of 'root' via 'ls -ld /usr/lib'
+                        </html:pre>
                     </ns0:description>
                     <ns0:ident system="http://cyber.mil/cci">CCI-001499</ns0:ident>
 
@@ -6530,10 +6612,11 @@
                         types of installations are prohibited (e.g., software whose pedigree with
                         regard to being potentially malicious is unknown or suspect) by the
                         organization.
-
+                        <html:pre>
                         Script Verification:
                         To manually verify, Ensure all directories and files in the /usr/lib
                         folder have both owner and group values of 'root' via 'ls -ld /usr/lib'
+                        </html:pre>
                     </ns0:description>
                     <ns0:ident system="http://cyber.mil/cci">CCI-003980</ns0:ident>
 
@@ -6556,11 +6639,12 @@
                         certificate authority) for which trust is assumed and not derived. A root
                         certificate for a PKI system is an example of a trust anchor. A trust store
                         or certificate store maintains a list of trusted root certificates.
-
+                        <html:pre>
                         Script Verification:
                         To manually verify, Ensure the ca-certificates package has not been
                         modified using apk audit or by ensuring the sha256 value matches the trusted
                         value.
+                        </html:pre>
                     </ns0:description>
                     <ns0:ident system="http://cyber.mil/cci">CCI-004909</ns0:ident>
 
@@ -6997,8 +7081,7 @@
                     id="oval:org.RemoteAccessServices:obj:6" version="1">
                     <path>/lib/apk/db</path>
                     <filename>installed</filename>
-                    <pattern operation="pattern match">
-                        ^P:(openssh|openssh-server|openssh-client|openssh-sftp-server|dropbear|tigervnc|tigervnc-server|tigervnc-viewer|xrdp|xorgxrdp|vsftpd|proftpd|webmin|cockpit|cockpit-ws|cockpit-bridge|nfs-utils|samba|samba-server|samba-client|samba-common|rsh|telnet)-*</pattern>
+                    <pattern operation="pattern match">^P:(openssh|openssh-server|openssh-client|openssh-sftp-server|dropbear|tigervnc|tigervnc-server|tigervnc-viewer|xrdp|xorgxrdp|vsftpd|proftpd|webmin|cockpit|cockpit-ws|cockpit-bridge|nfs-utils|samba|samba-server|samba-client|samba-common|rsh|telnet)-*</pattern>
                     <instance datatype="int">1</instance>
                 </textfilecontent54_object>
             </objects>
