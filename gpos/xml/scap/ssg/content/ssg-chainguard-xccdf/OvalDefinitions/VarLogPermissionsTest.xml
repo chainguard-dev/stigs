@@ -11,35 +11,35 @@
 
   <definitions>
 
-    <definition id="oval:org.example:def:2" version="1" class="compliance">
+    <definition id="oval:org.varlog:def:2" version="1" class="compliance">
       <metadata>
         <title>Check Var/Log Permissions</title>
         <description>Ensure /var/log has root:root permissions.</description>
         <reference source="Custom" />
         <affected family="unix">
-          <platform>Debian GNU/Linux 10</platform>
+          <platform>Alpine Linux</platform>
         </affected>
       </metadata>
       <criteria>
         <criterion comment="All files in /usr/lib have root:root permissions"
-          test_ref="oval:org.example:tst:5" />
+          test_ref="oval:org.varlog:tst:5" />
       </criteria>
     </definition>
   </definitions>
 
   <tests>
-    <unix:file_test id="oval:org.example:tst:5" version="1" check="all"
+    <unix:file_test id="oval:org.varlog:tst:5" version="1" check="all"
       check_existence="at_least_one_exists" comment="Check existence of /var/log directory"
       xmlns:unix="http://oval.mitre.org/XMLSchema/oval-definitions-5#unix">
-      <unix:object object_ref="oval:org.example:obj:5" />
+      <unix:object object_ref="oval:org.varlog:obj:5" />
 
-      <unix:state state_ref="oval:org.example:ste:5" />
+      <unix:state state_ref="oval:org.varlog:ste:5" />
     </unix:file_test>
   </tests>
 
   <objects>
 
-    <unix:file_object id="oval:org.example:obj:5" version="1"
+    <unix:file_object id="oval:org.varlog:obj:5" version="1"
       xmlns:unix="http://oval.mitre.org/XMLSchema/oval-definitions-5#unix">
       <unix:path>/var/log</unix:path>
       <unix:filename xsi:nil="true" />
@@ -48,7 +48,7 @@
   </objects>
 
   <states>
-    <unix:file_state id="oval:org.example:ste:5" version="1"
+    <unix:file_state id="oval:org.varlog:ste:5" version="1"
       xmlns:unix="http://oval.mitre.org/XMLSchema/oval-definitions-5#unix">
       <unix:group_id datatype="int">0</unix:group_id>
       <unix:user_id datatype="int">0</unix:user_id>

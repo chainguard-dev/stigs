@@ -6797,7 +6797,7 @@
                     id="oval:org.OpenSsl:obj:3" version="1">
                     <independent:path>/lib/apk/db</independent:path>
                     <independent:filename>installed</independent:filename>
-                    <independent:pattern operation="pattern match">^P:openssl-config-fipshardened$</independent:pattern>
+                    <independent:pattern operation="pattern match">^P:openssl-config-fipshardened(-\d+\.\d+\.\d+)?$</independent:pattern>
                     <independent:instance datatype="int">1</independent:instance>
                 </independent:textfilecontent54_object>
 
@@ -6806,7 +6806,7 @@
                     id="oval:org.OpenSsl:obj:4" version="1">
                     <independent:path>/lib/apk/db</independent:path>
                     <independent:filename>installed</independent:filename>
-                    <independent:pattern operation="pattern match">^P:openssl-provider-fips(-[0-9]+\.[0-9]+\.[0-9]+)?$</independent:pattern>
+                    <independent:pattern operation="pattern match">^P:openssl-provider-fips(-\d+\.\d+\.\d+)?$</independent:pattern>
                     <independent:instance datatype="int">1</independent:instance>
                 </independent:textfilecontent54_object>
             </objects>
@@ -7178,7 +7178,7 @@
                         <description>Ensure /var/log has root:root permissions.</description>
                         <reference source="CIS" />
                         <affected family="unix">
-                            <platform>Debian GNU/Linux 10</platform>
+                            <platform>Alpine Linux</platform>
                         </affected>
                     </metadata>
                     <criteria>
