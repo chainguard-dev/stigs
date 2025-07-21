@@ -6838,7 +6838,7 @@
             <states>
             <ind:filehash58_state id="oval:org.CABundleHash:ste:1" version="1">
                 <ind:hash_type>SHA-256</ind:hash_type>
-                <ind:hash>71ad3cc35a5f1b5ba09256a997afc827885925a701c91432ea3fb20201664fb0</ind:hash>
+                <ind:hash>8cf3f2d5222508ca469c78a347764ee1b1fab10a903172612c489ebcca05c91c</ind:hash>
             </ind:filehash58_state>
             </states>
         </oval_definitions>
