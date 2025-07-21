@@ -49,12 +49,12 @@
   <objects>
     <unix:file_object id="oval:org.OpenSsl:obj:1" version="1" xmlns:unix="http://oval.mitre.org/XMLSchema/oval-definitions-5#unix">
       <unix:path>/etc/ssl</unix:path>
-      <unix:filename operation="equals">fipsmodule.cnf</unix:filename>
+      <unix:filename operation="pattern match">(?=.*fipsmodule).*</unix:filename>
     </unix:file_object>
 
     <unix:file_object id="oval:org.OpenSsl:obj:2" version="1" xmlns:unix="http://oval.mitre.org/XMLSchema/oval-definitions-5#unix">
       <unix:path>/etc/ssl</unix:path>
-      <unix:filename operation="equals">openssl.cnf</unix:filename>
+      <unix:filename operation="pattern match">(?=.*openssl).*</unix:filename>
     </unix:file_object>
 
     <independent:textfilecontent54_object id="oval:org.OpenSsl:obj:3" xmlns:independent="http://oval.mitre.org/XMLSchema/oval-definitions-5#independent" version="1">
