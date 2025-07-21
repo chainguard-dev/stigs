@@ -60,14 +60,14 @@
     <independent:textfilecontent54_object id="oval:org.OpenSsl:obj:3" xmlns:independent="http://oval.mitre.org/XMLSchema/oval-definitions-5#independent" version="1">
       <independent:path>/lib/apk/db</independent:path>
       <independent:filename>installed</independent:filename>
-      <independent:pattern operation="pattern match">^P:openssl-config-fipshardened$</independent:pattern>
+      <independent:pattern operation="pattern match">^P:openssl-config-fipshardened(-\d+\.\d+\.\d+)?$</independent:pattern>
       <independent:instance datatype="int">1</independent:instance>
     </independent:textfilecontent54_object>
 
     <independent:textfilecontent54_object id="oval:org.OpenSsl:obj:4" xmlns:independent="http://oval.mitre.org/XMLSchema/oval-definitions-5#independent" version="1">
       <independent:path>/lib/apk/db</independent:path>
       <independent:filename>installed</independent:filename>
-      <independent:pattern operation="pattern match">^P:openssl-provider-fips(-[0-9]+\.[0-9]+\.[0-9]+)?$</independent:pattern>
+      <independent:pattern operation="pattern match">^P:openssl-provider-fips(-\d+\.\d+\.\d+)?$</independent:pattern>
       <independent:instance datatype="int">1</independent:instance>
     </independent:textfilecontent54_object>
   </objects>
