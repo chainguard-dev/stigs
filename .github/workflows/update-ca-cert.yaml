@@ -1,0 +1,158 @@
+name: Update CA cert hash in datastream
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 1 * * *" # Daily at 1 AM UTC
+  push:
+    branches:
+      - main
+    paths:
+      - ".github/workflows/update-ca-cert.yaml"
+      - "ssg-chainguard-gpos-ds.xml"
+concurrency:
+  group: update-ca-cert-${{ github.ref }}
+  cancel-in-progress: false
+permissions:
+  contents: read
+jobs:
+  update-ca-cert:
+    runs-on: ubuntu-latest
+    if: ${{ github.repository_owner == 'chainguard-dev' }}
+    timeout-minutes: 10
+    permissions:
+      contents: read
+      id-token: write
+      pull-requests: write
+      issues: write
+    env:
+      IMAGE_REF: cgr.dev/chainguard/wolfi-base:latest
+      DATASTREAM_PATH: gpos/xml/scap/ssg/content/ssg-chainguard-gpos-ds.xml
+      TESTS_PATH: tests
+    steps:
+      - name: Checkout
+        uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5.0.0
+      - name: Harden Runner
+        uses: step-security/harden-runner@f4a75cfd619ee5ce8d5b864b0d183aff3c69b55a # v2.13.1
+        with:
+          egress-policy: audit
+      - name: Generate token for PR
+        uses: octo-sts/action@a26b0c6455c7f13316f29a8766287f939e75f6c8 # v1.0.2
+        id: octo-sts
+        with:
+          scope: ${{ github.repository }}
+          identity: ca-cert-updater
+      - name: Install cosign
+        uses: sigstore/cosign-installer@d58896d6a1865668819e1d91763c7751a165e159 # v3.9.2
+      - name: Setup crane
+        uses: imjasonh/setup-crane@31b88efe9de28ae0ffa220711af4b60be9435f6e # v0.4
+      - name: Pull and verify image
+        id: image
+        run: |
+          set -euo pipefail
+
+          DIGEST=$(crane digest "${IMAGE_REF}")
+          FULL_REF="${IMAGE_REF%:*}@${DIGEST}"
+          echo "digest=${DIGEST}" >> "$GITHUB_OUTPUT"
+          echo "full_ref=${FULL_REF}" >> "$GITHUB_OUTPUT"
+
+          # Verify signature
+          cosign verify \
+            --certificate-oidc-issuer https://token.actions.githubusercontent.com \
+            --certificate-identity-regexp "https://github.com/chainguard-images/images/.*" \
+            "${FULL_REF}" || {
+              echo "::error::Image signature verification failed"
+              exit 1
+            }
+      - name: Extract CA certificate SHA
+        id: ca
+        run: |
+          set -euo pipefail
+
+          SHA=$(crane export "${{ steps.image.outputs.full_ref }}" - | \
+                tar -xO etc/ssl/certs/ca-certificates.crt | \
+                sha256sum | cut -d' ' -f1)
+
+          echo "sha=${SHA}" >> "$GITHUB_OUTPUT"
+
+          cat >> "$GITHUB_STEP_SUMMARY" <<EOF
+          ### CA Certificate Update
+          - **Image**: \`${IMAGE_REF}\`
+          - **Digest**: \`${{ steps.image.outputs.digest }}\`
+          - **CA SHA256**: \`${SHA}\`
+          EOF
+      - name: Update datastream with new SHA
+        id: update
+        env:
+          CA_CERT_SHA: ${{ steps.ca.outputs.sha }}
+        run: |
+          set -euo pipefail
+
+          # Check if datastream exists
+          if [ ! -f "${DATASTREAM_PATH}" ]; then
+            echo "::error::Datastream file not found: ${DATASTREAM_PATH}"
+            exit 1
+          fi
+
+          # Create backup
+          cp "${DATASTREAM_PATH}" "${DATASTREAM_PATH}.bak"
+
+          # Update SHA in datastream
+          sed -i -E "s|(<[^>]*hash>)[^<]*(</[^>]*hash>)|\1${CA_CERT_SHA}\2|g" "${DATASTREAM_PATH}"
+
+          # Check if file changed
+          if diff -q "${DATASTREAM_PATH}.bak" "${DATASTREAM_PATH}" > /dev/null; then
+            echo "No changes needed - SHA already up to date"
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+            rm "${DATASTREAM_PATH}.bak"
+          else
+            echo "Updated datastream with new SHA: ${CA_CERT_SHA}"
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+            rm "${DATASTREAM_PATH}.bak"
+          fi
+
+          # Show what was updated for the summary
+          echo "### Datastream Update Summary" >> "$GITHUB_STEP_SUMMARY"
+          echo "- **File**: \`${DATASTREAM_PATH}\`" >> "$GITHUB_STEP_SUMMARY"
+          echo "- **New SHA**: \`${CA_CERT_SHA}\`" >> "$GITHUB_STEP_SUMMARY"
+          if [ "${{ steps.update.outputs.changed }}" == "true" ]; then
+            echo "- **Status**: Updated" >> "$GITHUB_STEP_SUMMARY"
+          else
+            echo "- **Status**: Already up-to-date" >> "$GITHUB_STEP_SUMMARY"
+          fi
+      - name: Setup gitsign
+        if: steps.update.outputs.changed == 'true'
+        uses: chainguard-dev/actions/setup-gitsign@94249a4828defae94ef3eaeaafaff2f95f1b446f # v1.5.6
+      - name: Create Pull Request
+        if: steps.update.outputs.changed == 'true'
+        uses: peter-evans/create-pull-request@271a8d0340265f705b14b6d32b9829c1cb33d45e # v7.0.6
+        id: cpr
+        with:
+          token: ${{ steps.octo-sts.outputs.token }}
+          commit-message: |
+            chore(oscap): update CA cert SHA from Wolfi
+
+            Image: ${{ env.IMAGE_REF }}
+            Digest: ${{ steps.image.outputs.digest }}
+            CA SHA: ${{ steps.ca.outputs.sha }}
+
+            Signed-off-by: github-actions[bot] <github-actions[bot]@users.noreply.github.com>
+          branch: update-ca-cert-${{ steps.ca.outputs.sha }}
+          delete-branch: true
+          title: "chore(oscap): update CA cert SHA"
+          body: |
+            ## CA Certificate Update
+
+            Updates the CA certificate hash in OSCAP datastream.
+
+            - **Image**: `${{ env.IMAGE_REF }}`
+            - **Digest**: `${{ steps.image.outputs.digest }}`
+            - **New CA SHA256**: `${{ steps.ca.outputs.sha }}`
+          labels: |
+            automated pr
+      #- name: Enable auto-merge
+      #  if: steps.cpr.outputs.pull-request-number != ''
+      #  run: |
+      #    gh pr merge --auto --squash \
+      #      "https://github.com/${{ github.repository }}/pull/${{ steps.cpr.outputs.pull-request-number }}"
+      #  env:
+      #    GITHUB_TOKEN: ${{ steps.octo-sts.outputs.token }}
