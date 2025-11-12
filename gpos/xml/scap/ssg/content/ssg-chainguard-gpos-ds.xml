@@ -6699,7 +6699,7 @@
       <states>
         <ind:filehash58_state id="oval:org.CABundleHash:ste:1" version="1">
           <ind:hash_type>SHA-256</ind:hash_type>
-          <ind:hash>657ca6ba4bc43138f89de75fb63794cbfaa897e0e110b069fd1367bd66a5bb6c</ind:hash>
+          <ind:hash>766392c21c0baf5fa722cb309dc576b89d9fb3323dd32aa45a939dd575db6d1c</ind:hash>
         </ind:filehash58_state>
       </states>
     </oval_definitions>
