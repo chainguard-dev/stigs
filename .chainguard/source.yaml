@@ -8,3 +8,6 @@ spec:
         identities:
           - issuer: https://accounts.google.com
           - issuer: https://github.com/login/oauth
+    - key:
+        # allow commits signed by GitHub, e.g. the UI
+        kms: https://github.com/web-flow.gpg
