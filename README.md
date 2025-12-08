@@ -2,19 +2,19 @@
 
 ## Overview
 
-Chainguard has developed a STIG profile for images built with Wolfi, namely,
+Chainguard has developed an SRG profile for images built with Wolfi, namely,
 all Chainguard Images.  The profile is based on the General Purpose Operating
-System (GPOS) STIG which defines hardening checks across a range of
+System (GPOS) Security Requirements Guide (SRG) which defines hardening checks across a range of
 capabilities including cryptography, remote access, and internal configuration.
-The Chainguard GPOS STIG profile is compatible with common STIG checking tools
+The Chainguard GPOS SRG profile is compatible with common STIG checking tools
 including OpenSCAP and SCAP Viewer - instructions for using those tools are
 included below.
 
-When the STIG profile is run against a Chainguard Image, the scanning tool will
+When the SRG profile is run against a Chainguard Image, the scanning tool will
 check several aspects of the image's configuration based on which GPOS checks
 apply to a container image.  An explanation of each check is included and those
 checks marked as Not Applicable include a rationale section explaining why the
-checks do not apply.  For more information on STIG scanning containers see
+checks do not apply.  For more information on scanning containers see
 [DISA's Container Hardening
 Whitepaper](https://dl.dod.cyber.mil/wp-content/uploads/devsecops/pdf/Final_DevSecOps_Enterprise_Container_Hardening_Guide_1.2.pdf)
 
@@ -24,7 +24,7 @@ The simplest way to get started is to use Chainguard's pre-packaged Chainguard
 Image for
 [`openscap`](https://images.chainguard.dev/directory/image/openscap/overview),
 which includes the `openscap` tool itself, the `oscap-docker` libraries, and
-the Chainguard GPOS STIG profile. This image is built with the same
+the Chainguard GPOS SRG profile. This image is built with the same
 capabilities and low-to-zero CVEs as every other Chainguard image, and makes
 the otherwise difficult to setup `openscap` tool portable.
 
@@ -91,7 +91,7 @@ SCAP workbench, see [alternative uses](./docs/alternatives.md).
 
 ## Updates
 
-The Chainguard STIG profile is re-evaluated and evolves alongside Wolfi OS and
+The Chainguard SRG profile is re-evaluated and evolves alongside Wolfi OS and
 Chainguard images. New releases of the profile is marked by a new version
 number. The `cgr.dev/chainguard/openscap:latest` image always contains the
 latest version of the Chainguard GPOS profile.
