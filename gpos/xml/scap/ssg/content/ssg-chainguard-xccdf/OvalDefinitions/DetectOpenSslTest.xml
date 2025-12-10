@@ -21,6 +21,9 @@
         <criterion comment="OpenSSL configuration file exists" test_ref="oval:org.OpenSsl:tst:2"/>
         <criterion comment="openssl-config-fipshardened package is installed" test_ref="oval:org.OpenSsl:tst:3"/>
         <criterion comment="openssl-provider-fips package is installed" test_ref="oval:org.OpenSsl:tst:4"/>
+        <criterion comment="Check that fipsmodule.cnf is included in openssl.cnf" test_ref="oval:org.OpenSsl:tst:5"/>
+        <criterion comment="openssl.cnf: check that FIPS provider is enabled in provider_sect" test_ref="oval:org.OpenSsl:tst:6"/>
+        <criterion comment="openssl.cnf: check that default_properties is set to fips=yes" test_ref="oval:org.OpenSsl:tst:7"/>
       </criteria>
     </definition>
   </definitions>
@@ -36,6 +39,15 @@
     </independent:textfilecontent54_test>
     <independent:textfilecontent54_test xmlns:independent="http://oval.mitre.org/XMLSchema/oval-definitions-5#independent" id="oval:org.OpenSsl:tst:4" version="1" check="all" check_existence="at_least_one_exists" comment="openssl-provider-fips package is installed">
       <independent:object object_ref="oval:org.OpenSsl:obj:4"/>
+    </independent:textfilecontent54_test>
+    <independent:textfilecontent54_test xmlns:independent="http://oval.mitre.org/XMLSchema/oval-definitions-5#independent" id="oval:org.OpenSsl:tst:5" version="1" check="all" check_existence="all_exist" comment="Check that fipsmodule.cnf is included in openssl.cnf">
+      <independent:object object_ref="oval:org.OpenSsl:obj:5"/>
+    </independent:textfilecontent54_test>
+    <independent:textfilecontent54_test xmlns:independent="http://oval.mitre.org/XMLSchema/oval-definitions-5#independent" id="oval:org.OpenSsl:tst:6" version="1" check="all" check_existence="all_exist" comment="openssl.cnf: check that FIPS provider is enabled in provider_sect">
+      <independent:object object_ref="oval:org.OpenSsl:obj:6"/>
+    </independent:textfilecontent54_test>
+    <independent:textfilecontent54_test xmlns:independent="http://oval.mitre.org/XMLSchema/oval-definitions-5#independent" id="oval:org.OpenSsl:tst:7" version="1" check="all" check_existence="all_exist" comment="openssl.cnf: check that default_properties is set to fips=yes">
+      <independent:object object_ref="oval:org.OpenSsl:obj:7"/>
     </independent:textfilecontent54_test>
   </tests>
   <objects>
@@ -58,6 +70,21 @@
       <independent:filename>installed</independent:filename>
       <independent:pattern operation="pattern match">^P:openssl-provider-fips(-\d+\.\d+\.\d+)?$</independent:pattern>
       <independent:instance datatype="int">1</independent:instance>
+    </independent:textfilecontent54_object>
+    <independent:textfilecontent54_object xmlns:independent="http://oval.mitre.org/XMLSchema/oval-definitions-5#independent" id="oval:org.OpenSsl:obj:5" version="1">
+      <independent:filepath>/etc/ssl/openssl.cnf</independent:filepath>
+      <independent:pattern operation="pattern match">^\s*\.include\s+fipsmodule\.cnf\s*$</independent:pattern>
+      <independent:instance datatype="int" operation="greater than or equal">1</independent:instance>
+    </independent:textfilecontent54_object>
+    <independent:textfilecontent54_object xmlns:independent="http://oval.mitre.org/XMLSchema/oval-definitions-5#independent" id="oval:org.OpenSsl:obj:6" version="1">
+      <independent:filepath>/etc/ssl/openssl.cnf</independent:filepath>
+      <independent:pattern operation="pattern match">^\s*fips\s*=\s*fips_sect\s*$</independent:pattern>
+      <independent:instance datatype="int" operation="greater than or equal">1</independent:instance>
+    </independent:textfilecontent54_object>
+    <independent:textfilecontent54_object xmlns:independent="http://oval.mitre.org/XMLSchema/oval-definitions-5#independent" id="oval:org.OpenSsl:obj:7" version="1">
+      <independent:filepath>/etc/ssl/openssl.cnf</independent:filepath>
+      <independent:pattern operation="pattern match">^\s*default_properties\s*=\s*fips=yes\s*$</independent:pattern>
+      <independent:instance datatype="int" operation="greater than or equal">1</independent:instance>
     </independent:textfilecontent54_object>
   </objects>
 </oval_definitions>
