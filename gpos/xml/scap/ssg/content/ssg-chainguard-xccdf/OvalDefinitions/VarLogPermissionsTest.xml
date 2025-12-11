@@ -17,7 +17,7 @@
         </affected>
       </metadata>
       <criteria>
-        <criterion comment="All files in /usr/lib have root:root permissions" test_ref="oval:org.varlog:tst:5"/>
+        <criterion comment="Ensure /var/log has root:root permissions." test_ref="oval:org.varlog:tst:5"/>
       </criteria>
     </definition>
   </definitions>

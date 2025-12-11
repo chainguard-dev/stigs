@@ -6312,9 +6312,7 @@
         <definition id="oval:org.OpenSsl:def:1" version="1" class="compliance">
           <metadata>
             <title>Check for OpenSSL FIPS Packages</title>
-            <description>Ensure that the necessary OpenSSL FIPS packages and
-                            configuration files are
-                            present.</description>
+            <description>Ensure that the necessary OpenSSL FIPS packages and configuration files are present.</description>
             <reference source="CIS"/>
             <affected family="unix">
               <platform>Alpine Linux</platform>
@@ -6459,9 +6457,7 @@
         <definition id="oval:org.NoUsers:def:1" version="1" class="compliance">
           <metadata>
             <title>Check for Unauthorized Users in /etc/shadow</title>
-            <description>Ensure there are no unauthorized users in the /etc/shadow file
-                            below the
-                            'nobody' line.</description>
+            <description>Ensure there are no unauthorized users in the /etc/shadow file below the 'nobody' line.</description>
             <reference source="CIS"/>
             <affected family="unix">
               <platform>Alpine Linux</platform>
@@ -6560,15 +6556,14 @@
         <definition id="oval:org.RemoteAccessServices:def:1" version="1" class="compliance">
           <metadata>
             <title>Check for installed Remote Access packages</title>
-            <description>Ensure that packages in the list are not installed on the
-                            system.</description>
+            <description>Ensure that packages in the list are not installed on the system.</description>
             <reference source="Custom"/>
             <affected family="unix">
               <platform>Alpine Linux</platform>
             </affected>
           </metadata>
           <criteria>
-            <criterion comment="Ensure packages starting with 'mypkg-' are installed" test_ref="oval:org.RemoteAccessServices:tst:1"/>
+            <criterion comment="Ensure that packages in the list are not installed" test_ref="oval:org.RemoteAccessServices:tst:1"/>
           </criteria>
         </definition>
       </definitions>
@@ -6658,7 +6653,7 @@
             </affected>
           </metadata>
           <criteria>
-            <criterion comment="All files in /usr/lib have root:root permissions" test_ref="oval:org.varlog:tst:5"/>
+            <criterion comment="Ensure /var/log has root:root permissions." test_ref="oval:org.varlog:tst:5"/>
           </criteria>
         </definition>
       </definitions>
