@@ -24,21 +24,14 @@
   <tests>
     <textfilecontent54_test xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#independent" check="all" check_existence="none_exist" comment="Check for installed packages starting with 'mypkg-' in /lib/apk/db/installed" id="oval:org.RemoteAccessServices:tst:1" version="1">
       <object object_ref="oval:org.RemoteAccessServices:obj:6"/>
-      <state state_ref="oval:my_test:ste:1"/>
     </textfilecontent54_test>
   </tests>
   <objects>
     <textfilecontent54_object xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#independent" id="oval:org.RemoteAccessServices:obj:6" version="1">
       <path>/lib/apk/db</path>
       <filename>installed</filename>
-      <pattern operation="pattern match">
-        (openssh|openssh-server|openssh-client|openssh-sftp-server|dropbear|tigervnc|tigervnc-server|tigervnc-viewer|xrdp|xorgxrdp|vsftpd|proftpd|webmin|cockpit|cockpit-ws|cockpit-bridge|nfs-utils|samba|samba-server|samba-client|samba-common|rsh|telnet)-*</pattern>
+      <pattern operation="pattern match">^P:(openssh|openssh-server|openssh-client|openssh-sftp-server|dropbear|tigervnc|tigervnc-server|tigervnc-viewer|xrdp|xorgxrdp|vsftpd|proftpd|webmin|cockpit|cockpit-ws|cockpit-bridge|nfs-utils|samba|samba-server|samba-client|samba-common|rsh|telnet)-*</pattern>
       <instance datatype="int">1</instance>
     </textfilecontent54_object>
   </objects>
-  <states>
-    <textfilecontent54_state xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#independent" id="oval:my_test:ste:1" version="1">
-      <subexpression>20230201</subexpression>
-    </textfilecontent54_state>
-  </states>
 </oval_definitions>

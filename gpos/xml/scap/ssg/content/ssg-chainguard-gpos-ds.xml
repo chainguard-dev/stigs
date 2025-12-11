@@ -6385,7 +6385,7 @@
           <independent:pattern operation="pattern match">^\s*fips\s*=\s*fips_sect\s*$</independent:pattern>
           <independent:instance datatype="int" operation="greater than or equal">1</independent:instance>
         </independent:textfilecontent54_object>
-        <independent:textfilecontent54_object xmlns:independent="http://oval.mitre.org/XMLSchema/oval-definitions-5#independent" id="oval:org.OpenSsl:obj:6" version="1">
+        <independent:textfilecontent54_object xmlns:independent="http://oval.mitre.org/XMLSchema/oval-definitions-5#independent" id="oval:org.OpenSsl:obj:7" version="1">
           <independent:filepath>/etc/ssl/openssl.cnf</independent:filepath>
           <independent:pattern operation="pattern match">^\s*default_properties\s*=\s*fips=yes\s*$</independent:pattern>
           <independent:instance datatype="int" operation="greater than or equal">1</independent:instance>
@@ -6575,7 +6575,6 @@
       <tests>
         <textfilecontent54_test xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#independent" check="all" check_existence="none_exist" comment="Check for installed packages starting with 'mypkg-' in /lib/apk/db/installed" id="oval:org.RemoteAccessServices:tst:1" version="1">
           <object object_ref="oval:org.RemoteAccessServices:obj:6"/>
-          <state state_ref="oval:my_test:ste:1"/>
         </textfilecontent54_test>
       </tests>
       <objects>
@@ -6586,11 +6585,6 @@
           <instance datatype="int">1</instance>
         </textfilecontent54_object>
       </objects>
-      <states>
-        <textfilecontent54_state xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#independent" id="oval:my_test:ste:1" version="1">
-          <subexpression>20230201</subexpression>
-        </textfilecontent54_state>
-      </states>
     </oval_definitions>
   </ds:extended-component>
   <ds:extended-component id="scap_org_ecomp_.nopasswords" timestamp="2024-05-29T12:00:00">
