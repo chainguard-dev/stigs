@@ -17,7 +17,7 @@
         </affected>
       </metadata>
       <criteria>
-        <criterion comment="Ensure packages starting with 'mypkg-' are installed" test_ref="oval:org.RemoteAccessServices:tst:1"/>
+        <criterion comment="Ensure that packages in the list are not installed" test_ref="oval:org.RemoteAccessServices:tst:1"/>
       </criteria>
     </definition>
   </definitions>
