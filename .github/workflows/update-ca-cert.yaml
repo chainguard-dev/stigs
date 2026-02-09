@@ -32,7 +32,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
       - name: Harden Runner
-        uses: step-security/harden-runner@e3f713f2d8f53843e71c69a996d56f51aa9adfb9 # v2.14.1
+        uses: step-security/harden-runner@5ef0c079ce82195b2a36a210272d6b661572d83e # v2.14.2
         with:
           egress-policy: audit
       - name: Generate token for PR
@@ -44,7 +44,7 @@ jobs:
       - name: Install cosign
         uses: sigstore/cosign-installer@faadad0cce49287aee09b3a48701e75088a2c6ad # v4.0.0
       - name: Setup crane
-        uses: imjasonh/setup-crane@31b88efe9de28ae0ffa220711af4b60be9435f6e # v0.4
+        uses: imjasonh/setup-crane@6da1ae018866400525525ce74ff892880c099987 # v0.5
       - name: Pull and verify image
         id: image
         run: |
@@ -121,7 +121,7 @@ jobs:
           fi
       - name: Setup gitsign
         if: steps.update.outputs.changed == 'true'
-        uses: chainguard-dev/actions/setup-gitsign@fac81f8edade777ac0bedfa9f4a42591accab9c8 # v1.5.14
+        uses: chainguard-dev/actions/setup-gitsign@eba358c567c5b091e34187d905258baebdd2a4ec # v1.5.16
       - name: Create Pull Request
         if: steps.update.outputs.changed == 'true'
         uses: peter-evans/create-pull-request@c0f553fe549906ede9cf27b5156039d195d2ece0 # v8.1.0
