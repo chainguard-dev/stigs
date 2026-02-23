@@ -121,7 +121,7 @@ jobs:
           fi
       - name: Setup gitsign
         if: steps.update.outputs.changed == 'true'
-        uses: chainguard-dev/actions/setup-gitsign@a601adc7b134a61c9110e17c6ebcdff5e2e53bdc # v1.6.2
+        uses: chainguard-dev/actions/setup-gitsign@4ed96e952ef2982fe89a50f3c40e9643bb9fe803 # v1.6.3
       - name: Create Pull Request
         if: steps.update.outputs.changed == 'true'
         uses: peter-evans/create-pull-request@c0f553fe549906ede9cf27b5156039d195d2ece0 # v8.1.0
