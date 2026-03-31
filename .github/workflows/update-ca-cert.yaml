@@ -31,6 +31,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+        with:
+          persist-credentials: false
       - name: Harden Runner
         uses: step-security/harden-runner@fa2e9d605c4eeb9fcad4c99c224cee0c6c7f3594 # v2.16.0
         with:
@@ -65,10 +67,13 @@ jobs:
             }
       - name: Extract CA certificate SHA
         id: ca
+        env:
+          STEPS_IMAGE_OUTPUTS_FULL_REF: ${{ steps.image.outputs.full_ref }}
+          STEPS_IMAGE_OUTPUTS_DIGEST: ${{ steps.image.outputs.digest }}
         run: |
           set -euo pipefail
 
-          SHA=$(crane export "${{ steps.image.outputs.full_ref }}" - | \
+          SHA=$(crane export "${STEPS_IMAGE_OUTPUTS_FULL_REF}" - | \
                 tar -xO etc/ssl/certs/ca-certificates.crt | \
                 sha256sum | cut -d' ' -f1)
 
@@ -77,7 +82,7 @@ jobs:
           cat >> "$GITHUB_STEP_SUMMARY" <<EOF
           ### CA Certificate Update
           - **Image**: \`${IMAGE_REF}\`
-          - **Digest**: \`${{ steps.image.outputs.digest }}\`
+          - **Digest**: \`${STEPS_IMAGE_OUTPUTS_DIGEST}\`
           - **CA SHA256**: \`${SHA}\`
           EOF
       - name: Update datastream with new SHA
@@ -100,11 +105,13 @@ jobs:
           sed -i -E "s|(<[^>]*hash>)[^<]*(</[^>]*hash>)|\1${CA_CERT_SHA}\2|g" "${DATASTREAM_PATH}"
 
           # Check if file changed
+          changed=false
           if diff -q "${DATASTREAM_PATH}.bak" "${DATASTREAM_PATH}" > /dev/null; then
             echo "No changes needed - SHA already up to date"
             echo "changed=false" >> "$GITHUB_OUTPUT"
             rm "${DATASTREAM_PATH}.bak"
           else
+            changed=true
             echo "Updated datastream with new SHA: ${CA_CERT_SHA}"
             echo "changed=true" >> "$GITHUB_OUTPUT"
             rm "${DATASTREAM_PATH}.bak"
@@ -114,7 +121,7 @@ jobs:
           echo "### Datastream Update Summary" >> "$GITHUB_STEP_SUMMARY"
           echo "- **File**: \`${DATASTREAM_PATH}\`" >> "$GITHUB_STEP_SUMMARY"
           echo "- **New SHA**: \`${CA_CERT_SHA}\`" >> "$GITHUB_STEP_SUMMARY"
-          if [ "${{ steps.update.outputs.changed }}" == "true" ]; then
+          if [ "${changed}" == "true" ]; then
             echo "- **Status**: Updated" >> "$GITHUB_STEP_SUMMARY"
           else
             echo "- **Status**: Already up-to-date" >> "$GITHUB_STEP_SUMMARY"
