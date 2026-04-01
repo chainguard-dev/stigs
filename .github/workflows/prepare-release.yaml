@@ -1,0 +1,118 @@
+# Copyright 2026 Chainguard, Inc.
+# SPDX-License-Identifier: Apache-2.0
+
+name: Prepare Release
+
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Release version in X.Y.Z format (e.g. 3.2.9)'
+        required: true
+        type: string
+
+permissions: {}
+
+jobs:
+  prepare-release:
+    runs-on: ubuntu-latest
+    if: ${{ github.repository_owner == 'chainguard-dev' }}
+    timeout-minutes: 10
+    permissions:
+      contents: read
+      id-token: write
+      pull-requests: write
+    env:
+      DATASTREAM_PATH: gpos/xml/scap/ssg/content/ssg-chainguard-gpos-ds.xml
+      VERSION: ${{ inputs.version }}
+    steps:
+      - name: Validate version format
+        run: |
+          set -euo pipefail
+          if ! echo "${VERSION}" | grep -qE '^[0-9]+\.[0-9]+\.[0-9]+$'; then
+            echo "::error::Version must be in X.Y.Z format (e.g. 3.2.9), got: ${VERSION}"
+            exit 1
+          fi
+
+      - name: Harden Runner
+        uses: step-security/harden-runner@fa2e9d605c4eeb9fcad4c99c224cee0c6c7f3594 # v2.16.0
+        with:
+          egress-policy: audit
+
+      - name: Checkout
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+        with:
+          persist-credentials: false
+
+      - name: Check tag does not already exist
+        run: |
+          set -euo pipefail
+          if git ls-remote --tags origin "refs/tags/v${VERSION}" | grep -q .; then
+            echo "::error::Tag v${VERSION} already exists"
+            exit 1
+          fi
+
+      - name: Generate token for PR
+        uses: octo-sts/action@f603d3be9d8dd9871a265776e625a27b00effe05 # v1.1.1
+        id: octo-sts
+        with:
+          scope: ${{ github.repository }}
+          identity: prepare-release
+
+      - name: Setup gitsign
+        uses: chainguard-dev/actions/setup-gitsign@8bb24c24be6871bee44f19be55ea11e3b2aea3dd # v1.6.11
+
+      - name: Patch XCCDF version
+        run: |
+          set -euo pipefail
+
+          if [ ! -f "${DATASTREAM_PATH}" ]; then
+            echo "::error::Datastream file not found: ${DATASTREAM_PATH}"
+            exit 1
+          fi
+
+          cp "${DATASTREAM_PATH}" "${DATASTREAM_PATH}.bak"
+
+          sed -i "s|<ns0:version>[^<]*</ns0:version>|<ns0:version>${VERSION}</ns0:version>|" \
+            "${DATASTREAM_PATH}"
+
+          if diff -q "${DATASTREAM_PATH}.bak" "${DATASTREAM_PATH}" > /dev/null; then
+            echo "::warning::Version field was unchanged — it may already be set to ${VERSION}"
+          fi
+          rm "${DATASTREAM_PATH}.bak"
+
+          echo "### Version Patch" >> "$GITHUB_STEP_SUMMARY"
+          echo "- **File**: \`${DATASTREAM_PATH}\`" >> "$GITHUB_STEP_SUMMARY"
+          echo "- **Version**: \`${VERSION}\`" >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@c0f553fe549906ede9cf27b5156039d195d2ece0 # v8.1.0
+        id: cpr
+        with:
+          token: ${{ steps.octo-sts.outputs.token }}
+          commit-message: |
+            chore(release): update XCCDF version to ${{ inputs.version }}
+
+            Updates the XCCDF Benchmark version element in the SCAP datastream
+            to reflect release v${{ inputs.version }}.
+
+            Signed-off-by: github-actions[bot] <github-actions[bot]@users.noreply.github.com>
+          branch: prerelease/v${{ inputs.version }}
+          delete-branch: true
+          title: "chore(release): prepare release v${{ inputs.version }}"
+          body: |
+            ## Release v${{ inputs.version }}
+
+            Prepares the SCAP datastream for release by updating the XCCDF Benchmark
+            `<version>` element.
+
+            | Field | Value |
+            |-------|-------|
+            | Version | `${{ inputs.version }}` |
+            | File | `${{ env.DATASTREAM_PATH }}` |
+
+            Once merged, the `create-release` workflow will automatically create
+            tag `v${{ inputs.version }}` and publish the GitHub Release pointing at
+            the merge commit.
+          labels: |
+            release
