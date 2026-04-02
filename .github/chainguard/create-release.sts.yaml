@@ -1,0 +1,10 @@
+# Copyright 2026 Chainguard, Inc.
+# SPDX-License-Identifier: Apache-2.0
+
+issuer: https://token.actions.githubusercontent.com
+subject: repo:chainguard-dev/stigs:pull_request
+claim_pattern:
+  job_workflow_ref: chainguard-dev/stigs/.github/workflows/create-release.yaml@refs/heads/main
+
+permissions:
+  contents: write

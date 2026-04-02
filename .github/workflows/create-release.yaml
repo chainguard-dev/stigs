@@ -1,0 +1,109 @@
+# Copyright 2026 Chainguard, Inc.
+# SPDX-License-Identifier: Apache-2.0
+
+name: Create Release
+
+on:
+  pull_request:
+    types: [closed]
+    branches:
+      - main
+
+permissions: {}
+
+jobs:
+  validate:
+    # Only run for merged prerelease/v* PRs
+    if: >
+      github.repository_owner == 'chainguard-dev' &&
+      github.event.pull_request.merged == true &&
+      startsWith(github.event.pull_request.head.ref, 'prerelease/v') &&
+      contains(github.event.pull_request.labels.*.name, 'release')
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Harden Runner
+        uses: step-security/harden-runner@fa2e9d605c4eeb9fcad4c99c224cee0c6c7f3594 # v2.16.0
+        with:
+          egress-policy: audit
+
+      - name: Checkout
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+        with:
+          ref: ${{ github.event.pull_request.merge_commit_sha }}
+          persist-credentials: false
+
+      - name: Install openscap-scanner
+        run: sudo sh -c 'apt update &&  apt install -y openscap-scanner'
+
+      - name: Validate OVAL check definitions
+        run: |
+          set -euo pipefail
+          fail=0
+          for f in gpos/xml/scap/ssg/content/ssg-chainguard-xccdf/OvalDefinitions/*.xml; do
+            echo "=== checking ${f} ==="
+            if ! oscap xccdf validate "${f}"; then
+              echo "::error::Validation failed for ${f}"
+              fail=1
+            fi
+          done
+          exit "${fail}"
+
+      # Full datastream validation is currently failing due to known issues with
+      # the combined XML. Re-enable once validate_xml is fixed, and add per-rule
+      # evaluation tests here as those are developed.
+      #
+      # - name: Validate full datastream
+      #   run: oscap xccdf validate gpos/xml/scap/ssg/content/ssg-chainguard-gpos-ds.xml
+
+  release:
+    needs: validate
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: read
+      id-token: write
+    steps:
+      - name: Extract version from branch name
+        id: version
+        env:
+          BRANCH: ${{ github.event.pull_request.head.ref }}
+        run: |
+          set -euo pipefail
+          VERSION="${BRANCH#prerelease/v}"
+          echo "version=${VERSION}" >> "$GITHUB_OUTPUT"
+          echo "tag=v${VERSION}" >> "$GITHUB_OUTPUT"
+
+      - name: Harden Runner
+        uses: step-security/harden-runner@fa2e9d605c4eeb9fcad4c99c224cee0c6c7f3594 # v2.16.0
+        with:
+          egress-policy: audit
+
+      - name: Checkout
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+        with:
+          ref: ${{ github.event.pull_request.merge_commit_sha }}
+          persist-credentials: false
+
+      - name: Generate token for release
+        uses: octo-sts/action@f603d3be9d8dd9871a265776e625a27b00effe05 # v1.1.1
+        id: octo-sts
+        with:
+          scope: ${{ github.repository }}
+          identity: create-release
+
+      - name: Create GitHub Release
+        env:
+          GH_TOKEN: ${{ steps.octo-sts.outputs.token }}
+          TAG: ${{ steps.version.outputs.tag }}
+          MERGE_SHA: ${{ github.event.pull_request.merge_commit_sha }}
+        run: |
+          set -euo pipefail
+          gh release create "${TAG}" \
+            --title "Release ${TAG}" \
+            --generate-notes \
+            --target "${MERGE_SHA}"
+
+          echo "### Release Created" >> "$GITHUB_STEP_SUMMARY"
+          echo "- **Tag**: \`${TAG}\`" >> "$GITHUB_STEP_SUMMARY"
+          echo "- **Commit**: \`${MERGE_SHA}\`" >> "$GITHUB_STEP_SUMMARY"
