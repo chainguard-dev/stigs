@@ -36,7 +36,7 @@
       <ns0:description>This XCCDF document provides a basic security check for a Linux system.</ns0:description>
       <ns0:notice id="disclaimer" xml:lang="en"/>
       <ns0:front-matter xml:lang="en"/>
-      <ns0:version>1.0</ns0:version>
+      <ns0:version>3.2.9</ns0:version>
       <ns0:model system="urn:xccdf:scoring:default"/>
       <ns0:model system="urn:xccdf:scoring:flat"/>
       <ns0:Profile id="xccdf_basic_profile_.check">
