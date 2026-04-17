@@ -13,7 +13,7 @@
         <description>Ensure all repositories in /etc/apk/repositories use HTTPS.</description>
         <reference source="Custom"/>
         <affected family="unix">
-          <platform>Alpine Linux</platform>
+          <platform>Chainguard</platform>
         </affected>
       </metadata>
       <criteria operator="AND">
@@ -22,19 +22,21 @@
     </definition>
   </definitions>
   <tests>
-    <unix:file_test xmlns:unix="http://oval.mitre.org/XMLSchema/oval-definitions-5#unix" id="oval:org.PackageSignature:tst:1" version="1" check="all" check_existence="none_exist" comment="Check existence of /usr/lib directory">
-      <unix:object object_ref="oval:org.PackageSignature:obj:1"/>
-    </unix:file_test>
+    <!-- PASS when no non-https repository line exists in /etc/apk/repositories. -->
+    <textfilecontent54_test xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#independent" id="oval:org.PackageSignature:tst:1" version="1" check="all" check_existence="none_exist" comment="Fail if any non-https repository URL is configured in /etc/apk/repositories">
+      <object object_ref="oval:org.PackageSignature:obj:1"/>
+    </textfilecontent54_test>
   </tests>
   <objects>
-    <unix:file_object xmlns:unix="http://oval.mitre.org/XMLSchema/oval-definitions-5#unix" id="oval:org.PackageSignature:obj:1" version="1">
-      <unix:path>etc/apk/repositories</unix:path>
-      <unix:filename operation="pattern match">^(?!.*https://).*</unix:filename>
-    </unix:file_object>
+    <!-- Match any non-blank, non-comment line that does not contain "https://".
+         PCRE negative lookahead "(?!...)" is supported by OpenSCAP's text file
+         content probe. The "!?\s*#" and ".+" guards skip comment/blank lines so
+         they are not reported as violations. -->
+    <textfilecontent54_object xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#independent" id="oval:org.PackageSignature:obj:1" version="1">
+      <path>/etc/apk</path>
+      <filename>repositories</filename>
+      <pattern operation="pattern match">^(?!\s*#)(?!.*https://).+$</pattern>
+      <instance datatype="int">1</instance>
+    </textfilecontent54_object>
   </objects>
-  <states>
-    <textfilecontent54_state xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#independent" id="oval:my_test:ste:1" version="1">
-      <subexpression>20240530</subexpression>
-    </textfilecontent54_state>
-  </states>
 </oval_definitions>

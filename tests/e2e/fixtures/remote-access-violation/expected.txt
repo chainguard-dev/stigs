@@ -1,0 +1,5 @@
+# Fixture: remote-access-violation
+#
+# openssh-server is installed. Every RemoteAccessServices-backed rule must FAIL.
+# Picked rule is the first RemoteAccessServices-backed rule in the datastream.
+xccdf_mil.disa.stig_rule_SV-263652r982557_rule=fail

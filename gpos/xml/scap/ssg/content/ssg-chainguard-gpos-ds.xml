@@ -32,7 +32,7 @@
   <ds:component id="scap_org.open-scap_comp_all-resolved-xccdf-v3r2.xml" timestamp="2016-02-23T14:39:05">
     <ns0:Benchmark xmlns:html="http://www.w3.org/1999/xhtml" id="xccdf_org.open-scap.sce-community-content_benchmark_all" resolved="1" xml:lang="en">
       <ns0:status date="2016-02-23">draft</ns0:status>
-      <ns0:title xml:lang="en">Datastream XCCDF Checklist Beta GPOS v3r2</ns0:title>
+      <ns0:title xml:lang="en">Datastream XCCDF Checklist Beta GPOS v3r2p10</ns0:title>
       <ns0:description>This XCCDF document provides a basic security check for a Linux system.</ns0:description>
       <ns0:notice id="disclaimer" xml:lang="en"/>
       <ns0:front-matter xml:lang="en"/>
@@ -3885,7 +3885,7 @@
                             Script Verification:
                             To manually verify, ensure that fipsmodule.cnf and openssl.cnf exist in
                         the /etc/ssl folder. Also verify that openssl-config-fipshardened and
-                        openssl-provider-fips exist in the file /lib/apk/db/installed.
+                        openssl-provider-fips exist in the file /usr/lib/apk/db/installed.
                         </html:pre>
                     </ns0:description>
           <ns0:ident system="http://cyber.mil/cci">CCI-002450</ns0:ident>
@@ -3908,7 +3908,7 @@
                             Script Verification:
                             To manually verify, ensure that fipsmodule.cnf and openssl.cnf exist in
                         the /etc/ssl folder. Also verify that openssl-config-fipshardened and
-                        openssl-provider-fips exist in the file /lib/apk/db/installed.
+                        openssl-provider-fips exist in the file /usr/lib/apk/db/installed.
                         </html:pre>
                     </ns0:description>
           <ns0:ident system="http://cyber.mil/cci">CCI-002450</ns0:ident>
@@ -3935,7 +3935,7 @@
                             Script Verification:
                             To manually verify, ensure that fipsmodule.cnf and openssl.cnf exist in
                         the /etc/ssl folder. Also verify that openssl-config-fipshardened and
-                        openssl-provider-fips exist in the file /lib/apk/db/installed.
+                        openssl-provider-fips exist in the file /usr/lib/apk/db/installed.
                         </html:pre>
                     </ns0:description>
           <ns0:ident system="http://cyber.mil/cci">CCI-002420</ns0:ident>
@@ -3962,7 +3962,7 @@
                             Script Verification:
                             To manually verify, ensure that fipsmodule.cnf and openssl.cnf exist in
                         the /etc/ssl folder. Also verify that openssl-config-fipshardened and
-                        openssl-provider-fips exist in the file /lib/apk/db/installed.
+                        openssl-provider-fips exist in the file /usr/lib/apk/db/installed.
                         </html:pre>
                     </ns0:description>
           <ns0:ident system="http://cyber.mil/cci">CCI-002422</ns0:ident>
@@ -3987,7 +3987,7 @@
                             Script Verification:
                             To manually verify, ensure that fipsmodule.cnf and openssl.cnf exist in
                         the /etc/ssl folder. Also verify that openssl-config-fipshardened and
-                        openssl-provider-fips exist in the file /lib/apk/db/installed.
+                        openssl-provider-fips exist in the file /usr/lib/apk/db/installed.
                         </html:pre>
                     </ns0:description>
           <ns0:ident system="http://cyber.mil/cci">CCI-000803</ns0:ident>
@@ -4016,7 +4016,7 @@
                         process. <html:pre>
                             Script Verification:
                             To manually verify, Ensure none of the following remote access packages
-                        exist in the folder /lib/apk/db/ Packages:
+                        exist in the folder /usr/lib/apk/db/ Packages:
                             openssh, openssh-server, openssh-client, openssh-sftp-server, dropbear,
                         tigervnc, tigervnc-server, tigervnc-viewer,
                             xrdp, xorgxrdp, vsftpd, proftpd, webmin, cockpit, cockpit-ws,
@@ -4051,7 +4051,7 @@
                         switch). <html:pre>
                             Script Verification:
                             To manually verify, Ensure none of the following remote access packages
-                        exist in the folder /lib/apk/db/ Packages:
+                        exist in the folder /usr/lib/apk/db/ Packages:
                             openssh, openssh-server, openssh-client, openssh-sftp-server, dropbear,
                         tigervnc, tigervnc-server, tigervnc-viewer,
                             xrdp, xorgxrdp, vsftpd, proftpd, webmin, cockpit, cockpit-ws,
@@ -4086,7 +4086,7 @@
                         system can meet this requirement through leveraging a cryptographic module. <html:pre>
                         Script Verification:
                             To manually verify, Ensure none of the following remote access packages
-                        exist in the folder /lib/apk/db/ Packages:
+                        exist in the folder /usr/lib/apk/db/ Packages:
                             openssh, openssh-server, openssh-client, openssh-sftp-server, dropbear,
                         tigervnc, tigervnc-server, tigervnc-viewer,
                             xrdp, xorgxrdp, vsftpd, proftpd, webmin, cockpit, cockpit-ws,
@@ -4121,7 +4121,7 @@
                         token protected by a password, passphrase, or biometric. <html:pre>
                             Script Verification:
                             To manually verify, Ensure none of the following remote access packages
-                        exist in the folder /lib/apk/db/ Packages:
+                        exist in the folder /usr/lib/apk/db/ Packages:
                             openssh, openssh-server, openssh-client, openssh-sftp-server, dropbear,
                         tigervnc, tigervnc-server, tigervnc-viewer,
                             xrdp, xorgxrdp, vsftpd, proftpd, webmin, cockpit, cockpit-ws,
@@ -4150,7 +4150,7 @@
                         information. <html:pre>
                             Script Verification:
                             To manually verify, Ensure none of the following remote access packages
-                        exist in the folder /lib/apk/db/ Packages:
+                        exist in the folder /usr/lib/apk/db/ Packages:
                             openssh, openssh-server, openssh-client, openssh-sftp-server, dropbear,
                         tigervnc, tigervnc-server, tigervnc-viewer,
                             xrdp, xorgxrdp, vsftpd, proftpd, webmin, cockpit, cockpit-ws,
@@ -4178,7 +4178,7 @@
                         maintaining the confidentiality of the secret key used to generate the hash. <html:pre>
                         Script Verification:
                             To manually verify, Ensure none of the following remote access packages
-                        exist in the folder /lib/apk/db/ Packages:
+                        exist in the folder /usr/lib/apk/db/ Packages:
                             openssh, openssh-server, openssh-client, openssh-sftp-server, dropbear,
                         tigervnc, tigervnc-server, tigervnc-viewer,
                             xrdp, xorgxrdp, vsftpd, proftpd, webmin, cockpit, cockpit-ws,
@@ -4198,7 +4198,7 @@
                         authenticated users negatively impacts operating system security. <html:pre>
                         Script Verification:
                             To manually verify, Ensure none of the following remote access packages
-                        exist in the folder /lib/apk/db/ Packages:
+                        exist in the folder /usr/lib/apk/db/ Packages:
                             openssh, openssh-server, openssh-client, openssh-sftp-server, dropbear,
                         tigervnc, tigervnc-server, tigervnc-viewer,
                             xrdp, xorgxrdp, vsftpd, proftpd, webmin, cockpit, cockpit-ws,
@@ -4224,7 +4224,7 @@
                         mission needs and the operational environment for each system. <html:pre>
                         Script Verification:
                             To manually verify, Ensure none of the following remote access packages
-                        exist in the folder /lib/apk/db/ Packages:
+                        exist in the folder /usr/lib/apk/db/ Packages:
                             openssh, openssh-server, openssh-client, openssh-sftp-server, dropbear,
                         tigervnc, tigervnc-server, tigervnc-viewer,
                             xrdp, xorgxrdp, vsftpd, proftpd, webmin, cockpit, cockpit-ws,
@@ -4255,7 +4255,7 @@
                         unauthorized changes easy to discover). <html:pre>
                             Script Verification:
                             To manually verify, Ensure none of the following remote access packages
-                        exist in the folder /lib/apk/db/ Packages:
+                        exist in the folder /usr/lib/apk/db/ Packages:
                             openssh, openssh-server, openssh-client, openssh-sftp-server, dropbear,
                         tigervnc, tigervnc-server, tigervnc-viewer,
                             xrdp, xorgxrdp, vsftpd, proftpd, webmin, cockpit, cockpit-ws,
@@ -4279,7 +4279,7 @@
                         sessions have been terminated and are no longer available for use. <html:pre>
                         Script Verification:
                             To manually verify, Ensure none of the following remote access packages
-                        exist in the folder /lib/apk/db/ Packages:
+                        exist in the folder /usr/lib/apk/db/ Packages:
                             openssh, openssh-server, openssh-client, openssh-sftp-server, dropbear,
                         tigervnc, tigervnc-server, tigervnc-viewer,
                             xrdp, xorgxrdp, vsftpd, proftpd, webmin, cockpit, cockpit-ws,
@@ -4302,7 +4302,7 @@
                         authorized (users with revoked certificates). <html:pre>
                             Script Verification:
                             To manually verify, Ensure none of the following remote access packages
-                        exist in the folder /lib/apk/db/ Packages:
+                        exist in the folder /usr/lib/apk/db/ Packages:
                             openssh, openssh-server, openssh-client, openssh-sftp-server, dropbear,
                         tigervnc, tigervnc-server, tigervnc-viewer,
                             xrdp, xorgxrdp, vsftpd, proftpd, webmin, cockpit, cockpit-ws,
@@ -4336,7 +4336,7 @@
                         implementing the monitoring port of an Ethernet switch. <html:pre>
                             Script Verification:
                             To manually verify, Ensure none of the following remote access packages
-                        exist in the folder /lib/apk/db/ Packages:
+                        exist in the folder /usr/lib/apk/db/ Packages:
                             openssh, openssh-server, openssh-client, openssh-sftp-server, dropbear,
                         tigervnc, tigervnc-server, tigervnc-viewer,
                             xrdp, xorgxrdp, vsftpd, proftpd, webmin, cockpit, cockpit-ws,
@@ -4371,7 +4371,7 @@
                         inactive session and releases the resources associated with that session. <html:pre>
                         Script Verification:
                             To manually verify, Ensure none of the following remote access packages
-                        exist in the folder /lib/apk/db/ Packages:
+                        exist in the folder /usr/lib/apk/db/ Packages:
                             openssh, openssh-server, openssh-client, openssh-sftp-server, dropbear,
                         tigervnc, tigervnc-server, tigervnc-viewer,
                             xrdp, xorgxrdp, vsftpd, proftpd, webmin, cockpit, cockpit-ws,
@@ -4393,7 +4393,7 @@
                         capability, it is critical the user re-authenticate. <html:pre>
                             Script Verification:
                             To manually verify, Ensure none of the following remote access packages
-                        exist in the folder /lib/apk/db/ Packages:
+                        exist in the folder /usr/lib/apk/db/ Packages:
                             openssh, openssh-server, openssh-client, openssh-sftp-server, dropbear,
                         tigervnc, tigervnc-server, tigervnc-viewer,
                             xrdp, xorgxrdp, vsftpd, proftpd, webmin, cockpit, cockpit-ws,
@@ -4430,7 +4430,7 @@
                         purpose of configuring the device itself (management). <html:pre>
                             Script Verification:
                             To manually verify, Ensure none of the following remote access packages
-                        exist in the folder /lib/apk/db/ Packages:
+                        exist in the folder /usr/lib/apk/db/ Packages:
                             openssh, openssh-server, openssh-client, openssh-sftp-server, dropbear,
                         tigervnc, tigervnc-server, tigervnc-viewer,
                             xrdp, xorgxrdp, vsftpd, proftpd, webmin, cockpit, cockpit-ws,
@@ -4454,7 +4454,7 @@
                         layered protection for national security systems. <html:pre>
                             Script Verification:
                             To manually verify, Ensure none of the following remote access packages
-                        exist in the folder /lib/apk/db/ Packages:
+                        exist in the folder /usr/lib/apk/db/ Packages:
                             openssh, openssh-server, openssh-client, openssh-sftp-server, dropbear,
                         tigervnc, tigervnc-server, tigervnc-viewer,
                             xrdp, xorgxrdp, vsftpd, proftpd, webmin, cockpit, cockpit-ws,
@@ -4478,7 +4478,7 @@
                         layered protection for national security systems. <html:pre>
                             Script Verification:
                             To manually verify, Ensure none of the following remote access packages
-                        exist in the folder /lib/apk/db/ Packages:
+                        exist in the folder /usr/lib/apk/db/ Packages:
                             openssh, openssh-server, openssh-client, openssh-sftp-server, dropbear,
                         tigervnc, tigervnc-server, tigervnc-viewer,
                             xrdp, xorgxrdp, vsftpd, proftpd, webmin, cockpit, cockpit-ws,
@@ -4499,7 +4499,7 @@
                         the individual user or group will not be available for forensic analysis. <html:pre>
                         Script Verification:
                             To manually verify, Ensure none of the following remote access packages
-                        exist in the folder /lib/apk/db/ Packages:
+                        exist in the folder /usr/lib/apk/db/ Packages:
                             openssh, openssh-server, openssh-client, openssh-sftp-server, dropbear,
                         tigervnc, tigervnc-server, tigervnc-viewer,
                             xrdp, xorgxrdp, vsftpd, proftpd, webmin, cockpit, cockpit-ws,
@@ -4536,7 +4536,7 @@
                         for this requirement. <html:pre>
                             Script Verification:
                             To manually verify, Ensure none of the following remote access packages
-                        exist in the folder /lib/apk/db/ Packages:
+                        exist in the folder /usr/lib/apk/db/ Packages:
                             openssh, openssh-server, openssh-client, openssh-sftp-server, dropbear,
                         tigervnc, tigervnc-server, tigervnc-viewer,
                             xrdp, xorgxrdp, vsftpd, proftpd, webmin, cockpit, cockpit-ws,
@@ -4563,7 +4563,7 @@
                         storage devices, or whatever they use to keep the private keys. <html:pre>
                         Script Verification:
                             To manually verify, Ensure none of the following remote access packages
-                        exist in the folder /lib/apk/db/ Packages:
+                        exist in the folder /usr/lib/apk/db/ Packages:
                             openssh, openssh-server, openssh-client, openssh-sftp-server, dropbear,
                         tigervnc, tigervnc-server, tigervnc-viewer,
                             xrdp, xorgxrdp, vsftpd, proftpd, webmin, cockpit, cockpit-ws,
@@ -4597,7 +4597,7 @@
                         system owner, data owner, or organization requires additional assurance. <html:pre>
                         Script Verification:
                             To manually verify, Ensure none of the following remote access packages
-                        exist in the folder /lib/apk/db/ Packages:
+                        exist in the folder /usr/lib/apk/db/ Packages:
                             openssh, openssh-server, openssh-client, openssh-sftp-server, dropbear,
                         tigervnc, tigervnc-server, tigervnc-viewer,
                             xrdp, xorgxrdp, vsftpd, proftpd, webmin, cockpit, cockpit-ws,
@@ -4628,7 +4628,7 @@
                         (e.g., servers, workstations, notebook computers, smartphones, and tablets). <html:pre>
                         Script Verification:
                             To manually verify, Ensure none of the following remote access packages
-                        exist in the folder /lib/apk/db/ Packages:
+                        exist in the folder /usr/lib/apk/db/ Packages:
                             openssh, openssh-server, openssh-client, openssh-sftp-server, dropbear,
                         tigervnc, tigervnc-server, tigervnc-viewer,
                             xrdp, xorgxrdp, vsftpd, proftpd, webmin, cockpit, cockpit-ws,
@@ -4657,7 +4657,7 @@
                         based on an indicator of compromise or attack. <html:pre>
                             Script Verification:
                             To manually verify, Ensure none of the following remote access packages
-                        exist in the folder /lib/apk/db/ Packages:
+                        exist in the folder /usr/lib/apk/db/ Packages:
                             openssh, openssh-server, openssh-client, openssh-sftp-server, dropbear,
                         tigervnc, tigervnc-server, tigervnc-viewer,
                             xrdp, xorgxrdp, vsftpd, proftpd, webmin, cockpit, cockpit-ws,
@@ -4683,7 +4683,7 @@
                         logoff messages as final messages prior to terminating sessions. <html:pre>
                         Script Verification:
                             To manually verify, Ensure none of the following remote access packages
-                        exist in the folder /lib/apk/db/ Packages:
+                        exist in the folder /usr/lib/apk/db/ Packages:
                             openssh, openssh-server, openssh-client, openssh-sftp-server, dropbear,
                         tigervnc, tigervnc-server, tigervnc-viewer,
                             xrdp, xorgxrdp, vsftpd, proftpd, webmin, cockpit, cockpit-ws,
@@ -4712,7 +4712,7 @@
                         sessions. <html:pre>
                             Script Verification:
                             To manually verify, Ensure none of the following remote access packages
-                        exist in the folder /lib/apk/db/ Packages:
+                        exist in the folder /usr/lib/apk/db/ Packages:
                             openssh, openssh-server, openssh-client, openssh-sftp-server, dropbear,
                         tigervnc, tigervnc-server, tigervnc-viewer,
                             xrdp, xorgxrdp, vsftpd, proftpd, webmin, cockpit, cockpit-ws,
@@ -4749,7 +4749,7 @@
                         programs, and domains) in the information system. <html:pre>
                             Script Verification:
                             To manually verify, Ensure none of the following remote access packages
-                        exist in the folder /lib/apk/db/ Packages:
+                        exist in the folder /usr/lib/apk/db/ Packages:
                             openssh, openssh-server, openssh-client, openssh-sftp-server, dropbear,
                         tigervnc, tigervnc-server, tigervnc-viewer,
                             xrdp, xorgxrdp, vsftpd, proftpd, webmin, cockpit, cockpit-ws,
@@ -4776,7 +4776,7 @@
                         secure sessions includes, for example, the use of SSL/TLS certificates. <html:pre>
                         Script Verification:
                             To manually verify, Ensure none of the following remote access packages
-                        exist in the folder /lib/apk/db/ Packages:
+                        exist in the folder /usr/lib/apk/db/ Packages:
                             openssh, openssh-server, openssh-client, openssh-sftp-server, dropbear,
                         tigervnc, tigervnc-server, tigervnc-viewer,
                             xrdp, xorgxrdp, vsftpd, proftpd, webmin, cockpit, cockpit-ws,
@@ -4799,7 +4799,7 @@
                         account. <html:pre>
                             Script Verification:
                             To manually verify, Ensure none of the following remote access packages
-                        exist in the folder /lib/apk/db/ Packages:
+                        exist in the folder /usr/lib/apk/db/ Packages:
                             openssh, openssh-server, openssh-client, openssh-sftp-server, dropbear,
                         tigervnc, tigervnc-server, tigervnc-viewer,
                             xrdp, xorgxrdp, vsftpd, proftpd, webmin, cockpit, cockpit-ws,
@@ -4826,7 +4826,7 @@
                         re-authentication shall unlock the system. <html:pre>
                             Script Verification:
                             To manually verify, Ensure none of the following remote access packages
-                        exist in the folder /lib/apk/db/ Packages:
+                        exist in the folder /usr/lib/apk/db/ Packages:
                             openssh, openssh-server, openssh-client, openssh-sftp-server, dropbear,
                         tigervnc, tigervnc-server, tigervnc-viewer,
                             xrdp, xorgxrdp, vsftpd, proftpd, webmin, cockpit, cockpit-ws,
@@ -4853,7 +4853,7 @@
                         controlled. <html:pre>
                             Script Verification:
                             To manually verify, Ensure none of the following remote access packages
-                        exist in the folder /lib/apk/db/ Packages:
+                        exist in the folder /usr/lib/apk/db/ Packages:
                             openssh, openssh-server, openssh-client, openssh-sftp-server, dropbear,
                         tigervnc, tigervnc-server, tigervnc-viewer,
                             xrdp, xorgxrdp, vsftpd, proftpd, webmin, cockpit, cockpit-ws,
@@ -4881,7 +4881,7 @@
                         indicating "OK". <html:pre>
                             Script Verification:
                             To manually verify, Ensure none of the following remote access packages
-                        exist in the folder /lib/apk/db/ Packages:
+                        exist in the folder /usr/lib/apk/db/ Packages:
                             openssh, openssh-server, openssh-client, openssh-sftp-server, dropbear,
                         tigervnc, tigervnc-server, tigervnc-viewer,
                             xrdp, xorgxrdp, vsftpd, proftpd, webmin, cockpit, cockpit-ws,
@@ -4903,7 +4903,7 @@
                         account. <html:pre>
                             Script Verification:
                             To manually verify, Ensure none of the following remote access packages
-                        exist in the folder /lib/apk/db/ Packages:
+                        exist in the folder /usr/lib/apk/db/ Packages:
                             openssh, openssh-server, openssh-client, openssh-sftp-server, dropbear,
                         tigervnc, tigervnc-server, tigervnc-viewer,
                             xrdp, xorgxrdp, vsftpd, proftpd, webmin, cockpit, cockpit-ws,
@@ -4952,7 +4952,7 @@
                         agreem't." <html:pre>
                             Script Verification:
                             To manually verify, Ensure none of the following remote access packages
-                        exist in the folder /lib/apk/db/ Packages:
+                        exist in the folder /usr/lib/apk/db/ Packages:
                             openssh, openssh-server, openssh-client, openssh-sftp-server, dropbear,
                         tigervnc, tigervnc-server, tigervnc-viewer,
                             xrdp, xorgxrdp, vsftpd, proftpd, webmin, cockpit, cockpit-ws,
@@ -4983,7 +4983,7 @@
                         computers, smartphones, and tablets). <html:pre>
                             Script Verification:
                             To manually verify, Ensure none of the following remote access packages
-                        exist in the folder /lib/apk/db/ Packages:
+                        exist in the folder /usr/lib/apk/db/ Packages:
                             openssh, openssh-server, openssh-client, openssh-sftp-server, dropbear,
                         tigervnc, tigervnc-server, tigervnc-viewer,
                             xrdp, xorgxrdp, vsftpd, proftpd, webmin, cockpit, cockpit-ws,
@@ -5010,7 +5010,7 @@
                         temporarily vacate the immediate physical vicinity. <html:pre>
                             Script Verification:
                             To manually verify, Ensure none of the following remote access packages
-                        exist in the folder /lib/apk/db/ Packages:
+                        exist in the folder /usr/lib/apk/db/ Packages:
                             openssh, openssh-server, openssh-client, openssh-sftp-server, dropbear,
                         tigervnc, tigervnc-server, tigervnc-viewer,
                             xrdp, xorgxrdp, vsftpd, proftpd, webmin, cockpit, cockpit-ws,
@@ -5040,7 +5040,7 @@
                         images convey sensitive information. <html:pre>
                             Script Verification:
                             To manually verify, Ensure none of the following remote access packages
-                        exist in the folder /lib/apk/db/ Packages:
+                        exist in the folder /usr/lib/apk/db/ Packages:
                             openssh, openssh-server, openssh-client, openssh-sftp-server, dropbear,
                         tigervnc, tigervnc-server, tigervnc-viewer,
                             xrdp, xorgxrdp, vsftpd, proftpd, webmin, cockpit, cockpit-ws,
@@ -5089,7 +5089,7 @@
                         terms in IS user agreem't." <html:pre>
                             Script Verification:
                             To manually verify, Ensure none of the following remote access packages
-                        exist in the folder /lib/apk/db/ Packages:
+                        exist in the folder /usr/lib/apk/db/ Packages:
                             openssh, openssh-server, openssh-client, openssh-sftp-server, dropbear,
                         tigervnc, tigervnc-server, tigervnc-viewer,
                             xrdp, xorgxrdp, vsftpd, proftpd, webmin, cockpit, cockpit-ws,
@@ -5110,7 +5110,7 @@
                         access to an account. <html:pre>
                             Script Verification:
                             To manually verify, Ensure none of the following remote access packages
-                        exist in the folder /lib/apk/db/ Packages:
+                        exist in the folder /usr/lib/apk/db/ Packages:
                             openssh, openssh-server, openssh-client, openssh-sftp-server, dropbear,
                         tigervnc, tigervnc-server, tigervnc-viewer,
                             xrdp, xorgxrdp, vsftpd, proftpd, webmin, cockpit, cockpit-ws,
@@ -5134,7 +5134,7 @@
                         module or policy filter). <html:pre>
                             Script Verification:
                             To manually verify, Ensure none of the following remote access packages
-                        exist in the folder /lib/apk/db/ Packages:
+                        exist in the folder /usr/lib/apk/db/ Packages:
                             openssh, openssh-server, openssh-client, openssh-sftp-server, dropbear,
                         tigervnc, tigervnc-server, tigervnc-viewer,
                             xrdp, xorgxrdp, vsftpd, proftpd, webmin, cockpit, cockpit-ws,
@@ -5163,7 +5163,7 @@
                         time-synchronous or challenge-response one-time authenticators. <html:pre>
                         Script Verification:
                             To manually verify, Ensure none of the following remote access packages
-                        exist in the folder /lib/apk/db/ Packages:
+                        exist in the folder /usr/lib/apk/db/ Packages:
                             openssh, openssh-server, openssh-client, openssh-sftp-server, dropbear,
                         tigervnc, tigervnc-server, tigervnc-viewer,
                             xrdp, xorgxrdp, vsftpd, proftpd, webmin, cockpit, cockpit-ws,
@@ -5201,7 +5201,7 @@
                         of the actions that can be taken with group account knowledge. <html:pre>
                         Script Verification:
                             To manually verify, Ensure none of the following remote access packages
-                        exist in the folder /lib/apk/db/ Packages:
+                        exist in the folder /usr/lib/apk/db/ Packages:
                             openssh, openssh-server, openssh-client, openssh-sftp-server, dropbear,
                         tigervnc, tigervnc-server, tigervnc-viewer,
                             xrdp, xorgxrdp, vsftpd, proftpd, webmin, cockpit, cockpit-ws,
@@ -5230,7 +5230,7 @@
                         challenge-response one-time authenticators. <html:pre>
                             Script Verification:
                             To manually verify, Ensure none of the following remote access packages
-                        exist in the folder /lib/apk/db/ Packages:
+                        exist in the folder /usr/lib/apk/db/ Packages:
                             openssh, openssh-server, openssh-client, openssh-sftp-server, dropbear,
                         tigervnc, tigervnc-server, tigervnc-viewer,
                             xrdp, xorgxrdp, vsftpd, proftpd, webmin, cockpit, cockpit-ws,
@@ -5260,7 +5260,7 @@
                         DOD CAC with DOD-approved PKI is an example of multifactor authentication. <html:pre>
                         Script Verification:
                             To manually verify, Ensure none of the following remote access packages
-                        exist in the folder /lib/apk/db/ Packages:
+                        exist in the folder /usr/lib/apk/db/ Packages:
                             openssh, openssh-server, openssh-client, openssh-sftp-server, dropbear,
                         tigervnc, tigervnc-server, tigervnc-viewer,
                             xrdp, xorgxrdp, vsftpd, proftpd, webmin, cockpit, cockpit-ws,
@@ -5290,7 +5290,7 @@
                         DoD-approved PKI is an example of multifactor authentication. <html:pre>
                         Script Verification:
                             To manually verify, Ensure none of the following remote access packages
-                        exist in the folder /lib/apk/db/ Packages:
+                        exist in the folder /usr/lib/apk/db/ Packages:
                             openssh, openssh-server, openssh-client, openssh-sftp-server, dropbear,
                         tigervnc, tigervnc-server, tigervnc-viewer,
                             xrdp, xorgxrdp, vsftpd, proftpd, webmin, cockpit, cockpit-ws,
@@ -5319,7 +5319,7 @@
                         DoD-approved PKI is an example of multifactor authentication. <html:pre>
                         Script Verification:
                             To manually verify, Ensure none of the following remote access packages
-                        exist in the folder /lib/apk/db/ Packages:
+                        exist in the folder /usr/lib/apk/db/ Packages:
                             openssh, openssh-server, openssh-client, openssh-sftp-server, dropbear,
                         tigervnc, tigervnc-server, tigervnc-viewer,
                             xrdp, xorgxrdp, vsftpd, proftpd, webmin, cockpit, cockpit-ws,
@@ -5349,7 +5349,7 @@
                         authentication. <html:pre>
                             Script Verification:
                             To manually verify, Ensure none of the following remote access packages
-                        exist in the folder /lib/apk/db/ Packages:
+                        exist in the folder /usr/lib/apk/db/ Packages:
                             openssh, openssh-server, openssh-client, openssh-sftp-server, dropbear,
                         tigervnc, tigervnc-server, tigervnc-viewer,
                             xrdp, xorgxrdp, vsftpd, proftpd, webmin, cockpit, cockpit-ws,
@@ -6315,7 +6315,7 @@
             <description>Ensure that the necessary OpenSSL FIPS packages and configuration files are present.</description>
             <reference source="CIS"/>
             <affected family="unix">
-              <platform>Alpine Linux</platform>
+              <platform>Chainguard</platform>
             </affected>
           </metadata>
           <criteria operator="AND">
@@ -6353,22 +6353,30 @@
         </independent:textfilecontent54_test>
       </tests>
       <objects>
+        <!-- obj:1 collects any file under /etc/ssl whose basename contains
+             "fipsmodule" (e.g. /etc/ssl/fipsmodule.cnf). Without <unix:behaviors>
+             the default recurse_direction is "none" so OVAL never looks inside
+             /etc/ssl and the pattern is silently never applied. -->
         <unix:file_object xmlns:unix="http://oval.mitre.org/XMLSchema/oval-definitions-5#unix" id="oval:org.OpenSsl:obj:1" version="1">
+          <unix:behaviors recurse="symlinks and directories" recurse_direction="down" max_depth="-1" recurse_file_system="local"/>
           <unix:path>/etc/ssl</unix:path>
           <unix:filename operation="pattern match">(?=.*fipsmodule).*</unix:filename>
         </unix:file_object>
+        <!-- obj:2 collects any file under /etc/ssl whose basename contains
+             "openssl" (e.g. /etc/ssl/openssl.cnf). Same recursion rationale as obj:1. -->
         <unix:file_object xmlns:unix="http://oval.mitre.org/XMLSchema/oval-definitions-5#unix" id="oval:org.OpenSsl:obj:2" version="1">
+          <unix:behaviors recurse="symlinks and directories" recurse_direction="down" max_depth="-1" recurse_file_system="local"/>
           <unix:path>/etc/ssl</unix:path>
           <unix:filename operation="pattern match">(?=.*openssl).*</unix:filename>
         </unix:file_object>
         <independent:textfilecontent54_object xmlns:independent="http://oval.mitre.org/XMLSchema/oval-definitions-5#independent" id="oval:org.OpenSsl:obj:3" version="1">
-          <independent:path>/lib/apk/db</independent:path>
+          <independent:path>/usr/lib/apk/db</independent:path>
           <independent:filename>installed</independent:filename>
           <independent:pattern operation="pattern match">^P:openssl-config-fipshardened(-\d+\.\d+\.\d+)?$</independent:pattern>
           <independent:instance datatype="int">1</independent:instance>
         </independent:textfilecontent54_object>
         <independent:textfilecontent54_object xmlns:independent="http://oval.mitre.org/XMLSchema/oval-definitions-5#independent" id="oval:org.OpenSsl:obj:4" version="1">
-          <independent:path>/lib/apk/db</independent:path>
+          <independent:path>/usr/lib/apk/db</independent:path>
           <independent:filename>installed</independent:filename>
           <independent:pattern operation="pattern match">^P:openssl-provider-fips(-\d+\.\d+\.\d+)?$</independent:pattern>
           <independent:instance datatype="int">1</independent:instance>
@@ -6406,7 +6414,7 @@
             <description>Ensure all libraries in /usr/lib have root:root permissions.</description>
             <reference source="CIS"/>
             <affected family="unix">
-              <platform>Alpine Linux</platform>
+              <platform>Chainguard</platform>
             </affected>
           </metadata>
           <criteria operator="AND">
@@ -6416,25 +6424,36 @@
         </definition>
       </definitions>
       <tests>
-        <unix:file_test xmlns:unix="http://oval.mitre.org/XMLSchema/oval-definitions-5#unix" id="oval:org.LibraryPermissions:tst:1" version="1" check="all" check_existence="at_least_one_exists" comment="Check existence of /usr/lib directory">
+        <unix:file_test xmlns:unix="http://oval.mitre.org/XMLSchema/oval-definitions-5#unix" id="oval:org.LibraryPermissions:tst:1" version="1" check="all" check_existence="at_least_one_exists" comment="All files under /usr/lib are owned by root:root">
           <unix:object object_ref="oval:org.LibraryPermissions:obj:1"/>
           <unix:state state_ref="oval:org.LibraryPermissions:ste:1"/>
         </unix:file_test>
-        <unix:file_test xmlns:unix="http://oval.mitre.org/XMLSchema/oval-definitions-5#unix" id="oval:org.LibraryPermissions:tst:2" version="1" check="all" check_existence="at_least_one_exists" comment="Check existence of /usr/lib directory">
+        <unix:file_test xmlns:unix="http://oval.mitre.org/XMLSchema/oval-definitions-5#unix" id="oval:org.LibraryPermissions:tst:2" version="1" check="all" check_existence="at_least_one_exists" comment="All directories under /usr/lib are owned by root:root">
           <unix:object object_ref="oval:org.LibraryPermissions:obj:2"/>
           <unix:state state_ref="oval:org.LibraryPermissions:ste:1"/>
         </unix:file_test>
       </tests>
       <objects>
+        <!-- obj:1 collects every non-directory entry (files, symlinks) under
+             /usr/lib at any depth. Without an explicit <unix:behaviors>
+             element the default recurse_direction is "none", meaning no
+             descent occurs and the filename pattern is never applied.
+             Specifying recurse_direction="down" with max_depth="-1" performs
+             full recursion; recurse_file_system="local" keeps the scan on
+             the container's rootfs. -->
         <unix:file_object xmlns:unix="http://oval.mitre.org/XMLSchema/oval-definitions-5#unix" id="oval:org.LibraryPermissions:obj:1" version="1">
+          <unix:behaviors recurse="symlinks and directories" recurse_direction="down" max_depth="-1" recurse_file_system="local"/>
           <unix:path>/usr/lib</unix:path>
-          <!-- <unix:filename xsi:nil="true"/> -->
           <unix:filename operation="pattern match">^.*$</unix:filename>
         </unix:file_object>
+        <!-- obj:2 collects every directory entry (including /usr/lib itself)
+             under /usr/lib at any depth. A nil <unix:filename/> selects the
+             directory items themselves rather than files inside them, which
+             is what a directory-ownership check requires. -->
         <unix:file_object xmlns:unix="http://oval.mitre.org/XMLSchema/oval-definitions-5#unix" id="oval:org.LibraryPermissions:obj:2" version="1">
-          <unix:behaviors recurse="directories" recurse_direction="down"/>
+          <unix:behaviors recurse="symlinks and directories" recurse_direction="down" max_depth="-1" recurse_file_system="local"/>
           <unix:path>/usr/lib</unix:path>
-          <unix:filename operation="pattern match">^.*$</unix:filename>
+          <unix:filename xsi:nil="true"/>
         </unix:file_object>
       </objects>
       <states>
@@ -6460,7 +6479,7 @@
             <description>Ensure there are no unauthorized users in the /etc/shadow file below the 'nobody' line.</description>
             <reference source="CIS"/>
             <affected family="unix">
-              <platform>Alpine Linux</platform>
+              <platform>Chainguard</platform>
             </affected>
           </metadata>
           <criteria operator="AND">
@@ -6495,12 +6514,6 @@
           <instance datatype="int">1</instance>
         </textfilecontent54_object>
       </objects>
-      <states>
-        <!-- No specific states needed for this NoUsers -->
-        <textfilecontent54_state xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#independent" id="oval:my_test:ste:1" version="1">
-          <subexpression>20230201</subexpression>
-        </textfilecontent54_state>
-      </states>
     </oval_definitions>
   </ds:extended-component>
   <ds:extended-component id="scap_org_ecomp_.packagesignaturecheck" timestamp="2024-05-29T12:00:00">
@@ -6518,7 +6531,7 @@
             <description>Ensure all repositories in /etc/apk/repositories use HTTPS.</description>
             <reference source="Custom"/>
             <affected family="unix">
-              <platform>Alpine Linux</platform>
+              <platform>Chainguard</platform>
             </affected>
           </metadata>
           <criteria operator="AND">
@@ -6527,21 +6540,22 @@
         </definition>
       </definitions>
       <tests>
-        <unix:file_test xmlns:unix="http://oval.mitre.org/XMLSchema/oval-definitions-5#unix" id="oval:org.PackageSignature:tst:1" version="1" check="all" check_existence="none_exist" comment="Check existence of /usr/lib directory">
-          <unix:object object_ref="oval:org.PackageSignature:obj:1"/>
-        </unix:file_test>
+        <!-- PASS when no non-https repository line exists in /etc/apk/repositories. -->
+        <textfilecontent54_test xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#independent" id="oval:org.PackageSignature:tst:1" version="1" check="all" check_existence="none_exist" comment="Fail if any non-https repository URL is configured in /etc/apk/repositories">
+          <object object_ref="oval:org.PackageSignature:obj:1"/>
+        </textfilecontent54_test>
       </tests>
       <objects>
-        <unix:file_object xmlns:unix="http://oval.mitre.org/XMLSchema/oval-definitions-5#unix" id="oval:org.PackageSignature:obj:1" version="1">
-          <unix:path>etc/apk/repositories</unix:path>
-          <unix:filename operation="pattern match">^(?!.*https://).*</unix:filename>
-        </unix:file_object>
+        <!-- Match any non-blank, non-comment line that does not contain "https://".
+             PCRE negative lookahead "(?!...)" is supported by OpenSCAP's text
+             file content probe. Comment/blank lines are skipped. -->
+        <textfilecontent54_object xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#independent" id="oval:org.PackageSignature:obj:1" version="1">
+          <path>/etc/apk</path>
+          <filename>repositories</filename>
+          <pattern operation="pattern match">^(?!\s*#)(?!.*https://).+$</pattern>
+          <instance datatype="int">1</instance>
+        </textfilecontent54_object>
       </objects>
-      <states>
-        <textfilecontent54_state xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#independent" id="oval:my_test:ste:1" version="1">
-          <subexpression>2024-05-29T12:00:00</subexpression>
-        </textfilecontent54_state>
-      </states>
     </oval_definitions>
   </ds:extended-component>
   <ds:extended-component id="scap_org_ecomp_.noremoteaccess" timestamp="2024-05-29T12:00:00">
@@ -6559,7 +6573,7 @@
             <description>Ensure that packages in the list are not installed on the system.</description>
             <reference source="Custom"/>
             <affected family="unix">
-              <platform>Alpine Linux</platform>
+              <platform>Chainguard</platform>
             </affected>
           </metadata>
           <criteria>
@@ -6568,13 +6582,13 @@
         </definition>
       </definitions>
       <tests>
-        <textfilecontent54_test xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#independent" check="all" check_existence="none_exist" comment="Check for installed packages starting with 'mypkg-' in /lib/apk/db/installed" id="oval:org.RemoteAccessServices:tst:1" version="1">
+        <textfilecontent54_test xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#independent" check="all" check_existence="none_exist" comment="Fail if any remote-access package is recorded in the apk installed database" id="oval:org.RemoteAccessServices:tst:1" version="1">
           <object object_ref="oval:org.RemoteAccessServices:obj:6"/>
         </textfilecontent54_test>
       </tests>
       <objects>
         <textfilecontent54_object xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#independent" id="oval:org.RemoteAccessServices:obj:6" version="1">
-          <path>/lib/apk/db</path>
+          <path>/usr/lib/apk/db</path>
           <filename>installed</filename>
           <pattern operation="pattern match">^P:(openssh|openssh-server|openssh-client|openssh-sftp-server|dropbear|tigervnc|tigervnc-server|tigervnc-viewer|xrdp|xorgxrdp|vsftpd|proftpd|webmin|cockpit|cockpit-ws|cockpit-bridge|nfs-utils|samba|samba-server|samba-client|samba-common|rsh|telnet)(-\d[\d.]*(-[a-z][a-z0-9-]*)?)?$</pattern>
           <instance datatype="int">1</instance>
@@ -6593,26 +6607,26 @@
       <definitions>
         <definition id="oval:org.example:def:3" version="1" class="compliance">
           <metadata>
-            <title>Check for Hashed Passwords in /etc/shadow</title>
-            <description>Ensure there are passwords in the /etc/shadow file.</description>
+            <title>No interactive hashed passwords in /etc/shadow</title>
+            <description>Chainguard container images must not ship interactive shadow password entries; every account must have its shadow field locked (&quot;!&quot; or &quot;*&quot;). This check FAILS if any line in /etc/shadow matches the pattern user:$hash:... indicating a stored hashed password, on the premise that hardened images have no interactive logins.</description>
             <reference source="CIS"/>
             <affected family="unix">
-              <platform>Alpine Linux</platform>
+              <platform>Chainguard</platform>
             </affected>
           </metadata>
           <criteria>
-            <criterion comment="Check for hashed passwords" test_ref="oval:org.example:tst:6"/>
+            <criterion comment="No /etc/shadow entry carries a hashed interactive password" test_ref="oval:org.example:tst:6"/>
           </criteria>
         </definition>
       </definitions>
       <tests>
-        <!-- Test to check for any lines after 'nobody' -->
-        <textfilecontent54_test xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#independent" check="all" check_existence="none_exist" comment="Check for unauthorized users after the 'nobody' line in /etc/shadow" id="oval:org.example:tst:6" version="1">
+        <textfilecontent54_test xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#independent" check="all" check_existence="none_exist" comment="Fail if any /etc/shadow line stores a hashed password ($...)" id="oval:org.example:tst:6" version="1">
           <object object_ref="oval:org.example:obj:6"/>
         </textfilecontent54_test>
       </tests>
       <objects>
-        <!-- Object to find any lines after 'nobody' -->
+        <!-- Match lines of the form "user:$<hash>:..." in /etc/shadow. Locked
+             accounts ("user:!:..." or "user:*:...") do not match and are ignored. -->
         <textfilecontent54_object xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#independent" id="oval:org.example:obj:6" version="1">
           <path>/etc</path>
           <filename>shadow</filename>
@@ -6620,12 +6634,6 @@
           <instance datatype="int">1</instance>
         </textfilecontent54_object>
       </objects>
-      <states>
-        <!-- No specific states needed for this example -->
-        <textfilecontent54_state xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#independent" id="oval:my_test:ste:1" version="1">
-          <subexpression>20230201</subexpression>
-        </textfilecontent54_state>
-      </states>
     </oval_definitions>
   </ds:extended-component>
   <ds:extended-component id="scap_org_ecomp_.varlog" timestamp="2024-05-29T12:00:00">
@@ -6643,7 +6651,7 @@
             <description>Ensure /var/log has root:root permissions.</description>
             <reference source="CIS"/>
             <affected family="unix">
-              <platform>Alpine Linux</platform>
+              <platform>Chainguard</platform>
             </affected>
           </metadata>
           <criteria>
@@ -6652,7 +6660,7 @@
         </definition>
       </definitions>
       <tests>
-        <unix:file_test xmlns:unix="http://oval.mitre.org/XMLSchema/oval-definitions-5#unix" id="oval:org.varlog:tst:5" version="1" check="all" check_existence="at_least_one_exists" comment="Check existence of /var/log directory">
+        <unix:file_test xmlns:unix="http://oval.mitre.org/XMLSchema/oval-definitions-5#unix" id="oval:org.varlog:tst:5" version="1" check="all" check_existence="at_least_one_exists" comment="/var/log is owned by root:root">
           <unix:object object_ref="oval:org.varlog:obj:5"/>
           <unix:state state_ref="oval:org.varlog:ste:5"/>
         </unix:file_test>
@@ -6685,7 +6693,7 @@
             <title>Validate SHA-256 hash of CA bundle</title>
             <description>Passes only if the CA bundle exists and has the correct hash.</description>
             <affected family="unix">
-              <platform>Alpine Linux</platform>
+              <platform>Chainguard</platform>
             </affected>
           </metadata>
           <criteria operator="AND">
@@ -6695,10 +6703,10 @@
         </definition>
       </definitions>
       <tests>
-        <unix:file_test id="oval:org.CABundleHash:tst:1" version="1" check="all" check_existence="at_least_one_exists" comment="Ensure CA bundle file exists">
+        <unix:file_test id="oval:org.CABundleHash:tst:1" version="1" check="all" check_existence="only_one_exists" comment="Ensure CA bundle file exists">
           <unix:object object_ref="oval:org.CABundleHash:obj:1"/>
         </unix:file_test>
-        <ind:filehash58_test id="oval:org.CABundleHash:tst:2" version="1" check="all" check_existence="at_least_one_exists" comment="Check that CA bundle file matches expected SHA-256 hash">
+        <ind:filehash58_test id="oval:org.CABundleHash:tst:2" version="1" check="all" check_existence="only_one_exists" comment="Check that CA bundle file matches expected SHA-256 hash">
           <ind:object object_ref="oval:org.CABundleHash:obj:2"/>
           <ind:state state_ref="oval:org.CABundleHash:ste:1"/>
         </ind:filehash58_test>

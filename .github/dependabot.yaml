@@ -3,6 +3,9 @@
 
   version: 2
   updates:
+    # Note: tests/e2e/fixtures/*/Dockerfile digests are NOT tracked here.
+    # The update-ca-cert workflow owns those digests so they stay in lockstep
+    # with the CA bundle hash in the OSCAP datastream.
     - package-ecosystem: "github-actions"
       directory: "/"
       schedule:

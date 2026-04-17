@@ -1,0 +1,4 @@
+# Fixture: non-https-repo
+#
+# /etc/apk/repositories has a plain-http line. PackageSignature rule must FAIL.
+xccdf_mil.disa.stig_rule_SV-203720r982212_rule=fail
