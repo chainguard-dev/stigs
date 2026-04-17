@@ -11,6 +11,9 @@ spec:
           # prepare-release action generated prs/commits
           - issuer: https://token.actions.githubusercontent.com
             subject: https://github.com/chainguard-dev/stigs/.github/workflows/prepare-release.yaml@refs/heads/main
+          # update-ca-cert workflow PRs/commits
+          - issuer: https://token.actions.githubusercontent.com
+            subject: https://github.com/chainguard-dev/stigs/.github/workflows/update-ca-cert.yaml@refs/heads/main
     - key:
         # allow commits signed by GitHub, e.g. the UI
         kms: https://github.com/web-flow.gpg
