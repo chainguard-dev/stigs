@@ -13,7 +13,7 @@
         <description>Ensure /var/log has root:root permissions.</description>
         <reference source="Custom"/>
         <affected family="unix">
-          <platform>Alpine Linux</platform>
+          <platform>Chainguard</platform>
         </affected>
       </metadata>
       <criteria>
@@ -22,7 +22,7 @@
     </definition>
   </definitions>
   <tests>
-    <unix:file_test xmlns:unix="http://oval.mitre.org/XMLSchema/oval-definitions-5#unix" id="oval:org.varlog:tst:5" version="1" check="all" check_existence="at_least_one_exists" comment="Check existence of /var/log directory">
+    <unix:file_test xmlns:unix="http://oval.mitre.org/XMLSchema/oval-definitions-5#unix" id="oval:org.varlog:tst:5" version="1" check="all" check_existence="at_least_one_exists" comment="/var/log is owned by root:root">
       <unix:object object_ref="oval:org.varlog:obj:5"/>
       <unix:state state_ref="oval:org.varlog:ste:5"/>
     </unix:file_test>

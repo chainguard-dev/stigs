@@ -13,7 +13,7 @@
         <description>Ensure there are no unauthorized users in the /etc/shadow file below the 'nobody' line.</description>
         <reference source="Custom"/>
         <affected family="unix">
-          <platform>Alpine Linux</platform>
+          <platform>Chainguard</platform>
         </affected>
       </metadata>
       <criteria operator="AND">
@@ -48,10 +48,4 @@
       <instance datatype="int">1</instance>
     </textfilecontent54_object>
   </objects>
-  <states>
-    <!-- No specific states needed for this NoUsers -->
-    <textfilecontent54_state xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#independent" id="oval:my_test:ste:1" version="1">
-      <subexpression>20230201</subexpression>
-    </textfilecontent54_state>
-  </states>
 </oval_definitions>

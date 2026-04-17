@@ -1,0 +1,16 @@
+# Fixture: baseline-clean
+#
+# Format: one rule per line, "<rule-id>=<expected-result>".
+# Result values follow XCCDF result semantics:
+#   pass         — the rule succeeded
+#   fail         — the rule detected a violation
+#   notapplicable — the rule does not apply to this target
+#
+# A clean Chainguard wolfi-base image should PASS each of the rules below.
+# Rules not listed here are not asserted on; the harness ignores them.
+#
+# Apk repository signing (PackageSignatureTest)
+xccdf_mil.disa.stig_rule_SV-203720r982212_rule=pass
+
+# CA trust bundle hash (CertificateAuditTest)
+xccdf_mil.disa.stig_rule_SV-263659r982563_rule=pass

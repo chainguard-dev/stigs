@@ -28,6 +28,7 @@ jobs:
       IMAGE_REF: cgr.dev/chainguard/wolfi-base:latest
       DATASTREAM_PATH: gpos/xml/scap/ssg/content/ssg-chainguard-gpos-ds.xml
       TESTS_PATH: tests
+      FIXTURES_GLOB: tests/e2e/fixtures/*/Dockerfile
     steps:
       - name: Checkout
         uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
@@ -105,15 +106,15 @@ jobs:
           sed -i -E "s|(<[^>]*hash>)[^<]*(</[^>]*hash>)|\1${CA_CERT_SHA}\2|g" "${DATASTREAM_PATH}"
 
           # Check if file changed
-          changed=false
+          ds_changed=false
           if diff -q "${DATASTREAM_PATH}.bak" "${DATASTREAM_PATH}" > /dev/null; then
-            echo "No changes needed - SHA already up to date"
-            echo "changed=false" >> "$GITHUB_OUTPUT"
+            echo "No datastream changes needed - SHA already up to date"
+            echo "datastream_changed=false" >> "$GITHUB_OUTPUT"
             rm "${DATASTREAM_PATH}.bak"
           else
-            changed=true
+            ds_changed=true
             echo "Updated datastream with new SHA: ${CA_CERT_SHA}"
-            echo "changed=true" >> "$GITHUB_OUTPUT"
+            echo "datastream_changed=true" >> "$GITHUB_OUTPUT"
             rm "${DATASTREAM_PATH}.bak"
           fi
 
@@ -121,22 +122,109 @@ jobs:
           echo "### Datastream Update Summary" >> "$GITHUB_STEP_SUMMARY"
           echo "- **File**: \`${DATASTREAM_PATH}\`" >> "$GITHUB_STEP_SUMMARY"
           echo "- **New SHA**: \`${CA_CERT_SHA}\`" >> "$GITHUB_STEP_SUMMARY"
-          if [ "${changed}" == "true" ]; then
+          if [ "${ds_changed}" == "true" ]; then
             echo "- **Status**: Updated" >> "$GITHUB_STEP_SUMMARY"
           else
             echo "- **Status**: Already up-to-date" >> "$GITHUB_STEP_SUMMARY"
           fi
+      - name: Re-pin E2E fixture base-image digests
+        id: fixtures
+        env:
+          STEPS_IMAGE_OUTPUTS_DIGEST: ${{ steps.image.outputs.digest }}
+        run: |
+          set -euo pipefail
+
+          # Re-pin every `FROM <image>@sha256:<old>` in tests/e2e/fixtures/*/Dockerfile
+          # to the digest that matches the CA bundle hash computed above. This keeps
+          # the datastream hash and the fixture base images atomically in sync, so
+          # the CertificateAudit assertion in e.g. baseline-clean can't flake due to
+          # drift between the two values.
+          #
+          # For each Dockerfile:
+          #   - Parse the existing FROM line's `image` (everything before `@sha256:`).
+          #   - Re-resolve that image's current digest with `crane digest <image>`.
+          #   - Substitute the new digest in place, preserving the rest of the line.
+          #
+          # This generalizes beyond wolfi-base: any fixture using a digest-pinned
+          # cgr.dev image gets re-pinned to its own current digest. The wolfi-base
+          # digest is expected to match ${STEPS_IMAGE_OUTPUTS_DIGEST} (we already
+          # resolved and verified it), so we reuse that to avoid a redundant lookup.
+
+          fixtures_changed=false
+          updated_files=()
+
+          # shellcheck disable=SC2086 # intentional glob expansion
+          shopt -s nullglob
+          for dockerfile in ${FIXTURES_GLOB}; do
+            # Extract FROM line (first match); skip if no digest-pinned FROM present.
+            from_line=$(grep -E '^FROM [^ ]+@sha256:[0-9a-f]{64}' "${dockerfile}" | head -n1 || true)
+            if [ -z "${from_line}" ]; then
+              echo "No digest-pinned FROM in ${dockerfile}; skipping"
+              continue
+            fi
+
+            # image = token after FROM, up to and including the tag (everything before @sha256:)
+            image_with_tag=$(echo "${from_line}" | awk '{print $2}' | sed -E 's/@sha256:[0-9a-f]{64}$//')
+
+            # Reuse already-resolved digest for the canonical IMAGE_REF; otherwise query.
+            if [ "${image_with_tag}" = "${IMAGE_REF}" ]; then
+              new_digest="${STEPS_IMAGE_OUTPUTS_DIGEST}"
+            else
+              new_digest=$(crane digest "${image_with_tag}")
+            fi
+
+            cp "${dockerfile}" "${dockerfile}.bak"
+            # Surgical replace: only the @sha256:<hex> suffix on lines starting with FROM <image_with_tag>@
+            # Use a safe sed delimiter (|) since image refs may contain /.
+            sed -i -E "s|^(FROM ${image_with_tag}@sha256:)[0-9a-f]{64}|\1${new_digest#sha256:}|" "${dockerfile}"
+
+            if ! diff -q "${dockerfile}.bak" "${dockerfile}" > /dev/null; then
+              fixtures_changed=true
+              updated_files+=("${dockerfile}")
+              echo "Updated ${dockerfile} -> ${new_digest}"
+            fi
+            rm "${dockerfile}.bak"
+          done
+
+          echo "fixtures_changed=${fixtures_changed}" >> "$GITHUB_OUTPUT"
+
+          echo "### Fixture Dockerfile Update Summary" >> "$GITHUB_STEP_SUMMARY"
+          if [ "${fixtures_changed}" = "true" ]; then
+            echo "- **Status**: Updated" >> "$GITHUB_STEP_SUMMARY"
+            for f in "${updated_files[@]}"; do
+              echo "  - \`${f}\`" >> "$GITHUB_STEP_SUMMARY"
+            done
+          else
+            echo "- **Status**: Already up-to-date" >> "$GITHUB_STEP_SUMMARY"
+          fi
+      - name: Aggregate change status
+        id: changed
+        env:
+          DS_CHANGED: ${{ steps.update.outputs.datastream_changed }}
+          FX_CHANGED: ${{ steps.fixtures.outputs.fixtures_changed }}
+        run: |
+          set -euo pipefail
+          if [ "${DS_CHANGED}" = "true" ] || [ "${FX_CHANGED}" = "true" ]; then
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+          fi
       - name: Setup gitsign
-        if: steps.update.outputs.changed == 'true'
+        if: steps.changed.outputs.changed == 'true'
         uses: chainguard-dev/actions/setup-gitsign@de68b87302e6266db5fb5220246f8aa46fe94b67 # v1.6.14
       - name: Create Pull Request
-        if: steps.update.outputs.changed == 'true'
+        if: steps.changed.outputs.changed == 'true'
         uses: peter-evans/create-pull-request@5f6978faf089d4d20b00c7766989d076bb2fc7f1 # v8.1.1
         id: cpr
         with:
           token: ${{ steps.octo-sts.outputs.token }}
           commit-message: |
-            chore(oscap): update CA cert SHA from Wolfi
+            chore(oscap): re-pin CA bundle hash and fixture base-image digests
+
+            Atomically updates the CA bundle SHA in the OSCAP datastream and the
+            digest-pinned FROM lines in tests/e2e/fixtures/*/Dockerfile so the
+            two values can never drift out of sync (which would flake the
+            CertificateAudit E2E assertions).
 
             Image: ${{ env.IMAGE_REF }}
             Digest: ${{ steps.image.outputs.digest }}
@@ -145,15 +233,29 @@ jobs:
             Signed-off-by: github-actions[bot] <github-actions[bot]@users.noreply.github.com>
           branch: update-ca-cert-${{ steps.ca.outputs.sha }}
           delete-branch: true
-          title: "chore(oscap): update CA cert SHA"
+          title: "chore(oscap): re-pin CA bundle hash and fixture base-image digests"
           body: |
-            ## CA Certificate Update
+            ## CA Certificate + Fixture Base-Image Update
 
-            Updates the CA certificate hash in OSCAP datastream.
+            Atomically re-pins two values that must stay in lockstep:
+
+            1. The `<ind:hash>` under `oval:org.CABundleHash:ste:1` in the OSCAP
+               datastream (`${{ env.DATASTREAM_PATH }}`).
+            2. The `FROM cgr.dev/chainguard/wolfi-base:latest@sha256:...` line in
+               every `tests/e2e/fixtures/*/Dockerfile`.
+
+            If these drift (e.g. Dependabot bumps the fixture digest before this
+            workflow refreshes the datastream hash, or vice versa), the
+            `baseline-clean` / `cabundle-tampered` E2E CertificateAudit check
+            fails because the fixture's CA bundle no longer matches the hash the
+            datastream asserts. This workflow is now the authoritative update
+            point for both values together.
 
             - **Image**: `${{ env.IMAGE_REF }}`
             - **Digest**: `${{ steps.image.outputs.digest }}`
             - **New CA SHA256**: `${{ steps.ca.outputs.sha }}`
+            - **Datastream changed**: `${{ steps.update.outputs.datastream_changed }}`
+            - **Fixtures changed**: `${{ steps.fixtures.outputs.fixtures_changed }}`
           labels: |
             automated pr
       #- name: Enable auto-merge

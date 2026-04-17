@@ -1,0 +1,60 @@
+# Copyright 2026 Chainguard, Inc.
+# SPDX-License-Identifier: Apache-2.0
+
+name: E2E Scan
+
+on:
+  pull_request:
+    branches: ['main']
+    paths:
+      - 'gpos/**'
+      - 'tests/e2e/**'
+      - 'Makefile'
+      - '.github/workflows/e2e.yaml'
+
+  push:
+    branches: ['main']
+    paths:
+      - 'gpos/**'
+      - 'tests/e2e/**'
+      - 'Makefile'
+      - '.github/workflows/e2e.yaml'
+
+permissions: {}
+
+jobs:
+  e2e-scan:
+    name: End-to-end scan
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    permissions:
+      contents: read
+    steps:
+      - name: Harden Runner
+        uses: step-security/harden-runner@6c3c2f2c1c457b00c10c4848d6f5491db3b629df # v2.18.0
+        with:
+          egress-policy: block
+          allowed-endpoints: >
+            *.githubapp.com:443
+            9236a389bd48b984df91adc1bc924620.r2.cloudflarestorage.com:443
+            api.github.com:443
+            apk.cgr.dev:443
+            cgr.dev:443
+            github.com:443
+            objects.githubusercontent.com:443
+            packages.wolfi.dev:443
+            release-assets.githubusercontent.com:443
+
+      - name: Check out code
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+        with:
+          persist-credentials: false
+
+      - name: Run E2E harness
+        run: make test-e2e
+
+      # Scan artifacts (results.xml + report.html per fixture) live under
+      # tests/e2e/out/ in the runner workspace. On failure the job log
+      # includes per-rule pass/fail output; for richer post-mortem the
+      # artifact upload step can be added here once a pinned digest is
+      # vetted alongside the other workflows.

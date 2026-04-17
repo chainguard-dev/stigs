@@ -101,3 +101,35 @@ latest version of the Chainguard GPOS profile.
 Release versions are versioned vX.Y.Z where X.Y are based on the GPOS
 SRG verion rXvY and Z is the Chainguard iteration. For example, the
 first release based on the SRG version v3r2 would be v3.2.0.
+
+## Testing
+
+Two test layers gate changes to the datastream:
+
+1. **Schema validation** — `make validate` runs `oscap xccdf validate`
+   against every individual OVAL definition under
+   `gpos/xml/scap/ssg/content/ssg-chainguard-xccdf/OvalDefinitions/` and
+   `oscap ds sds-validate` against the combined datastream. Local runs
+   fall back to `cgr.dev/chainguard/openscap:latest-dev` when `oscap` is
+   not installed on PATH.
+
+2. **End-to-end scan harness** — `make test-e2e` builds a small set of
+   fixture images under `tests/e2e/fixtures/` and scans them with
+   `oscap-docker image ... xccdf eval` using the in-repo datastream.
+   Each fixture ships an `expected.txt` listing the XCCDF rule IDs it
+   asserts along with their expected results (`pass` / `fail` /
+   `notapplicable`). The harness fails if any assertion is violated.
+
+   Run a single fixture with `make test-e2e-<fixture-name>`
+   (e.g. `make test-e2e-non-https-repo`). Per-fixture scan output (the
+   XCCDF `results.xml` and HTML report) is written under
+   `tests/e2e/out/<fixture>/`. The `.github/workflows/e2e.yaml`
+   workflow runs the same harness on every PR touching `gpos/` or
+   `tests/e2e/`.
+
+   Adding a fixture:
+   - Create `tests/e2e/fixtures/<name>/Dockerfile` that represents the
+     target container state you want to scan.
+   - Create `tests/e2e/fixtures/<name>/expected.txt` listing each rule
+     ID you want to assert on, one per line, as
+     `<rule-id>=<expected-result>`.

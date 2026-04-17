@@ -71,19 +71,45 @@ jobs:
             exit 1
           fi
 
+          # Derive SRG-style version label "vXrYpZ" from the X.Y.Z release tag.
+          # X.Y maps to the upstream SRG version (e.g. 3.2 → v3r2); Z is the
+          # Chainguard patch iteration (e.g. 10 → p10). The title embeds the
+          # full patch version so release artifacts are self-identifying.
+          SRG_LABEL=$(echo "${VERSION}" | awk -F. '{printf "v%sr%sp%s", $1, $2, $3}')
+          echo "SRG_LABEL=${SRG_LABEL}"
+
           cp "${DATASTREAM_PATH}" "${DATASTREAM_PATH}.bak"
 
+          # Benchmark <ns0:version> is the machine-readable X.Y.Z.
           sed -i "s|<ns0:version>[^<]*</ns0:version>|<ns0:version>${VERSION}</ns0:version>|" \
             "${DATASTREAM_PATH}"
 
+          # Benchmark <ns0:title> is the human-readable "… vXrYpZ" label.
+          # Match the canonical "Datastream XCCDF Checklist Beta GPOS vXrY[pZ]" form
+          # and rewrite just the trailing version token. The title is the first
+          # <ns0:title> element in the file (inside the Benchmark metadata block);
+          # profile titles elsewhere are empty (<ns0:title xml:lang="en"/>) and
+          # not affected by this pattern.
+          sed -i -E "0,/<ns0:title xml:lang=\"en\">Datastream XCCDF Checklist Beta GPOS v[0-9]+r[0-9]+(p[0-9]+)?<\/ns0:title>/s||<ns0:title xml:lang=\"en\">Datastream XCCDF Checklist Beta GPOS ${SRG_LABEL}</ns0:title>|" \
+            "${DATASTREAM_PATH}"
+
           if diff -q "${DATASTREAM_PATH}.bak" "${DATASTREAM_PATH}" > /dev/null; then
-            echo "::warning::Version field was unchanged — it may already be set to ${VERSION}"
+            echo "::warning::Version/title were unchanged — they may already be set for ${VERSION}"
           fi
           rm "${DATASTREAM_PATH}.bak"
 
-          echo "### Version Patch" >> "$GITHUB_STEP_SUMMARY"
-          echo "- **File**: \`${DATASTREAM_PATH}\`" >> "$GITHUB_STEP_SUMMARY"
-          echo "- **Version**: \`${VERSION}\`" >> "$GITHUB_STEP_SUMMARY"
+          {
+            echo "### Version Patch"
+            echo "- **File**: \`${DATASTREAM_PATH}\`"
+            echo "- **Version**: \`${VERSION}\` (Benchmark title: \`${SRG_LABEL}\`)"
+            echo ""
+            echo "The \`xccdf-v3r2.xml\` component IDs in the datastream (\`ds:data-stream\`,"
+            echo "\`ds:component-ref\`, \`ds:component\`) are intentionally NOT patched:"
+            echo "they are stable string keys that downstream tooling (SCAP Viewer,"
+            echo "oscap-docker pipelines) resolves by equality. Changing them per"
+            echo "patch would break consumers. The user-visible version lives in"
+            echo "\`<ns0:version>\` and the Benchmark \`<ns0:title>\`."
+          } >> "$GITHUB_STEP_SUMMARY"
 
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@5f6978faf089d4d20b00c7766989d076bb2fc7f1 # v8.1.1
