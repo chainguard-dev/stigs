@@ -32,11 +32,11 @@
   <ds:component id="scap_org.open-scap_comp_all-resolved-xccdf-v3r2.xml" timestamp="2016-02-23T14:39:05">
     <ns0:Benchmark xmlns:html="http://www.w3.org/1999/xhtml" id="xccdf_org.open-scap.sce-community-content_benchmark_all" resolved="1" xml:lang="en">
       <ns0:status date="2016-02-23">draft</ns0:status>
-      <ns0:title xml:lang="en">Datastream XCCDF Checklist Beta GPOS v3r2p11</ns0:title>
+      <ns0:title xml:lang="en">Datastream XCCDF Checklist Beta GPOS v3r2p12</ns0:title>
       <ns0:description>This XCCDF document provides a basic security check for a Linux system.</ns0:description>
       <ns0:notice id="disclaimer" xml:lang="en"/>
       <ns0:front-matter xml:lang="en"/>
-      <ns0:version>3.2.11</ns0:version>
+      <ns0:version>3.2.12</ns0:version>
       <ns0:model system="urn:xccdf:scoring:default"/>
       <ns0:model system="urn:xccdf:scoring:flat"/>
       <ns0:Profile id="xccdf_basic_profile_.check">
