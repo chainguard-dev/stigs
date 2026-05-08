@@ -35,7 +35,7 @@ jobs:
         with:
           persist-credentials: false
       - name: Harden Runner
-        uses: step-security/harden-runner@8d3c67de8e2fe68ef647c8db1e6a09f647780f40 # v2.19.0
+        uses: step-security/harden-runner@a5ad31d6a139d249332a2605b85202e8c0b78450 # v2.19.1
         with:
           egress-policy: audit
       - name: Generate token for PR
@@ -211,7 +211,7 @@ jobs:
           fi
       - name: Setup gitsign
         if: steps.changed.outputs.changed == 'true'
-        uses: chainguard-dev/actions/setup-gitsign@061bc0e921116bde1470f51fb5c86d5318f16558 # v1.6.15
+        uses: chainguard-dev/actions/setup-gitsign@916fec00fb80f3cd124a0b41eef79ee63f607c5d # v1.6.17
       - name: Create Pull Request
         if: steps.changed.outputs.changed == 'true'
         uses: peter-evans/create-pull-request@5f6978faf089d4d20b00c7766989d076bb2fc7f1 # v8.1.1
