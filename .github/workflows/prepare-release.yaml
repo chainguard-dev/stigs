@@ -60,7 +60,7 @@ jobs:
           identity: prepare-release
 
       - name: Setup gitsign
-        uses: chainguard-dev/actions/setup-gitsign@916fec00fb80f3cd124a0b41eef79ee63f607c5d # v1.6.17
+        uses: chainguard-dev/actions/setup-gitsign@c69a264ec2a5934c3186c618f368fc1c86f16cff # v1.6.19
 
       - name: Patch XCCDF version
         run: |
