@@ -12,7 +12,7 @@
 #   - CertificateAudit: /etc/ssl/certs/ca-certificates.crt matches the pinned SHA-256
 #
 # Expected result: a clean scan with no failures attributable to these rules.
-FROM cgr.dev/chainguard/wolfi-base:latest@sha256:cb2fc9d795bf874e660dbc25958cfa699b55e789235896ec7c354c57d3e3a704
+FROM cgr.dev/chainguard/wolfi-base:latest@sha256:b78bb982194828b6c9c214230bf34d51944e2102ea8468f01ac21e5f99328efd
 
 # Suppress OrbStack's automatic root-CA injection so the baked CA bundle in
 # the image is identical to the upstream wolfi-base bundle. Without this, the
