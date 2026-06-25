@@ -1,0 +1,10 @@
+# Fixture: shadow-active-password
+#
+# /etc/shadow carries an account with a DES-style (non-"$") active
+# password hash. UserPasswordConfigured (oval:org.example:def:3) keys on
+# any unlocked password field, not just "$"-prefixed hashes, so every
+# rule backed by UserPasswordConfiguredTest.xml must FAIL.
+#
+# Picked rule is the first UserPasswordConfigured-backed rule in the
+# datastream (all share the same OVAL definition and result identically).
+xccdf_mil.disa.stig_rule_SV-203629r982199_rule=fail
