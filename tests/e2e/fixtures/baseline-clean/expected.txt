@@ -14,3 +14,8 @@ xccdf_mil.disa.stig_rule_SV-203720r982212_rule=pass
 
 # CA trust bundle hash (CertificateAuditTest)
 xccdf_mil.disa.stig_rule_SV-263659r982563_rule=pass
+
+# Password configuration (UserPasswordConfiguredTest): a clean image has
+# only locked accounts ("!" or "*"), so the rule must PASS — i.e. the
+# unlocked-field pattern does not false-positive on locked entries.
+xccdf_mil.disa.stig_rule_SV-203629r982199_rule=pass

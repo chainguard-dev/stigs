@@ -5403,8 +5403,8 @@
                         not encrypted, they can be plainly read (i.e., clear text) and easily
                         compromised. <html:pre>
                             Script Verification:
-                            To manually verify, run command 'cat /etc/shadow and verify no password
-                        fields start with a '$' indicating a hashed password
+                            To manually verify, run command 'cat /etc/shadow' and verify no account
+                        has an active password field; every field must be locked with '!' or '*'
                         </html:pre>
                     </ns0:description>
           <ns0:ident system="http://cyber.mil/cci">CCI-004062</ns0:ident>
@@ -5420,8 +5420,8 @@
                         not encrypted, they can be plainly read (i.e., clear text) and easily
                         compromised. <html:pre>
                             Script Verification:
-                            To manually verify, run command 'cat /etc/shadow and verify no password
-                        fields start with a '$' indicating a hashed password
+                            To manually verify, run command 'cat /etc/shadow' and verify no account
+                        has an active password field; every field must be locked with '!' or '*'
                         </html:pre>
                     </ns0:description>
           <ns0:ident system="http://cyber.mil/cci">CCI-000197</ns0:ident>
@@ -5436,8 +5436,8 @@
                         out-of-date, the validity of the authentication information may be
                         questionable. <html:pre>
                             Script Verification:
-                            To manually verify, run command 'cat /etc/shadow and verify no password
-                        fields start with a '$' indicating a hashed password
+                            To manually verify, run command 'cat /etc/shadow' and verify no account
+                        has an active password field; every field must be locked with '!' or '*'
                         </html:pre>
                     </ns0:description>
           <ns0:ident system="http://cyber.mil/cci">CCI-002007</ns0:ident>
@@ -5461,8 +5461,8 @@
                         password length of 15 characters must require the change of at least 8
                         characters. <html:pre>
                             Script Verification:
-                            To manually verify, run command 'cat /etc/shadow and verify no password
-                        fields start with a '$' indicating a hashed password
+                            To manually verify, run command 'cat /etc/shadow' and verify no account
+                        has an active password field; every field must be locked with '!' or '*'
                         </html:pre>
                     </ns0:description>
           <ns0:ident system="http://cyber.mil/cci">CCI-004066</ns0:ident>
@@ -5481,8 +5481,8 @@
                         more complex the password, the greater the number of possible combinations
                         that need to be tested before the password is compromised. <html:pre>
                             Script Verification:
-                            To manually verify, run command 'cat /etc/shadow and verify no password
-                        fields start with a '$' indicating a hashed password
+                            To manually verify, run command 'cat /etc/shadow' and verify no account
+                        has an active password field; every field must be locked with '!' or '*'
                         </html:pre>
                     </ns0:description>
           <ns0:ident system="http://cyber.mil/cci">CCI-004066</ns0:ident>
@@ -5501,8 +5501,8 @@
                         more complex the password, the greater the number of possible combinations
                         that need to be tested before the password is compromised. <html:pre>
                             Script Verification:
-                            To manually verify, run command 'cat /etc/shadow and verify no password
-                        fields start with a '$' indicating a hashed password
+                            To manually verify, run command 'cat /etc/shadow' and verify no account
+                        has an active password field; every field must be locked with '!' or '*'
                         </html:pre>
                     </ns0:description>
           <ns0:ident system="http://cyber.mil/cci">CCI-004066</ns0:ident>
@@ -5521,8 +5521,8 @@
                         more complex the password, the greater the number of possible combinations
                         that need to be tested before the password is compromised. <html:pre>
                             Script Verification:
-                            To manually verify, run command 'cat /etc/shadow and verify no password
-                        fields start with a '$' indicating a hashed password
+                            To manually verify, run command 'cat /etc/shadow' and verify no account
+                        has an active password field; every field must be locked with '!' or '*'
                         </html:pre>
                     </ns0:description>
           <ns0:ident system="http://cyber.mil/cci">CCI-004066</ns0:ident>
@@ -5543,8 +5543,8 @@
                         when a user types in a password is an example of obscuring feedback of
                         authentication information. <html:pre>
                             Script Verification:
-                            To manually verify, run command 'cat /etc/shadow and verify no password
-                        fields start with a '$' indicating a hashed password
+                            To manually verify, run command 'cat /etc/shadow' and verify no account
+                        has an active password field; every field must be locked with '!' or '*'
                         </html:pre>
                     </ns0:description>
           <ns0:ident system="http://cyber.mil/cci">CCI-000206</ns0:ident>
@@ -5564,8 +5564,8 @@
                         characters in a password helps to exponentially increase the time and/or
                         resources required to compromise the password. <html:pre>
                             Script Verification:
-                            To manually verify, run command 'cat /etc/shadow and verify no password
-                        fields start with a '$' indicating a hashed password
+                            To manually verify, run command 'cat /etc/shadow' and verify no account
+                        has an active password field; every field must be locked with '!' or '*'
                         </html:pre>
                     </ns0:description>
           <ns0:ident system="http://cyber.mil/cci">CCI-004066</ns0:ident>
@@ -5582,8 +5582,8 @@
                         users to change their passwords, there is the risk that the operating system
                         passwords could be compromised. <html:pre>
                             Script Verification:
-                            To manually verify, run command 'cat /etc/shadow and verify no password
-                        fields start with a '$' indicating a hashed password
+                            To manually verify, run command 'cat /etc/shadow' and verify no account
+                        has an active password field; every field must be locked with '!' or '*'
                         </html:pre>
                     </ns0:description>
           <ns0:ident system="http://cyber.mil/cci">CCI-004066</ns0:ident>
@@ -5601,8 +5601,8 @@
                         short period of time to defeat the organization's policy regarding password
                         reuse. <html:pre>
                             Script Verification:
-                            To manually verify, run command 'cat /etc/shadow and verify no password
-                        fields start with a '$' indicating a hashed password
+                            To manually verify, run command 'cat /etc/shadow' and verify no account
+                        has an active password field; every field must be locked with '!' or '*'
                         </html:pre>
                     </ns0:description>
           <ns0:ident system="http://cyber.mil/cci">CCI-004066</ns0:ident>
@@ -5623,8 +5623,8 @@
                         those characters that are not alphanumeric. Examples include: ~ ! @ # $ % ^
                         *. <html:pre>
                             Script Verification:
-                            To manually verify, run command 'cat /etc/shadow and verify no password
-                        fields start with a '$' indicating a hashed password
+                            To manually verify, run command 'cat /etc/shadow' and verify no account
+                        has an active password field; every field must be locked with '!' or '*'
                         </html:pre>
                     </ns0:description>
           <ns0:ident system="http://cyber.mil/cci">CCI-004066</ns0:ident>
@@ -5640,8 +5640,8 @@
                         password compromise by increasing the opportunity for successful guesses and
                         brute-force attacks. <html:pre>
                             Script Verification:
-                            To manually verify, run command 'cat /etc/shadow and verify no password
-                        fields start with a '$' indicating a hashed password
+                            To manually verify, run command 'cat /etc/shadow' and verify no account
+                        has an active password field; every field must be locked with '!' or '*'
                         </html:pre>
                     </ns0:description>
           <ns0:ident system="http://cyber.mil/cci">CCI-000366</ns0:ident>
@@ -6607,30 +6607,28 @@
       <definitions>
         <definition id="oval:org.example:def:3" version="1" class="compliance">
           <metadata>
-            <title>No interactive hashed passwords in /etc/shadow</title>
-            <description>Chainguard container images must not ship interactive shadow password entries; every account must have its shadow field locked (&quot;!&quot; or &quot;*&quot;). This check FAILS if any line in /etc/shadow matches the pattern user:$hash:... indicating a stored hashed password, on the premise that hardened images have no interactive logins.</description>
+            <title>No active/unlocked password field in /etc/shadow</title>
+            <description>Chainguard container images must not ship interactive shadow password entries; every account must have its shadow field locked (&quot;!&quot; or &quot;*&quot;). This check FAILS if any line in /etc/shadow matches an active/unlocked password field, on the premise that hardened images have no interactive logins.</description>
             <reference source="CIS"/>
             <affected family="unix">
               <platform>Chainguard</platform>
             </affected>
           </metadata>
           <criteria>
-            <criterion comment="No /etc/shadow entry carries a hashed interactive password" test_ref="oval:org.example:tst:6"/>
+            <criterion comment="No /etc/shadow entry has an active/unlocked password field" test_ref="oval:org.example:tst:6"/>
           </criteria>
         </definition>
       </definitions>
       <tests>
-        <textfilecontent54_test xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#independent" check="all" check_existence="none_exist" comment="Fail if any /etc/shadow line stores a hashed password ($...)" id="oval:org.example:tst:6" version="1">
+        <textfilecontent54_test xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#independent" check="all" check_existence="none_exist" comment="Fail if any /etc/shadow line stores an active/unlocked password field" id="oval:org.example:tst:6" version="1">
           <object object_ref="oval:org.example:obj:6"/>
         </textfilecontent54_test>
       </tests>
       <objects>
-        <!-- Match lines of the form "user:$<hash>:..." in /etc/shadow. Locked
-             accounts ("user:!:..." or "user:*:...") do not match and are ignored. -->
         <textfilecontent54_object xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#independent" id="oval:org.example:obj:6" version="1">
           <path>/etc</path>
           <filename>shadow</filename>
-          <pattern operation="pattern match">^[^:]+:\$[^\n]*:</pattern>
+          <pattern operation="pattern match">^[^:]+:(?![!*])[^:\n]*:</pattern>
           <instance datatype="int">1</instance>
         </textfilecontent54_object>
       </objects>

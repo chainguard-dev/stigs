@@ -4366,8 +4366,8 @@
         method for protecting passwords. If passwords are not encrypted, they can be plainly read
         (i.e., clear text) and easily compromised. <html:pre>
           Script Verification:
-          To manually verify, run command 'cat /etc/shadow and verify no password fields start with
-          a '$' indicating a hashed password
+          To manually verify, run command 'cat /etc/shadow' and verify no account has an
+          active password field; every field must be locked with '!' or '*'
         </html:pre>
       </description>
       <check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
@@ -4380,8 +4380,8 @@
         method for protecting passwords. If passwords are not encrypted, they can be plainly read
         (i.e., clear text) and easily compromised. <html:pre>
           Script Verification:
-          To manually verify, run command 'cat /etc/shadow and verify no password fields start with
-          a '$' indicating a hashed password
+          To manually verify, run command 'cat /etc/shadow' and verify no account has an
+          active password field; every field must be locked with '!' or '*'
         </html:pre>
       </description>
       <check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
@@ -4398,8 +4398,8 @@
         for administrators to create temporary passwords for user accounts which allow the users to
         log on, yet force them to change the password once they have successfully authenticated. <html:pre>
         Script Verification:
-          To manually verify, run command 'cat /etc/shadow and verify no password fields start with
-          a '$' indicating a hashed password
+          To manually verify, run command 'cat /etc/shadow' and verify no account has an
+          active password field; every field must be locked with '!' or '*'
         </html:pre>
       </description>
       <check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
@@ -4411,8 +4411,8 @@
       <description> If cached authentication information is out-of-date, the validity of the
         authentication information may be questionable. <html:pre>
           Script Verification:
-          To manually verify, run command 'cat /etc/shadow and verify no password fields start with
-          a '$' indicating a hashed password
+          To manually verify, run command 'cat /etc/shadow' and verify no account has an
+          active password field; every field must be locked with '!' or '*'
         </html:pre>
       </description>
       <check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
@@ -4432,8 +4432,8 @@
         example, a password length of 15 characters must require the change of at least 8
         characters. <html:pre>
           Script Verification:
-          To manually verify, run command 'cat /etc/shadow and verify no password fields start with
-          a '$' indicating a hashed password
+          To manually verify, run command 'cat /etc/shadow' and verify no account has an
+          active password field; every field must be locked with '!' or '*'
         </html:pre>
       </description>
       <check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
@@ -4450,8 +4450,8 @@
         complex the password, the greater the number of possible combinations that need to be tested
         before the password is compromised. <html:pre>
           Script Verification:
-          To manually verify, run command 'cat /etc/shadow and verify no password fields start with
-          a '$' indicating a hashed password
+          To manually verify, run command 'cat /etc/shadow' and verify no account has an
+          active password field; every field must be locked with '!' or '*'
         </html:pre>
       </description>
       <check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
@@ -4468,8 +4468,8 @@
         complex the password, the greater the number of possible combinations that need to be tested
         before the password is compromised. <html:pre>
           Script Verification:
-          To manually verify, run command 'cat /etc/shadow and verify no password fields start with
-          a '$' indicating a hashed password
+          To manually verify, run command 'cat /etc/shadow' and verify no account has an
+          active password field; every field must be locked with '!' or '*'
         </html:pre>
       </description>
       <check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
@@ -4486,8 +4486,8 @@
         complex the password, the greater the number of possible combinations that need to be tested
         before the password is compromised. <html:pre>
           Script Verification:
-          To manually verify, run command 'cat /etc/shadow and verify no password fields start with
-          a '$' indicating a hashed password
+          To manually verify, run command 'cat /etc/shadow' and verify no account has an
+          active password field; every field must be locked with '!' or '*'
         </html:pre>
       </description>
       <check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
@@ -4505,8 +4505,8 @@
         addressing this risk. For example, displaying asterisks when a user types in a password is
         an example of obscuring feedback of authentication information. <html:pre>
           Script Verification:
-          To manually verify, run command 'cat /etc/shadow and verify no password fields start with
-          a '$' indicating a hashed password
+          To manually verify, run command 'cat /etc/shadow' and verify no account has an
+          active password field; every field must be locked with '!' or '*'
         </html:pre>
       </description>
       <check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
@@ -4522,8 +4522,8 @@
         long it takes to crack a password. Use of more characters in a password helps to
         exponentially increase the time and/or resources required to compromise the password. <html:pre>
         Script Verification:
-          To manually verify, run command 'cat /etc/shadow and verify no password fields start with
-          a '$' indicating a hashed password
+          To manually verify, run command 'cat /etc/shadow' and verify no account has an
+          active password field; every field must be locked with '!' or '*'
         </html:pre>
       </description>
       <check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
@@ -4538,8 +4538,8 @@
         password has exceeded its defined lifetime, the end result is a password that is not changed
         as per policy requirements. <html:pre>
           Script Verification:
-          To manually verify, run command 'cat /etc/shadow and verify no password fields start with
-          a '$' indicating a hashed password
+          To manually verify, run command 'cat /etc/shadow' and verify no account has an
+          active password field; every field must be locked with '!' or '*'
         </html:pre>
       </description>
       <check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
@@ -4553,8 +4553,8 @@
         lifetime of passwords and force users to change their passwords, there is the risk that the
         operating system passwords could be compromised. <html:pre>
           Script Verification:
-          To manually verify, run command 'cat /etc/shadow and verify no password fields start with
-          a '$' indicating a hashed password
+          To manually verify, run command 'cat /etc/shadow' and verify no account has an
+          active password field; every field must be locked with '!' or '*'
         </html:pre>
       </description>
       <check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
@@ -4569,8 +4569,8 @@
         changed in a short period of time to defeat the organization's policy regarding password
         reuse. <html:pre>
           Script Verification:
-          To manually verify, run command 'cat /etc/shadow and verify no password fields start with
-          a '$' indicating a hashed password
+          To manually verify, run command 'cat /etc/shadow' and verify no account has an
+          active password field; every field must be locked with '!' or '*'
         </html:pre>
       </description>
       <check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
@@ -4588,8 +4588,8 @@
         password is compromised. Special characters are those characters that are not alphanumeric.
         Examples include: ~ ! @ # $ % ^ *. <html:pre>
           Script Verification:
-          To manually verify, run command 'cat /etc/shadow and verify no password fields start with
-          a '$' indicating a hashed password
+          To manually verify, run command 'cat /etc/shadow' and verify no account has an
+          active password field; every field must be locked with '!' or '*'
         </html:pre>
       </description>
       <check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
@@ -4602,8 +4602,8 @@
         words, then this increases the chances of password compromise by increasing the opportunity
         for successful guesses and brute-force attacks. <html:pre>
           Script Verification:
-          To manually verify, run command 'cat /etc/shadow and verify no password fields start with
-          a '$' indicating a hashed password
+          To manually verify, run command 'cat /etc/shadow' and verify no account has an
+          active password field; every field must be locked with '!' or '*'
         </html:pre>
       </description>
       <check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
