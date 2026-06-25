@@ -45,7 +45,7 @@ This method scans an image in registry. **Note**: The target image must be prese
 docker run -i --rm -u 0:0 --pid=host \
   -v /var/run/docker.sock:/var/run/docker.sock \
   -v $(pwd)/out:/out \
-  --entrypoint sh \
+  --entrypoint /bin/bash \
   cgr.dev/chainguard/openscap:latest-dev <<_END_DOCKER_RUN
 oscap-docker image cgr.dev/chainguard/wolfi-base:latest xccdf eval \
   --profile "xccdf_basic_profile_.check" \
@@ -68,7 +68,7 @@ docker run --name target -d cgr.dev/chainguard/wolfi-base:latest tail -f /dev/nu
 docker run -i --rm -u 0:0 --pid=host \
   -v /var/run/docker.sock:/var/run/docker.sock \
   -v $(pwd)/out:/out \
-  --entrypoint sh \
+  --entrypoint /bin/bash \
   cgr.dev/chainguard/openscap:latest-dev <<_END_DOCKER_RUN
 oscap-docker container target xccdf eval \
   --profile "xccdf_basic_profile_.check" \

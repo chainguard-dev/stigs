@@ -145,7 +145,7 @@ for fixture in "${FIXTURES[@]}"; do
     -v /var/run/docker.sock:/var/run/docker.sock \
     -v "${REPO_ROOT}:/src:ro" \
     -v "${REPO_ROOT}/${out_sub}:/out" \
-    --entrypoint sh \
+    --entrypoint /bin/bash \
     "${SCAP_IMAGE}" -c "
       oscap-docker image '${tag}' xccdf eval \
         --profile '${PROFILE}' \
