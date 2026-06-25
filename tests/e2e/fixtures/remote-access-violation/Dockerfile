@@ -7,7 +7,7 @@
 # RemoteAccessServices OVAL check must detect the package record under
 # /usr/lib/apk/db/installed and every RemoteAccessServices-backed rule
 # must FAIL.
-FROM cgr.dev/chainguard/wolfi-base:latest@sha256:34977aa13765da89f60fee8fe5230e2bb1c55192df08e383c58221ee0d1277fb
+FROM cgr.dev/chainguard/wolfi-base:latest@sha256:2f7a5c164eafbdbe46fe1d91bd1ab4c8cb5c2bdbd10641c3d61bd39962384cdb
 
 LABEL dev.orbstack.add-ca-certificates=false
 
