@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestResult xmlns="http://checklists.nist.gov/xccdf/1.2"
+            id="xccdf_org.open-scap_testresult_xccdf_basic_profile_.check">
+  <profile idref="xccdf_basic_profile_.check"/>
+  <rule-result idref="xccdf_mil.disa.stig_rule_SV-203720r982212_rule">
+    <result>pa

@@ -1,0 +1,7 @@
+# Cross-compiled in-container entrypoint binary, built on demand by the test
+# harness (or via `go build ./cmd/scan-offline`). It is a build artifact and
+# must never be committed.
+/scan-offline
+
+# Local base-rootfs export cache, if pointed inside the module dir.
+/.cache/
