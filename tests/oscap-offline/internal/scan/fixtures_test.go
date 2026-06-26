@@ -282,9 +282,24 @@ func (h harness) scanFixture(t *testing.T, ops []overlay.Op) (results.Report, bo
 // so the none_exist test fails.
 var apkOpenSSHStanza = []byte("\nP:openssh-server\nV:9.9_p2-r0\nA:x86_64\n")
 
+// apkOpenSSHKeygenStanza records openssh-keygen, whose "-keygen" word suffix the
+// RemoteAccessServices pattern `^P:(...openssh...)(-\d[\d.]*(-[a-z][a-z0-9-]*)?)?$`
+// must NOT match: the optional version suffix requires a leading digit, so a
+// word-suffixed sibling of a banned package falls through and the rule PASSES.
+// Guards the boundary against a regex regression that drops the `$` anchor or the
+// digit class and starts flagging legitimate packages.
+var apkOpenSSHKeygenStanza = []byte("\nP:openssh-keygen\nV:9.9_p2-r0\nA:x86_64\n")
+
 // plainHTTPRepo is a non-https, non-comment repository line, which the
 // PackageSignature none_exist pattern `^(?!\s*#)(?!.*https://).+$` matches.
 var plainHTTPRepo = []byte("http://insecure.example.com/alpine\n")
+
+// commentedAndHTTPSRepos are two repository lines the PackageSignature pattern
+// `^(?!\s*#)(?!.*https://).+$` must NOT match: a comment line is exempt via the
+// `(?!\s*#)` branch and an https line via the `(?!.*https://)` branch. Appending
+// both to a clean base must keep the rule PASSING — guarding the two exemption
+// branches that the single plain-http fail fixture never exercises.
+var commentedAndHTTPSRepos = []byte("# http://insecure.example.com/alpine\nhttps://packages.example.com/alpine\n")
 
 // caTamper appends content to the CA bundle so its SHA-256 diverges from the
 // datastream's pinned hash, failing the filehash58 state.
@@ -294,6 +309,14 @@ var caTamper = []byte("\n# tamper\n-----BEGIN CERTIFICATE-----\nTAMPERED\n-----E
 // traditional DES crypt hash (not "!" or "*"), which the UserPasswordConfigured
 // pattern `^[^:]+:(?![!*])[^:\n]*:` matches, failing the none_exist test.
 var activeShadowEntry = []byte("compliance-test:ZZx/p0vU8jVbA:19000:0:99999:7:::\n")
+
+// emptyShadowPassword is an /etc/shadow line whose password field is EMPTY
+// (passwordless login), distinct from a hashed or a locked ("!"/"*") field. The
+// UserPasswordConfigured pattern `^[^:]+:(?![!*])[^:\n]*:` still matches it — the
+// field neither starts with "!"/"*" nor is otherwise exempt — so the none_exist
+// test must FAIL. This guards the negative-lookahead's handling of the empty
+// field, the case a hashed-password fixture never exercises.
+var emptyShadowPassword = []byte("emptyacct::19000:0:99999:7:::\n")
 
 // extraShadowUser is a line appended after the trailing `nobody:` entry, which
 // the NoUsers obj:2 pattern `^nobody:.*\n(.+)` matches, failing the none_exist
@@ -309,6 +332,14 @@ var (
 	opensslCnf      = []byte(".include fipsmodule.cnf\n[provider_sect]\nfips = fips_sect\ndefault = default_sect\n[algorithm_sect]\ndefault_properties = fips=yes\n")
 	apkFIPSPackages = []byte("\nP:openssl-config-fipshardened\nV:3.5.1-r0\nA:x86_64\n\nP:openssl-provider-fips\nV:3.5.1-r0\nA:x86_64\n")
 )
+
+// apkFIPSPackagesDocSubpkg records only the doc subpackages
+// (openssl-config-fipshardened-doc / openssl-provider-fips-doc). The DetectOpenSsl
+// package patterns `^P:openssl-...(-\d+\.\d+\.\d+)?$` exclude word suffixes, so
+// these must NOT satisfy the package criterion. Paired with the config files
+// present, the rule must stay FAIL — isolating the package-pattern branch so a
+// regex that accepts word-suffixed subpackages would be caught.
+var apkFIPSPackagesDocSubpkg = []byte("\nP:openssl-config-fipshardened-doc\nV:3.5.1-r0\nA:x86_64\n\nP:openssl-provider-fips-doc\nV:3.5.1-r0\nA:x86_64\n")
 
 // nonRootUID/nonRootGID is the unprivileged "nobody" identity used to make the
 // file-ownership checks fail; the in-container extractor preserves these via a
@@ -345,6 +376,13 @@ func matrixCases() []matrixCase {
 			ops:  []overlay.Op{overlay.AppendFile("usr/lib/apk/db/installed", apkOpenSSHStanza)},
 			want: map[string]results.Result{ruleRemoteAccessServices: results.Fail},
 		},
+		{
+			// openssh-keygen shares a banned prefix but its "-keygen" word suffix
+			// must not match the anchored version-suffix pattern, so the rule passes.
+			name: "remote_access/pass_word_suffix_not_banned",
+			ops:  []overlay.Op{overlay.AppendFile("usr/lib/apk/db/installed", apkOpenSSHKeygenStanza)},
+			want: map[string]results.Result{ruleRemoteAccessServices: results.Pass},
+		},
 
 		// PackageSignature: clean base ships only https apk repositories.
 		{
@@ -355,6 +393,13 @@ func matrixCases() []matrixCase {
 			name: "package_signature/fail_plain_http_repo",
 			ops:  []overlay.Op{overlay.AppendFile("etc/apk/repositories", plainHTTPRepo)},
 			want: map[string]results.Result{rulePackageSignature: results.Fail},
+		},
+		{
+			// A comment line and an https line are both exempt from the pattern, so
+			// appending them to the clean https-only base keeps the rule passing.
+			name: "package_signature/pass_comment_and_https",
+			ops:  []overlay.Op{overlay.AppendFile("etc/apk/repositories", commentedAndHTTPSRepos)},
+			want: map[string]results.Result{rulePackageSignature: results.Pass},
 		},
 
 		// CertificateAudit: clean base CA bundle matches the datastream's pinned
@@ -378,6 +423,13 @@ func matrixCases() []matrixCase {
 		{
 			name: "user_password/fail_active_password",
 			ops:  []overlay.Op{overlay.AppendFile("etc/shadow", activeShadowEntry)},
+			want: map[string]results.Result{ruleUserPasswordConfigured: results.Fail},
+		},
+		{
+			// An empty password field is passwordless login; the negative-lookahead
+			// still matches it, so the rule must fail.
+			name: "user_password/fail_empty_password",
+			ops:  []overlay.Op{overlay.AppendFile("etc/shadow", emptyShadowPassword)},
 			want: map[string]results.Result{ruleUserPasswordConfigured: results.Fail},
 		},
 
@@ -430,6 +482,17 @@ func matrixCases() []matrixCase {
 				overlay.AppendFile("usr/lib/apk/db/installed", apkFIPSPackages),
 			},
 			want: map[string]results.Result{ruleDetectOpenSsl: results.Pass},
+		},
+		{
+			// Config files present but only the *doc* subpackages installed: the
+			// package patterns reject word suffixes, so the rule stays FAIL.
+			name: "detect_openssl/fail_doc_subpackage_only",
+			ops: []overlay.Op{
+				overlay.AddFile("etc/ssl/fipsmodule.cnf", fipsModuleCnf, 0o644, 0, 0),
+				overlay.AddFile("etc/ssl/openssl.cnf", opensslCnf, 0o644, 0, 0),
+				overlay.AppendFile("usr/lib/apk/db/installed", apkFIPSPackagesDocSubpkg),
+			},
+			want: map[string]results.Result{ruleDetectOpenSsl: results.Fail},
 		},
 	}
 }
