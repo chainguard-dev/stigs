@@ -149,6 +149,12 @@ jobs:
           # cgr.dev image gets re-pinned to its own current digest. The wolfi-base
           # digest is expected to match ${STEPS_IMAGE_OUTPUTS_DIGEST} (we already
           # resolved and verified it), so we reuse that to avoid a redundant lookup.
+          #
+          # The offline harness (tests/oscap-offline) reads its pinned base image
+          # from tests/e2e/fixtures/baseline-clean/Dockerfile, so re-pinning that
+          # fixture here also keeps the offline CertificateAudit pass fixture in
+          # lockstep with the datastream hash. There is no separate offline pin to
+          # update.
 
           fixtures_changed=false
           updated_files=()

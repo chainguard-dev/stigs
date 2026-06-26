@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestResult xmlns="http://checklists.nist.gov/xccdf/1.2"
+            id="xccdf_org.open-scap_testresult_xccdf_basic_profile_.check"
+            start-time="2026-06-26T12:00:00"
+            end-time="2026-06-26T12:00:42">
+  <title>OSCAP Scan Result</title>
+  <profile idref="xccdf_basic_profile_.check"/>
+  <rule-result idref="xccdf_mil.disa.stig_rule_SV-203720r982212_rule" time="2026-06-26T12:00:01" severity="medium">
+    <result>pass</result>
+  </rule-result>
+  <rule-result idref="xccdf_mil.disa.stig_rule_SV-263659r982563_rule" time="2026-06-26T12:00:02" severity="high">
+    <result>fail</result>
+  </rule-result>
+  <rule-result idref="xccdf_mil.disa.stig_rule_SV-203591r958362_rule" time="2026-06-26T12:00:03" severity="low">
+    <result>notapplicable</result>
+  </rule-result>
+  <rule-result idref="xccdf_mil.disa.stig_rule_SV-203592r958364_rule" time="2026-06-26T12:00:04" severity="medium">
+    <result>notchecked</result>
+  </rule-result>
+  <rule-result idref="xccdf_mil.disa.stig_rule_SV-203594r958388_rule" time="2026-06-26T12:00:05" severity="medium">
+    <result>error</result>
+  </rule-result>
+</TestResult>

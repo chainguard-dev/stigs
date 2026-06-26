@@ -29,6 +29,22 @@ test-e2e-%:
 
 .PHONY: test-e2e
 
+# Fast offline scan tier. Runs the tests/oscap-offline Go harness, which
+# scans an extracted rootfs with oscap pointed at it via OSCAP_PROBE_ROOT
+# (no privileged oscap-docker, no docker socket mount). Drives a per-OVAL-
+# definition pass+fail matrix and asserts the XCCDF rule verdicts.
+test-offline:
+	cd tests/oscap-offline && go test -race -count=1 ./...
+
+# Clear the Go test cache so the next `test-offline` re-runs every scan from
+# scratch. The harness caches base tar(s) under a per-run temp dir (t.TempDir),
+# so there is no persistent on-disk cache to remove; clearing the test cache is
+# what forces a full re-scan.
+test-offline-clean:
+	cd tests/oscap-offline && go clean -testcache
+
+.PHONY: test-offline test-offline-clean
+
 # Extract the XCCDF Benchmark block from the datastream and diff it
 # against BASE_REF (default: origin/main). STIGViewer v3 loads the full
 # datastream directly, so this target's job is to surface content drift

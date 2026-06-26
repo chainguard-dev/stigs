@@ -1,0 +1,72 @@
+# Copyright 2026 Chainguard, Inc.
+# SPDX-License-Identifier: Apache-2.0
+
+name: Offline Scan
+
+on:
+  pull_request:
+    branches: ['main']
+    paths:
+      - 'tests/oscap-offline/**'
+      - 'gpos/**'
+      - 'Makefile'
+      - '.github/workflows/offline-tests.yaml'
+
+  push:
+    branches: ['main']
+    paths:
+      - 'tests/oscap-offline/**'
+      - 'gpos/**'
+      - 'Makefile'
+      - '.github/workflows/offline-tests.yaml'
+
+permissions: {}
+
+jobs:
+  offline-scan:
+    name: Offline scan
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    permissions:
+      contents: read
+    env:
+      # Require at least one scan to execute: with this set, a prerequisite gap
+      # (no docker, no datastream, no registry) fails the job instead of
+      # reporting a vacuous green. make test-offline inherits this env.
+      OSCAP_OFFLINE_REQUIRE: "1"
+    steps:
+      - name: Harden Runner
+        uses: step-security/harden-runner@9af89fc71515a100421586dfdb3dc9c984fbf411 # v2.19.4
+        with:
+          egress-policy: block
+          allowed-endpoints: >
+            *.githubapp.com:443
+            9236a389bd48b984df91adc1bc924620.r2.cloudflarestorage.com:443
+            api.github.com:443
+            apk.cgr.dev:443
+            cgr.dev:443
+            github.com:443
+            objects.githubusercontent.com:443
+            packages.wolfi.dev:443
+            proxy.golang.org:443
+            release-assets.githubusercontent.com:443
+            storage.googleapis.com:443
+            sum.golang.org:443
+
+      - name: Check out code
+        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
+        with:
+          persist-credentials: false
+
+      - name: Set up Go
+        uses: actions/setup-go@924ae3a1cded613372ab5595356fb5720e22ba16 # v6.5.0
+        with:
+          go-version-file: 'tests/oscap-offline/go.mod'
+          cache-dependency-path: 'tests/oscap-offline/go.sum'
+
+      - name: Run offline harness
+        run: make test-offline
+
+      # Docker is preinstalled on ubuntu-latest, so the offline harness can
+      # pull the pinned wolfi-base and openscap scanner images it needs. If
+      # docker (or network egress) is unavailable, the harness skips cleanly.

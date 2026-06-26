@@ -104,32 +104,53 @@ first release based on the SRG version v3r2 would be v3.2.0.
 
 ## Testing
 
-Two test layers gate changes to the datastream:
+Schema validation plus two scan tiers gate changes to the datastream:
 
-1. **Schema validation** — `make validate` runs `oscap xccdf validate`
-   against every individual OVAL definition under
-   `gpos/xml/scap/ssg/content/ssg-chainguard-xccdf/OvalDefinitions/` and
-   `oscap ds sds-validate` against the combined datastream. Local runs
-   fall back to `cgr.dev/chainguard/openscap:latest-dev` when `oscap` is
-   not installed on PATH.
+**Schema validation** — `make validate` runs `oscap xccdf validate`
+against every individual OVAL definition under
+`gpos/xml/scap/ssg/content/ssg-chainguard-xccdf/OvalDefinitions/` and
+`oscap ds sds-validate` against the combined datastream. Local runs
+fall back to `cgr.dev/chainguard/openscap:latest-dev` when `oscap` is
+not installed on PATH.
 
-2. **End-to-end scan harness** — `make test-e2e` builds a small set of
-   fixture images under `tests/e2e/fixtures/` and scans them with
-   `oscap-docker image ... xccdf eval` using the in-repo datastream.
-   Each fixture ships an `expected.txt` listing the XCCDF rule IDs it
-   asserts along with their expected results (`pass` / `fail` /
-   `notapplicable`). The harness fails if any assertion is violated.
+### Tier 1 (fast) — offline Go harness
 
-   Run a single fixture with `make test-e2e-<fixture-name>`
-   (e.g. `make test-e2e-non-https-repo`). Per-fixture scan output (the
-   XCCDF `results.xml` and HTML report) is written under
-   `tests/e2e/out/<fixture>/`. The `.github/workflows/e2e.yaml`
-   workflow runs the same harness on every PR touching `gpos/` or
-   `tests/e2e/`.
+`make test-offline` runs the `tests/oscap-offline` Go module. For each
+offline-capable OVAL definition it builds a pass fixture and a fail
+fixture by overlaying a synthetic mutation onto a flattened
+`wolfi-base` tar, then scans the extracted tree with `oscap` pointed at
+it via `OSCAP_PROBE_ROOT` — no privileged `oscap-docker` and no docker
+socket mount. It asserts the per-rule XCCDF verdicts across the matrix.
 
-   Adding a fixture:
-   - Create `tests/e2e/fixtures/<name>/Dockerfile` that represents the
-     target container state you want to scan.
-   - Create `tests/e2e/fixtures/<name>/expected.txt` listing each rule
-     ID you want to assert on, one per line, as
-     `<rule-id>=<expected-result>`.
+The two SCE rules (ASLR / sysctl) are excluded from this tier because
+they read the live host kernel rather than the offline rootfs. The
+pinned base-image digest is read from
+`tests/e2e/fixtures/baseline-clean/Dockerfile`, which the
+`update-ca-cert` workflow keeps in lockstep with the datastream's CA
+bundle hash. The harness skips cleanly when docker is unavailable for
+local runs; in CI it sets `OSCAP_OFFLINE_REQUIRE=1` so a run that
+executes no scans fails the job rather than reporting a vacuous pass. It
+runs in CI via `.github/workflows/offline-tests.yaml`.
+
+### Tier 2 (heavy) — end-to-end oscap-docker harness
+
+`make test-e2e` builds a small set of fixture images under
+`tests/e2e/fixtures/` and scans them with `oscap-docker image ...
+xccdf eval` using the in-repo datastream. Each fixture ships an
+`expected.txt` listing the XCCDF rule IDs it asserts along with their
+expected results (`pass` / `fail` / `notapplicable`). The harness fails
+if any assertion is violated.
+
+Run a single fixture with `make test-e2e-<fixture-name>`
+(e.g. `make test-e2e-non-https-repo`). Per-fixture scan output (the
+XCCDF `results.xml` and HTML report) is written under
+`tests/e2e/out/<fixture>/`. The `.github/workflows/e2e.yaml`
+workflow runs the same harness on every PR touching `gpos/` or
+`tests/e2e/`.
+
+Adding a fixture:
+- Create `tests/e2e/fixtures/<name>/Dockerfile` that represents the
+  target container state you want to scan.
+- Create `tests/e2e/fixtures/<name>/expected.txt` listing each rule
+  ID you want to assert on, one per line, as
+  `<rule-id>=<expected-result>`.
