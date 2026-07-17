@@ -93,8 +93,8 @@ func NewRunner(cfg Config) Runner {
 // equivalent; registry operations elsewhere use go-containerregistry rather than
 // process execution. The argv is built by BuildArgs from validated config, so
 // every element is a constant or a validated path.
-func (r Runner) Run(ctx context.Context, fixtureTar, resultsDir string) (string, error) {
-	argv, err := r.cfg.BuildArgs(fixtureTar, resultsDir)
+func (r Runner) Run(ctx context.Context, fixtureTar, resultsDir string, containerVars []string) (string, error) {
+	argv, err := r.cfg.BuildArgs(fixtureTar, resultsDir, containerVars)
 	if err != nil {
 		return "", err
 	}

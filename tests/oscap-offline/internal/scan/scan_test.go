@@ -53,7 +53,7 @@ func TestRunRejectsBadConfig(t *testing.T) {
 	t.Parallel()
 
 	runner := scan.NewRunner(scan.Config{}) // all empty -> invalid
-	if _, err := runner.Run(t.Context(), "/f.tar", "/out"); !errors.Is(err, scan.ErrInvalidConfig) {
+	if _, err := runner.Run(t.Context(), "/f.tar", "/out", nil); !errors.Is(err, scan.ErrInvalidConfig) {
 		t.Errorf("Run err = %v, want ErrInvalidConfig", err)
 	}
 }
@@ -75,7 +75,7 @@ func TestRunMissingResultsNamesCause(t *testing.T) {
 	runner := scan.NewRunner(cfg)
 
 	resultsDir := t.TempDir() // empty: results.xml will be absent
-	_, err := runner.Run(t.Context(), "/work/fixture.tar", resultsDir)
+	_, err := runner.Run(t.Context(), "/work/fixture.tar", resultsDir, nil)
 	if !errors.Is(err, scan.ErrScanFailed) {
 		t.Fatalf("Run err = %v, want ErrScanFailed", err)
 	}

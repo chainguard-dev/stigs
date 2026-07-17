@@ -34,6 +34,7 @@ const (
 	ruleNoUsers                = "xccdf_mil.disa.stig_rule_SV-263650r982553_rule" // NoUsersCheck.xml
 	ruleVarLogPermissions      = "xccdf_mil.disa.stig_rule_SV-203664r958566_rule" // VarLogPermissionsTest.xml
 	ruleLibraryPermissions     = "xccdf_mil.disa.stig_rule_SV-203675r991560_rule" // LibraryPermissionsTest.xml
+	ruleSslCertFileEnv         = "xccdf_com.chainguard_rule_ssl_cert_file_env"    // SslCertFileEnv def in the certaudit component
 )
 
 // SCE rules excluded from the offline matrix. AslrCheck.sh reads the *live*
@@ -238,7 +239,9 @@ func buildHarness(t *testing.T) (harness, bool) {
 // scanFixture applies ops to the shared base bytes, runs a scan, and returns the
 // parsed report. Each call overlays from a fresh reader over the shared
 // immutable base bytes, so parallel subtests never contend on the source.
-func (h harness) scanFixture(t *testing.T, ops []overlay.Op) (results.Report, bool) {
+// containerVars are the fixture's OSCAP_CONTAINER_VARS entries, the offline
+// source for the environmentvariable58 probe (nil for fixtures with no env).
+func (h harness) scanFixture(t *testing.T, ops []overlay.Op, containerVars []string) (results.Report, bool) {
 	t.Helper()
 
 	fixture := bytes.NewBuffer(make([]byte, 0, len(h.baseBytes)+overlaySlack))
@@ -250,7 +253,7 @@ func (h harness) scanFixture(t *testing.T, ops []overlay.Op) (results.Report, bo
 		t.Fatalf("writing fixture: %v", err)
 	}
 
-	resultsPath, err := h.runner.Run(t.Context(), fixturePath, t.TempDir())
+	resultsPath, err := h.runner.Run(t.Context(), fixturePath, t.TempDir(), containerVars)
 	if err != nil {
 		// A scan that could not run at all (e.g. scanner image pull failure) is an
 		// availability gap: a skip in local dev, a failure under strict mode.
@@ -354,7 +357,11 @@ const (
 type matrixCase struct {
 	name string
 	ops  []overlay.Op
-	want map[string]results.Result
+	// containerVars are the OSCAP_CONTAINER_VARS entries ("NAME=value") the scan
+	// exposes to oscap's environmentvariable58 offline probe. nil for fixtures
+	// whose asserted rules do not read the container environment.
+	containerVars []string
+	want          map[string]results.Result
 }
 
 // matrixCases returns the offline scan matrix. Each row is one OVAL
@@ -494,6 +501,26 @@ func matrixCases() []matrixCase {
 			},
 			want: map[string]results.Result{ruleDetectOpenSsl: results.Fail},
 		},
+
+		// SslCertFileEnv reads the container environment via the
+		// environmentvariable58 offline probe (OSCAP_CONTAINER_VARS), not the
+		// rootfs, so these cases drive containerVars rather than overlay ops.
+		{
+			name:          "ssl_cert_file/pass_correct_value",
+			containerVars: []string{"SSL_CERT_FILE=/etc/ssl/certs/ca-certificates.crt"},
+			want:          map[string]results.Result{ruleSslCertFileEnv: results.Pass},
+		},
+		{
+			name:          "ssl_cert_file/fail_wrong_value",
+			containerVars: []string{"SSL_CERT_FILE=/wrong/path.crt"},
+			want:          map[string]results.Result{ruleSslCertFileEnv: results.Fail},
+		},
+		{
+			// No SSL_CERT_FILE set: the var does not exist, so the all_exist test
+			// fails and the rule fails.
+			name: "ssl_cert_file/fail_unset",
+			want: map[string]results.Result{ruleSslCertFileEnv: results.Fail},
+		},
 	}
 }
 
@@ -522,7 +549,7 @@ func TestOfflineFixtureMatrix(t *testing.T) {
 		t.Run(tc.name, func(t *testing.T) {
 			t.Parallel()
 
-			report, ran := h.scanFixture(t, tc.ops)
+			report, ran := h.scanFixture(t, tc.ops, tc.containerVars)
 			if !ran {
 				// scanFixture skips or fatals when a scan cannot run, so this is
 				// only reached defensively.
