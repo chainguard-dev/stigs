@@ -6249,7 +6249,7 @@
                     </ns0:description>
           <ns0:ident system="http://cyber.mil/cci">CCI-004909</ns0:ident>
           <ns0:check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
-            <ns0:check-content-ref href="CertificateAuditTest.xml"/>
+            <ns0:check-content-ref href="CertificateAuditTest.xml" name="oval:org.CABundleHash:def:1"/>
           </ns0:check>
         </ns0:Rule>
       </ns0:Group>
