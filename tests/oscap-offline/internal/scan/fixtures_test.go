@@ -34,7 +34,6 @@ const (
 	ruleNoUsers                = "xccdf_mil.disa.stig_rule_SV-263650r982553_rule" // NoUsersCheck.xml
 	ruleVarLogPermissions      = "xccdf_mil.disa.stig_rule_SV-203664r958566_rule" // VarLogPermissionsTest.xml
 	ruleLibraryPermissions     = "xccdf_mil.disa.stig_rule_SV-203675r991560_rule" // LibraryPermissionsTest.xml
-	ruleSslCertFileEnv         = "xccdf_com.chainguard_rule_ssl_cert_file_env"    // SslCertFileEnv def in the certaudit component
 )
 
 // SCE rules excluded from the offline matrix. AslrCheck.sh reads the *live*
@@ -409,16 +408,33 @@ func matrixCases() []matrixCase {
 			want: map[string]results.Result{rulePackageSignature: results.Pass},
 		},
 
-		// CertificateAudit: clean base CA bundle matches the datastream's pinned
-		// hash because the base ref is read from the same pin the update-ca-cert
-		// workflow keeps in lockstep with that hash.
+		// CertificateAudit is an AND of three criteria: the CA bundle exists, its
+		// SHA-256 matches the datastream's pinned hash (the base ref is read from
+		// the same pin the update-ca-cert workflow keeps in lockstep with that
+		// hash), and SSL_CERT_FILE is set to the bundle path. The pass fixture
+		// therefore also sets SSL_CERT_FILE; the fail fixtures each isolate one
+		// failing dimension while holding the others valid.
 		{
-			name: "certificate_audit/pass_clean",
-			want: map[string]results.Result{ruleCertificateAudit: results.Pass},
+			name:          "certificate_audit/pass_clean",
+			containerVars: []string{"SSL_CERT_FILE=/etc/ssl/certs/ca-certificates.crt"},
+			want:          map[string]results.Result{ruleCertificateAudit: results.Pass},
 		},
 		{
-			name: "certificate_audit/fail_tampered_bundle",
-			ops:  []overlay.Op{overlay.AppendFile("etc/ssl/certs/ca-certificates.crt", caTamper)},
+			// Hash dimension: tampered bundle, SSL_CERT_FILE still valid.
+			name:          "certificate_audit/fail_tampered_bundle",
+			ops:           []overlay.Op{overlay.AppendFile("etc/ssl/certs/ca-certificates.crt", caTamper)},
+			containerVars: []string{"SSL_CERT_FILE=/etc/ssl/certs/ca-certificates.crt"},
+			want:          map[string]results.Result{ruleCertificateAudit: results.Fail},
+		},
+		{
+			// Env dimension: bundle valid, SSL_CERT_FILE points elsewhere.
+			name:          "certificate_audit/fail_wrong_ssl_cert_file",
+			containerVars: []string{"SSL_CERT_FILE=/wrong/path.crt"},
+			want:          map[string]results.Result{ruleCertificateAudit: results.Fail},
+		},
+		{
+			// Env dimension: bundle valid, SSL_CERT_FILE unset entirely.
+			name: "certificate_audit/fail_unset_ssl_cert_file",
 			want: map[string]results.Result{ruleCertificateAudit: results.Fail},
 		},
 
@@ -500,26 +516,6 @@ func matrixCases() []matrixCase {
 				overlay.AppendFile("usr/lib/apk/db/installed", apkFIPSPackagesDocSubpkg),
 			},
 			want: map[string]results.Result{ruleDetectOpenSsl: results.Fail},
-		},
-
-		// SslCertFileEnv reads the container environment via the
-		// environmentvariable58 offline probe (OSCAP_CONTAINER_VARS), not the
-		// rootfs, so these cases drive containerVars rather than overlay ops.
-		{
-			name:          "ssl_cert_file/pass_correct_value",
-			containerVars: []string{"SSL_CERT_FILE=/etc/ssl/certs/ca-certificates.crt"},
-			want:          map[string]results.Result{ruleSslCertFileEnv: results.Pass},
-		},
-		{
-			name:          "ssl_cert_file/fail_wrong_value",
-			containerVars: []string{"SSL_CERT_FILE=/wrong/path.crt"},
-			want:          map[string]results.Result{ruleSslCertFileEnv: results.Fail},
-		},
-		{
-			// No SSL_CERT_FILE set: the var does not exist, so the all_exist test
-			// fails and the rule fails.
-			name: "ssl_cert_file/fail_unset",
-			want: map[string]results.Result{ruleSslCertFileEnv: results.Fail},
 		},
 	}
 }
