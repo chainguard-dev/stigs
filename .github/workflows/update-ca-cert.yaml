@@ -8,7 +8,9 @@ on:
       - main
     paths:
       - ".github/workflows/update-ca-cert.yaml"
-      - "ssg-chainguard-gpos-ds.xml"
+      - "gpos/xml/scap/ssg/content/ssg-chainguard-gpos-ds.xml"
+      - "tests/e2e/fixtures/*/Dockerfile"
+      - "tests/oscap-offline/internal/scan/fixtures_test.go"
 concurrency:
   group: update-ca-cert-${{ github.ref }}
   cancel-in-progress: false
@@ -29,6 +31,7 @@ jobs:
       DATASTREAM_PATH: gpos/xml/scap/ssg/content/ssg-chainguard-gpos-ds.xml
       TESTS_PATH: tests
       FIXTURES_GLOB: tests/e2e/fixtures/*/Dockerfile
+      TEST_PIN_FILE: tests/oscap-offline/internal/scan/fixtures_test.go
     steps:
       - name: Checkout
         uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
@@ -153,8 +156,9 @@ jobs:
           # The offline harness (tests/oscap-offline) reads its pinned base image
           # from tests/e2e/fixtures/baseline-clean/Dockerfile, so re-pinning that
           # fixture here also keeps the offline CertificateAudit pass fixture in
-          # lockstep with the datastream hash. There is no separate offline pin to
-          # update.
+          # lockstep with the datastream hash. The one remaining copy of the
+          # digest — the `pinned` constant in TestParseWolfiBaseRef — is
+          # re-pinned by the next step.
 
           fixtures_changed=false
           updated_files=()
@@ -203,14 +207,71 @@ jobs:
           else
             echo "- **Status**: Already up-to-date" >> "$GITHUB_STEP_SUMMARY"
           fi
+      - name: Re-pin offline harness test digest
+        id: testpin
+        env:
+          STEPS_IMAGE_OUTPUTS_DIGEST: ${{ steps.image.outputs.digest }}
+        run: |
+          set -euo pipefail
+
+          # TestParseWolfiBaseRef asserts the exact digest-pinned wolfi-base ref
+          # parsed from tests/e2e/fixtures/baseline-clean/Dockerfile against a
+          # hardcoded `pinned` constant, so that constant must move together
+          # with the fixture re-pin above or the test breaks on every update
+          # (see #123 for the manual fix this step replaces).
+          #
+          # The grep guard fails the run loudly if the constant's shape changes
+          # (e.g. the test is refactored) so the workflow gets updated instead
+          # of silently reintroducing drift.
+
+          if ! grep -qE 'wolfiBaseRepo \+ ":latest@sha256:[0-9a-f]{64}"' "${TEST_PIN_FILE}"; then
+            echo "::error::Pinned digest constant not found in ${TEST_PIN_FILE}; update this workflow to match the test"
+            exit 1
+          fi
+
+          cp "${TEST_PIN_FILE}" "${TEST_PIN_FILE}.bak"
+          sed -i -E "s|(wolfiBaseRepo \+ \":latest@sha256:)[0-9a-f]{64}|\1${STEPS_IMAGE_OUTPUTS_DIGEST#sha256:}|" "${TEST_PIN_FILE}"
+
+          if diff -q "${TEST_PIN_FILE}.bak" "${TEST_PIN_FILE}" > /dev/null; then
+            echo "Test pin already up to date"
+            echo "test_pin_changed=false" >> "$GITHUB_OUTPUT"
+            testpin_status="Already up-to-date"
+          else
+            echo "Updated ${TEST_PIN_FILE} -> ${STEPS_IMAGE_OUTPUTS_DIGEST}"
+            echo "test_pin_changed=true" >> "$GITHUB_OUTPUT"
+            testpin_status="Updated"
+          fi
+          rm "${TEST_PIN_FILE}.bak"
+
+          cat >> "$GITHUB_STEP_SUMMARY" <<EOF
+          ### Test Pin Update Summary
+          - **File**: \`${TEST_PIN_FILE}\`
+          - **Status**: ${testpin_status}
+          EOF
+      - name: Setup Go
+        uses: actions/setup-go@924ae3a1cded613372ab5595356fb5720e22ba16 # v6.5.0
+        with:
+          go-version-file: 'tests/oscap-offline/go.mod'
+          cache-dependency-path: 'tests/oscap-offline/go.sum'
+      - name: Verify test pin matches fixture
+        working-directory: tests/oscap-offline
+        run: |
+          set -euo pipefail
+
+          # Proves the re-pinned `pinned` constant agrees with the re-pinned
+          # baseline-clean Dockerfile before any PR is opened, so a bad sed (or
+          # drift introduced outside this workflow) fails here instead of
+          # landing as a broken PR. Pure parse test; needs no container runtime.
+          go test -count=1 -run 'TestParseWolfiBaseRef' ./internal/scan/
       - name: Aggregate change status
         id: changed
         env:
           DS_CHANGED: ${{ steps.update.outputs.datastream_changed }}
           FX_CHANGED: ${{ steps.fixtures.outputs.fixtures_changed }}
+          TP_CHANGED: ${{ steps.testpin.outputs.test_pin_changed }}
         run: |
           set -euo pipefail
-          if [ "${DS_CHANGED}" = "true" ] || [ "${FX_CHANGED}" = "true" ]; then
+          if [ "${DS_CHANGED}" = "true" ] || [ "${FX_CHANGED}" = "true" ] || [ "${TP_CHANGED}" = "true" ]; then
             echo "changed=true" >> "$GITHUB_OUTPUT"
           else
             echo "changed=false" >> "$GITHUB_OUTPUT"
@@ -227,10 +288,12 @@ jobs:
           commit-message: |
             chore(oscap): re-pin CA bundle hash and fixture base-image digests
 
-            Atomically updates the CA bundle SHA in the OSCAP datastream and the
-            digest-pinned FROM lines in tests/e2e/fixtures/*/Dockerfile so the
-            two values can never drift out of sync (which would flake the
-            CertificateAudit E2E assertions).
+            Atomically updates the CA bundle SHA in the OSCAP datastream, the
+            digest-pinned FROM lines in tests/e2e/fixtures/*/Dockerfile, and the
+            pinned wolfi-base digest in the offline harness test
+            (TestParseWolfiBaseRef) so the three values can never drift out of
+            sync (which would flake the CertificateAudit E2E assertions or
+            break the offline unit tests).
 
             Image: ${{ env.IMAGE_REF }}
             Digest: ${{ steps.image.outputs.digest }}
@@ -243,25 +306,30 @@ jobs:
           body: |
             ## CA Certificate + Fixture Base-Image Update
 
-            Atomically re-pins two values that must stay in lockstep:
+            Atomically re-pins three values that must stay in lockstep:
 
             1. The `<ind:hash>` under `oval:org.CABundleHash:ste:1` in the OSCAP
                datastream (`${{ env.DATASTREAM_PATH }}`).
             2. The `FROM cgr.dev/chainguard/wolfi-base:latest@sha256:...` line in
                every `tests/e2e/fixtures/*/Dockerfile`.
+            3. The `pinned` wolfi-base digest constant asserted by
+               `TestParseWolfiBaseRef` in `${{ env.TEST_PIN_FILE }}`.
 
             If these drift (e.g. Dependabot bumps the fixture digest before this
             workflow refreshes the datastream hash, or vice versa), the
             `baseline-clean` / `cabundle-tampered` E2E CertificateAudit check
             fails because the fixture's CA bundle no longer matches the hash the
-            datastream asserts. This workflow is now the authoritative update
-            point for both values together.
+            datastream asserts, and the offline harness unit tests break against
+            the stale test pin. This workflow is the authoritative update point
+            for all three values together; `TestParseWolfiBaseRef` was run
+            against the updated tree before this PR was opened.
 
             - **Image**: `${{ env.IMAGE_REF }}`
             - **Digest**: `${{ steps.image.outputs.digest }}`
             - **New CA SHA256**: `${{ steps.ca.outputs.sha }}`
             - **Datastream changed**: `${{ steps.update.outputs.datastream_changed }}`
             - **Fixtures changed**: `${{ steps.fixtures.outputs.fixtures_changed }}`
+            - **Test pin changed**: `${{ steps.testpin.outputs.test_pin_changed }}`
           labels: |
             automated pr
       #- name: Enable auto-merge
