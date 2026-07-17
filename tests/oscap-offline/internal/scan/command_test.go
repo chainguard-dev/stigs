@@ -26,11 +26,12 @@ func TestBuildArgs(t *testing.T) {
 	t.Parallel()
 
 	tests := []struct {
-		name       string
-		mutate     func(*scan.Config)
-		fixtureTar string
-		resultsDir string
-		want       []string
+		name          string
+		mutate        func(*scan.Config)
+		fixtureTar    string
+		resultsDir    string
+		containerVars []string
+		want          []string
 	}{
 		{
 			name:       "default docker argv",
@@ -42,6 +43,7 @@ func TestBuildArgs(t *testing.T) {
 				"-v", "/work/fixture.tar:/in/fixture.tar:ro",
 				"-v", "/repo:/src:ro",
 				"-v", "/work/out:/out",
+				"-e", "OSCAP_CONTAINER_VARS=",
 				"--entrypoint", "/scan-offline",
 				"cgr.dev/chainguard/openscap@sha256:abc",
 				"/in/fixture.tar",
@@ -62,6 +64,7 @@ func TestBuildArgs(t *testing.T) {
 				"-v", "/work/fixture.tar:/in/fixture.tar:ro",
 				"-v", "/repo:/src:ro",
 				"-v", "/work/out:/out",
+				"-e", "OSCAP_CONTAINER_VARS=",
 				"--entrypoint", "/scan-offline",
 				"cgr.dev/chainguard/openscap@sha256:abc",
 				"/in/fixture.tar",
@@ -85,6 +88,7 @@ func TestBuildArgs(t *testing.T) {
 				"-v", "/work/fixture.tar:/in/fixture.tar:ro",
 				"-v", "/repo:/src:ro",
 				"-v", "/work/out:/out",
+				"-e", "OSCAP_CONTAINER_VARS=",
 				"--entrypoint", "/scan-offline",
 				"example.com/scap@sha256:deadbeef",
 				"/in/fixture.tar",
@@ -104,6 +108,30 @@ func TestBuildArgs(t *testing.T) {
 				"-v", "/work/fixture.tar:/in/fixture.tar:ro",
 				"-v", "/repo:/src:ro",
 				"-v", "/work/out:/out",
+				"-e", "OSCAP_CONTAINER_VARS=",
+				"--entrypoint", "/scan-offline",
+				"cgr.dev/chainguard/openscap@sha256:abc",
+				"/in/fixture.tar",
+				"xccdf", "eval",
+				"--profile", "xccdf_basic_profile_.check",
+				"--results", "/out/results.xml",
+				"/src/gpos/xml/scap/ssg/content/ssg-chainguard-gpos-ds.xml",
+			},
+		},
+		{
+			// Container vars are newline-joined into a single OSCAP_CONTAINER_VARS
+			// argv element, the offline source for the environmentvariable58 probe.
+			name:          "container vars are joined into OSCAP_CONTAINER_VARS",
+			fixtureTar:    "/work/fixture.tar",
+			resultsDir:    "/work/out",
+			containerVars: []string{"PATH=/bin", "SSL_CERT_FILE=/etc/ssl/certs/ca-certificates.crt"},
+			want: []string{
+				"docker", "run", "--rm", "-u", "0:0", "--platform", "linux/amd64",
+				"-v", "/cache/scan-offline:/scan-offline:ro",
+				"-v", "/work/fixture.tar:/in/fixture.tar:ro",
+				"-v", "/repo:/src:ro",
+				"-v", "/work/out:/out",
+				"-e", "OSCAP_CONTAINER_VARS=PATH=/bin\nSSL_CERT_FILE=/etc/ssl/certs/ca-certificates.crt",
 				"--entrypoint", "/scan-offline",
 				"cgr.dev/chainguard/openscap@sha256:abc",
 				"/in/fixture.tar",
@@ -123,7 +151,7 @@ func TestBuildArgs(t *testing.T) {
 			if tc.mutate != nil {
 				tc.mutate(&cfg)
 			}
-			got, err := cfg.BuildArgs(tc.fixtureTar, tc.resultsDir)
+			got, err := cfg.BuildArgs(tc.fixtureTar, tc.resultsDir, tc.containerVars)
 			if err != nil {
 				t.Fatalf("BuildArgs: %v", err)
 			}
@@ -172,7 +200,7 @@ func TestBuildArgsRejectsInvalid(t *testing.T) {
 			if tc.mutate != nil {
 				tc.mutate(&cfg)
 			}
-			if _, err := cfg.BuildArgs(tc.fixtureTar, tc.resultsDir); !errors.Is(err, scan.ErrInvalidConfig) {
+			if _, err := cfg.BuildArgs(tc.fixtureTar, tc.resultsDir, nil); !errors.Is(err, scan.ErrInvalidConfig) {
 				t.Errorf("BuildArgs(%q, %q) err = %v, want ErrInvalidConfig", tc.fixtureTar, tc.resultsDir, err)
 			}
 		})
@@ -205,7 +233,7 @@ func TestBuildArgsAcceptsValidOverrides(t *testing.T) {
 
 			cfg := baseConfig()
 			tc.mutate(&cfg)
-			if _, err := cfg.BuildArgs("/work/fixture.tar", "/work/out"); err != nil {
+			if _, err := cfg.BuildArgs("/work/fixture.tar", "/work/out", nil); err != nil {
 				t.Errorf("BuildArgs rejected valid override: %v", err)
 			}
 		})

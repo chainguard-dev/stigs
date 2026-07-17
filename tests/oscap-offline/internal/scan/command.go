@@ -42,6 +42,14 @@ const (
 	resultsFileName      = "results.xml"
 )
 
+// containerVarsEnv is the environment variable oscap's environmentvariable58
+// offline probe reads to source a scanned container's variables. Real
+// oscap-docker sets it from the target's Config.Env; the offline harness has no
+// daemon, so BuildArgs synthesizes it per-fixture. It is always set (empty when
+// a fixture declares no vars) so the probe uses the offline source rather than
+// falling back to an empty <OSCAP_PROBE_ROOT>/proc.
+const containerVarsEnv = "OSCAP_CONTAINER_VARS"
+
 // Environment variable names recognized by ConfigFromEnv.
 const (
 	envRuntime = "OSCAP_CONTAINER_RUNTIME"
@@ -98,7 +106,13 @@ func ConfigFromEnv(repoRoot, binaryPath string, getenv func(string) string) Conf
 // or a validated, cleaned path, and the argv is passed to exec as a slice with no
 // shell interpolation. An incomplete config or an unsafe path yields a wrapped
 // ErrInvalidConfig.
-func (c Config) BuildArgs(fixtureTar, resultsDir string) ([]string, error) {
+//
+// containerVars are the target's environment variables ("NAME=value" entries)
+// exposed to oscap's environmentvariable58 offline probe via OSCAP_CONTAINER_VARS
+// (newline-joined). It is fixture/config-controlled content, passed as a single
+// argv element with no shell, so it shares the existing argv trust boundary and
+// needs no metacharacter screening. Pass nil for fixtures with no relevant env.
+func (c Config) BuildArgs(fixtureTar, resultsDir string, containerVars []string) ([]string, error) {
 	if err := c.validate(); err != nil {
 		return nil, err
 	}
@@ -127,6 +141,7 @@ func (c Config) BuildArgs(fixtureTar, resultsDir string) ([]string, error) {
 		"-v", fixture + ":" + containerFixturePath + ":ro",
 		"-v", repoRoot + ":" + containerSrcPath + ":ro",
 		"-v", out + ":" + containerOutPath,
+		"-e", containerVarsEnv + "=" + strings.Join(containerVars, "\n"),
 		"--entrypoint", containerBinaryPath,
 		c.Image,
 		containerFixturePath,

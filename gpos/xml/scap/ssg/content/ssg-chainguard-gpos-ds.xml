@@ -133,6 +133,7 @@
         <ns0:select idref="xccdf_mil.disa.stig_rule_SV-263650r982553_rule" selected="true"/>
         <ns0:select idref="xccdf_mil.disa.stig_rule_SV-263652r982557_rule" selected="true"/>
         <ns0:select idref="xccdf_mil.disa.stig_rule_SV-263659r982563_rule" selected="true"/>
+        <ns0:select idref="xccdf_com.chainguard_rule_ssl_cert_file_env" selected="true"/>
       </ns0:Profile>
       <ns0:Group id="xccdf_._group_not_applicable_tests">
         <ns0:Rule id="xccdf_mil.disa.stig_rule_SV-263651r982555_rule" selected="true" severity="medium">
@@ -6248,7 +6249,17 @@
                     </ns0:description>
           <ns0:ident system="http://cyber.mil/cci">CCI-004909</ns0:ident>
           <ns0:check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
-            <ns0:check-content-ref href="CertificateAuditTest.xml"/>
+            <ns0:check-content-ref href="CertificateAuditTest.xml" name="oval:org.CABundleHash:def:1"/>
+          </ns0:check>
+        </ns0:Rule>
+        <ns0:Rule id="xccdf_com.chainguard_rule_ssl_cert_file_env" selected="true" severity="medium">
+          <ns0:title xml:lang="en">The SSL_CERT_FILE environment variable must reference the system CA bundle.</ns0:title>
+          <ns0:description xml:lang="en">Applications that honor SSL_CERT_FILE must be pointed at the
+                        organization-managed trust store. Ensure the SSL_CERT_FILE environment variable
+                        configured on the image or container is set to /etc/ssl/certs/ca-certificates.crt.</ns0:description>
+          <ns0:ident system="http://cyber.mil/cci">CCI-004909</ns0:ident>
+          <ns0:check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
+            <ns0:check-content-ref href="CertificateAuditTest.xml" name="oval:org.SslCertFileEnv:def:1"/>
           </ns0:check>
         </ns0:Rule>
       </ns0:Group>
@@ -6699,6 +6710,18 @@
             <criterion test_ref="oval:org.CABundleHash:tst:2" comment="Ensure CA bundle hash matches expected"/>
           </criteria>
         </definition>
+        <definition id="oval:org.SslCertFileEnv:def:1" version="1" class="compliance">
+          <metadata>
+            <title>SSL_CERT_FILE points to the system CA bundle</title>
+            <description>Ensure the SSL_CERT_FILE environment variable configured on the image or container is set to /etc/ssl/certs/ca-certificates.crt.</description>
+            <affected family="unix">
+              <platform>Chainguard</platform>
+            </affected>
+          </metadata>
+          <criteria>
+            <criterion test_ref="oval:org.SslCertFileEnv:tst:1" comment="SSL_CERT_FILE is set to the system CA bundle path"/>
+          </criteria>
+        </definition>
       </definitions>
       <tests>
         <unix:file_test id="oval:org.CABundleHash:tst:1" version="1" check="all" check_existence="only_one_exists" comment="Ensure CA bundle file exists">
@@ -6708,6 +6731,10 @@
           <ind:object object_ref="oval:org.CABundleHash:obj:2"/>
           <ind:state state_ref="oval:org.CABundleHash:ste:1"/>
         </ind:filehash58_test>
+        <ind:environmentvariable58_test id="oval:org.SslCertFileEnv:tst:1" version="1" check="all" check_existence="all_exist" comment="SSL_CERT_FILE equals /etc/ssl/certs/ca-certificates.crt">
+          <ind:object object_ref="oval:org.SslCertFileEnv:obj:1"/>
+          <ind:state state_ref="oval:org.SslCertFileEnv:ste:1"/>
+        </ind:environmentvariable58_test>
       </tests>
       <objects>
         <unix:file_object id="oval:org.CABundleHash:obj:1" version="1">
@@ -6717,12 +6744,19 @@
           <ind:filepath>/etc/ssl/certs/ca-certificates.crt</ind:filepath>
           <ind:hash_type>SHA-256</ind:hash_type>
         </ind:filehash58_object>
+        <ind:environmentvariable58_object id="oval:org.SslCertFileEnv:obj:1" version="1">
+          <ind:pid xsi:nil="true" datatype="int"/>
+          <ind:name>SSL_CERT_FILE</ind:name>
+        </ind:environmentvariable58_object>
       </objects>
       <states>
         <ind:filehash58_state id="oval:org.CABundleHash:ste:1" version="1">
           <ind:hash_type>SHA-256</ind:hash_type>
           <ind:hash>61efbd6d3f829f71039c57b29dd37d15ac7f33c4ece861aaef8c7d7a519cd1d9</ind:hash>
         </ind:filehash58_state>
+        <ind:environmentvariable58_state id="oval:org.SslCertFileEnv:ste:1" version="1">
+          <ind:value datatype="string" operation="equals">/etc/ssl/certs/ca-certificates.crt</ind:value>
+        </ind:environmentvariable58_state>
       </states>
     </oval_definitions>
   </ds:extended-component>

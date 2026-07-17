@@ -20,14 +20,14 @@ func ExampleConfig_BuildArgs() {
 		Profile:           "xccdf_basic_profile_.check",
 	}
 
-	argv, err := cfg.BuildArgs("/work/fixture.tar", "/work/out")
+	argv, err := cfg.BuildArgs("/work/fixture.tar", "/work/out", []string{"SSL_CERT_FILE=/etc/ssl/certs/ca-certificates.crt"})
 	if err != nil {
 		fmt.Println("build:", err)
 		return
 	}
 	fmt.Println(strings.Join(argv, " "))
 	// Output:
-	// docker run --rm -u 0:0 --platform linux/amd64 -v /cache/scan-offline:/scan-offline:ro -v /work/fixture.tar:/in/fixture.tar:ro -v /repo:/src:ro -v /work/out:/out --entrypoint /scan-offline cgr.dev/chainguard/openscap@sha256:abc /in/fixture.tar xccdf eval --profile xccdf_basic_profile_.check --results /out/results.xml /src/gpos/xml/scap/ssg/content/ssg-chainguard-gpos-ds.xml
+	// docker run --rm -u 0:0 --platform linux/amd64 -v /cache/scan-offline:/scan-offline:ro -v /work/fixture.tar:/in/fixture.tar:ro -v /repo:/src:ro -v /work/out:/out -e OSCAP_CONTAINER_VARS=SSL_CERT_FILE=/etc/ssl/certs/ca-certificates.crt --entrypoint /scan-offline cgr.dev/chainguard/openscap@sha256:abc /in/fixture.tar xccdf eval --profile xccdf_basic_profile_.check --results /out/results.xml /src/gpos/xml/scap/ssg/content/ssg-chainguard-gpos-ds.xml
 }
 
 // ExampleConfigFromEnv shows defaults applied when no environment overrides are
