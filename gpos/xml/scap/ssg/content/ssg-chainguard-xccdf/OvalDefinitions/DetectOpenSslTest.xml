@@ -10,7 +10,7 @@
     <definition id="oval:org.OpenSsl:def:1" version="1" class="compliance">
       <metadata>
         <title>Check for OpenSSL FIPS Packages</title>
-        <description>Ensure that the necessary OpenSSL FIPS packages and configuration files are present.</description>
+        <description>Ensure that the necessary OpenSSL FIPS packages and configuration files are present, and that the OPENSSL_CONF environment variable is either unset or set to /etc/ssl/openssl.cnf.</description>
         <reference source="Custom"/>
         <affected family="unix">
           <platform>Chainguard</platform>
@@ -24,6 +24,7 @@
         <criterion comment="Check that fipsmodule.cnf is included in openssl.cnf" test_ref="oval:org.OpenSsl:tst:5"/>
         <criterion comment="openssl.cnf: check that FIPS provider is enabled in provider_sect" test_ref="oval:org.OpenSsl:tst:6"/>
         <criterion comment="openssl.cnf: check that default_properties is set to fips=yes" test_ref="oval:org.OpenSsl:tst:7"/>
+        <criterion comment="OPENSSL_CONF is unset or set to /etc/ssl/openssl.cnf" test_ref="oval:org.OpenSsl:tst:8"/>
       </criteria>
     </definition>
   </definitions>
@@ -49,6 +50,10 @@
     <independent:textfilecontent54_test xmlns:independent="http://oval.mitre.org/XMLSchema/oval-definitions-5#independent" id="oval:org.OpenSsl:tst:7" version="1" check="all" check_existence="all_exist" comment="openssl.cnf: check that default_properties is set to fips=yes">
       <independent:object object_ref="oval:org.OpenSsl:obj:7"/>
     </independent:textfilecontent54_test>
+    <independent:environmentvariable58_test xmlns:independent="http://oval.mitre.org/XMLSchema/oval-definitions-5#independent" id="oval:org.OpenSsl:tst:8" version="1" check="all" check_existence="any_exist" comment="OPENSSL_CONF is unset or set to /etc/ssl/openssl.cnf">
+      <independent:object object_ref="oval:org.OpenSsl:obj:8"/>
+      <independent:state state_ref="oval:org.OpenSsl:ste:1"/>
+    </independent:environmentvariable58_test>
   </tests>
   <objects>
     <!-- obj:1 collects any file under /etc/ssl whose basename contains "fipsmodule"
@@ -94,5 +99,19 @@
       <independent:pattern operation="pattern match">^\s*default_properties\s*=\s*fips=yes\s*$</independent:pattern>
       <independent:instance datatype="int" operation="greater than or equal">1</independent:instance>
     </independent:textfilecontent54_object>
+    <!-- obj:8 reads the OPENSSL_CONF environment variable configured on the
+         scanned image/container. In offline mode oscap sources it from
+         OSCAP_CONTAINER_VARS (the target's Config.Env), which oscap-docker
+         populates. Paired with tst:8's any_exist + check=all, the criterion is
+         satisfied when OPENSSL_CONF is unset OR set to /etc/ssl/openssl.cnf. -->
+    <independent:environmentvariable58_object xmlns:independent="http://oval.mitre.org/XMLSchema/oval-definitions-5#independent" id="oval:org.OpenSsl:obj:8" version="1">
+      <independent:pid xsi:nil="true" datatype="int"/>
+      <independent:name>OPENSSL_CONF</independent:name>
+    </independent:environmentvariable58_object>
   </objects>
+  <states>
+    <independent:environmentvariable58_state xmlns:independent="http://oval.mitre.org/XMLSchema/oval-definitions-5#independent" id="oval:org.OpenSsl:ste:1" version="1">
+      <independent:value datatype="string" operation="equals">/etc/ssl/openssl.cnf</independent:value>
+    </independent:environmentvariable58_state>
+  </states>
 </oval_definitions>

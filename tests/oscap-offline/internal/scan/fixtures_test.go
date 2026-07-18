@@ -498,6 +498,9 @@ func matrixCases() []matrixCase {
 			want: map[string]results.Result{ruleDetectOpenSsl: results.Fail},
 		},
 		{
+			// All FIPS files/packages present and OPENSSL_CONF unset: the
+			// OPENSSL_CONF criterion (any_exist + check=all) is vacuously satisfied
+			// when the variable is absent, so the rule passes.
 			name: "detect_openssl/pass_fips_present",
 			ops: []overlay.Op{
 				overlay.AddFile("etc/ssl/fipsmodule.cnf", fipsModuleCnf, 0o644, 0, 0),
@@ -505,6 +508,30 @@ func matrixCases() []matrixCase {
 				overlay.AppendFile("usr/lib/apk/db/installed", apkFIPSPackages),
 			},
 			want: map[string]results.Result{ruleDetectOpenSsl: results.Pass},
+		},
+		{
+			// FIPS present and OPENSSL_CONF explicitly set to the sanctioned path:
+			// the OPENSSL_CONF criterion is satisfied, so the rule passes.
+			name: "detect_openssl/pass_openssl_conf_correct",
+			ops: []overlay.Op{
+				overlay.AddFile("etc/ssl/fipsmodule.cnf", fipsModuleCnf, 0o644, 0, 0),
+				overlay.AddFile("etc/ssl/openssl.cnf", opensslCnf, 0o644, 0, 0),
+				overlay.AppendFile("usr/lib/apk/db/installed", apkFIPSPackages),
+			},
+			containerVars: []string{"OPENSSL_CONF=/etc/ssl/openssl.cnf"},
+			want:          map[string]results.Result{ruleDetectOpenSsl: results.Pass},
+		},
+		{
+			// FIPS otherwise valid but OPENSSL_CONF points elsewhere: the
+			// OPENSSL_CONF criterion fails, so the AND'd rule fails.
+			name: "detect_openssl/fail_openssl_conf_wrong",
+			ops: []overlay.Op{
+				overlay.AddFile("etc/ssl/fipsmodule.cnf", fipsModuleCnf, 0o644, 0, 0),
+				overlay.AddFile("etc/ssl/openssl.cnf", opensslCnf, 0o644, 0, 0),
+				overlay.AppendFile("usr/lib/apk/db/installed", apkFIPSPackages),
+			},
+			containerVars: []string{"OPENSSL_CONF=/wrong/openssl.cnf"},
+			want:          map[string]results.Result{ruleDetectOpenSsl: results.Fail},
 		},
 		{
 			// Config files present but only the *doc* subpackages installed: the
