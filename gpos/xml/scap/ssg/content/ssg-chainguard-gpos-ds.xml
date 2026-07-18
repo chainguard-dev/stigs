@@ -3891,7 +3891,7 @@
                     </ns0:description>
           <ns0:ident system="http://cyber.mil/cci">CCI-002450</ns0:ident>
           <ns0:check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
-            <ns0:check-content-ref href="DetectOpenSslTest.xml"/>
+            <ns0:check-content-ref href="DetectOpenSslTest.xml" name="oval:org.OpenSsl:def:1"/>
           </ns0:check>
         </ns0:Rule>
         <ns0:Rule id="xccdf_mil.disa.stig_rule_SV-203776r959006_rule" selected="true" severity="high">
@@ -3914,7 +3914,7 @@
                     </ns0:description>
           <ns0:ident system="http://cyber.mil/cci">CCI-002450</ns0:ident>
           <ns0:check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
-            <ns0:check-content-ref href="DetectOpenSslTest.xml"/>
+            <ns0:check-content-ref href="DetectOpenSslTest.xml" name="oval:org.OpenSsl:def:1"/>
           </ns0:check>
         </ns0:Rule>
         <ns0:Rule id="xccdf_mil.disa.stig_rule_SV-203750r958912_rule" selected="true" severity="medium">
@@ -3941,7 +3941,7 @@
                     </ns0:description>
           <ns0:ident system="http://cyber.mil/cci">CCI-002420</ns0:ident>
           <ns0:check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
-            <ns0:check-content-ref href="DetectOpenSslTest.xml"/>
+            <ns0:check-content-ref href="DetectOpenSslTest.xml" name="oval:org.OpenSsl:def:1"/>
           </ns0:check>
         </ns0:Rule>
         <ns0:Rule id="xccdf_mil.disa.stig_rule_SV-203751r958914_rule" selected="true" severity="medium">
@@ -3968,7 +3968,7 @@
                     </ns0:description>
           <ns0:ident system="http://cyber.mil/cci">CCI-002422</ns0:ident>
           <ns0:check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
-            <ns0:check-content-ref href="DetectOpenSslTest.xml"/>
+            <ns0:check-content-ref href="DetectOpenSslTest.xml" name="oval:org.OpenSsl:def:1"/>
           </ns0:check>
         </ns0:Rule>
         <ns0:Rule id="xccdf_mil.disa.stig_rule_SV-203649r971535_rule" selected="true" severity="medium">
@@ -3993,7 +3993,7 @@
                     </ns0:description>
           <ns0:ident system="http://cyber.mil/cci">CCI-000803</ns0:ident>
           <ns0:check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
-            <ns0:check-content-ref href="DetectOpenSslTest.xml"/>
+            <ns0:check-content-ref href="DetectOpenSslTest.xml" name="oval:org.OpenSsl:def:1"/>
           </ns0:check>
         </ns0:Rule>
       </ns0:Group>
@@ -4027,7 +4027,7 @@
                     </ns0:description>
           <ns0:ident system="http://cyber.mil/cci">CCI-004047</ns0:ident>
           <ns0:check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
-            <ns0:check-content-ref href="RemoteAccessServicesTest.xml"/>
+            <ns0:check-content-ref href="RemoteAccessServicesTest.xml" name="oval:org.RemoteAccessServices:def:1"/>
           </ns0:check>
         </ns0:Rule>
         <ns0:Rule id="xccdf_mil.disa.stig_rule_SV-203736r958848_rule" selected="true" severity="high">
@@ -4062,7 +4062,7 @@
                     </ns0:description>
           <ns0:ident system="http://cyber.mil/cci">CCI-002890</ns0:ident>
           <ns0:check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
-            <ns0:check-content-ref href="RemoteAccessServicesTest.xml"/>
+            <ns0:check-content-ref href="RemoteAccessServicesTest.xml" name="oval:org.RemoteAccessServices:def:1"/>
           </ns0:check>
         </ns0:Rule>
         <ns0:Rule id="xccdf_mil.disa.stig_rule_SV-203737r958850_rule" selected="true" severity="high">
@@ -4097,7 +4097,7 @@
                     </ns0:description>
           <ns0:ident system="http://cyber.mil/cci">CCI-003123</ns0:ident>
           <ns0:check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
-            <ns0:check-content-ref href="RemoteAccessServicesTest.xml"/>
+            <ns0:check-content-ref href="RemoteAccessServicesTest.xml" name="oval:org.RemoteAccessServices:def:1"/>
           </ns0:check>
         </ns0:Rule>
         <ns0:Rule id="xccdf_mil.disa.stig_rule_SV-203653r958510_rule" selected="true" severity="high">
@@ -4132,7 +4132,7 @@
                     </ns0:description>
           <ns0:ident system="http://cyber.mil/cci">CCI-000877</ns0:ident>
           <ns0:check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
-            <ns0:check-content-ref href="RemoteAccessServicesTest.xml"/>
+            <ns0:check-content-ref href="RemoteAccessServicesTest.xml" name="oval:org.RemoteAccessServices:def:1"/>
           </ns0:check>
         </ns0:Rule>
         <ns0:Rule id="xccdf_mil.disa.stig_rule_SV-203603r958408_rule" selected="true" severity="high">
@@ -4161,7 +4161,7 @@
                     </ns0:description>
           <ns0:ident system="http://cyber.mil/cci">CCI-000068</ns0:ident>
           <ns0:check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
-            <ns0:check-content-ref href="RemoteAccessServicesTest.xml"/>
+            <ns0:check-content-ref href="RemoteAccessServicesTest.xml" name="oval:org.RemoteAccessServices:def:1"/>
           </ns0:check>
         </ns0:Rule>
         <ns0:Rule id="xccdf_mil.disa.stig_rule_SV-203669r991554_rule" selected="true" severity="high">
@@ -4189,7 +4189,7 @@
                     </ns0:description>
           <ns0:ident system="http://cyber.mil/cci">CCI-001453</ns0:ident>
           <ns0:check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
-            <ns0:check-content-ref href="RemoteAccessServicesTest.xml"/>
+            <ns0:check-content-ref href="RemoteAccessServicesTest.xml" name="oval:org.RemoteAccessServices:def:1"/>
           </ns0:check>
         </ns0:Rule>
         <ns0:Rule id="xccdf_mil.disa.stig_rule_SV-203782r991591_rule" selected="true" severity="high">
@@ -4209,7 +4209,7 @@
                     </ns0:description>
           <ns0:ident system="http://cyber.mil/cci">CCI-000366</ns0:ident>
           <ns0:check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
-            <ns0:check-content-ref href="RemoteAccessServicesTest.xml"/>
+            <ns0:check-content-ref href="RemoteAccessServicesTest.xml" name="oval:org.RemoteAccessServices:def:1"/>
           </ns0:check>
         </ns0:Rule>
         <ns0:Rule id="xccdf_mil.disa.stig_rule_SV-203597r958398_rule" selected="true" severity="low">
@@ -4235,7 +4235,7 @@
                     </ns0:description>
           <ns0:ident system="http://cyber.mil/cci">CCI-000054</ns0:ident>
           <ns0:check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
-            <ns0:check-content-ref href="RemoteAccessServicesTest.xml"/>
+            <ns0:check-content-ref href="RemoteAccessServicesTest.xml" name="oval:org.RemoteAccessServices:def:1"/>
           </ns0:check>
         </ns0:Rule>
         <ns0:Rule id="xccdf_mil.disa.stig_rule_SV-203718r958796_rule" selected="true" severity="medium">
@@ -4266,7 +4266,7 @@
                     </ns0:description>
           <ns0:ident system="http://cyber.mil/cci">CCI-001813</ns0:ident>
           <ns0:check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
-            <ns0:check-content-ref href="RemoteAccessServicesTest.xml"/>
+            <ns0:check-content-ref href="RemoteAccessServicesTest.xml" name="oval:org.RemoteAccessServices:def:1"/>
           </ns0:check>
         </ns0:Rule>
         <ns0:Rule id="xccdf_mil.disa.stig_rule_SV-203738r958852_rule" selected="true" severity="medium">
@@ -4290,7 +4290,7 @@
                     </ns0:description>
           <ns0:ident system="http://cyber.mil/cci">CCI-002891</ns0:ident>
           <ns0:check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
-            <ns0:check-content-ref href="RemoteAccessServicesTest.xml"/>
+            <ns0:check-content-ref href="RemoteAccessServicesTest.xml" name="oval:org.RemoteAccessServices:def:1"/>
           </ns0:check>
         </ns0:Rule>
         <ns0:Rule id="xccdf_mil.disa.stig_rule_SV-203734r982217_rule" selected="true" severity="medium">
@@ -4313,7 +4313,7 @@
                     </ns0:description>
           <ns0:ident system="http://cyber.mil/cci">CCI-004068</ns0:ident>
           <ns0:check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
-            <ns0:check-content-ref href="RemoteAccessServicesTest.xml"/>
+            <ns0:check-content-ref href="RemoteAccessServicesTest.xml" name="oval:org.RemoteAccessServices:def:1"/>
           </ns0:check>
         </ns0:Rule>
         <ns0:Rule id="xccdf_mil.disa.stig_rule_SV-203735r958846_rule" selected="true" severity="medium">
@@ -4347,7 +4347,7 @@
                     </ns0:description>
           <ns0:ident system="http://cyber.mil/cci">CCI-002884</ns0:ident>
           <ns0:check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
-            <ns0:check-content-ref href="RemoteAccessServicesTest.xml"/>
+            <ns0:check-content-ref href="RemoteAccessServicesTest.xml" name="oval:org.RemoteAccessServices:def:1"/>
           </ns0:check>
         </ns0:Rule>
         <ns0:Rule id="xccdf_mil.disa.stig_rule_SV-203659r970703_rule" selected="true" severity="medium">
@@ -4382,7 +4382,7 @@
                     </ns0:description>
           <ns0:ident system="http://cyber.mil/cci">CCI-001133</ns0:ident>
           <ns0:check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
-            <ns0:check-content-ref href="RemoteAccessServicesTest.xml"/>
+            <ns0:check-content-ref href="RemoteAccessServicesTest.xml" name="oval:org.RemoteAccessServices:def:1"/>
           </ns0:check>
         </ns0:Rule>
         <ns0:Rule id="xccdf_mil.disa.stig_rule_SV-203723r1050789_rule" selected="true" severity="medium">
@@ -4404,7 +4404,7 @@
                     </ns0:description>
           <ns0:ident system="http://cyber.mil/cci">CCI-002038</ns0:ident>
           <ns0:check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
-            <ns0:check-content-ref href="RemoteAccessServicesTest.xml"/>
+            <ns0:check-content-ref href="RemoteAccessServicesTest.xml" name="oval:org.RemoteAccessServices:def:1"/>
           </ns0:check>
         </ns0:Rule>
         <ns0:Rule id="xccdf_mil.disa.stig_rule_SV-203727r982216_rule" selected="true" severity="medium">
@@ -4441,7 +4441,7 @@
                     </ns0:description>
           <ns0:ident system="http://cyber.mil/cci">CCI-004046</ns0:ident>
           <ns0:check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
-            <ns0:check-content-ref href="RemoteAccessServicesTest.xml"/>
+            <ns0:check-content-ref href="RemoteAccessServicesTest.xml" name="oval:org.RemoteAccessServices:def:1"/>
           </ns0:check>
         </ns0:Rule>
         <ns0:Rule id="xccdf_mil.disa.stig_rule_SV-203729r958818_rule" selected="true" severity="medium">
@@ -4465,7 +4465,7 @@
                     </ns0:description>
           <ns0:ident system="http://cyber.mil/cci">CCI-001954</ns0:ident>
           <ns0:check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
-            <ns0:check-content-ref href="RemoteAccessServicesTest.xml"/>
+            <ns0:check-content-ref href="RemoteAccessServicesTest.xml" name="oval:org.RemoteAccessServices:def:1"/>
           </ns0:check>
         </ns0:Rule>
         <ns0:Rule id="xccdf_mil.disa.stig_rule_SV-203728r958816_rule" selected="true" severity="medium">
@@ -4489,7 +4489,7 @@
                     </ns0:description>
           <ns0:ident system="http://cyber.mil/cci">CCI-001953</ns0:ident>
           <ns0:check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
-            <ns0:check-content-ref href="RemoteAccessServicesTest.xml"/>
+            <ns0:check-content-ref href="RemoteAccessServicesTest.xml" name="oval:org.RemoteAccessServices:def:1"/>
           </ns0:check>
         </ns0:Rule>
         <ns0:Rule id="xccdf_mil.disa.stig_rule_SV-203624r958452_rule" selected="true" severity="medium">
@@ -4510,7 +4510,7 @@
                     </ns0:description>
           <ns0:ident system="http://cyber.mil/cci">CCI-000187</ns0:ident>
           <ns0:check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
-            <ns0:check-content-ref href="RemoteAccessServicesTest.xml"/>
+            <ns0:check-content-ref href="RemoteAccessServicesTest.xml" name="oval:org.RemoteAccessServices:def:1"/>
           </ns0:check>
         </ns0:Rule>
         <ns0:Rule id="xccdf_mil.disa.stig_rule_SV-203622r958448_rule" selected="true" severity="medium">
@@ -4547,7 +4547,7 @@
                     </ns0:description>
           <ns0:ident system="http://cyber.mil/cci">CCI-000185</ns0:ident>
           <ns0:check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
-            <ns0:check-content-ref href="RemoteAccessServicesTest.xml"/>
+            <ns0:check-content-ref href="RemoteAccessServicesTest.xml" name="oval:org.RemoteAccessServices:def:1"/>
           </ns0:check>
         </ns0:Rule>
         <ns0:Rule id="xccdf_mil.disa.stig_rule_SV-203623r958450_rule" selected="true" severity="medium">
@@ -4574,7 +4574,7 @@
                     </ns0:description>
           <ns0:ident system="http://cyber.mil/cci">CCI-000186</ns0:ident>
           <ns0:check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
-            <ns0:check-content-ref href="RemoteAccessServicesTest.xml"/>
+            <ns0:check-content-ref href="RemoteAccessServicesTest.xml" name="oval:org.RemoteAccessServices:def:1"/>
           </ns0:check>
         </ns0:Rule>
         <ns0:Rule id="xccdf_mil.disa.stig_rule_SV-203683r958636_rule" selected="true" severity="medium">
@@ -4608,7 +4608,7 @@
                     </ns0:description>
           <ns0:ident system="http://cyber.mil/cci">CCI-002361</ns0:ident>
           <ns0:check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
-            <ns0:check-content-ref href="RemoteAccessServicesTest.xml"/>
+            <ns0:check-content-ref href="RemoteAccessServicesTest.xml" name="oval:org.RemoteAccessServices:def:1"/>
           </ns0:check>
         </ns0:Rule>
         <ns0:Rule id="xccdf_mil.disa.stig_rule_SV-203686r958672_rule" selected="true" severity="medium">
@@ -4639,7 +4639,7 @@
                     </ns0:description>
           <ns0:ident system="http://cyber.mil/cci">CCI-002314</ns0:ident>
           <ns0:check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
-            <ns0:check-content-ref href="RemoteAccessServicesTest.xml"/>
+            <ns0:check-content-ref href="RemoteAccessServicesTest.xml" name="oval:org.RemoteAccessServices:def:1"/>
           </ns0:check>
         </ns0:Rule>
         <ns0:Rule id="xccdf_mil.disa.stig_rule_SV-203687r958674_rule" selected="true" severity="medium">
@@ -4668,7 +4668,7 @@
                     </ns0:description>
           <ns0:ident system="http://cyber.mil/cci">CCI-002322</ns0:ident>
           <ns0:check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
-            <ns0:check-content-ref href="RemoteAccessServicesTest.xml"/>
+            <ns0:check-content-ref href="RemoteAccessServicesTest.xml" name="oval:org.RemoteAccessServices:def:1"/>
           </ns0:check>
         </ns0:Rule>
         <ns0:Rule id="xccdf_mil.disa.stig_rule_SV-203684r958638_rule" selected="true" severity="medium">
@@ -4694,7 +4694,7 @@
                     </ns0:description>
           <ns0:ident system="http://cyber.mil/cci">CCI-002363</ns0:ident>
           <ns0:check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
-            <ns0:check-content-ref href="RemoteAccessServicesTest.xml"/>
+            <ns0:check-content-ref href="RemoteAccessServicesTest.xml" name="oval:org.RemoteAccessServices:def:1"/>
           </ns0:check>
         </ns0:Rule>
         <ns0:Rule id="xccdf_mil.disa.stig_rule_SV-203685r958640_rule" selected="true" severity="medium">
@@ -4723,7 +4723,7 @@
                     </ns0:description>
           <ns0:ident system="http://cyber.mil/cci">CCI-002364</ns0:ident>
           <ns0:check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
-            <ns0:check-content-ref href="RemoteAccessServicesTest.xml"/>
+            <ns0:check-content-ref href="RemoteAccessServicesTest.xml" name="oval:org.RemoteAccessServices:def:1"/>
           </ns0:check>
         </ns0:Rule>
         <ns0:Rule id="xccdf_mil.disa.stig_rule_SV-203636r958472_rule" selected="true" severity="medium">
@@ -4760,7 +4760,7 @@
                     </ns0:description>
           <ns0:ident system="http://cyber.mil/cci">CCI-000213</ns0:ident>
           <ns0:check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
-            <ns0:check-content-ref href="RemoteAccessServicesTest.xml"/>
+            <ns0:check-content-ref href="RemoteAccessServicesTest.xml" name="oval:org.RemoteAccessServices:def:1"/>
           </ns0:check>
         </ns0:Rule>
         <ns0:Rule id="xccdf_mil.disa.stig_rule_SV-203744r958868_rule" selected="true" severity="medium">
@@ -4787,7 +4787,7 @@
                     </ns0:description>
           <ns0:ident system="http://cyber.mil/cci">CCI-002470</ns0:ident>
           <ns0:check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
-            <ns0:check-content-ref href="RemoteAccessServicesTest.xml"/>
+            <ns0:check-content-ref href="RemoteAccessServicesTest.xml" name="oval:org.RemoteAccessServices:def:1"/>
           </ns0:check>
         </ns0:Rule>
         <ns0:Rule id="xccdf_mil.disa.stig_rule_SV-203698r958736_rule" selected="true" severity="medium">
@@ -4810,7 +4810,7 @@
                     </ns0:description>
           <ns0:ident system="http://cyber.mil/cci">CCI-002238</ns0:ident>
           <ns0:check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
-            <ns0:check-content-ref href="RemoteAccessServicesTest.xml"/>
+            <ns0:check-content-ref href="RemoteAccessServicesTest.xml" name="oval:org.RemoteAccessServices:def:1"/>
           </ns0:check>
         </ns0:Rule>
         <ns0:Rule id="xccdf_mil.disa.stig_rule_SV-203598r958400_rule" selected="true" severity="medium">
@@ -4837,7 +4837,7 @@
                     </ns0:description>
           <ns0:ident system="http://cyber.mil/cci">CCI-000056</ns0:ident>
           <ns0:check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
-            <ns0:check-content-ref href="RemoteAccessServicesTest.xml"/>
+            <ns0:check-content-ref href="RemoteAccessServicesTest.xml" name="oval:org.RemoteAccessServices:def:1"/>
           </ns0:check>
         </ns0:Rule>
         <ns0:Rule id="xccdf_mil.disa.stig_rule_SV-203599r958402_rule" selected="true" severity="medium">
@@ -4864,7 +4864,7 @@
                     </ns0:description>
           <ns0:ident system="http://cyber.mil/cci">CCI-000057</ns0:ident>
           <ns0:check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
-            <ns0:check-content-ref href="RemoteAccessServicesTest.xml"/>
+            <ns0:check-content-ref href="RemoteAccessServicesTest.xml" name="oval:org.RemoteAccessServices:def:1"/>
           </ns0:check>
         </ns0:Rule>
         <ns0:Rule id="xccdf_mil.disa.stig_rule_SV-203596r958392_rule" selected="true" severity="medium">
@@ -4892,7 +4892,7 @@
                     </ns0:description>
           <ns0:ident system="http://cyber.mil/cci">CCI-000050</ns0:ident>
           <ns0:check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
-            <ns0:check-content-ref href="RemoteAccessServicesTest.xml"/>
+            <ns0:check-content-ref href="RemoteAccessServicesTest.xml" name="oval:org.RemoteAccessServices:def:1"/>
           </ns0:check>
         </ns0:Rule>
         <ns0:Rule id="xccdf_mil.disa.stig_rule_SV-203594r958388_rule" selected="true" severity="medium">
@@ -4914,7 +4914,7 @@
                     </ns0:description>
           <ns0:ident system="http://cyber.mil/cci">CCI-000044</ns0:ident>
           <ns0:check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
-            <ns0:check-content-ref href="RemoteAccessServicesTest.xml"/>
+            <ns0:check-content-ref href="RemoteAccessServicesTest.xml" name="oval:org.RemoteAccessServices:def:1"/>
           </ns0:check>
         </ns0:Rule>
         <ns0:Rule id="xccdf_mil.disa.stig_rule_SV-203595r958390_rule" selected="true" severity="medium">
@@ -4963,7 +4963,7 @@
                     </ns0:description>
           <ns0:ident system="http://cyber.mil/cci">CCI-000048</ns0:ident>
           <ns0:check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
-            <ns0:check-content-ref href="RemoteAccessServicesTest.xml"/>
+            <ns0:check-content-ref href="RemoteAccessServicesTest.xml" name="oval:org.RemoteAccessServices:def:1"/>
           </ns0:check>
         </ns0:Rule>
         <ns0:Rule id="xccdf_mil.disa.stig_rule_SV-203602r958406_rule" selected="true" severity="medium">
@@ -4994,7 +4994,7 @@
                     </ns0:description>
           <ns0:ident system="http://cyber.mil/cci">CCI-000067</ns0:ident>
           <ns0:check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
-            <ns0:check-content-ref href="RemoteAccessServicesTest.xml"/>
+            <ns0:check-content-ref href="RemoteAccessServicesTest.xml" name="oval:org.RemoteAccessServices:def:1"/>
           </ns0:check>
         </ns0:Rule>
         <ns0:Rule id="xccdf_mil.disa.stig_rule_SV-203600r982194_rule" selected="true" severity="medium">
@@ -5021,7 +5021,7 @@
                     </ns0:description>
           <ns0:ident system="http://cyber.mil/cci">CCI-000057</ns0:ident>
           <ns0:check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
-            <ns0:check-content-ref href="RemoteAccessServicesTest.xml"/>
+            <ns0:check-content-ref href="RemoteAccessServicesTest.xml" name="oval:org.RemoteAccessServices:def:1"/>
           </ns0:check>
         </ns0:Rule>
         <ns0:Rule id="xccdf_mil.disa.stig_rule_SV-203601r958404_rule" selected="true" severity="medium">
@@ -5051,7 +5051,7 @@
                     </ns0:description>
           <ns0:ident system="http://cyber.mil/cci">CCI-000060</ns0:ident>
           <ns0:check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
-            <ns0:check-content-ref href="RemoteAccessServicesTest.xml"/>
+            <ns0:check-content-ref href="RemoteAccessServicesTest.xml" name="oval:org.RemoteAccessServices:def:1"/>
           </ns0:check>
         </ns0:Rule>
         <ns0:Rule id="xccdf_mil.disa.stig_rule_SV-203665r958586_rule" selected="true" severity="medium">
@@ -5100,7 +5100,7 @@
                     </ns0:description>
           <ns0:ident system="http://cyber.mil/cci">CCI-001384</ns0:ident>
           <ns0:check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
-            <ns0:check-content-ref href="RemoteAccessServicesTest.xml"/>
+            <ns0:check-content-ref href="RemoteAccessServicesTest.xml" name="oval:org.RemoteAccessServices:def:1"/>
           </ns0:check>
         </ns0:Rule>
         <ns0:Rule id="xccdf_mil.disa.stig_rule_SV-203779r991588_rule" selected="true" severity="medium">
@@ -5121,7 +5121,7 @@
                     </ns0:description>
           <ns0:ident system="http://cyber.mil/cci">CCI-000366</ns0:ident>
           <ns0:check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
-            <ns0:check-content-ref href="RemoteAccessServicesTest.xml"/>
+            <ns0:check-content-ref href="RemoteAccessServicesTest.xml" name="oval:org.RemoteAccessServices:def:1"/>
           </ns0:check>
         </ns0:Rule>
         <ns0:Rule id="xccdf_mil.disa.stig_rule_SV-203771r991582_rule" selected="true" severity="medium">
@@ -5145,7 +5145,7 @@
                     </ns0:description>
           <ns0:ident system="http://cyber.mil/cci">CCI-000172</ns0:ident>
           <ns0:check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
-            <ns0:check-content-ref href="RemoteAccessServicesTest.xml"/>
+            <ns0:check-content-ref href="RemoteAccessServicesTest.xml" name="oval:org.RemoteAccessServices:def:1"/>
           </ns0:check>
         </ns0:Rule>
         <ns0:Rule id="xccdf_mil.disa.stig_rule_SV-203646r982206_rule" selected="true" severity="medium">
@@ -5174,7 +5174,7 @@
                     </ns0:description>
           <ns0:ident system="http://cyber.mil/cci">CCI-001941</ns0:ident>
           <ns0:check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
-            <ns0:check-content-ref href="RemoteAccessServicesTest.xml"/>
+            <ns0:check-content-ref href="RemoteAccessServicesTest.xml" name="oval:org.RemoteAccessServices:def:1"/>
           </ns0:check>
         </ns0:Rule>
         <ns0:Rule id="xccdf_mil.disa.stig_rule_SV-203644r982205_rule" selected="true" severity="medium">
@@ -5212,7 +5212,7 @@
                     </ns0:description>
           <ns0:ident system="http://cyber.mil/cci">CCI-004045</ns0:ident>
           <ns0:check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
-            <ns0:check-content-ref href="RemoteAccessServicesTest.xml"/>
+            <ns0:check-content-ref href="RemoteAccessServicesTest.xml" name="oval:org.RemoteAccessServices:def:1"/>
           </ns0:check>
         </ns0:Rule>
         <ns0:Rule id="xccdf_mil.disa.stig_rule_SV-203645r958494_rule" selected="true" severity="medium">
@@ -5241,7 +5241,7 @@
                     </ns0:description>
           <ns0:ident system="http://cyber.mil/cci">CCI-001941</ns0:ident>
           <ns0:check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
-            <ns0:check-content-ref href="RemoteAccessServicesTest.xml"/>
+            <ns0:check-content-ref href="RemoteAccessServicesTest.xml" name="oval:org.RemoteAccessServices:def:1"/>
           </ns0:check>
         </ns0:Rule>
         <ns0:Rule id="xccdf_mil.disa.stig_rule_SV-203642r982203_rule" selected="true" severity="medium">
@@ -5271,7 +5271,7 @@
                     </ns0:description>
           <ns0:ident system="http://cyber.mil/cci">CCI-000765</ns0:ident>
           <ns0:check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
-            <ns0:check-content-ref href="RemoteAccessServicesTest.xml"/>
+            <ns0:check-content-ref href="RemoteAccessServicesTest.xml" name="oval:org.RemoteAccessServices:def:1"/>
           </ns0:check>
         </ns0:Rule>
         <ns0:Rule id="xccdf_mil.disa.stig_rule_SV-203643r982204_rule" selected="true" severity="medium">
@@ -5301,7 +5301,7 @@
                     </ns0:description>
           <ns0:ident system="http://cyber.mil/cci">CCI-000766</ns0:ident>
           <ns0:check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
-            <ns0:check-content-ref href="RemoteAccessServicesTest.xml"/>
+            <ns0:check-content-ref href="RemoteAccessServicesTest.xml" name="oval:org.RemoteAccessServices:def:1"/>
           </ns0:check>
         </ns0:Rule>
         <ns0:Rule id="xccdf_mil.disa.stig_rule_SV-203640r958484_rule" selected="true" severity="medium">
@@ -5330,7 +5330,7 @@
                     </ns0:description>
           <ns0:ident system="http://cyber.mil/cci">CCI-000765</ns0:ident>
           <ns0:check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
-            <ns0:check-content-ref href="RemoteAccessServicesTest.xml"/>
+            <ns0:check-content-ref href="RemoteAccessServicesTest.xml" name="oval:org.RemoteAccessServices:def:1"/>
           </ns0:check>
         </ns0:Rule>
         <ns0:Rule id="xccdf_mil.disa.stig_rule_SV-203641r958486_rule" selected="true" severity="medium">
@@ -5360,7 +5360,7 @@
                     </ns0:description>
           <ns0:ident system="http://cyber.mil/cci">CCI-000766</ns0:ident>
           <ns0:check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
-            <ns0:check-content-ref href="RemoteAccessServicesTest.xml"/>
+            <ns0:check-content-ref href="RemoteAccessServicesTest.xml" name="oval:org.RemoteAccessServices:def:1"/>
           </ns0:check>
         </ns0:Rule>
       </ns0:Group>
@@ -5391,7 +5391,7 @@
                     </ns0:description>
           <ns0:ident system="http://cyber.mil/cci">CCI-003992</ns0:ident>
           <ns0:check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
-            <ns0:check-content-ref href="PackageSignatureTest.xml"/>
+            <ns0:check-content-ref href="PackageSignatureTest.xml" name="oval:org.PackageSignature:def:1"/>
           </ns0:check>
         </ns0:Rule>
       </ns0:Group>
@@ -5410,7 +5410,7 @@
                     </ns0:description>
           <ns0:ident system="http://cyber.mil/cci">CCI-004062</ns0:ident>
           <ns0:check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
-            <ns0:check-content-ref href="UserPasswordConfiguredTest.xml"/>
+            <ns0:check-content-ref href="UserPasswordConfiguredTest.xml" name="oval:org.example:def:3"/>
           </ns0:check>
         </ns0:Rule>
         <ns0:Rule id="xccdf_mil.disa.stig_rule_SV-203630r987796_rule" selected="true" severity="high">
@@ -5427,7 +5427,7 @@
                     </ns0:description>
           <ns0:ident system="http://cyber.mil/cci">CCI-000197</ns0:ident>
           <ns0:check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
-            <ns0:check-content-ref href="UserPasswordConfiguredTest.xml"/>
+            <ns0:check-content-ref href="UserPasswordConfiguredTest.xml" name="oval:org.example:def:3"/>
           </ns0:check>
         </ns0:Rule>
         <ns0:Rule id="xccdf_mil.disa.stig_rule_SV-203733r958828_rule" selected="true" severity="medium">
@@ -5443,7 +5443,7 @@
                     </ns0:description>
           <ns0:ident system="http://cyber.mil/cci">CCI-002007</ns0:ident>
           <ns0:check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
-            <ns0:check-content-ref href="UserPasswordConfiguredTest.xml"/>
+            <ns0:check-content-ref href="UserPasswordConfiguredTest.xml" name="oval:org.example:def:3"/>
           </ns0:check>
         </ns0:Rule>
         <ns0:Rule id="xccdf_mil.disa.stig_rule_SV-203628r982198_rule" selected="true" severity="medium">
@@ -5468,7 +5468,7 @@
                     </ns0:description>
           <ns0:ident system="http://cyber.mil/cci">CCI-004066</ns0:ident>
           <ns0:check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
-            <ns0:check-content-ref href="UserPasswordConfiguredTest.xml"/>
+            <ns0:check-content-ref href="UserPasswordConfiguredTest.xml" name="oval:org.example:def:3"/>
           </ns0:check>
         </ns0:Rule>
         <ns0:Rule id="xccdf_mil.disa.stig_rule_SV-203625r982195_rule" selected="true" severity="medium">
@@ -5488,7 +5488,7 @@
                     </ns0:description>
           <ns0:ident system="http://cyber.mil/cci">CCI-004066</ns0:ident>
           <ns0:check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
-            <ns0:check-content-ref href="UserPasswordConfiguredTest.xml"/>
+            <ns0:check-content-ref href="UserPasswordConfiguredTest.xml" name="oval:org.example:def:3"/>
           </ns0:check>
         </ns0:Rule>
         <ns0:Rule id="xccdf_mil.disa.stig_rule_SV-203626r982196_rule" selected="true" severity="medium">
@@ -5508,7 +5508,7 @@
                     </ns0:description>
           <ns0:ident system="http://cyber.mil/cci">CCI-004066</ns0:ident>
           <ns0:check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
-            <ns0:check-content-ref href="UserPasswordConfiguredTest.xml"/>
+            <ns0:check-content-ref href="UserPasswordConfiguredTest.xml" name="oval:org.example:def:3"/>
           </ns0:check>
         </ns0:Rule>
         <ns0:Rule id="xccdf_mil.disa.stig_rule_SV-203627r982197_rule" selected="true" severity="medium">
@@ -5528,7 +5528,7 @@
                     </ns0:description>
           <ns0:ident system="http://cyber.mil/cci">CCI-004066</ns0:ident>
           <ns0:check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
-            <ns0:check-content-ref href="UserPasswordConfiguredTest.xml"/>
+            <ns0:check-content-ref href="UserPasswordConfiguredTest.xml" name="oval:org.example:def:3"/>
           </ns0:check>
         </ns0:Rule>
         <ns0:Rule id="xccdf_mil.disa.stig_rule_SV-203635r958470_rule" selected="true" severity="medium">
@@ -5550,7 +5550,7 @@
                     </ns0:description>
           <ns0:ident system="http://cyber.mil/cci">CCI-000206</ns0:ident>
           <ns0:check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
-            <ns0:check-content-ref href="UserPasswordConfiguredTest.xml"/>
+            <ns0:check-content-ref href="UserPasswordConfiguredTest.xml" name="oval:org.example:def:3"/>
           </ns0:check>
         </ns0:Rule>
         <ns0:Rule id="xccdf_mil.disa.stig_rule_SV-203634r982202_rule" selected="true" severity="medium">
@@ -5571,7 +5571,7 @@
                     </ns0:description>
           <ns0:ident system="http://cyber.mil/cci">CCI-004066</ns0:ident>
           <ns0:check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
-            <ns0:check-content-ref href="UserPasswordConfiguredTest.xml"/>
+            <ns0:check-content-ref href="UserPasswordConfiguredTest.xml" name="oval:org.example:def:3"/>
           </ns0:check>
         </ns0:Rule>
         <ns0:Rule id="xccdf_mil.disa.stig_rule_SV-203632r1038967_rule" selected="true" severity="medium">
@@ -5589,7 +5589,7 @@
                     </ns0:description>
           <ns0:ident system="http://cyber.mil/cci">CCI-004066</ns0:ident>
           <ns0:check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
-            <ns0:check-content-ref href="UserPasswordConfiguredTest.xml"/>
+            <ns0:check-content-ref href="UserPasswordConfiguredTest.xml" name="oval:org.example:def:3"/>
           </ns0:check>
         </ns0:Rule>
         <ns0:Rule id="xccdf_mil.disa.stig_rule_SV-203631r982188_rule" selected="true" severity="medium">
@@ -5608,7 +5608,7 @@
                     </ns0:description>
           <ns0:ident system="http://cyber.mil/cci">CCI-004066</ns0:ident>
           <ns0:check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
-            <ns0:check-content-ref href="UserPasswordConfiguredTest.xml"/>
+            <ns0:check-content-ref href="UserPasswordConfiguredTest.xml" name="oval:org.example:def:3"/>
           </ns0:check>
         </ns0:Rule>
         <ns0:Rule id="xccdf_mil.disa.stig_rule_SV-203676r991561_rule" selected="true" severity="medium">
@@ -5630,7 +5630,7 @@
                     </ns0:description>
           <ns0:ident system="http://cyber.mil/cci">CCI-004066</ns0:ident>
           <ns0:check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
-            <ns0:check-content-ref href="UserPasswordConfiguredTest.xml"/>
+            <ns0:check-content-ref href="UserPasswordConfiguredTest.xml" name="oval:org.example:def:3"/>
           </ns0:check>
         </ns0:Rule>
         <ns0:Rule id="xccdf_mil.disa.stig_rule_SV-203778r991587_rule" selected="true" severity="medium">
@@ -5647,7 +5647,7 @@
                     </ns0:description>
           <ns0:ident system="http://cyber.mil/cci">CCI-000366</ns0:ident>
           <ns0:check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
-            <ns0:check-content-ref href="UserPasswordConfiguredTest.xml"/>
+            <ns0:check-content-ref href="UserPasswordConfiguredTest.xml" name="oval:org.example:def:3"/>
           </ns0:check>
         </ns0:Rule>
       </ns0:Group>
@@ -5665,7 +5665,7 @@
                     </ns0:description>
           <ns0:ident system="http://cyber.mil/cci">CCI-003628</ns0:ident>
           <ns0:check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
-            <ns0:check-content-ref href="NoUsersCheck.xml"/>
+            <ns0:check-content-ref href="NoUsersCheck.xml" name="oval:org.NoUsers:def:1"/>
           </ns0:check>
         </ns0:Rule>
         <ns0:Rule id="xccdf_mil.disa.stig_rule_SV-203695r958726_rule" selected="true" severity="high">
@@ -5688,7 +5688,7 @@
                     </ns0:description>
           <ns0:ident system="http://cyber.mil/cci">CCI-002235</ns0:ident>
           <ns0:check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
-            <ns0:check-content-ref href="NoUsersCheck.xml"/>
+            <ns0:check-content-ref href="NoUsersCheck.xml" name="oval:org.NoUsers:def:1"/>
           </ns0:check>
         </ns0:Rule>
         <ns0:Rule id="xccdf_mil.disa.stig_rule_SV-203781r991590_rule" selected="true" severity="medium">
@@ -5705,7 +5705,7 @@
                     </ns0:description>
           <ns0:ident system="http://cyber.mil/cci">CCI-000366</ns0:ident>
           <ns0:check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
-            <ns0:check-content-ref href="NoUsersCheck.xml"/>
+            <ns0:check-content-ref href="NoUsersCheck.xml" name="oval:org.NoUsers:def:1"/>
           </ns0:check>
         </ns0:Rule>
         <ns0:Rule id="xccdf_mil.disa.stig_rule_SV-203650r958504_rule" selected="true" severity="medium">
@@ -5730,7 +5730,7 @@
                     </ns0:description>
           <ns0:ident system="http://cyber.mil/cci">CCI-000804</ns0:ident>
           <ns0:check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
-            <ns0:check-content-ref href="NoUsersCheck.xml"/>
+            <ns0:check-content-ref href="NoUsersCheck.xml" name="oval:org.NoUsers:def:1"/>
           </ns0:check>
         </ns0:Rule>
         <ns0:Rule id="xccdf_mil.disa.stig_rule_SV-203652r958508_rule" selected="true" severity="medium">
@@ -5761,7 +5761,7 @@
                     </ns0:description>
           <ns0:ident system="http://cyber.mil/cci">CCI-001682</ns0:ident>
           <ns0:check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
-            <ns0:check-content-ref href="NoUsersCheck.xml"/>
+            <ns0:check-content-ref href="NoUsersCheck.xml" name="oval:org.NoUsers:def:1"/>
           </ns0:check>
         </ns0:Rule>
         <ns0:Rule id="xccdf_mil.disa.stig_rule_SV-203655r958514_rule" selected="true" severity="medium">
@@ -5792,7 +5792,7 @@
                     </ns0:description>
           <ns0:ident system="http://cyber.mil/cci">CCI-001082</ns0:ident>
           <ns0:check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
-            <ns0:check-content-ref href="NoUsersCheck.xml"/>
+            <ns0:check-content-ref href="NoUsersCheck.xml" name="oval:org.NoUsers:def:1"/>
           </ns0:check>
         </ns0:Rule>
         <ns0:Rule id="xccdf_mil.disa.stig_rule_SV-203725r1050791_rule" selected="true" severity="medium">
@@ -5809,7 +5809,7 @@
                     </ns0:description>
           <ns0:ident system="http://cyber.mil/cci">CCI-002038</ns0:ident>
           <ns0:check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
-            <ns0:check-content-ref href="NoUsersCheck.xml"/>
+            <ns0:check-content-ref href="NoUsersCheck.xml" name="oval:org.NoUsers:def:1"/>
           </ns0:check>
         </ns0:Rule>
         <ns0:Rule id="xccdf_mil.disa.stig_rule_SV-203724r1050790_rule" selected="true" severity="medium">
@@ -5826,7 +5826,7 @@
                     </ns0:description>
           <ns0:ident system="http://cyber.mil/cci">CCI-002038</ns0:ident>
           <ns0:check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
-            <ns0:check-content-ref href="NoUsersCheck.xml"/>
+            <ns0:check-content-ref href="NoUsersCheck.xml" name="oval:org.NoUsers:def:1"/>
           </ns0:check>
         </ns0:Rule>
         <ns0:Rule id="xccdf_mil.disa.stig_rule_SV-203680r991565_rule" selected="true" severity="medium">
@@ -5850,7 +5850,7 @@
                     </ns0:description>
           <ns0:ident system="http://cyber.mil/cci">CCI-000015</ns0:ident>
           <ns0:check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
-            <ns0:check-content-ref href="NoUsersCheck.xml"/>
+            <ns0:check-content-ref href="NoUsersCheck.xml" name="oval:org.NoUsers:def:1"/>
           </ns0:check>
         </ns0:Rule>
         <ns0:Rule id="xccdf_mil.disa.stig_rule_SV-203681r991566_rule" selected="true" severity="medium">
@@ -5874,7 +5874,7 @@
                     </ns0:description>
           <ns0:ident system="http://cyber.mil/cci">CCI-000015</ns0:ident>
           <ns0:check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
-            <ns0:check-content-ref href="NoUsersCheck.xml"/>
+            <ns0:check-content-ref href="NoUsersCheck.xml" name="oval:org.NoUsers:def:1"/>
           </ns0:check>
         </ns0:Rule>
         <ns0:Rule id="xccdf_mil.disa.stig_rule_SV-203639r958482_rule" selected="true" severity="medium">
@@ -5902,7 +5902,7 @@
                     </ns0:description>
           <ns0:ident system="http://cyber.mil/cci">CCI-000764</ns0:ident>
           <ns0:check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
-            <ns0:check-content-ref href="NoUsersCheck.xml"/>
+            <ns0:check-content-ref href="NoUsersCheck.xml" name="oval:org.NoUsers:def:1"/>
           </ns0:check>
         </ns0:Rule>
         <ns0:Rule id="xccdf_mil.disa.stig_rule_SV-203696r958730_rule" selected="true" severity="medium">
@@ -5922,7 +5922,7 @@
                     </ns0:description>
           <ns0:ident system="http://cyber.mil/cci">CCI-002233</ns0:ident>
           <ns0:check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
-            <ns0:check-content-ref href="NoUsersCheck.xml"/>
+            <ns0:check-content-ref href="NoUsersCheck.xml" name="oval:org.NoUsers:def:1"/>
           </ns0:check>
         </ns0:Rule>
         <ns0:Rule id="xccdf_mil.disa.stig_rule_SV-203692r958702_rule" selected="true" severity="medium">
@@ -5959,7 +5959,7 @@
                     </ns0:description>
           <ns0:ident system="http://cyber.mil/cci">CCI-002165</ns0:ident>
           <ns0:check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
-            <ns0:check-content-ref href="NoUsersCheck.xml"/>
+            <ns0:check-content-ref href="NoUsersCheck.xml" name="oval:org.NoUsers:def:1"/>
           </ns0:check>
         </ns0:Rule>
         <ns0:Rule id="xccdf_mil.disa.stig_rule_SV-203592r958364_rule" selected="true" severity="medium">
@@ -5984,7 +5984,7 @@
                     </ns0:description>
           <ns0:ident system="http://cyber.mil/cci">CCI-000016</ns0:ident>
           <ns0:check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
-            <ns0:check-content-ref href="NoUsersCheck.xml"/>
+            <ns0:check-content-ref href="NoUsersCheck.xml" name="oval:org.NoUsers:def:1"/>
           </ns0:check>
         </ns0:Rule>
         <ns0:Rule id="xccdf_mil.disa.stig_rule_SV-203591r958362_rule" selected="true" severity="medium">
@@ -6021,7 +6021,7 @@
                     </ns0:description>
           <ns0:ident system="http://cyber.mil/cci">CCI-000015</ns0:ident>
           <ns0:check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
-            <ns0:check-content-ref href="NoUsersCheck.xml"/>
+            <ns0:check-content-ref href="NoUsersCheck.xml" name="oval:org.NoUsers:def:1"/>
           </ns0:check>
         </ns0:Rule>
         <ns0:Rule id="xccdf_mil.disa.stig_rule_SV-203783r991592_rule" selected="true" severity="medium">
@@ -6038,7 +6038,7 @@
                     </ns0:description>
           <ns0:ident system="http://cyber.mil/cci">CCI-000366</ns0:ident>
           <ns0:check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
-            <ns0:check-content-ref href="NoUsersCheck.xml"/>
+            <ns0:check-content-ref href="NoUsersCheck.xml" name="oval:org.NoUsers:def:1"/>
           </ns0:check>
         </ns0:Rule>
         <ns0:Rule id="xccdf_mil.disa.stig_rule_SV-203610r958422_rule" selected="true" severity="medium">
@@ -6056,7 +6056,7 @@
                     </ns0:description>
           <ns0:ident system="http://cyber.mil/cci">CCI-000135</ns0:ident>
           <ns0:check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
-            <ns0:check-content-ref href="NoUsersCheck.xml"/>
+            <ns0:check-content-ref href="NoUsersCheck.xml" name="oval:org.NoUsers:def:1"/>
           </ns0:check>
         </ns0:Rule>
         <ns0:Rule id="xccdf_mil.disa.stig_rule_SV-203648r982189_rule" selected="true" severity="medium">
@@ -6075,7 +6075,7 @@
                     </ns0:description>
           <ns0:ident system="http://cyber.mil/cci">CCI-003627</ns0:ident>
           <ns0:check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
-            <ns0:check-content-ref href="NoUsersCheck.xml"/>
+            <ns0:check-content-ref href="NoUsersCheck.xml" name="oval:org.NoUsers:def:1"/>
           </ns0:check>
         </ns0:Rule>
       </ns0:Group>
@@ -6137,7 +6137,7 @@
                     </ns0:description>
           <ns0:ident system="http://cyber.mil/cci">CCI-001314</ns0:ident>
           <ns0:check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
-            <ns0:check-content-ref href="VarLogPermissionsTest.xml"/>
+            <ns0:check-content-ref href="VarLogPermissionsTest.xml" name="oval:org.varlog:def:2"/>
           </ns0:check>
         </ns0:Rule>
         <ns0:Rule id="xccdf_mil.disa.stig_rule_SV-203617r958436_rule" selected="true" severity="medium">
@@ -6156,7 +6156,7 @@
                     </ns0:description>
           <ns0:ident system="http://cyber.mil/cci">CCI-000163</ns0:ident>
           <ns0:check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
-            <ns0:check-content-ref href="VarLogPermissionsTest.xml"/>
+            <ns0:check-content-ref href="VarLogPermissionsTest.xml" name="oval:org.varlog:def:2"/>
           </ns0:check>
         </ns0:Rule>
         <ns0:Rule id="xccdf_mil.disa.stig_rule_SV-203616r958434_rule" selected="true" severity="medium">
@@ -6171,7 +6171,7 @@
                         activity.</ns0:description>
           <ns0:ident system="http://cyber.mil/cci">CCI-000162</ns0:ident>
           <ns0:check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
-            <ns0:check-content-ref href="VarLogPermissionsTest.xml"/>
+            <ns0:check-content-ref href="VarLogPermissionsTest.xml" name="oval:org.varlog:def:2"/>
           </ns0:check>
         </ns0:Rule>
       </ns0:Group>
@@ -6196,7 +6196,7 @@
                     </ns0:description>
           <ns0:ident system="http://cyber.mil/cci">CCI-001499</ns0:ident>
           <ns0:check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
-            <ns0:check-content-ref href="LibraryPermissionsTest.xml"/>
+            <ns0:check-content-ref href="LibraryPermissionsTest.xml" name="oval:org.LibraryPermissions:def:2"/>
           </ns0:check>
         </ns0:Rule>
         <ns0:Rule id="xccdf_mil.disa.stig_rule_SV-203716r982210_rule" selected="true" severity="medium">
@@ -6224,7 +6224,7 @@
                     </ns0:description>
           <ns0:ident system="http://cyber.mil/cci">CCI-003980</ns0:ident>
           <ns0:check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
-            <ns0:check-content-ref href="LibraryPermissionsTest.xml"/>
+            <ns0:check-content-ref href="LibraryPermissionsTest.xml" name="oval:org.LibraryPermissions:def:2"/>
           </ns0:check>
         </ns0:Rule>
       </ns0:Group>
