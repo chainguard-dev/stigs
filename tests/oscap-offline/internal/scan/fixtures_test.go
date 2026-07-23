@@ -279,18 +279,35 @@ func (h harness) scanFixture(t *testing.T, ops []overlay.Op, containerVars []str
 // Synthetic mutation content. Each blob is the minimal change that flips one
 // OVAL definition's verdict; the comment cites the pattern/state it satisfies.
 
-// apkOpenSSHStanza is an apk installed-db record whose P: line matches the
-// RemoteAccessServices pattern (openssh-server is in the banned package list),
-// so the none_exist test fails.
+// apkOpenSSHStanza is an apk installed-db record for openssh-server. OpenSSH is
+// no longer a banned remote-access package (it ships the FIPS-hardened SSH
+// policy drop-ins that DetectOpenSsl now verifies), so this record must NOT
+// match the RemoteAccessServices pattern and its presence must keep the rule
+// PASSING — the remote_access/pass_openssh_now_allowed fixture asserts the ban
+// was lifted.
 var apkOpenSSHStanza = []byte("\nP:openssh-server\nV:9.9_p2-r0\nA:x86_64\n")
 
-// apkOpenSSHKeygenStanza records openssh-keygen, whose "-keygen" word suffix the
-// RemoteAccessServices pattern `^P:(...openssh...)(-\d[\d.]*(-[a-z][a-z0-9-]*)?)?$`
+// apkOpenSSHClientStanza / apkOpenSSHServerStanza are apk installed-db records
+// for the openssh client and server packages. DetectOpenSsl gates its SSH
+// criteria on these: the client checks apply only when openssh-client is
+// recorded and the server checks only when openssh-server is recorded.
+var (
+	apkOpenSSHClientStanza = []byte("\nP:openssh-client\nV:9.9_p2-r0\nA:x86_64\n")
+	apkOpenSSHServerStanza = []byte("\nP:openssh-server\nV:9.9_p2-r0\nA:x86_64\n")
+)
+
+// apkDropbearStanza is an apk installed-db record whose P: line matches the
+// RemoteAccessServices pattern (dropbear remains a banned remote-access
+// package), so the none_exist test fails.
+var apkDropbearStanza = []byte("\nP:dropbear\nV:2022.83-r3\nA:x86_64\n")
+
+// apkDropbearConvertStanza records dropbear-convert, whose "-convert" word suffix
+// the RemoteAccessServices pattern `^P:(dropbear|...)(-\d[\d.]*(-[a-z][a-z0-9-]*)?)?$`
 // must NOT match: the optional version suffix requires a leading digit, so a
 // word-suffixed sibling of a banned package falls through and the rule PASSES.
 // Guards the boundary against a regex regression that drops the `$` anchor or the
 // digit class and starts flagging legitimate packages.
-var apkOpenSSHKeygenStanza = []byte("\nP:openssh-keygen\nV:9.9_p2-r0\nA:x86_64\n")
+var apkDropbearConvertStanza = []byte("\nP:dropbear-convert\nV:2022.83-r3\nA:x86_64\n")
 
 // plainHTTPRepo is a non-https, non-comment repository line, which the
 // PackageSignature none_exist pattern `^(?!\s*#)(?!.*https://).+$` matches.
@@ -343,6 +360,76 @@ var (
 // regex that accepts word-suffixed subpackages would be caught.
 var apkFIPSPackagesDocSubpkg = []byte("\nP:openssl-config-fipshardened-doc\nV:3.5.1-r0\nA:x86_64\n\nP:openssl-provider-fips-doc\nV:3.5.1-r0\nA:x86_64\n")
 
+// sshFipsClientConf and sshFipsServerConf are the OpenSSH client and server FIPS
+// policy drop-ins shipped by openssl-config-fipshardened. DetectOpenSsl's twelve
+// ssh criteria require both files to exist and to pin exactly these
+// FIPS-approved algorithm lists (the client file's directives are indented under
+// a "Host *" stanza, which the `^\s*<keyword>` patterns tolerate).
+var (
+	sshFipsClientConf = []byte("Host *\n" +
+		"    Ciphers aes128-gcm@openssh.com,aes256-gcm@openssh.com,aes256-ctr,aes192-ctr,aes128-ctr\n" +
+		"    KexAlgorithms ecdh-sha2-nistp256,ecdh-sha2-nistp384\n" +
+		"    MACs hmac-sha2-256-etm@openssh.com,hmac-sha2-512-etm@openssh.com,hmac-sha2-256,hmac-sha2-512\n" +
+		"    RequiredRSASize 2048\n")
+	sshFipsServerConf = []byte(
+		"Ciphers aes128-gcm@openssh.com,aes256-gcm@openssh.com,aes256-ctr,aes192-ctr,aes128-ctr\n" +
+			"KexAlgorithms ecdh-sha2-nistp256,ecdh-sha2-nistp384\n" +
+			"MACs hmac-sha2-256-etm@openssh.com,hmac-sha2-512-etm@openssh.com,hmac-sha2-256,hmac-sha2-512\n" +
+			"RequiredRSASize 2048\n" +
+			"HostKeyAlgorithms ecdsa-sha2-nistp256-cert-v01@openssh.com,ecdsa-sha2-nistp384-cert-v01@openssh.com,sk-ecdsa-sha2-nistp256-cert-v01@openssh.com,rsa-sha2-512-cert-v01@openssh.com,rsa-sha2-256-cert-v01@openssh.com,ecdsa-sha2-nistp256,ecdsa-sha2-nistp384,sk-ecdsa-sha2-nistp256@openssh.com,rsa-sha2-512,rsa-sha2-256\n" +
+			"CASignatureAlgorithms ecdsa-sha2-nistp256,ecdsa-sha2-nistp384,sk-ecdsa-sha2-nistp256@openssh.com,rsa-sha2-512,rsa-sha2-256\n" +
+			"HostBasedAcceptedAlgorithms ecdsa-sha2-nistp256-cert-v01@openssh.com,ecdsa-sha2-nistp384-cert-v01@openssh.com,sk-ecdsa-sha2-nistp256-cert-v01@openssh.com,rsa-sha2-512-cert-v01@openssh.com,rsa-sha2-256-cert-v01@openssh.com,ecdsa-sha2-nistp256,ecdsa-sha2-nistp384,sk-ecdsa-sha2-nistp256@openssh.com,rsa-sha2-512,rsa-sha2-256\n" +
+			"PubkeyAcceptedAlgorithms ecdsa-sha2-nistp256-cert-v01@openssh.com,ecdsa-sha2-nistp384-cert-v01@openssh.com,sk-ecdsa-sha2-nistp256-cert-v01@openssh.com,rsa-sha2-512-cert-v01@openssh.com,rsa-sha2-256-cert-v01@openssh.com,ecdsa-sha2-nistp256,ecdsa-sha2-nistp384,sk-ecdsa-sha2-nistp256@openssh.com,rsa-sha2-512,rsa-sha2-256\n")
+)
+
+// sshFipsServerConfWrongCipher is sshFipsServerConf with only the Ciphers line
+// downgraded to a non-FIPS cipher (aes256-cbc). Every other directive stays
+// valid, so the sole failing criterion is the sshd Ciphers content match —
+// isolating the content-match dimension of the ssh checks from the
+// file-existence dimension.
+var sshFipsServerConfWrongCipher = bytes.Replace(sshFipsServerConf,
+	[]byte("Ciphers aes128-gcm@openssh.com,aes256-gcm@openssh.com,aes256-ctr,aes192-ctr,aes128-ctr\n"),
+	[]byte("Ciphers aes256-cbc\n"), 1)
+
+// sshConfigMain and sshdConfigMain are the OpenSSH client/server top-level
+// configs (shipped by openssh-client / openssh-server). DetectOpenSsl requires
+// each to source its drop-in directory via an Include line so the FIPS policy
+// files above are actually applied — a drop-in that is never Include'd is inert.
+var (
+	sshConfigMain  = []byte("Include /etc/ssh/ssh_config.d/*.conf\n")
+	sshdConfigMain = []byte("Include /etc/ssh/sshd_config.d/*.conf\n")
+)
+
+// fipsCoreOps returns the ops that satisfy the OpenSSL (non-SSH) DetectOpenSsl
+// criteria — FIPS module config, hardened openssl.cnf, both FIPS apk packages —
+// plus apk records for openssh-client and openssh-server so DetectOpenSsl's
+// package-gated SSH branches both engage. It deliberately lays down NO ssh
+// config files, so callers exercise the SSH dimensions by adding (or omitting)
+// them. Returned fresh each call so callers may append without aliasing.
+func fipsCoreOps() []overlay.Op {
+	return []overlay.Op{
+		overlay.AddFile("etc/ssl/fipsmodule.cnf", fipsModuleCnf, 0o644, 0, 0),
+		overlay.AddFile("etc/ssl/openssl.cnf", opensslCnf, 0o644, 0, 0),
+		overlay.AppendFile("usr/lib/apk/db/installed", apkFIPSPackages),
+		overlay.AppendFile("usr/lib/apk/db/installed", apkOpenSSHClientStanza),
+		overlay.AppendFile("usr/lib/apk/db/installed", apkOpenSSHServerStanza),
+	}
+}
+
+// fipsPresentOps returns the ops that satisfy every DetectOpenSsl criterion:
+// fipsCoreOps (OpenSSL config/packages + both openssh packages installed) plus
+// the OpenSSH client and server FIPS policy drop-ins and the top-level
+// ssh_config/sshd_config that Include those drop-in directories. Returned fresh
+// each call so callers may append without aliasing.
+func fipsPresentOps() []overlay.Op {
+	return append(fipsCoreOps(),
+		overlay.AddFile("etc/ssh/ssh_config", sshConfigMain, 0o644, 0, 0),
+		overlay.AddFile("etc/ssh/sshd_config", sshdConfigMain, 0o644, 0, 0),
+		overlay.AddFile("etc/ssh/ssh_config.d/10-ssh-fips.conf", sshFipsClientConf, 0o644, 0, 0),
+		overlay.AddFile("etc/ssh/sshd_config.d/10-sshd-fips.conf", sshFipsServerConf, 0o644, 0, 0),
+	)
+}
+
 // nonRootUID/nonRootGID is the unprivileged "nobody" identity used to make the
 // file-ownership checks fail; the in-container extractor preserves these via a
 // confined chown so the OVAL uid/gid state no longer matches root:root.
@@ -378,15 +465,23 @@ func matrixCases() []matrixCase {
 			want: map[string]results.Result{ruleRemoteAccessServices: results.Pass},
 		},
 		{
-			name: "remote_access/fail_openssh_installed",
-			ops:  []overlay.Op{overlay.AppendFile("usr/lib/apk/db/installed", apkOpenSSHStanza)},
+			name: "remote_access/fail_dropbear_installed",
+			ops:  []overlay.Op{overlay.AppendFile("usr/lib/apk/db/installed", apkDropbearStanza)},
 			want: map[string]results.Result{ruleRemoteAccessServices: results.Fail},
 		},
 		{
-			// openssh-keygen shares a banned prefix but its "-keygen" word suffix
+			// OpenSSH was dropped from the banned list; installing openssh-server
+			// must no longer trip the rule. Guards against a regression that
+			// re-adds an openssh alternative to the pattern.
+			name: "remote_access/pass_openssh_now_allowed",
+			ops:  []overlay.Op{overlay.AppendFile("usr/lib/apk/db/installed", apkOpenSSHStanza)},
+			want: map[string]results.Result{ruleRemoteAccessServices: results.Pass},
+		},
+		{
+			// dropbear-convert shares a banned prefix but its "-convert" word suffix
 			// must not match the anchored version-suffix pattern, so the rule passes.
 			name: "remote_access/pass_word_suffix_not_banned",
-			ops:  []overlay.Op{overlay.AppendFile("usr/lib/apk/db/installed", apkOpenSSHKeygenStanza)},
+			ops:  []overlay.Op{overlay.AppendFile("usr/lib/apk/db/installed", apkDropbearConvertStanza)},
 			want: map[string]results.Result{ruleRemoteAccessServices: results.Pass},
 		},
 
@@ -491,17 +586,108 @@ func matrixCases() []matrixCase {
 		},
 
 		// DetectOpenSsl is inverted: a vanilla wolfi-base lacks the OpenSSL FIPS
-		// module config and packages this rule requires, so the CLEAN tree FAILS.
-		// The "pass" fixture synthesizes every required file and package record.
+		// module config, packages, and OpenSSH FIPS drop-ins this rule requires, so
+		// the CLEAN tree FAILS. The "pass" fixtures synthesize every required file
+		// and package record via fipsPresentOps.
 		{
 			name: "detect_openssl/fail_clean_no_fips",
 			want: map[string]results.Result{ruleDetectOpenSsl: results.Fail},
 		},
 		{
-			// All FIPS files/packages present and OPENSSL_CONF unset: the
-			// OPENSSL_CONF criterion (any_exist + check=all) is vacuously satisfied
-			// when the variable is absent, so the rule passes.
+			// All FIPS files/packages and SSH drop-ins present and OPENSSL_CONF
+			// unset: the OPENSSL_CONF criterion (any_exist + check=all) is vacuously
+			// satisfied when the variable is absent, so the rule passes.
 			name: "detect_openssl/pass_fips_present",
+			ops:  fipsPresentOps(),
+			want: map[string]results.Result{ruleDetectOpenSsl: results.Pass},
+		},
+		{
+			// FIPS present and OPENSSL_CONF explicitly set to the sanctioned path:
+			// the OPENSSL_CONF criterion is satisfied, so the rule passes.
+			name:          "detect_openssl/pass_openssl_conf_correct",
+			ops:           fipsPresentOps(),
+			containerVars: []string{"OPENSSL_CONF=/etc/ssl/openssl.cnf"},
+			want:          map[string]results.Result{ruleDetectOpenSsl: results.Pass},
+		},
+		{
+			// FIPS otherwise valid but OPENSSL_CONF points elsewhere: the
+			// OPENSSL_CONF criterion fails, so the AND'd rule fails.
+			name:          "detect_openssl/fail_openssl_conf_wrong",
+			ops:           fipsPresentOps(),
+			containerVars: []string{"OPENSSL_CONF=/wrong/openssl.cnf"},
+			want:          map[string]results.Result{ruleDetectOpenSsl: results.Fail},
+		},
+		{
+			// The *doc* subpackages are installed instead of the real FIPS packages:
+			// the package patterns reject word suffixes, so tst:3/tst:4 fail. No
+			// openssh packages are installed, so the SSH branches are gated off and
+			// irrelevant — the rule fails purely on the OpenSSL package dimension.
+			name: "detect_openssl/fail_doc_subpackage_only",
+			ops: []overlay.Op{
+				overlay.AddFile("etc/ssl/fipsmodule.cnf", fipsModuleCnf, 0o644, 0, 0),
+				overlay.AddFile("etc/ssl/openssl.cnf", opensslCnf, 0o644, 0, 0),
+				overlay.AppendFile("usr/lib/apk/db/installed", apkFIPSPackagesDocSubpkg),
+			},
+			want: map[string]results.Result{ruleDetectOpenSsl: results.Fail},
+		},
+		{
+			// Both openssh packages installed and the main configs Include their
+			// drop-in dirs, but the SSH FIPS drop-ins are absent: both gated branches
+			// engage and their drop-in content criteria collect nothing, so the rule
+			// fails. Isolates the SSH drop-in file-existence dimension.
+			name: "detect_openssl/fail_missing_ssh_fips_conf",
+			ops: append(fipsCoreOps(),
+				overlay.AddFile("etc/ssh/ssh_config", sshConfigMain, 0o644, 0, 0),
+				overlay.AddFile("etc/ssh/sshd_config", sshdConfigMain, 0o644, 0, 0),
+			),
+			want: map[string]results.Result{ruleDetectOpenSsl: results.Fail},
+		},
+		{
+			// Both openssh packages installed, client drop-in valid, but the sshd
+			// Ciphers line is downgraded to a non-FIPS cipher: the server branch's
+			// Ciphers content criterion fails. Isolates the SSH content-match
+			// dimension (and proves the server branch is enforced when installed).
+			name: "detect_openssl/fail_wrong_ssh_fips_value",
+			ops: append(fipsCoreOps(),
+				overlay.AddFile("etc/ssh/ssh_config", sshConfigMain, 0o644, 0, 0),
+				overlay.AddFile("etc/ssh/sshd_config", sshdConfigMain, 0o644, 0, 0),
+				overlay.AddFile("etc/ssh/ssh_config.d/10-ssh-fips.conf", sshFipsClientConf, 0o644, 0, 0),
+				overlay.AddFile("etc/ssh/sshd_config.d/10-sshd-fips.conf", sshFipsServerConfWrongCipher, 0o644, 0, 0),
+			),
+			want: map[string]results.Result{ruleDetectOpenSsl: results.Fail},
+		},
+		{
+			// Both openssh packages installed and drop-ins present, but the top-level
+			// ssh_config/sshd_config are absent so nothing Include's the drop-in dirs:
+			// the two Include criteria collect nothing and fail. Isolates the
+			// drop-in-wiring dimension — a drop-in that is never sourced is inert.
+			name: "detect_openssl/fail_ssh_config_missing_include",
+			ops: append(fipsCoreOps(),
+				overlay.AddFile("etc/ssh/ssh_config.d/10-ssh-fips.conf", sshFipsClientConf, 0o644, 0, 0),
+				overlay.AddFile("etc/ssh/sshd_config.d/10-sshd-fips.conf", sshFipsServerConf, 0o644, 0, 0),
+			),
+			want: map[string]results.Result{ruleDetectOpenSsl: results.Fail},
+		},
+		{
+			// Client-only image (openssh-client installed, openssh-server NOT): the
+			// server branch is gated off, and the correct client config + drop-in
+			// satisfy the client branch, so the rule PASSES even with no sshd_config
+			// and no server drop-in. This mirrors the cgr.dev go-fips image.
+			name: "detect_openssl/pass_client_only_no_server",
+			ops: []overlay.Op{
+				overlay.AddFile("etc/ssl/fipsmodule.cnf", fipsModuleCnf, 0o644, 0, 0),
+				overlay.AddFile("etc/ssl/openssl.cnf", opensslCnf, 0o644, 0, 0),
+				overlay.AppendFile("usr/lib/apk/db/installed", apkFIPSPackages),
+				overlay.AppendFile("usr/lib/apk/db/installed", apkOpenSSHClientStanza),
+				overlay.AddFile("etc/ssh/ssh_config", sshConfigMain, 0o644, 0, 0),
+				overlay.AddFile("etc/ssh/ssh_config.d/10-ssh-fips.conf", sshFipsClientConf, 0o644, 0, 0),
+			},
+			want: map[string]results.Result{ruleDetectOpenSsl: results.Pass},
+		},
+		{
+			// Neither openssh package installed: both SSH branches are gated off, so
+			// the rule PASSES on the OpenSSL criteria alone with no ssh files present.
+			name: "detect_openssl/pass_no_openssh_installed",
 			ops: []overlay.Op{
 				overlay.AddFile("etc/ssl/fipsmodule.cnf", fipsModuleCnf, 0o644, 0, 0),
 				overlay.AddFile("etc/ssl/openssl.cnf", opensslCnf, 0o644, 0, 0),
@@ -510,37 +696,16 @@ func matrixCases() []matrixCase {
 			want: map[string]results.Result{ruleDetectOpenSsl: results.Pass},
 		},
 		{
-			// FIPS present and OPENSSL_CONF explicitly set to the sanctioned path:
-			// the OPENSSL_CONF criterion is satisfied, so the rule passes.
-			name: "detect_openssl/pass_openssl_conf_correct",
+			// Server-only image (openssh-server installed, openssh-client NOT) with no
+			// sshd_config or server drop-in: the client branch is gated off, but the
+			// engaged server branch fails on the absent config/drop-in, so the rule
+			// FAILS — proving the server gate enforces when openssh-server is present.
+			name: "detect_openssl/fail_server_installed_missing_config",
 			ops: []overlay.Op{
 				overlay.AddFile("etc/ssl/fipsmodule.cnf", fipsModuleCnf, 0o644, 0, 0),
 				overlay.AddFile("etc/ssl/openssl.cnf", opensslCnf, 0o644, 0, 0),
 				overlay.AppendFile("usr/lib/apk/db/installed", apkFIPSPackages),
-			},
-			containerVars: []string{"OPENSSL_CONF=/etc/ssl/openssl.cnf"},
-			want:          map[string]results.Result{ruleDetectOpenSsl: results.Pass},
-		},
-		{
-			// FIPS otherwise valid but OPENSSL_CONF points elsewhere: the
-			// OPENSSL_CONF criterion fails, so the AND'd rule fails.
-			name: "detect_openssl/fail_openssl_conf_wrong",
-			ops: []overlay.Op{
-				overlay.AddFile("etc/ssl/fipsmodule.cnf", fipsModuleCnf, 0o644, 0, 0),
-				overlay.AddFile("etc/ssl/openssl.cnf", opensslCnf, 0o644, 0, 0),
-				overlay.AppendFile("usr/lib/apk/db/installed", apkFIPSPackages),
-			},
-			containerVars: []string{"OPENSSL_CONF=/wrong/openssl.cnf"},
-			want:          map[string]results.Result{ruleDetectOpenSsl: results.Fail},
-		},
-		{
-			// Config files present but only the *doc* subpackages installed: the
-			// package patterns reject word suffixes, so the rule stays FAIL.
-			name: "detect_openssl/fail_doc_subpackage_only",
-			ops: []overlay.Op{
-				overlay.AddFile("etc/ssl/fipsmodule.cnf", fipsModuleCnf, 0o644, 0, 0),
-				overlay.AddFile("etc/ssl/openssl.cnf", opensslCnf, 0o644, 0, 0),
-				overlay.AppendFile("usr/lib/apk/db/installed", apkFIPSPackagesDocSubpkg),
+				overlay.AppendFile("usr/lib/apk/db/installed", apkOpenSSHServerStanza),
 			},
 			want: map[string]results.Result{ruleDetectOpenSsl: results.Fail},
 		},

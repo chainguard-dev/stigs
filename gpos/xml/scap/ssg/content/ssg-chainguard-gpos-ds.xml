@@ -3885,7 +3885,7 @@
                             Script Verification:
                             To manually verify, ensure that fipsmodule.cnf and openssl.cnf exist in
                         the /etc/ssl folder. Also verify that openssl-config-fipshardened and
-                        openssl-provider-fips exist in the file /usr/lib/apk/db/installed.
+                        openssl-provider-fips exist in the file /usr/lib/apk/db/installed. Also verify that /etc/ssh/ssh_config.d/10-ssh-fips.conf and /etc/ssh/sshd_config.d/10-sshd-fips.conf exist and pin the FIPS-approved SSH ciphers, key-exchange, MAC, and signature algorithms. Also verify that /etc/ssh/ssh_config and /etc/ssh/sshd_config Include their respective *_config.d/*.conf drop-in directories. These SSH checks apply only for the openssh-client/openssh-server packages that are actually installed.
                         </html:pre>
                     </ns0:description>
           <ns0:ident system="http://cyber.mil/cci">CCI-002450</ns0:ident>
@@ -3908,7 +3908,7 @@
                             Script Verification:
                             To manually verify, ensure that fipsmodule.cnf and openssl.cnf exist in
                         the /etc/ssl folder. Also verify that openssl-config-fipshardened and
-                        openssl-provider-fips exist in the file /usr/lib/apk/db/installed.
+                        openssl-provider-fips exist in the file /usr/lib/apk/db/installed. Also verify that /etc/ssh/ssh_config.d/10-ssh-fips.conf and /etc/ssh/sshd_config.d/10-sshd-fips.conf exist and pin the FIPS-approved SSH ciphers, key-exchange, MAC, and signature algorithms. Also verify that /etc/ssh/ssh_config and /etc/ssh/sshd_config Include their respective *_config.d/*.conf drop-in directories. These SSH checks apply only for the openssh-client/openssh-server packages that are actually installed.
                         </html:pre>
                     </ns0:description>
           <ns0:ident system="http://cyber.mil/cci">CCI-002450</ns0:ident>
@@ -3935,7 +3935,7 @@
                             Script Verification:
                             To manually verify, ensure that fipsmodule.cnf and openssl.cnf exist in
                         the /etc/ssl folder. Also verify that openssl-config-fipshardened and
-                        openssl-provider-fips exist in the file /usr/lib/apk/db/installed.
+                        openssl-provider-fips exist in the file /usr/lib/apk/db/installed. Also verify that /etc/ssh/ssh_config.d/10-ssh-fips.conf and /etc/ssh/sshd_config.d/10-sshd-fips.conf exist and pin the FIPS-approved SSH ciphers, key-exchange, MAC, and signature algorithms. Also verify that /etc/ssh/ssh_config and /etc/ssh/sshd_config Include their respective *_config.d/*.conf drop-in directories. These SSH checks apply only for the openssh-client/openssh-server packages that are actually installed.
                         </html:pre>
                     </ns0:description>
           <ns0:ident system="http://cyber.mil/cci">CCI-002420</ns0:ident>
@@ -3962,7 +3962,7 @@
                             Script Verification:
                             To manually verify, ensure that fipsmodule.cnf and openssl.cnf exist in
                         the /etc/ssl folder. Also verify that openssl-config-fipshardened and
-                        openssl-provider-fips exist in the file /usr/lib/apk/db/installed.
+                        openssl-provider-fips exist in the file /usr/lib/apk/db/installed. Also verify that /etc/ssh/ssh_config.d/10-ssh-fips.conf and /etc/ssh/sshd_config.d/10-sshd-fips.conf exist and pin the FIPS-approved SSH ciphers, key-exchange, MAC, and signature algorithms. Also verify that /etc/ssh/ssh_config and /etc/ssh/sshd_config Include their respective *_config.d/*.conf drop-in directories. These SSH checks apply only for the openssh-client/openssh-server packages that are actually installed.
                         </html:pre>
                     </ns0:description>
           <ns0:ident system="http://cyber.mil/cci">CCI-002422</ns0:ident>
@@ -3987,7 +3987,7 @@
                             Script Verification:
                             To manually verify, ensure that fipsmodule.cnf and openssl.cnf exist in
                         the /etc/ssl folder. Also verify that openssl-config-fipshardened and
-                        openssl-provider-fips exist in the file /usr/lib/apk/db/installed.
+                        openssl-provider-fips exist in the file /usr/lib/apk/db/installed. Also verify that /etc/ssh/ssh_config.d/10-ssh-fips.conf and /etc/ssh/sshd_config.d/10-sshd-fips.conf exist and pin the FIPS-approved SSH ciphers, key-exchange, MAC, and signature algorithms. Also verify that /etc/ssh/ssh_config and /etc/ssh/sshd_config Include their respective *_config.d/*.conf drop-in directories. These SSH checks apply only for the openssh-client/openssh-server packages that are actually installed.
                         </html:pre>
                     </ns0:description>
           <ns0:ident system="http://cyber.mil/cci">CCI-000803</ns0:ident>
@@ -4017,7 +4017,7 @@
                             Script Verification:
                             To manually verify, Ensure none of the following remote access packages
                         exist in the folder /usr/lib/apk/db/ Packages:
-                            openssh, openssh-server, openssh-client, openssh-sftp-server, dropbear,
+                            dropbear,
                         tigervnc, tigervnc-server, tigervnc-viewer,
                             xrdp, xorgxrdp, vsftpd, proftpd, webmin, cockpit, cockpit-ws,
                         cockpit-bridge, nfs-utils, samba, samba-server, samba-client, samba-common,
@@ -4052,7 +4052,7 @@
                             Script Verification:
                             To manually verify, Ensure none of the following remote access packages
                         exist in the folder /usr/lib/apk/db/ Packages:
-                            openssh, openssh-server, openssh-client, openssh-sftp-server, dropbear,
+                            dropbear,
                         tigervnc, tigervnc-server, tigervnc-viewer,
                             xrdp, xorgxrdp, vsftpd, proftpd, webmin, cockpit, cockpit-ws,
                         cockpit-bridge, nfs-utils, samba, samba-server, samba-client, samba-common,
@@ -4087,7 +4087,7 @@
                         Script Verification:
                             To manually verify, Ensure none of the following remote access packages
                         exist in the folder /usr/lib/apk/db/ Packages:
-                            openssh, openssh-server, openssh-client, openssh-sftp-server, dropbear,
+                            dropbear,
                         tigervnc, tigervnc-server, tigervnc-viewer,
                             xrdp, xorgxrdp, vsftpd, proftpd, webmin, cockpit, cockpit-ws,
                         cockpit-bridge, nfs-utils, samba, samba-server, samba-client, samba-common,
@@ -4122,7 +4122,7 @@
                             Script Verification:
                             To manually verify, Ensure none of the following remote access packages
                         exist in the folder /usr/lib/apk/db/ Packages:
-                            openssh, openssh-server, openssh-client, openssh-sftp-server, dropbear,
+                            dropbear,
                         tigervnc, tigervnc-server, tigervnc-viewer,
                             xrdp, xorgxrdp, vsftpd, proftpd, webmin, cockpit, cockpit-ws,
                         cockpit-bridge, nfs-utils, samba, samba-server, samba-client, samba-common,
@@ -4151,7 +4151,7 @@
                             Script Verification:
                             To manually verify, Ensure none of the following remote access packages
                         exist in the folder /usr/lib/apk/db/ Packages:
-                            openssh, openssh-server, openssh-client, openssh-sftp-server, dropbear,
+                            dropbear,
                         tigervnc, tigervnc-server, tigervnc-viewer,
                             xrdp, xorgxrdp, vsftpd, proftpd, webmin, cockpit, cockpit-ws,
                         cockpit-bridge, nfs-utils, samba, samba-server, samba-client, samba-common,
@@ -4179,7 +4179,7 @@
                         Script Verification:
                             To manually verify, Ensure none of the following remote access packages
                         exist in the folder /usr/lib/apk/db/ Packages:
-                            openssh, openssh-server, openssh-client, openssh-sftp-server, dropbear,
+                            dropbear,
                         tigervnc, tigervnc-server, tigervnc-viewer,
                             xrdp, xorgxrdp, vsftpd, proftpd, webmin, cockpit, cockpit-ws,
                         cockpit-bridge, nfs-utils, samba, samba-server, samba-client, samba-common,
@@ -4199,7 +4199,7 @@
                         Script Verification:
                             To manually verify, Ensure none of the following remote access packages
                         exist in the folder /usr/lib/apk/db/ Packages:
-                            openssh, openssh-server, openssh-client, openssh-sftp-server, dropbear,
+                            dropbear,
                         tigervnc, tigervnc-server, tigervnc-viewer,
                             xrdp, xorgxrdp, vsftpd, proftpd, webmin, cockpit, cockpit-ws,
                         cockpit-bridge, nfs-utils, samba, samba-server, samba-client, samba-common,
@@ -4225,7 +4225,7 @@
                         Script Verification:
                             To manually verify, Ensure none of the following remote access packages
                         exist in the folder /usr/lib/apk/db/ Packages:
-                            openssh, openssh-server, openssh-client, openssh-sftp-server, dropbear,
+                            dropbear,
                         tigervnc, tigervnc-server, tigervnc-viewer,
                             xrdp, xorgxrdp, vsftpd, proftpd, webmin, cockpit, cockpit-ws,
                         cockpit-bridge, nfs-utils, samba, samba-server, samba-client, samba-common,
@@ -4256,7 +4256,7 @@
                             Script Verification:
                             To manually verify, Ensure none of the following remote access packages
                         exist in the folder /usr/lib/apk/db/ Packages:
-                            openssh, openssh-server, openssh-client, openssh-sftp-server, dropbear,
+                            dropbear,
                         tigervnc, tigervnc-server, tigervnc-viewer,
                             xrdp, xorgxrdp, vsftpd, proftpd, webmin, cockpit, cockpit-ws,
                         cockpit-bridge, nfs-utils, samba, samba-server, samba-client, samba-common,
@@ -4280,7 +4280,7 @@
                         Script Verification:
                             To manually verify, Ensure none of the following remote access packages
                         exist in the folder /usr/lib/apk/db/ Packages:
-                            openssh, openssh-server, openssh-client, openssh-sftp-server, dropbear,
+                            dropbear,
                         tigervnc, tigervnc-server, tigervnc-viewer,
                             xrdp, xorgxrdp, vsftpd, proftpd, webmin, cockpit, cockpit-ws,
                         cockpit-bridge, nfs-utils, samba, samba-server, samba-client, samba-common,
@@ -4303,7 +4303,7 @@
                             Script Verification:
                             To manually verify, Ensure none of the following remote access packages
                         exist in the folder /usr/lib/apk/db/ Packages:
-                            openssh, openssh-server, openssh-client, openssh-sftp-server, dropbear,
+                            dropbear,
                         tigervnc, tigervnc-server, tigervnc-viewer,
                             xrdp, xorgxrdp, vsftpd, proftpd, webmin, cockpit, cockpit-ws,
                         cockpit-bridge, nfs-utils, samba, samba-server, samba-client, samba-common,
@@ -4337,7 +4337,7 @@
                             Script Verification:
                             To manually verify, Ensure none of the following remote access packages
                         exist in the folder /usr/lib/apk/db/ Packages:
-                            openssh, openssh-server, openssh-client, openssh-sftp-server, dropbear,
+                            dropbear,
                         tigervnc, tigervnc-server, tigervnc-viewer,
                             xrdp, xorgxrdp, vsftpd, proftpd, webmin, cockpit, cockpit-ws,
                         cockpit-bridge, nfs-utils, samba, samba-server, samba-client, samba-common,
@@ -4372,7 +4372,7 @@
                         Script Verification:
                             To manually verify, Ensure none of the following remote access packages
                         exist in the folder /usr/lib/apk/db/ Packages:
-                            openssh, openssh-server, openssh-client, openssh-sftp-server, dropbear,
+                            dropbear,
                         tigervnc, tigervnc-server, tigervnc-viewer,
                             xrdp, xorgxrdp, vsftpd, proftpd, webmin, cockpit, cockpit-ws,
                         cockpit-bridge, nfs-utils, samba, samba-server, samba-client, samba-common,
@@ -4394,7 +4394,7 @@
                             Script Verification:
                             To manually verify, Ensure none of the following remote access packages
                         exist in the folder /usr/lib/apk/db/ Packages:
-                            openssh, openssh-server, openssh-client, openssh-sftp-server, dropbear,
+                            dropbear,
                         tigervnc, tigervnc-server, tigervnc-viewer,
                             xrdp, xorgxrdp, vsftpd, proftpd, webmin, cockpit, cockpit-ws,
                         cockpit-bridge, nfs-utils, samba, samba-server, samba-client, samba-common,
@@ -4431,7 +4431,7 @@
                             Script Verification:
                             To manually verify, Ensure none of the following remote access packages
                         exist in the folder /usr/lib/apk/db/ Packages:
-                            openssh, openssh-server, openssh-client, openssh-sftp-server, dropbear,
+                            dropbear,
                         tigervnc, tigervnc-server, tigervnc-viewer,
                             xrdp, xorgxrdp, vsftpd, proftpd, webmin, cockpit, cockpit-ws,
                         cockpit-bridge, nfs-utils, samba, samba-server, samba-client, samba-common,
@@ -4455,7 +4455,7 @@
                             Script Verification:
                             To manually verify, Ensure none of the following remote access packages
                         exist in the folder /usr/lib/apk/db/ Packages:
-                            openssh, openssh-server, openssh-client, openssh-sftp-server, dropbear,
+                            dropbear,
                         tigervnc, tigervnc-server, tigervnc-viewer,
                             xrdp, xorgxrdp, vsftpd, proftpd, webmin, cockpit, cockpit-ws,
                         cockpit-bridge, nfs-utils, samba, samba-server, samba-client, samba-common,
@@ -4479,7 +4479,7 @@
                             Script Verification:
                             To manually verify, Ensure none of the following remote access packages
                         exist in the folder /usr/lib/apk/db/ Packages:
-                            openssh, openssh-server, openssh-client, openssh-sftp-server, dropbear,
+                            dropbear,
                         tigervnc, tigervnc-server, tigervnc-viewer,
                             xrdp, xorgxrdp, vsftpd, proftpd, webmin, cockpit, cockpit-ws,
                         cockpit-bridge, nfs-utils, samba, samba-server, samba-client, samba-common,
@@ -4500,7 +4500,7 @@
                         Script Verification:
                             To manually verify, Ensure none of the following remote access packages
                         exist in the folder /usr/lib/apk/db/ Packages:
-                            openssh, openssh-server, openssh-client, openssh-sftp-server, dropbear,
+                            dropbear,
                         tigervnc, tigervnc-server, tigervnc-viewer,
                             xrdp, xorgxrdp, vsftpd, proftpd, webmin, cockpit, cockpit-ws,
                         cockpit-bridge, nfs-utils, samba, samba-server, samba-client, samba-common,
@@ -4537,7 +4537,7 @@
                             Script Verification:
                             To manually verify, Ensure none of the following remote access packages
                         exist in the folder /usr/lib/apk/db/ Packages:
-                            openssh, openssh-server, openssh-client, openssh-sftp-server, dropbear,
+                            dropbear,
                         tigervnc, tigervnc-server, tigervnc-viewer,
                             xrdp, xorgxrdp, vsftpd, proftpd, webmin, cockpit, cockpit-ws,
                         cockpit-bridge, nfs-utils, samba, samba-server, samba-client, samba-common,
@@ -4564,7 +4564,7 @@
                         Script Verification:
                             To manually verify, Ensure none of the following remote access packages
                         exist in the folder /usr/lib/apk/db/ Packages:
-                            openssh, openssh-server, openssh-client, openssh-sftp-server, dropbear,
+                            dropbear,
                         tigervnc, tigervnc-server, tigervnc-viewer,
                             xrdp, xorgxrdp, vsftpd, proftpd, webmin, cockpit, cockpit-ws,
                         cockpit-bridge, nfs-utils, samba, samba-server, samba-client, samba-common,
@@ -4598,7 +4598,7 @@
                         Script Verification:
                             To manually verify, Ensure none of the following remote access packages
                         exist in the folder /usr/lib/apk/db/ Packages:
-                            openssh, openssh-server, openssh-client, openssh-sftp-server, dropbear,
+                            dropbear,
                         tigervnc, tigervnc-server, tigervnc-viewer,
                             xrdp, xorgxrdp, vsftpd, proftpd, webmin, cockpit, cockpit-ws,
                         cockpit-bridge, nfs-utils, samba, samba-server, samba-client, samba-common,
@@ -4629,7 +4629,7 @@
                         Script Verification:
                             To manually verify, Ensure none of the following remote access packages
                         exist in the folder /usr/lib/apk/db/ Packages:
-                            openssh, openssh-server, openssh-client, openssh-sftp-server, dropbear,
+                            dropbear,
                         tigervnc, tigervnc-server, tigervnc-viewer,
                             xrdp, xorgxrdp, vsftpd, proftpd, webmin, cockpit, cockpit-ws,
                         cockpit-bridge, nfs-utils, samba, samba-server, samba-client, samba-common,
@@ -4658,7 +4658,7 @@
                             Script Verification:
                             To manually verify, Ensure none of the following remote access packages
                         exist in the folder /usr/lib/apk/db/ Packages:
-                            openssh, openssh-server, openssh-client, openssh-sftp-server, dropbear,
+                            dropbear,
                         tigervnc, tigervnc-server, tigervnc-viewer,
                             xrdp, xorgxrdp, vsftpd, proftpd, webmin, cockpit, cockpit-ws,
                         cockpit-bridge, nfs-utils, samba, samba-server, samba-client, samba-common,
@@ -4684,7 +4684,7 @@
                         Script Verification:
                             To manually verify, Ensure none of the following remote access packages
                         exist in the folder /usr/lib/apk/db/ Packages:
-                            openssh, openssh-server, openssh-client, openssh-sftp-server, dropbear,
+                            dropbear,
                         tigervnc, tigervnc-server, tigervnc-viewer,
                             xrdp, xorgxrdp, vsftpd, proftpd, webmin, cockpit, cockpit-ws,
                         cockpit-bridge, nfs-utils, samba, samba-server, samba-client, samba-common,
@@ -4713,7 +4713,7 @@
                             Script Verification:
                             To manually verify, Ensure none of the following remote access packages
                         exist in the folder /usr/lib/apk/db/ Packages:
-                            openssh, openssh-server, openssh-client, openssh-sftp-server, dropbear,
+                            dropbear,
                         tigervnc, tigervnc-server, tigervnc-viewer,
                             xrdp, xorgxrdp, vsftpd, proftpd, webmin, cockpit, cockpit-ws,
                         cockpit-bridge, nfs-utils, samba, samba-server, samba-client, samba-common,
@@ -4750,7 +4750,7 @@
                             Script Verification:
                             To manually verify, Ensure none of the following remote access packages
                         exist in the folder /usr/lib/apk/db/ Packages:
-                            openssh, openssh-server, openssh-client, openssh-sftp-server, dropbear,
+                            dropbear,
                         tigervnc, tigervnc-server, tigervnc-viewer,
                             xrdp, xorgxrdp, vsftpd, proftpd, webmin, cockpit, cockpit-ws,
                         cockpit-bridge, nfs-utils, samba, samba-server, samba-client, samba-common,
@@ -4777,7 +4777,7 @@
                         Script Verification:
                             To manually verify, Ensure none of the following remote access packages
                         exist in the folder /usr/lib/apk/db/ Packages:
-                            openssh, openssh-server, openssh-client, openssh-sftp-server, dropbear,
+                            dropbear,
                         tigervnc, tigervnc-server, tigervnc-viewer,
                             xrdp, xorgxrdp, vsftpd, proftpd, webmin, cockpit, cockpit-ws,
                         cockpit-bridge, nfs-utils, samba, samba-server, samba-client, samba-common,
@@ -4800,7 +4800,7 @@
                             Script Verification:
                             To manually verify, Ensure none of the following remote access packages
                         exist in the folder /usr/lib/apk/db/ Packages:
-                            openssh, openssh-server, openssh-client, openssh-sftp-server, dropbear,
+                            dropbear,
                         tigervnc, tigervnc-server, tigervnc-viewer,
                             xrdp, xorgxrdp, vsftpd, proftpd, webmin, cockpit, cockpit-ws,
                         cockpit-bridge, nfs-utils, samba, samba-server, samba-client, samba-common,
@@ -4827,7 +4827,7 @@
                             Script Verification:
                             To manually verify, Ensure none of the following remote access packages
                         exist in the folder /usr/lib/apk/db/ Packages:
-                            openssh, openssh-server, openssh-client, openssh-sftp-server, dropbear,
+                            dropbear,
                         tigervnc, tigervnc-server, tigervnc-viewer,
                             xrdp, xorgxrdp, vsftpd, proftpd, webmin, cockpit, cockpit-ws,
                         cockpit-bridge, nfs-utils, samba, samba-server, samba-client, samba-common,
@@ -4854,7 +4854,7 @@
                             Script Verification:
                             To manually verify, Ensure none of the following remote access packages
                         exist in the folder /usr/lib/apk/db/ Packages:
-                            openssh, openssh-server, openssh-client, openssh-sftp-server, dropbear,
+                            dropbear,
                         tigervnc, tigervnc-server, tigervnc-viewer,
                             xrdp, xorgxrdp, vsftpd, proftpd, webmin, cockpit, cockpit-ws,
                         cockpit-bridge, nfs-utils, samba, samba-server, samba-client, samba-common,
@@ -4882,7 +4882,7 @@
                             Script Verification:
                             To manually verify, Ensure none of the following remote access packages
                         exist in the folder /usr/lib/apk/db/ Packages:
-                            openssh, openssh-server, openssh-client, openssh-sftp-server, dropbear,
+                            dropbear,
                         tigervnc, tigervnc-server, tigervnc-viewer,
                             xrdp, xorgxrdp, vsftpd, proftpd, webmin, cockpit, cockpit-ws,
                         cockpit-bridge, nfs-utils, samba, samba-server, samba-client, samba-common,
@@ -4904,7 +4904,7 @@
                             Script Verification:
                             To manually verify, Ensure none of the following remote access packages
                         exist in the folder /usr/lib/apk/db/ Packages:
-                            openssh, openssh-server, openssh-client, openssh-sftp-server, dropbear,
+                            dropbear,
                         tigervnc, tigervnc-server, tigervnc-viewer,
                             xrdp, xorgxrdp, vsftpd, proftpd, webmin, cockpit, cockpit-ws,
                         cockpit-bridge, nfs-utils, samba, samba-server, samba-client, samba-common,
@@ -4953,7 +4953,7 @@
                             Script Verification:
                             To manually verify, Ensure none of the following remote access packages
                         exist in the folder /usr/lib/apk/db/ Packages:
-                            openssh, openssh-server, openssh-client, openssh-sftp-server, dropbear,
+                            dropbear,
                         tigervnc, tigervnc-server, tigervnc-viewer,
                             xrdp, xorgxrdp, vsftpd, proftpd, webmin, cockpit, cockpit-ws,
                         cockpit-bridge, nfs-utils, samba, samba-server, samba-client, samba-common,
@@ -4984,7 +4984,7 @@
                             Script Verification:
                             To manually verify, Ensure none of the following remote access packages
                         exist in the folder /usr/lib/apk/db/ Packages:
-                            openssh, openssh-server, openssh-client, openssh-sftp-server, dropbear,
+                            dropbear,
                         tigervnc, tigervnc-server, tigervnc-viewer,
                             xrdp, xorgxrdp, vsftpd, proftpd, webmin, cockpit, cockpit-ws,
                         cockpit-bridge, nfs-utils, samba, samba-server, samba-client, samba-common,
@@ -5011,7 +5011,7 @@
                             Script Verification:
                             To manually verify, Ensure none of the following remote access packages
                         exist in the folder /usr/lib/apk/db/ Packages:
-                            openssh, openssh-server, openssh-client, openssh-sftp-server, dropbear,
+                            dropbear,
                         tigervnc, tigervnc-server, tigervnc-viewer,
                             xrdp, xorgxrdp, vsftpd, proftpd, webmin, cockpit, cockpit-ws,
                         cockpit-bridge, nfs-utils, samba, samba-server, samba-client, samba-common,
@@ -5041,7 +5041,7 @@
                             Script Verification:
                             To manually verify, Ensure none of the following remote access packages
                         exist in the folder /usr/lib/apk/db/ Packages:
-                            openssh, openssh-server, openssh-client, openssh-sftp-server, dropbear,
+                            dropbear,
                         tigervnc, tigervnc-server, tigervnc-viewer,
                             xrdp, xorgxrdp, vsftpd, proftpd, webmin, cockpit, cockpit-ws,
                         cockpit-bridge, nfs-utils, samba, samba-server, samba-client, samba-common,
@@ -5090,7 +5090,7 @@
                             Script Verification:
                             To manually verify, Ensure none of the following remote access packages
                         exist in the folder /usr/lib/apk/db/ Packages:
-                            openssh, openssh-server, openssh-client, openssh-sftp-server, dropbear,
+                            dropbear,
                         tigervnc, tigervnc-server, tigervnc-viewer,
                             xrdp, xorgxrdp, vsftpd, proftpd, webmin, cockpit, cockpit-ws,
                         cockpit-bridge, nfs-utils, samba, samba-server, samba-client, samba-common,
@@ -5111,7 +5111,7 @@
                             Script Verification:
                             To manually verify, Ensure none of the following remote access packages
                         exist in the folder /usr/lib/apk/db/ Packages:
-                            openssh, openssh-server, openssh-client, openssh-sftp-server, dropbear,
+                            dropbear,
                         tigervnc, tigervnc-server, tigervnc-viewer,
                             xrdp, xorgxrdp, vsftpd, proftpd, webmin, cockpit, cockpit-ws,
                         cockpit-bridge, nfs-utils, samba, samba-server, samba-client, samba-common,
@@ -5135,7 +5135,7 @@
                             Script Verification:
                             To manually verify, Ensure none of the following remote access packages
                         exist in the folder /usr/lib/apk/db/ Packages:
-                            openssh, openssh-server, openssh-client, openssh-sftp-server, dropbear,
+                            dropbear,
                         tigervnc, tigervnc-server, tigervnc-viewer,
                             xrdp, xorgxrdp, vsftpd, proftpd, webmin, cockpit, cockpit-ws,
                         cockpit-bridge, nfs-utils, samba, samba-server, samba-client, samba-common,
@@ -5164,7 +5164,7 @@
                         Script Verification:
                             To manually verify, Ensure none of the following remote access packages
                         exist in the folder /usr/lib/apk/db/ Packages:
-                            openssh, openssh-server, openssh-client, openssh-sftp-server, dropbear,
+                            dropbear,
                         tigervnc, tigervnc-server, tigervnc-viewer,
                             xrdp, xorgxrdp, vsftpd, proftpd, webmin, cockpit, cockpit-ws,
                         cockpit-bridge, nfs-utils, samba, samba-server, samba-client, samba-common,
@@ -5202,7 +5202,7 @@
                         Script Verification:
                             To manually verify, Ensure none of the following remote access packages
                         exist in the folder /usr/lib/apk/db/ Packages:
-                            openssh, openssh-server, openssh-client, openssh-sftp-server, dropbear,
+                            dropbear,
                         tigervnc, tigervnc-server, tigervnc-viewer,
                             xrdp, xorgxrdp, vsftpd, proftpd, webmin, cockpit, cockpit-ws,
                         cockpit-bridge, nfs-utils, samba, samba-server, samba-client, samba-common,
@@ -5231,7 +5231,7 @@
                             Script Verification:
                             To manually verify, Ensure none of the following remote access packages
                         exist in the folder /usr/lib/apk/db/ Packages:
-                            openssh, openssh-server, openssh-client, openssh-sftp-server, dropbear,
+                            dropbear,
                         tigervnc, tigervnc-server, tigervnc-viewer,
                             xrdp, xorgxrdp, vsftpd, proftpd, webmin, cockpit, cockpit-ws,
                         cockpit-bridge, nfs-utils, samba, samba-server, samba-client, samba-common,
@@ -5261,7 +5261,7 @@
                         Script Verification:
                             To manually verify, Ensure none of the following remote access packages
                         exist in the folder /usr/lib/apk/db/ Packages:
-                            openssh, openssh-server, openssh-client, openssh-sftp-server, dropbear,
+                            dropbear,
                         tigervnc, tigervnc-server, tigervnc-viewer,
                             xrdp, xorgxrdp, vsftpd, proftpd, webmin, cockpit, cockpit-ws,
                         cockpit-bridge, nfs-utils, samba, samba-server, samba-client, samba-common,
@@ -5291,7 +5291,7 @@
                         Script Verification:
                             To manually verify, Ensure none of the following remote access packages
                         exist in the folder /usr/lib/apk/db/ Packages:
-                            openssh, openssh-server, openssh-client, openssh-sftp-server, dropbear,
+                            dropbear,
                         tigervnc, tigervnc-server, tigervnc-viewer,
                             xrdp, xorgxrdp, vsftpd, proftpd, webmin, cockpit, cockpit-ws,
                         cockpit-bridge, nfs-utils, samba, samba-server, samba-client, samba-common,
@@ -5320,7 +5320,7 @@
                         Script Verification:
                             To manually verify, Ensure none of the following remote access packages
                         exist in the folder /usr/lib/apk/db/ Packages:
-                            openssh, openssh-server, openssh-client, openssh-sftp-server, dropbear,
+                            dropbear,
                         tigervnc, tigervnc-server, tigervnc-viewer,
                             xrdp, xorgxrdp, vsftpd, proftpd, webmin, cockpit, cockpit-ws,
                         cockpit-bridge, nfs-utils, samba, samba-server, samba-client, samba-common,
@@ -5350,7 +5350,7 @@
                             Script Verification:
                             To manually verify, Ensure none of the following remote access packages
                         exist in the folder /usr/lib/apk/db/ Packages:
-                            openssh, openssh-server, openssh-client, openssh-sftp-server, dropbear,
+                            dropbear,
                         tigervnc, tigervnc-server, tigervnc-viewer,
                             xrdp, xorgxrdp, vsftpd, proftpd, webmin, cockpit, cockpit-ws,
                         cockpit-bridge, nfs-utils, samba, samba-server, samba-client, samba-common,
@@ -6313,7 +6313,7 @@
         <definition id="oval:org.OpenSsl:def:1" version="1" class="compliance">
           <metadata>
             <title>Check for OpenSSL FIPS Packages</title>
-            <description>Ensure that the necessary OpenSSL FIPS packages and configuration files are present, and that the OPENSSL_CONF environment variable is either unset or set to /etc/ssl/openssl.cnf.</description>
+            <description>Ensure that the necessary OpenSSL FIPS packages and configuration files are present, and that the OPENSSL_CONF environment variable is either unset or set to /etc/ssl/openssl.cnf. Additionally verify that the OpenSSH client and server FIPS policy drop-ins (/etc/ssh/ssh_config.d/10-ssh-fips.conf and /etc/ssh/sshd_config.d/10-sshd-fips.conf) are present and pin the FIPS-approved ciphers, key-exchange, MAC, and signature algorithms. The main /etc/ssh/ssh_config and /etc/ssh/sshd_config must in turn Include their respective *_config.d/*.conf drop-in directories so the policy is applied. The client checks apply only when openssh-client is installed and the server checks only when openssh-server is installed.</description>
             <reference source="CIS"/>
             <affected family="unix">
               <platform>Chainguard</platform>
@@ -6328,6 +6328,32 @@
             <criterion comment="openssl.cnf: check that FIPS provider is enabled in provider_sect" test_ref="oval:org.OpenSsl:tst:6"/>
             <criterion comment="openssl.cnf: check that default_properties is set to fips=yes" test_ref="oval:org.OpenSsl:tst:7"/>
             <criterion comment="OPENSSL_CONF is unset or set to /etc/ssl/openssl.cnf" test_ref="oval:org.OpenSsl:tst:8"/>
+            <!-- OpenSSH client FIPS policy is enforced only when openssh-client is installed. -->
+            <criteria operator="OR">
+              <criterion comment="openssh-client is not installed" test_ref="oval:org.OpenSsl:tst:23" negate="true"/>
+              <criteria operator="AND">
+                <criterion comment="ssh_config sources the ssh_config.d drop-in directory" test_ref="oval:org.OpenSsl:tst:21"/>
+                <criterion comment="ssh_config.d/10-ssh-fips.conf sets the FIPS-approved Ciphers" test_ref="oval:org.OpenSsl:tst:9"/>
+                <criterion comment="ssh_config.d/10-ssh-fips.conf sets the FIPS-approved KexAlgorithms" test_ref="oval:org.OpenSsl:tst:10"/>
+                <criterion comment="ssh_config.d/10-ssh-fips.conf sets the FIPS-approved MACs" test_ref="oval:org.OpenSsl:tst:11"/>
+                <criterion comment="ssh_config.d/10-ssh-fips.conf sets RequiredRSASize 2048" test_ref="oval:org.OpenSsl:tst:12"/>
+              </criteria>
+            </criteria>
+            <!-- OpenSSH server FIPS policy is enforced only when openssh-server is installed. -->
+            <criteria operator="OR">
+              <criterion comment="openssh-server is not installed" test_ref="oval:org.OpenSsl:tst:24" negate="true"/>
+              <criteria operator="AND">
+                <criterion comment="sshd_config sources the sshd_config.d drop-in directory" test_ref="oval:org.OpenSsl:tst:22"/>
+                <criterion comment="sshd_config.d/10-sshd-fips.conf sets the FIPS-approved Ciphers" test_ref="oval:org.OpenSsl:tst:13"/>
+                <criterion comment="sshd_config.d/10-sshd-fips.conf sets the FIPS-approved KexAlgorithms" test_ref="oval:org.OpenSsl:tst:14"/>
+                <criterion comment="sshd_config.d/10-sshd-fips.conf sets the FIPS-approved MACs" test_ref="oval:org.OpenSsl:tst:15"/>
+                <criterion comment="sshd_config.d/10-sshd-fips.conf sets RequiredRSASize 2048" test_ref="oval:org.OpenSsl:tst:16"/>
+                <criterion comment="sshd_config.d/10-sshd-fips.conf sets the FIPS-approved HostKeyAlgorithms" test_ref="oval:org.OpenSsl:tst:17"/>
+                <criterion comment="sshd_config.d/10-sshd-fips.conf sets the FIPS-approved CASignatureAlgorithms" test_ref="oval:org.OpenSsl:tst:18"/>
+                <criterion comment="sshd_config.d/10-sshd-fips.conf sets the FIPS-approved HostBasedAcceptedAlgorithms" test_ref="oval:org.OpenSsl:tst:19"/>
+                <criterion comment="sshd_config.d/10-sshd-fips.conf sets the FIPS-approved PubkeyAcceptedAlgorithms" test_ref="oval:org.OpenSsl:tst:20"/>
+              </criteria>
+            </criteria>
           </criteria>
         </definition>
       </definitions>
@@ -6357,6 +6383,54 @@
           <independent:object object_ref="oval:org.OpenSsl:obj:8"/>
           <independent:state state_ref="oval:org.OpenSsl:ste:1"/>
         </independent:environmentvariable58_test>
+        <independent:textfilecontent54_test xmlns:independent="http://oval.mitre.org/XMLSchema/oval-definitions-5#independent" id="oval:org.OpenSsl:tst:9" version="1" check="all" check_existence="all_exist" comment="ssh_config.d/10-ssh-fips.conf sets the FIPS-approved Ciphers">
+          <independent:object object_ref="oval:org.OpenSsl:obj:9"/>
+        </independent:textfilecontent54_test>
+        <independent:textfilecontent54_test xmlns:independent="http://oval.mitre.org/XMLSchema/oval-definitions-5#independent" id="oval:org.OpenSsl:tst:10" version="1" check="all" check_existence="all_exist" comment="ssh_config.d/10-ssh-fips.conf sets the FIPS-approved KexAlgorithms">
+          <independent:object object_ref="oval:org.OpenSsl:obj:10"/>
+        </independent:textfilecontent54_test>
+        <independent:textfilecontent54_test xmlns:independent="http://oval.mitre.org/XMLSchema/oval-definitions-5#independent" id="oval:org.OpenSsl:tst:11" version="1" check="all" check_existence="all_exist" comment="ssh_config.d/10-ssh-fips.conf sets the FIPS-approved MACs">
+          <independent:object object_ref="oval:org.OpenSsl:obj:11"/>
+        </independent:textfilecontent54_test>
+        <independent:textfilecontent54_test xmlns:independent="http://oval.mitre.org/XMLSchema/oval-definitions-5#independent" id="oval:org.OpenSsl:tst:12" version="1" check="all" check_existence="all_exist" comment="ssh_config.d/10-ssh-fips.conf sets RequiredRSASize 2048">
+          <independent:object object_ref="oval:org.OpenSsl:obj:12"/>
+        </independent:textfilecontent54_test>
+        <independent:textfilecontent54_test xmlns:independent="http://oval.mitre.org/XMLSchema/oval-definitions-5#independent" id="oval:org.OpenSsl:tst:13" version="1" check="all" check_existence="all_exist" comment="sshd_config.d/10-sshd-fips.conf sets the FIPS-approved Ciphers">
+          <independent:object object_ref="oval:org.OpenSsl:obj:13"/>
+        </independent:textfilecontent54_test>
+        <independent:textfilecontent54_test xmlns:independent="http://oval.mitre.org/XMLSchema/oval-definitions-5#independent" id="oval:org.OpenSsl:tst:14" version="1" check="all" check_existence="all_exist" comment="sshd_config.d/10-sshd-fips.conf sets the FIPS-approved KexAlgorithms">
+          <independent:object object_ref="oval:org.OpenSsl:obj:14"/>
+        </independent:textfilecontent54_test>
+        <independent:textfilecontent54_test xmlns:independent="http://oval.mitre.org/XMLSchema/oval-definitions-5#independent" id="oval:org.OpenSsl:tst:15" version="1" check="all" check_existence="all_exist" comment="sshd_config.d/10-sshd-fips.conf sets the FIPS-approved MACs">
+          <independent:object object_ref="oval:org.OpenSsl:obj:15"/>
+        </independent:textfilecontent54_test>
+        <independent:textfilecontent54_test xmlns:independent="http://oval.mitre.org/XMLSchema/oval-definitions-5#independent" id="oval:org.OpenSsl:tst:16" version="1" check="all" check_existence="all_exist" comment="sshd_config.d/10-sshd-fips.conf sets RequiredRSASize 2048">
+          <independent:object object_ref="oval:org.OpenSsl:obj:16"/>
+        </independent:textfilecontent54_test>
+        <independent:textfilecontent54_test xmlns:independent="http://oval.mitre.org/XMLSchema/oval-definitions-5#independent" id="oval:org.OpenSsl:tst:17" version="1" check="all" check_existence="all_exist" comment="sshd_config.d/10-sshd-fips.conf sets the FIPS-approved HostKeyAlgorithms">
+          <independent:object object_ref="oval:org.OpenSsl:obj:17"/>
+        </independent:textfilecontent54_test>
+        <independent:textfilecontent54_test xmlns:independent="http://oval.mitre.org/XMLSchema/oval-definitions-5#independent" id="oval:org.OpenSsl:tst:18" version="1" check="all" check_existence="all_exist" comment="sshd_config.d/10-sshd-fips.conf sets the FIPS-approved CASignatureAlgorithms">
+          <independent:object object_ref="oval:org.OpenSsl:obj:18"/>
+        </independent:textfilecontent54_test>
+        <independent:textfilecontent54_test xmlns:independent="http://oval.mitre.org/XMLSchema/oval-definitions-5#independent" id="oval:org.OpenSsl:tst:19" version="1" check="all" check_existence="all_exist" comment="sshd_config.d/10-sshd-fips.conf sets the FIPS-approved HostBasedAcceptedAlgorithms">
+          <independent:object object_ref="oval:org.OpenSsl:obj:19"/>
+        </independent:textfilecontent54_test>
+        <independent:textfilecontent54_test xmlns:independent="http://oval.mitre.org/XMLSchema/oval-definitions-5#independent" id="oval:org.OpenSsl:tst:20" version="1" check="all" check_existence="all_exist" comment="sshd_config.d/10-sshd-fips.conf sets the FIPS-approved PubkeyAcceptedAlgorithms">
+          <independent:object object_ref="oval:org.OpenSsl:obj:20"/>
+        </independent:textfilecontent54_test>
+        <independent:textfilecontent54_test xmlns:independent="http://oval.mitre.org/XMLSchema/oval-definitions-5#independent" id="oval:org.OpenSsl:tst:21" version="1" check="all" check_existence="all_exist" comment="ssh_config sources the ssh_config.d drop-in directory">
+          <independent:object object_ref="oval:org.OpenSsl:obj:21"/>
+        </independent:textfilecontent54_test>
+        <independent:textfilecontent54_test xmlns:independent="http://oval.mitre.org/XMLSchema/oval-definitions-5#independent" id="oval:org.OpenSsl:tst:22" version="1" check="all" check_existence="all_exist" comment="sshd_config sources the sshd_config.d drop-in directory">
+          <independent:object object_ref="oval:org.OpenSsl:obj:22"/>
+        </independent:textfilecontent54_test>
+        <independent:textfilecontent54_test xmlns:independent="http://oval.mitre.org/XMLSchema/oval-definitions-5#independent" id="oval:org.OpenSsl:tst:23" version="1" check="all" check_existence="at_least_one_exists" comment="openssh-client package is installed">
+          <independent:object object_ref="oval:org.OpenSsl:obj:23"/>
+        </independent:textfilecontent54_test>
+        <independent:textfilecontent54_test xmlns:independent="http://oval.mitre.org/XMLSchema/oval-definitions-5#independent" id="oval:org.OpenSsl:tst:24" version="1" check="all" check_existence="at_least_one_exists" comment="openssh-server package is installed">
+          <independent:object object_ref="oval:org.OpenSsl:obj:24"/>
+        </independent:textfilecontent54_test>
       </tests>
       <objects>
         <!-- obj:1 collects any file under /etc/ssl whose basename contains
@@ -6412,6 +6486,88 @@
           <independent:pid xsi:nil="true" datatype="int"/>
           <independent:name>OPENSSL_CONF</independent:name>
         </independent:environmentvariable58_object>
+        <independent:textfilecontent54_object xmlns:independent="http://oval.mitre.org/XMLSchema/oval-definitions-5#independent" id="oval:org.OpenSsl:obj:9" version="1">
+          <independent:filepath>/etc/ssh/ssh_config.d/10-ssh-fips.conf</independent:filepath>
+          <independent:pattern operation="pattern match">^\s*Ciphers\s+aes128-gcm@openssh\.com,aes256-gcm@openssh\.com,aes256-ctr,aes192-ctr,aes128-ctr\s*$</independent:pattern>
+          <independent:instance datatype="int" operation="greater than or equal">1</independent:instance>
+        </independent:textfilecontent54_object>
+        <independent:textfilecontent54_object xmlns:independent="http://oval.mitre.org/XMLSchema/oval-definitions-5#independent" id="oval:org.OpenSsl:obj:10" version="1">
+          <independent:filepath>/etc/ssh/ssh_config.d/10-ssh-fips.conf</independent:filepath>
+          <independent:pattern operation="pattern match">^\s*KexAlgorithms\s+ecdh-sha2-nistp256,ecdh-sha2-nistp384\s*$</independent:pattern>
+          <independent:instance datatype="int" operation="greater than or equal">1</independent:instance>
+        </independent:textfilecontent54_object>
+        <independent:textfilecontent54_object xmlns:independent="http://oval.mitre.org/XMLSchema/oval-definitions-5#independent" id="oval:org.OpenSsl:obj:11" version="1">
+          <independent:filepath>/etc/ssh/ssh_config.d/10-ssh-fips.conf</independent:filepath>
+          <independent:pattern operation="pattern match">^\s*MACs\s+hmac-sha2-256-etm@openssh\.com,hmac-sha2-512-etm@openssh\.com,hmac-sha2-256,hmac-sha2-512\s*$</independent:pattern>
+          <independent:instance datatype="int" operation="greater than or equal">1</independent:instance>
+        </independent:textfilecontent54_object>
+        <independent:textfilecontent54_object xmlns:independent="http://oval.mitre.org/XMLSchema/oval-definitions-5#independent" id="oval:org.OpenSsl:obj:12" version="1">
+          <independent:filepath>/etc/ssh/ssh_config.d/10-ssh-fips.conf</independent:filepath>
+          <independent:pattern operation="pattern match">^\s*RequiredRSASize\s+2048\s*$</independent:pattern>
+          <independent:instance datatype="int" operation="greater than or equal">1</independent:instance>
+        </independent:textfilecontent54_object>
+        <independent:textfilecontent54_object xmlns:independent="http://oval.mitre.org/XMLSchema/oval-definitions-5#independent" id="oval:org.OpenSsl:obj:13" version="1">
+          <independent:filepath>/etc/ssh/sshd_config.d/10-sshd-fips.conf</independent:filepath>
+          <independent:pattern operation="pattern match">^\s*Ciphers\s+aes128-gcm@openssh\.com,aes256-gcm@openssh\.com,aes256-ctr,aes192-ctr,aes128-ctr\s*$</independent:pattern>
+          <independent:instance datatype="int" operation="greater than or equal">1</independent:instance>
+        </independent:textfilecontent54_object>
+        <independent:textfilecontent54_object xmlns:independent="http://oval.mitre.org/XMLSchema/oval-definitions-5#independent" id="oval:org.OpenSsl:obj:14" version="1">
+          <independent:filepath>/etc/ssh/sshd_config.d/10-sshd-fips.conf</independent:filepath>
+          <independent:pattern operation="pattern match">^\s*KexAlgorithms\s+ecdh-sha2-nistp256,ecdh-sha2-nistp384\s*$</independent:pattern>
+          <independent:instance datatype="int" operation="greater than or equal">1</independent:instance>
+        </independent:textfilecontent54_object>
+        <independent:textfilecontent54_object xmlns:independent="http://oval.mitre.org/XMLSchema/oval-definitions-5#independent" id="oval:org.OpenSsl:obj:15" version="1">
+          <independent:filepath>/etc/ssh/sshd_config.d/10-sshd-fips.conf</independent:filepath>
+          <independent:pattern operation="pattern match">^\s*MACs\s+hmac-sha2-256-etm@openssh\.com,hmac-sha2-512-etm@openssh\.com,hmac-sha2-256,hmac-sha2-512\s*$</independent:pattern>
+          <independent:instance datatype="int" operation="greater than or equal">1</independent:instance>
+        </independent:textfilecontent54_object>
+        <independent:textfilecontent54_object xmlns:independent="http://oval.mitre.org/XMLSchema/oval-definitions-5#independent" id="oval:org.OpenSsl:obj:16" version="1">
+          <independent:filepath>/etc/ssh/sshd_config.d/10-sshd-fips.conf</independent:filepath>
+          <independent:pattern operation="pattern match">^\s*RequiredRSASize\s+2048\s*$</independent:pattern>
+          <independent:instance datatype="int" operation="greater than or equal">1</independent:instance>
+        </independent:textfilecontent54_object>
+        <independent:textfilecontent54_object xmlns:independent="http://oval.mitre.org/XMLSchema/oval-definitions-5#independent" id="oval:org.OpenSsl:obj:17" version="1">
+          <independent:filepath>/etc/ssh/sshd_config.d/10-sshd-fips.conf</independent:filepath>
+          <independent:pattern operation="pattern match">^\s*HostKeyAlgorithms\s+ecdsa-sha2-nistp256-cert-v01@openssh\.com,ecdsa-sha2-nistp384-cert-v01@openssh\.com,sk-ecdsa-sha2-nistp256-cert-v01@openssh\.com,rsa-sha2-512-cert-v01@openssh\.com,rsa-sha2-256-cert-v01@openssh\.com,ecdsa-sha2-nistp256,ecdsa-sha2-nistp384,sk-ecdsa-sha2-nistp256@openssh\.com,rsa-sha2-512,rsa-sha2-256\s*$</independent:pattern>
+          <independent:instance datatype="int" operation="greater than or equal">1</independent:instance>
+        </independent:textfilecontent54_object>
+        <independent:textfilecontent54_object xmlns:independent="http://oval.mitre.org/XMLSchema/oval-definitions-5#independent" id="oval:org.OpenSsl:obj:18" version="1">
+          <independent:filepath>/etc/ssh/sshd_config.d/10-sshd-fips.conf</independent:filepath>
+          <independent:pattern operation="pattern match">^\s*CASignatureAlgorithms\s+ecdsa-sha2-nistp256,ecdsa-sha2-nistp384,sk-ecdsa-sha2-nistp256@openssh\.com,rsa-sha2-512,rsa-sha2-256\s*$</independent:pattern>
+          <independent:instance datatype="int" operation="greater than or equal">1</independent:instance>
+        </independent:textfilecontent54_object>
+        <independent:textfilecontent54_object xmlns:independent="http://oval.mitre.org/XMLSchema/oval-definitions-5#independent" id="oval:org.OpenSsl:obj:19" version="1">
+          <independent:filepath>/etc/ssh/sshd_config.d/10-sshd-fips.conf</independent:filepath>
+          <independent:pattern operation="pattern match">^\s*HostBasedAcceptedAlgorithms\s+ecdsa-sha2-nistp256-cert-v01@openssh\.com,ecdsa-sha2-nistp384-cert-v01@openssh\.com,sk-ecdsa-sha2-nistp256-cert-v01@openssh\.com,rsa-sha2-512-cert-v01@openssh\.com,rsa-sha2-256-cert-v01@openssh\.com,ecdsa-sha2-nistp256,ecdsa-sha2-nistp384,sk-ecdsa-sha2-nistp256@openssh\.com,rsa-sha2-512,rsa-sha2-256\s*$</independent:pattern>
+          <independent:instance datatype="int" operation="greater than or equal">1</independent:instance>
+        </independent:textfilecontent54_object>
+        <independent:textfilecontent54_object xmlns:independent="http://oval.mitre.org/XMLSchema/oval-definitions-5#independent" id="oval:org.OpenSsl:obj:20" version="1">
+          <independent:filepath>/etc/ssh/sshd_config.d/10-sshd-fips.conf</independent:filepath>
+          <independent:pattern operation="pattern match">^\s*PubkeyAcceptedAlgorithms\s+ecdsa-sha2-nistp256-cert-v01@openssh\.com,ecdsa-sha2-nistp384-cert-v01@openssh\.com,sk-ecdsa-sha2-nistp256-cert-v01@openssh\.com,rsa-sha2-512-cert-v01@openssh\.com,rsa-sha2-256-cert-v01@openssh\.com,ecdsa-sha2-nistp256,ecdsa-sha2-nistp384,sk-ecdsa-sha2-nistp256@openssh\.com,rsa-sha2-512,rsa-sha2-256\s*$</independent:pattern>
+          <independent:instance datatype="int" operation="greater than or equal">1</independent:instance>
+        </independent:textfilecontent54_object>
+        <independent:textfilecontent54_object xmlns:independent="http://oval.mitre.org/XMLSchema/oval-definitions-5#independent" id="oval:org.OpenSsl:obj:21" version="1">
+          <independent:filepath>/etc/ssh/ssh_config</independent:filepath>
+          <independent:pattern operation="pattern match">^\s*Include\s+/etc/ssh/ssh_config\.d/\*\.conf\s*$</independent:pattern>
+          <independent:instance datatype="int" operation="greater than or equal">1</independent:instance>
+        </independent:textfilecontent54_object>
+        <independent:textfilecontent54_object xmlns:independent="http://oval.mitre.org/XMLSchema/oval-definitions-5#independent" id="oval:org.OpenSsl:obj:22" version="1">
+          <independent:filepath>/etc/ssh/sshd_config</independent:filepath>
+          <independent:pattern operation="pattern match">^\s*Include\s+/etc/ssh/sshd_config\.d/\*\.conf\s*$</independent:pattern>
+          <independent:instance datatype="int" operation="greater than or equal">1</independent:instance>
+        </independent:textfilecontent54_object>
+        <independent:textfilecontent54_object xmlns:independent="http://oval.mitre.org/XMLSchema/oval-definitions-5#independent" id="oval:org.OpenSsl:obj:23" version="1">
+          <independent:path>/usr/lib/apk/db</independent:path>
+          <independent:filename>installed</independent:filename>
+          <independent:pattern operation="pattern match">^P:openssh-client(-\d+\.\d+\.\d+)?$</independent:pattern>
+          <independent:instance datatype="int">1</independent:instance>
+        </independent:textfilecontent54_object>
+        <independent:textfilecontent54_object xmlns:independent="http://oval.mitre.org/XMLSchema/oval-definitions-5#independent" id="oval:org.OpenSsl:obj:24" version="1">
+          <independent:path>/usr/lib/apk/db</independent:path>
+          <independent:filename>installed</independent:filename>
+          <independent:pattern operation="pattern match">^P:openssh-server(-\d+\.\d+\.\d+)?$</independent:pattern>
+          <independent:instance datatype="int">1</independent:instance>
+        </independent:textfilecontent54_object>
       </objects>
       <states>
         <independent:environmentvariable58_state xmlns:independent="http://oval.mitre.org/XMLSchema/oval-definitions-5#independent" id="oval:org.OpenSsl:ste:1" version="1">
@@ -6611,7 +6767,7 @@
         <textfilecontent54_object xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#independent" id="oval:org.RemoteAccessServices:obj:6" version="1">
           <path>/usr/lib/apk/db</path>
           <filename>installed</filename>
-          <pattern operation="pattern match">^P:(openssh|openssh-server|openssh-client|openssh-sftp-server|dropbear|tigervnc|tigervnc-server|tigervnc-viewer|xrdp|xorgxrdp|vsftpd|proftpd|webmin|cockpit|cockpit-ws|cockpit-bridge|nfs-utils|samba|samba-server|samba-client|samba-common|rsh|telnet)(-\d[\d.]*(-[a-z][a-z0-9-]*)?)?$</pattern>
+          <pattern operation="pattern match">^P:(dropbear|tigervnc|tigervnc-server|tigervnc-viewer|xrdp|xorgxrdp|vsftpd|proftpd|webmin|cockpit|cockpit-ws|cockpit-bridge|nfs-utils|samba|samba-server|samba-client|samba-common|rsh|telnet)(-\d[\d.]*(-[a-z][a-z0-9-]*)?)?$</pattern>
           <instance datatype="int">1</instance>
         </textfilecontent54_object>
       </objects>
