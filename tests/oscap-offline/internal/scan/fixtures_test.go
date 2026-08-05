@@ -320,10 +320,11 @@ var activeShadowEntry = []byte("compliance-test:ZZx/p0vU8jVbA:19000:0:99999:7:::
 // field, the case a hashed-password fixture never exercises.
 var emptyShadowPassword = []byte("emptyacct::19000:0:99999:7:::\n")
 
-// extraShadowUser is a line appended after the trailing `nobody:` entry, which
-// the NoUsers obj:2 pattern `^nobody:.*\n(.+)` matches, failing the none_exist
-// "no users after nobody" test.
-var extraShadowUser = []byte("intruder:!::0:::::\n")
+// lockedShadowUser is a locked ("!") entry appended after the trailing
+// `nobody:` line, mirroring what apko writes for image run-as users. The
+// NoUsers pattern `^[^:]+:(?![!*])[^:\n]*:` must NOT match it — locked
+// service accounts cannot log in and are permitted.
+var lockedShadowUser = []byte("nonroot:!::0:::::\n")
 
 // fipsModuleCnf, opensslCnf, and apkFIPSPackages together satisfy all seven
 // DetectOpenSsl criteria: the two config files must exist, both FIPS packages
@@ -456,15 +457,26 @@ func matrixCases() []matrixCase {
 			want: map[string]results.Result{ruleUserPasswordConfigured: results.Fail},
 		},
 
-		// NoUsers: clean base ends /etc/shadow with the `nobody:` line; nothing
-		// follows it.
+		// NoUsers: clean base has only locked entries in /etc/shadow.
 		{
 			name: "no_users/pass_clean",
 			want: map[string]results.Result{ruleNoUsers: results.Pass},
 		},
+		// A locked entry after `nobody` is what apko writes for run-as
+		// users; it cannot log in and must not fail the check.
 		{
-			name: "no_users/fail_extra_user",
-			ops:  []overlay.Op{overlay.AppendFile("etc/shadow", extraShadowUser)},
+			name: "no_users/pass_locked_extra_user",
+			ops:  []overlay.Op{overlay.AppendFile("etc/shadow", lockedShadowUser)},
+			want: map[string]results.Result{ruleNoUsers: results.Pass},
+		},
+		{
+			name: "no_users/fail_unlocked_user",
+			ops:  []overlay.Op{overlay.AppendFile("etc/shadow", activeShadowEntry)},
+			want: map[string]results.Result{ruleNoUsers: results.Fail},
+		},
+		{
+			name: "no_users/fail_empty_password_user",
+			ops:  []overlay.Op{overlay.AppendFile("etc/shadow", emptyShadowPassword)},
 			want: map[string]results.Result{ruleNoUsers: results.Fail},
 		},
 
