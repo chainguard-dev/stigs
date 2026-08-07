@@ -163,6 +163,62 @@ func TestAppendFileRejectsNonRegular(t *testing.T) {
 	}
 }
 
+func TestReplaceFile(t *testing.T) {
+	t.Parallel()
+
+	base := buildTar(t, map[string]fileSpec{
+		"etc/f": {content: randBytes(40), mode: 0o444, uid: 3, gid: 5},
+	})
+
+	content := randBytes(12)
+	got := apply(t, base, ReplaceFile("etc/f", content))
+	_, byName := readEntries(t, got)
+
+	want := fileSpec{content: content, mode: 0o444, uid: 3, gid: 5}
+	if diff := cmp.Diff(want, byName["etc/f"], cmp.AllowUnexported(fileSpec{})); diff != "" {
+		t.Errorf("ReplaceFile changed more than content (-want,+got):\n%s", diff)
+	}
+}
+
+func TestRemoveFile(t *testing.T) {
+	t.Parallel()
+
+	base := buildTar(t, map[string]fileSpec{
+		"etc/keep": {content: []byte("k"), mode: 0o644, uid: 0, gid: 0},
+		"etc/drop": {content: []byte("d"), mode: 0o644, uid: 0, gid: 0},
+	})
+
+	got := apply(t, base, RemoveFile("etc/drop"))
+	order, _ := readEntries(t, got)
+
+	if diff := cmp.Diff([]string{"etc/keep"}, order); diff != "" {
+		t.Errorf("order mismatch after RemoveFile (-want,+got):\n%s", diff)
+	}
+}
+
+// TestReplaceAndRemoveMissingPath proves both ops surface ErrNotFound for a
+// path absent from the base rather than silently no-op'ing.
+func TestReplaceAndRemoveMissingPath(t *testing.T) {
+	t.Parallel()
+
+	base := buildTar(t, map[string]fileSpec{
+		"etc/f": {content: []byte("x"), mode: 0o644, uid: 0, gid: 0},
+	})
+
+	for name, op := range map[string]Op{
+		"ReplaceFile": ReplaceFile("etc/missing", []byte("y")),
+		"RemoveFile":  RemoveFile("etc/missing"),
+	} {
+		t.Run(name, func(t *testing.T) {
+			t.Parallel()
+			var out bytes.Buffer
+			if err := Apply(bytes.NewReader(base), []Op{op}, &out); !errors.Is(err, ErrNotFound) {
+				t.Fatalf("Apply error = %v, want errors.Is ErrNotFound", err)
+			}
+		})
+	}
+}
+
 func TestChown(t *testing.T) {
 	t.Parallel()
 

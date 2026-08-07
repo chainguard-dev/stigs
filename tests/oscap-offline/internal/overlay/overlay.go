@@ -86,6 +86,32 @@ func AppendFile(path string, extra []byte) Op {
 	}
 }
 
+// ReplaceFile overwrites an existing entry's content, leaving its header
+// (mode, ownership, position in the tar) intact. The path must already exist
+// and be a regular file, otherwise Apply returns a wrapped ErrNotFound or
+// ErrNotRegular.
+func ReplaceFile(path string, content []byte) Op {
+	return func(p *plan) {
+		e := p.requireReg(path)
+		if e == nil {
+			return
+		}
+		e.data = bytes.Clone(content)
+		e.hdr.Size = int64(len(e.data))
+	}
+}
+
+// RemoveFile drops an existing entry from the produced tar. The path must
+// already exist, otherwise Apply returns a wrapped ErrNotFound.
+func RemoveFile(path string) Op {
+	return func(p *plan) {
+		if p.require(path) == nil {
+			return
+		}
+		delete(p.byName, path)
+	}
+}
+
 // AddFile adds a new regular-file entry after the base entries. The path must
 // not already exist, otherwise Apply returns a wrapped ErrExists.
 func AddFile(path string, content []byte, mode int64, uid, gid int) Op {

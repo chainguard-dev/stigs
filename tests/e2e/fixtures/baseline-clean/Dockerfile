@@ -9,7 +9,8 @@
 #   - LibraryPermissions: /usr/lib owned by root:root
 #   - VarLogPermissions: /var/log owned by root:root
 #   - NoUsers: no interactive user accounts beyond the image default
-#   - CertificateAudit: /etc/ssl/certs/ca-certificates.crt matches the pinned SHA-256
+#   - CertificateAudit: /etc/ssl/certs/ca-certificates.crt matches the SHA-256 in
+#     /etc/ssl/certs/.ca-certificates.crt.sha256
 #
 # Expected result: a clean scan with no failures attributable to these rules.
 FROM cgr.dev/chainguard/wolfi-base:latest@sha256:ca263a0360cca48e8fe3f86c8af61c6d5b85e484809fe187440a4206a50efc06
