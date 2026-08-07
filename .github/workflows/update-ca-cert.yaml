@@ -1,4 +1,4 @@
-name: Update CA cert hash in datastream
+name: Verify CA bundle stamp and re-pin fixture base images
 on:
   workflow_dispatch:
   schedule:
@@ -8,7 +8,6 @@ on:
       - main
     paths:
       - ".github/workflows/update-ca-cert.yaml"
-      - "gpos/xml/scap/ssg/content/ssg-chainguard-gpos-ds.xml"
       - "tests/e2e/fixtures/*/Dockerfile"
       - "tests/oscap-offline/internal/scan/fixtures_test.go"
 concurrency:
@@ -28,7 +27,6 @@ jobs:
       issues: write
     env:
       IMAGE_REF: cgr.dev/chainguard/wolfi-base:latest
-      DATASTREAM_PATH: gpos/xml/scap/ssg/content/ssg-chainguard-gpos-ds.xml
       TESTS_PATH: tests
       FIXTURES_GLOB: tests/e2e/fixtures/*/Dockerfile
       TEST_PIN_FILE: tests/oscap-offline/internal/scan/fixtures_test.go
@@ -69,7 +67,7 @@ jobs:
               echo "::error::Image signature verification failed"
               exit 1
             }
-      - name: Extract CA certificate SHA
+      - name: Verify CA bundle stamp file
         id: ca
         env:
           STEPS_IMAGE_OUTPUTS_FULL_REF: ${{ steps.image.outputs.full_ref }}
@@ -77,59 +75,38 @@ jobs:
         run: |
           set -euo pipefail
 
-          SHA=$(crane export "${STEPS_IMAGE_OUTPUTS_FULL_REF}" - | \
-                tar -xO etc/ssl/certs/ca-certificates.crt | \
-                sha256sum | cut -d' ' -f1)
+          # CertificateAudit no longer pins a CA bundle hash in the datastream:
+          # the OVAL reads the expected digest out of the stamp file the
+          # ca-certificates package ships next to the bundle
+          # (/etc/ssl/certs/.ca-certificates.crt.sha256, sha256sum format) and
+          # compares the bundle against it. Nothing in this repo needs updating
+          # when the upstream bundle rolls.
+          #
+          # This step guards the premise that replaced the pin: if a future
+          # base image drops the stamp file, renames it, or ships one that
+          # disagrees with the bundle, the rule would start failing on clean
+          # images. Fail loudly here — daily — instead of finding out via a red
+          # E2E run.
 
-          echo "sha=${SHA}" >> "$GITHUB_OUTPUT"
+          workdir=$(mktemp -d)
+          crane export "${STEPS_IMAGE_OUTPUTS_FULL_REF}" - | \
+            tar -C "${workdir}" -x etc/ssl/certs/ca-certificates.crt etc/ssl/certs/.ca-certificates.crt.sha256
 
-          cat >> "$GITHUB_STEP_SUMMARY" <<EOF
-          ### CA Certificate Update
-          - **Image**: \`${IMAGE_REF}\`
-          - **Digest**: \`${STEPS_IMAGE_OUTPUTS_DIGEST}\`
-          - **CA SHA256**: \`${SHA}\`
-          EOF
-      - name: Update datastream with new SHA
-        id: update
-        env:
-          CA_CERT_SHA: ${{ steps.ca.outputs.sha }}
-        run: |
-          set -euo pipefail
-
-          # Check if datastream exists
-          if [ ! -f "${DATASTREAM_PATH}" ]; then
-            echo "::error::Datastream file not found: ${DATASTREAM_PATH}"
+          if ! (cd "${workdir}/etc/ssl/certs" && sha256sum -c .ca-certificates.crt.sha256); then
+            echo "::error::CA bundle does not match its stamp file in ${IMAGE_REF}; CertificateAudit will fail on clean images"
             exit 1
           fi
 
-          # Create backup
-          cp "${DATASTREAM_PATH}" "${DATASTREAM_PATH}.bak"
+          SHA=$(sha256sum "${workdir}/etc/ssl/certs/ca-certificates.crt" | cut -d' ' -f1)
+          echo "sha=${SHA}" >> "$GITHUB_OUTPUT"
 
-          # Update SHA in datastream
-          sed -i -E "s|(<[^>]*hash>)[^<]*(</[^>]*hash>)|\1${CA_CERT_SHA}\2|g" "${DATASTREAM_PATH}"
-
-          # Check if file changed
-          ds_changed=false
-          if diff -q "${DATASTREAM_PATH}.bak" "${DATASTREAM_PATH}" > /dev/null; then
-            echo "No datastream changes needed - SHA already up to date"
-            echo "datastream_changed=false" >> "$GITHUB_OUTPUT"
-            rm "${DATASTREAM_PATH}.bak"
-          else
-            ds_changed=true
-            echo "Updated datastream with new SHA: ${CA_CERT_SHA}"
-            echo "datastream_changed=true" >> "$GITHUB_OUTPUT"
-            rm "${DATASTREAM_PATH}.bak"
-          fi
-
-          # Show what was updated for the summary
-          echo "### Datastream Update Summary" >> "$GITHUB_STEP_SUMMARY"
-          echo "- **File**: \`${DATASTREAM_PATH}\`" >> "$GITHUB_STEP_SUMMARY"
-          echo "- **New SHA**: \`${CA_CERT_SHA}\`" >> "$GITHUB_STEP_SUMMARY"
-          if [ "${ds_changed}" == "true" ]; then
-            echo "- **Status**: Updated" >> "$GITHUB_STEP_SUMMARY"
-          else
-            echo "- **Status**: Already up-to-date" >> "$GITHUB_STEP_SUMMARY"
-          fi
+          cat >> "$GITHUB_STEP_SUMMARY" <<EOF
+          ### CA Bundle Stamp Check
+          - **Image**: \`${IMAGE_REF}\`
+          - **Digest**: \`${STEPS_IMAGE_OUTPUTS_DIGEST}\`
+          - **CA SHA256**: \`${SHA}\`
+          - **Stamp file**: matches bundle
+          EOF
       - name: Re-pin E2E fixture base-image digests
         id: fixtures
         env:
@@ -138,10 +115,10 @@ jobs:
           set -euo pipefail
 
           # Re-pin every `FROM <image>@sha256:<old>` in tests/e2e/fixtures/*/Dockerfile
-          # to the digest that matches the CA bundle hash computed above. This keeps
-          # the datastream hash and the fixture base images atomically in sync, so
-          # the CertificateAudit assertion in e.g. baseline-clean can't flake due to
-          # drift between the two values.
+          # to the current digest, verified above to carry a self-consistent CA
+          # bundle and stamp file. The fixtures no longer have to track a hash in
+          # the datastream, so this is ordinary base-image freshness: it keeps the
+          # E2E fixtures scanning a recent image rather than an ageing pin.
           #
           # For each Dockerfile:
           #   - Parse the existing FROM line's `image` (everything before `@sha256:`).
@@ -155,10 +132,9 @@ jobs:
           #
           # The offline harness (tests/oscap-offline) reads its pinned base image
           # from tests/e2e/fixtures/baseline-clean/Dockerfile, so re-pinning that
-          # fixture here also keeps the offline CertificateAudit pass fixture in
-          # lockstep with the datastream hash. The one remaining copy of the
-          # digest — the `pinned` constant in TestParseWolfiBaseRef — is
-          # re-pinned by the next step.
+          # fixture here also moves the offline CertificateAudit fixtures. The one
+          # remaining copy of the digest — the `pinned` constant in
+          # TestParseWolfiBaseRef — is re-pinned by the next step.
 
           fixtures_changed=false
           updated_files=()
@@ -266,12 +242,11 @@ jobs:
       - name: Aggregate change status
         id: changed
         env:
-          DS_CHANGED: ${{ steps.update.outputs.datastream_changed }}
           FX_CHANGED: ${{ steps.fixtures.outputs.fixtures_changed }}
           TP_CHANGED: ${{ steps.testpin.outputs.test_pin_changed }}
         run: |
           set -euo pipefail
-          if [ "${DS_CHANGED}" = "true" ] || [ "${FX_CHANGED}" = "true" ] || [ "${TP_CHANGED}" = "true" ]; then
+          if [ "${FX_CHANGED}" = "true" ] || [ "${TP_CHANGED}" = "true" ]; then
             echo "changed=true" >> "$GITHUB_OUTPUT"
           else
             echo "changed=false" >> "$GITHUB_OUTPUT"
@@ -286,14 +261,16 @@ jobs:
         with:
           token: ${{ steps.octo-sts.outputs.token }}
           commit-message: |
-            chore(oscap): re-pin CA bundle hash and fixture base-image digests
+            chore(oscap): re-pin fixture base-image digests
 
-            Atomically updates the CA bundle SHA in the OSCAP datastream, the
-            digest-pinned FROM lines in tests/e2e/fixtures/*/Dockerfile, and the
-            pinned wolfi-base digest in the offline harness test
-            (TestParseWolfiBaseRef) so the three values can never drift out of
-            sync (which would flake the CertificateAudit E2E assertions or
-            break the offline unit tests).
+            Re-pins the digest-pinned FROM lines in tests/e2e/fixtures/*/Dockerfile
+            and the pinned wolfi-base digest in the offline harness test
+            (TestParseWolfiBaseRef) together, so the two can never drift out of
+            sync and break the offline unit tests.
+
+            The base image was checked first: its CA bundle matches the digest in
+            /etc/ssl/certs/.ca-certificates.crt.sha256, which is what
+            CertificateAudit compares against.
 
             Image: ${{ env.IMAGE_REF }}
             Digest: ${{ steps.image.outputs.digest }}
@@ -302,32 +279,34 @@ jobs:
             Signed-off-by: github-actions[bot] <github-actions[bot]@users.noreply.github.com>
           branch: update-ca-cert-${{ steps.ca.outputs.sha }}
           delete-branch: true
-          title: "chore(oscap): re-pin CA bundle hash and fixture base-image digests"
+          title: "chore(oscap): re-pin fixture base-image digests"
           body: |
-            ## CA Certificate + Fixture Base-Image Update
+            ## Fixture Base-Image Update
 
-            Atomically re-pins three values that must stay in lockstep:
+            Re-pins two values that must stay in lockstep:
 
-            1. The `<ind:hash>` under `oval:org.CABundleHash:ste:1` in the OSCAP
-               datastream (`${{ env.DATASTREAM_PATH }}`).
-            2. The `FROM cgr.dev/chainguard/wolfi-base:latest@sha256:...` line in
+            1. The `FROM cgr.dev/chainguard/wolfi-base:latest@sha256:...` line in
                every `tests/e2e/fixtures/*/Dockerfile`.
-            3. The `pinned` wolfi-base digest constant asserted by
+            2. The `pinned` wolfi-base digest constant asserted by
                `TestParseWolfiBaseRef` in `${{ env.TEST_PIN_FILE }}`.
 
-            If these drift (e.g. Dependabot bumps the fixture digest before this
-            workflow refreshes the datastream hash, or vice versa), the
-            `baseline-clean` / `cabundle-tampered` E2E CertificateAudit check
-            fails because the fixture's CA bundle no longer matches the hash the
-            datastream asserts, and the offline harness unit tests break against
-            the stale test pin. This workflow is the authoritative update point
-            for all three values together; `TestParseWolfiBaseRef` was run
-            against the updated tree before this PR was opened.
+            If these drift (e.g. Dependabot bumps the fixture digest without the
+            test pin following), the offline harness unit tests break. This
+            workflow is the authoritative update point for both together;
+            `TestParseWolfiBaseRef` was run against the updated tree before this
+            PR was opened.
+
+            CertificateAudit itself no longer pins a CA bundle hash — the OVAL
+            reads the expected digest from the ca-certificates stamp file
+            (`/etc/ssl/certs/.ca-certificates.crt.sha256`) inside the scanned
+            image. The `Verify CA bundle stamp file` step above asserts that
+            stamp is present and agrees with the bundle, so a base image that
+            dropped it would fail this run rather than silently red the E2E
+            CertificateAudit assertions.
 
             - **Image**: `${{ env.IMAGE_REF }}`
             - **Digest**: `${{ steps.image.outputs.digest }}`
-            - **New CA SHA256**: `${{ steps.ca.outputs.sha }}`
-            - **Datastream changed**: `${{ steps.update.outputs.datastream_changed }}`
+            - **CA SHA256**: `${{ steps.ca.outputs.sha }}`
             - **Fixtures changed**: `${{ steps.fixtures.outputs.fixtures_changed }}`
             - **Test pin changed**: `${{ steps.testpin.outputs.test_pin_changed }}`
           labels: |

@@ -304,8 +304,23 @@ var plainHTTPRepo = []byte("http://insecure.example.com/alpine\n")
 var commentedAndHTTPSRepos = []byte("# http://insecure.example.com/alpine\nhttps://packages.example.com/alpine\n")
 
 // caTamper appends content to the CA bundle so its SHA-256 diverges from the
-// datastream's pinned hash, failing the filehash58 state.
+// digest recorded in the stamp file, failing the filehash58 state.
 var caTamper = []byte("\n# tamper\n-----BEGIN CERTIFICATE-----\nTAMPERED\n-----END CERTIFICATE-----\n")
+
+// caStampPath is the sha256sum-format stamp file the ca-certificates package
+// ships next to the bundle. CertificateAudit reads the expected digest out of
+// it instead of pinning one in the datastream.
+const caStampPath = "etc/ssl/certs/.ca-certificates.crt.sha256"
+
+// caStampWrongDigest is a well-formed stamp naming a digest the untouched
+// bundle cannot have (all zeroes), isolating the comparison from the stamp
+// side: the bundle is clean, the expected value is not.
+var caStampWrongDigest = []byte(strings.Repeat("0", 64) + "  ca-certificates.crt\n")
+
+// caStampMalformed has no line matching the object's
+// `^([0-9a-fA-F]{64})[ \t]+\*?ca-certificates\.crt$` pattern, so the digest
+// variable collects nothing and the stamp-file existence test fails.
+var caStampMalformed = []byte("not a checksum line\n")
 
 // activeShadowEntry is an /etc/shadow line whose password field is a
 // traditional DES crypt hash (not "!" or "*"), which the UserPasswordConfigured
@@ -409,11 +424,12 @@ func matrixCases() []matrixCase {
 			want: map[string]results.Result{rulePackageSignature: results.Pass},
 		},
 
-		// CertificateAudit is an AND of three criteria: the CA bundle exists, its
-		// SHA-256 matches the datastream's pinned hash (the base ref is read from
-		// the same pin the update-ca-cert workflow keeps in lockstep with that
-		// hash), and SSL_CERT_FILE is set to the bundle path. The pass fixture
-		// therefore also sets SSL_CERT_FILE; the fail fixtures each isolate one
+		// CertificateAudit is an AND of four criteria: the CA bundle exists, the
+		// ca-certificates stamp file exists and yields one SHA-256 digest, the
+		// bundle's SHA-256 equals that digest, and SSL_CERT_FILE is set to the
+		// bundle path. Nothing here depends on a hash pinned in the datastream,
+		// so no fixture needs to move when the upstream bundle rolls. The pass
+		// fixture also sets SSL_CERT_FILE; the fail fixtures each isolate one
 		// failing dimension while holding the others valid.
 		{
 			name:          "certificate_audit/pass_clean",
@@ -424,6 +440,31 @@ func matrixCases() []matrixCase {
 			// Hash dimension: tampered bundle, SSL_CERT_FILE still valid.
 			name:          "certificate_audit/fail_tampered_bundle",
 			ops:           []overlay.Op{overlay.AppendFile("etc/ssl/certs/ca-certificates.crt", caTamper)},
+			containerVars: []string{"SSL_CERT_FILE=/etc/ssl/certs/ca-certificates.crt"},
+			want:          map[string]results.Result{ruleCertificateAudit: results.Fail},
+		},
+		{
+			// Hash dimension from the stamp side: clean bundle, stamp claims a
+			// digest it cannot have.
+			name:          "certificate_audit/fail_wrong_stamp_digest",
+			ops:           []overlay.Op{overlay.ReplaceFile(caStampPath, caStampWrongDigest)},
+			containerVars: []string{"SSL_CERT_FILE=/etc/ssl/certs/ca-certificates.crt"},
+			want:          map[string]results.Result{ruleCertificateAudit: results.Fail},
+		},
+		{
+			// Stamp dimension: stamp present but unparseable, so there is no
+			// expected digest to compare against.
+			name:          "certificate_audit/fail_malformed_stamp",
+			ops:           []overlay.Op{overlay.ReplaceFile(caStampPath, caStampMalformed)},
+			containerVars: []string{"SSL_CERT_FILE=/etc/ssl/certs/ca-certificates.crt"},
+			want:          map[string]results.Result{ruleCertificateAudit: results.Fail},
+		},
+		{
+			// Stamp dimension: image ships no stamp file at all (e.g. a base
+			// image whose ca-certificates predates it). The rule must not pass
+			// vacuously.
+			name:          "certificate_audit/fail_missing_stamp",
+			ops:           []overlay.Op{overlay.RemoveFile(caStampPath)},
 			containerVars: []string{"SSL_CERT_FILE=/etc/ssl/certs/ca-certificates.crt"},
 			want:          map[string]results.Result{ruleCertificateAudit: results.Fail},
 		},
