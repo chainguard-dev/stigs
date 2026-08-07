@@ -2,6 +2,8 @@ package scan_test
 
 import (
 	"bytes"
+	"crypto/sha256"
+	"encoding/hex"
 	"errors"
 	"fmt"
 	"os"
@@ -322,6 +324,25 @@ var caStampWrongDigest = []byte(strings.Repeat("0", 64) + "  ca-certificates.crt
 // variable collects nothing and the stamp-file existence test fails.
 var caStampMalformed = []byte("not a checksum line\n")
 
+// The Java truststore half of CertificateAudit is conditional: it only applies
+// to images that ship /etc/ssl/certs/java/cacerts. The offline base is
+// wolfi-base, which has no Java, so these fixtures synthesize the pair. The
+// truststore's real format is irrelevant here — the check is a SHA-256
+// comparison, so opaque bytes exercise it exactly as a real JKS would.
+const (
+	javaTrustStorePath = "etc/ssl/certs/java/cacerts"
+	javaStampPath      = "etc/ssl/certs/java/.cacerts.sha256"
+)
+
+var javaTrustStore = []byte("synthetic truststore bytes, not a real JKS")
+
+// javaStamp returns a sha256sum-format stamp naming content's digest, matching
+// what the package ships next to the truststore: "<digest>  cacerts".
+func javaStamp(content []byte) []byte {
+	sum := sha256.Sum256(content)
+	return []byte(hex.EncodeToString(sum[:]) + "  cacerts\n")
+}
+
 // activeShadowEntry is an /etc/shadow line whose password field is a
 // traditional DES crypt hash (not "!" or "*"), which the UserPasswordConfigured
 // pattern `^[^:]+:(?![!*])[^:\n]*:` matches, failing the none_exist test.
@@ -424,13 +445,15 @@ func matrixCases() []matrixCase {
 			want: map[string]results.Result{rulePackageSignature: results.Pass},
 		},
 
-		// CertificateAudit is an AND of four criteria: the CA bundle exists, the
+		// CertificateAudit is an AND of five criteria: the CA bundle exists, the
 		// ca-certificates stamp file exists and yields one SHA-256 digest, the
-		// bundle's SHA-256 equals that digest, and SSL_CERT_FILE is set to the
-		// bundle path. Nothing here depends on a hash pinned in the datastream,
-		// so no fixture needs to move when the upstream bundle rolls. The pass
-		// fixture also sets SSL_CERT_FILE; the fail fixtures each isolate one
-		// failing dimension while holding the others valid.
+		// bundle's SHA-256 equals that digest, SSL_CERT_FILE is set to the
+		// bundle path, and — only where /etc/ssl/certs/java/cacerts exists — the
+		// Java truststore likewise matches its own stamp file. Nothing here
+		// depends on a hash pinned in the datastream, so no fixture needs to move
+		// when an upstream bundle rolls. The pass fixture also sets
+		// SSL_CERT_FILE; the fail fixtures each isolate one failing dimension
+		// while holding the others valid.
 		{
 			name:          "certificate_audit/pass_clean",
 			containerVars: []string{"SSL_CERT_FILE=/etc/ssl/certs/ca-certificates.crt"},
@@ -465,6 +488,40 @@ func matrixCases() []matrixCase {
 			// vacuously.
 			name:          "certificate_audit/fail_missing_stamp",
 			ops:           []overlay.Op{overlay.RemoveFile(caStampPath)},
+			containerVars: []string{"SSL_CERT_FILE=/etc/ssl/certs/ca-certificates.crt"},
+			want:          map[string]results.Result{ruleCertificateAudit: results.Fail},
+		},
+		{
+			// Java dimension: a synthesized truststore agreeing with its stamp
+			// must keep the rule passing. The base has no Java, so this is the
+			// only fixture exercising the "present and matching" OR branch.
+			name: "certificate_audit/pass_java_truststore",
+			ops: []overlay.Op{
+				overlay.AddFile(javaTrustStorePath, javaTrustStore, 0o444, 0, 0),
+				overlay.AddFile(javaStampPath, javaStamp(javaTrustStore), 0o444, 0, 0),
+			},
+			containerVars: []string{"SSL_CERT_FILE=/etc/ssl/certs/ca-certificates.crt"},
+			want:          map[string]results.Result{ruleCertificateAudit: results.Pass},
+		},
+		{
+			// Java dimension: truststore present but its stamp names a digest
+			// for different content, i.e. a truststore modified in place.
+			name: "certificate_audit/fail_java_wrong_stamp",
+			ops: []overlay.Op{
+				overlay.AddFile(javaTrustStorePath, javaTrustStore, 0o444, 0, 0),
+				overlay.AddFile(javaStampPath, javaStamp([]byte("other content")), 0o444, 0, 0),
+			},
+			containerVars: []string{"SSL_CERT_FILE=/etc/ssl/certs/ca-certificates.crt"},
+			want:          map[string]results.Result{ruleCertificateAudit: results.Fail},
+		},
+		{
+			// Java dimension: truststore present with no stamp beside it. The
+			// absent-truststore OR branch must not rescue this — there is a
+			// truststore, it just cannot be verified.
+			name: "certificate_audit/fail_java_missing_stamp",
+			ops: []overlay.Op{
+				overlay.AddFile(javaTrustStorePath, javaTrustStore, 0o444, 0, 0),
+			},
 			containerVars: []string{"SSL_CERT_FILE=/etc/ssl/certs/ca-certificates.crt"},
 			want:          map[string]results.Result{ruleCertificateAudit: results.Fail},
 		},
