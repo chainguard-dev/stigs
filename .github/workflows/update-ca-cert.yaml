@@ -26,7 +26,13 @@ jobs:
       pull-requests: write
       issues: write
     env:
+      # The image the E2E fixtures are pinned to, re-resolved below.
       IMAGE_REF: cgr.dev/chainguard/wolfi-base:latest
+      # The image the stamp-file guard inspects. jre carries BOTH stamps
+      # CertificateAudit reads — /etc/ssl/certs/.ca-certificates.crt.sha256 and
+      # /etc/ssl/certs/java/.cacerts.sha256 — so one image covers the whole rule.
+      # wolfi-base has no Java and would leave the truststore half unguarded.
+      STAMP_IMAGE_REF: cgr.dev/chainguard/jre:latest
       TESTS_PATH: tests
       FIXTURES_GLOB: tests/e2e/fixtures/*/Dockerfile
       TEST_PIN_FILE: tests/oscap-offline/internal/scan/fixtures_test.go
@@ -49,63 +55,94 @@ jobs:
         uses: sigstore/cosign-installer@6f9f17788090df1f26f669e9d70d6ae9567deba6 # v4.1.2
       - name: Setup crane
         uses: imjasonh/setup-crane@feee3b6bb0d4c68370f256a4502498c9227e5c6b # v0.7
-      - name: Pull and verify image
+      - name: Pull and verify images
         id: image
         run: |
           set -euo pipefail
 
-          DIGEST=$(crane digest "${IMAGE_REF}")
-          FULL_REF="${IMAGE_REF%:*}@${DIGEST}"
-          echo "digest=${DIGEST}" >> "$GITHUB_OUTPUT"
-          echo "full_ref=${FULL_REF}" >> "$GITHUB_OUTPUT"
+          # Verify a tag's signature and echo its digest-pinned reference.
+          # cosign's own output is dropped so only the ref lands on stdout; the
+          # command substitution runs this in a subshell, so `exit 1` aborts the
+          # substitution and `set -e` then fails the step.
+          resolve_and_verify() {
+            local ref="$1" full
+            full="${ref%:*}@$(crane digest "${ref}")"
+            cosign verify \
+              --certificate-oidc-issuer https://token.actions.githubusercontent.com \
+              --certificate-identity-regexp "https://github.com/chainguard-images/images/.*" \
+              "${full}" >/dev/null || {
+                echo "::error::Image signature verification failed: ${ref}"
+                exit 1
+              }
+            echo "${full}"
+          }
 
-          # Verify signature
-          cosign verify \
-            --certificate-oidc-issuer https://token.actions.githubusercontent.com \
-            --certificate-identity-regexp "https://github.com/chainguard-images/images/.*" \
-            "${FULL_REF}" || {
-              echo "::error::Image signature verification failed"
-              exit 1
-            }
-      - name: Verify CA bundle stamp file
+          FULL_REF=$(resolve_and_verify "${IMAGE_REF}")
+          STAMP_FULL_REF=$(resolve_and_verify "${STAMP_IMAGE_REF}")
+
+          echo "digest=${FULL_REF#*@}" >> "$GITHUB_OUTPUT"
+          echo "full_ref=${FULL_REF}" >> "$GITHUB_OUTPUT"
+          echo "stamp_digest=${STAMP_FULL_REF#*@}" >> "$GITHUB_OUTPUT"
+          echo "stamp_full_ref=${STAMP_FULL_REF}" >> "$GITHUB_OUTPUT"
+      - name: Verify trust-store stamp files
         id: ca
         env:
-          STEPS_IMAGE_OUTPUTS_FULL_REF: ${{ steps.image.outputs.full_ref }}
-          STEPS_IMAGE_OUTPUTS_DIGEST: ${{ steps.image.outputs.digest }}
+          STEPS_IMAGE_OUTPUTS_STAMP_FULL_REF: ${{ steps.image.outputs.stamp_full_ref }}
+          STEPS_IMAGE_OUTPUTS_STAMP_DIGEST: ${{ steps.image.outputs.stamp_digest }}
         run: |
           set -euo pipefail
 
-          # CertificateAudit no longer pins a CA bundle hash in the datastream:
-          # the OVAL reads the expected digest out of the stamp file the
-          # ca-certificates package ships next to the bundle
-          # (/etc/ssl/certs/.ca-certificates.crt.sha256, sha256sum format) and
-          # compares the bundle against it. Nothing in this repo needs updating
-          # when the upstream bundle rolls.
+          # CertificateAudit no longer pins any hash in the datastream: the OVAL
+          # reads each expected digest out of the stamp file the owning package
+          # ships next to the file it describes, in sha256sum format —
+          #   /etc/ssl/certs/.ca-certificates.crt.sha256   (always)
+          #   /etc/ssl/certs/java/.cacerts.sha256          (Java images only)
+          # — and compares the real file against it. Nothing in this repo needs
+          # updating when either rolls upstream.
           #
-          # This step guards the premise that replaced the pin: if a future
-          # base image drops the stamp file, renames it, or ships one that
-          # disagrees with the bundle, the rule would start failing on clean
-          # images. Fail loudly here — daily — instead of finding out via a red
-          # E2E run.
+          # This step guards the premise that replaced the pins: if a future
+          # image drops a stamp file, renames it, or ships one that disagrees
+          # with the file it names, the rule starts failing on clean images.
+          # Fail loudly here — daily — instead of finding out via a red E2E run.
+          #
+          # The jre image is used because it carries BOTH stamps, so a single
+          # export covers the whole rule. wolfi-base has no Java and would leave
+          # the truststore criterion unguarded.
 
           workdir=$(mktemp -d)
-          crane export "${STEPS_IMAGE_OUTPUTS_FULL_REF}" - | \
-            tar -C "${workdir}" -x etc/ssl/certs/ca-certificates.crt etc/ssl/certs/.ca-certificates.crt.sha256
+          crane export "${STEPS_IMAGE_OUTPUTS_STAMP_FULL_REF}" - | \
+            tar -C "${workdir}" -x \
+              etc/ssl/certs/ca-certificates.crt \
+              etc/ssl/certs/.ca-certificates.crt.sha256 \
+              etc/ssl/certs/java/cacerts \
+              etc/ssl/certs/java/.cacerts.sha256
 
-          if ! (cd "${workdir}/etc/ssl/certs" && sha256sum -c .ca-certificates.crt.sha256); then
-            echo "::error::CA bundle does not match its stamp file in ${IMAGE_REF}; CertificateAudit will fail on clean images"
-            exit 1
-          fi
+          # Both stamps must be present and correct. Checking each separately
+          # (rather than one combined sha256sum -c) keeps the error message
+          # specific about which trust store drifted.
+          for pair in "etc/ssl/certs:.ca-certificates.crt.sha256" "etc/ssl/certs/java:.cacerts.sha256"; do
+            dir="${pair%%:*}"
+            stamp="${pair#*:}"
+            if [ ! -f "${workdir}/${dir}/${stamp}" ]; then
+              echo "::error::${dir}/${stamp} missing from ${STAMP_IMAGE_REF}; CertificateAudit will fail on clean images"
+              exit 1
+            fi
+            if ! (cd "${workdir}/${dir}" && sha256sum -c "${stamp}"); then
+              echo "::error::${dir} contents do not match ${stamp} in ${STAMP_IMAGE_REF}; CertificateAudit will fail on clean images"
+              exit 1
+            fi
+          done
 
           SHA=$(sha256sum "${workdir}/etc/ssl/certs/ca-certificates.crt" | cut -d' ' -f1)
+          JAVA_SHA=$(sha256sum "${workdir}/etc/ssl/certs/java/cacerts" | cut -d' ' -f1)
           echo "sha=${SHA}" >> "$GITHUB_OUTPUT"
 
           cat >> "$GITHUB_STEP_SUMMARY" <<EOF
-          ### CA Bundle Stamp Check
-          - **Image**: \`${IMAGE_REF}\`
-          - **Digest**: \`${STEPS_IMAGE_OUTPUTS_DIGEST}\`
-          - **CA SHA256**: \`${SHA}\`
-          - **Stamp file**: matches bundle
+          ### Trust Store Stamp Check
+          - **Image**: \`${STAMP_IMAGE_REF}\`
+          - **Digest**: \`${STEPS_IMAGE_OUTPUTS_STAMP_DIGEST}\`
+          - **CA bundle SHA256**: \`${SHA}\` (matches stamp)
+          - **Java truststore SHA256**: \`${JAVA_SHA}\` (matches stamp)
           EOF
       - name: Re-pin E2E fixture base-image digests
         id: fixtures
@@ -268,12 +305,14 @@ jobs:
             (TestParseWolfiBaseRef) together, so the two can never drift out of
             sync and break the offline unit tests.
 
-            The base image was checked first: its CA bundle matches the digest in
-            /etc/ssl/certs/.ca-certificates.crt.sha256, which is what
-            CertificateAudit compares against.
+            Both stamp files CertificateAudit reads were checked first, on
+            ${{ env.STAMP_IMAGE_REF }}: the CA bundle matches
+            /etc/ssl/certs/.ca-certificates.crt.sha256 and the Java truststore
+            matches /etc/ssl/certs/java/.cacerts.sha256.
 
             Image: ${{ env.IMAGE_REF }}
             Digest: ${{ steps.image.outputs.digest }}
+            Stamp image: ${{ env.STAMP_IMAGE_REF }}
             CA SHA: ${{ steps.ca.outputs.sha }}
 
             Signed-off-by: github-actions[bot] <github-actions[bot]@users.noreply.github.com>
@@ -296,16 +335,20 @@ jobs:
             `TestParseWolfiBaseRef` was run against the updated tree before this
             PR was opened.
 
-            CertificateAudit itself no longer pins a CA bundle hash — the OVAL
-            reads the expected digest from the ca-certificates stamp file
-            (`/etc/ssl/certs/.ca-certificates.crt.sha256`) inside the scanned
-            image. The `Verify CA bundle stamp file` step above asserts that
-            stamp is present and agrees with the bundle, so a base image that
-            dropped it would fail this run rather than silently red the E2E
-            CertificateAudit assertions.
+            CertificateAudit itself no longer pins any hash — the OVAL reads each
+            expected digest from the stamp file shipped beside the file it
+            describes inside the scanned image
+            (`/etc/ssl/certs/.ca-certificates.crt.sha256`, and on Java images
+            `/etc/ssl/certs/java/.cacerts.sha256`). The `Verify trust-store stamp
+            files` step above asserts both are present and agree, using
+            `${{ env.STAMP_IMAGE_REF }}` because it carries both, so an image
+            that dropped one would fail this run rather than silently red the
+            E2E CertificateAudit assertions.
 
             - **Image**: `${{ env.IMAGE_REF }}`
             - **Digest**: `${{ steps.image.outputs.digest }}`
+            - **Stamp image**: `${{ env.STAMP_IMAGE_REF }}`
+            - **Stamp image digest**: `${{ steps.image.outputs.stamp_digest }}`
             - **CA SHA256**: `${{ steps.ca.outputs.sha }}`
             - **Fixtures changed**: `${{ steps.fixtures.outputs.fixtures_changed }}`
             - **Test pin changed**: `${{ steps.testpin.outputs.test_pin_changed }}`
