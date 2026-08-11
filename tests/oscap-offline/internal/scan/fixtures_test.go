@@ -279,18 +279,14 @@ func (h harness) scanFixture(t *testing.T, ops []overlay.Op, containerVars []str
 // Synthetic mutation content. Each blob is the minimal change that flips one
 // OVAL definition's verdict; the comment cites the pattern/state it satisfies.
 
-// apkOpenSSHStanza is an apk installed-db record for openssh-server. OpenSSH is
-// no longer a banned remote-access package (it ships the FIPS-hardened SSH
-// policy drop-ins that DetectOpenSsl now verifies), so this record must NOT
-// match the RemoteAccessServices pattern and its presence must keep the rule
-// PASSING — the remote_access/pass_openssh_now_allowed fixture asserts the ban
-// was lifted.
-var apkOpenSSHStanza = []byte("\nP:openssh-server\nV:9.9_p2-r0\nA:x86_64\n")
-
 // apkOpenSSHClientStanza / apkOpenSSHServerStanza are apk installed-db records
-// for the openssh client and server packages. DetectOpenSsl gates its SSH
-// criteria on these: the client checks apply only when openssh-client is
-// recorded and the server checks only when openssh-server is recorded.
+// for the openssh client and server packages, and two rules read them:
+//   - RemoteAccessServices bans openssh and openssh-server (the server ships a
+//     listening sshd) but NOT openssh-client, so recording openssh-server makes
+//     that rule FAIL while recording only openssh-client keeps it PASSING.
+//   - DetectOpenSsl gates its SSH criteria on these: the client checks apply
+//     only when openssh-client is recorded and the server checks only when
+//     openssh-server is recorded.
 var (
 	apkOpenSSHClientStanza = []byte("\nP:openssh-client\nV:9.9_p2-r0\nA:x86_64\n")
 	apkOpenSSHServerStanza = []byte("\nP:openssh-server\nV:9.9_p2-r0\nA:x86_64\n")
@@ -470,11 +466,20 @@ func matrixCases() []matrixCase {
 			want: map[string]results.Result{ruleRemoteAccessServices: results.Fail},
 		},
 		{
-			// OpenSSH was dropped from the banned list; installing openssh-server
-			// must no longer trip the rule. Guards against a regression that
-			// re-adds an openssh alternative to the pattern.
-			name: "remote_access/pass_openssh_now_allowed",
-			ops:  []overlay.Op{overlay.AppendFile("usr/lib/apk/db/installed", apkOpenSSHStanza)},
+			// openssh-server ships a listening sshd and is banned, so recording it
+			// must trip the rule. (The openssh metapackage pulls openssh-server in,
+			// so an `apk add openssh` image fails here too.)
+			name: "remote_access/fail_openssh_server_installed",
+			ops:  []overlay.Op{overlay.AppendFile("usr/lib/apk/db/installed", apkOpenSSHServerStanza)},
+			want: map[string]results.Result{ruleRemoteAccessServices: results.Fail},
+		},
+		{
+			// openssh-client is deliberately NOT banned: a client-only image such as
+			// go-fips must PASS the remote-access rule. Guards against a regression
+			// that widens the pattern to match openssh-client (or the `openssh`
+			// alternative bleeding into the "-client" suffix).
+			name: "remote_access/pass_openssh_client_allowed",
+			ops:  []overlay.Op{overlay.AppendFile("usr/lib/apk/db/installed", apkOpenSSHClientStanza)},
 			want: map[string]results.Result{ruleRemoteAccessServices: results.Pass},
 		},
 		{
