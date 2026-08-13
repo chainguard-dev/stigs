@@ -5,7 +5,7 @@ go 1.26.4
 require (
 	github.com/chainguard-dev/clog v1.8.1
 	github.com/google/go-cmp v0.7.0
-	github.com/google/go-containerregistry v0.21.8
+	github.com/google/go-containerregistry v0.21.9
 )
 
 require (
