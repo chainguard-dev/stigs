@@ -314,6 +314,17 @@ var caTamper = []byte("\n# tamper\n-----BEGIN CERTIFICATE-----\nTAMPERED\n-----E
 // it instead of pinning one in the datastream.
 const caStampPath = "etc/ssl/certs/.ca-certificates.crt.sha256"
 
+// caBundlePath and kanikoCABundlePath are the two locations CertificateAudit
+// accepts SSL_CERT_FILE pointing at, as tar member paths (rootfs-relative, no
+// leading slash). kanikoCAStampPath is the stamp file the /kaniko copy is
+// checked against where one is shipped beside it; cgr.dev/chainguard/kaniko
+// ships none today, so the copy falls back to the stamp at caStampPath.
+const (
+	caBundlePath       = "etc/ssl/certs/ca-certificates.crt"
+	kanikoCABundlePath = "kaniko/ssl/certs/ca-certificates.crt"
+	kanikoCAStampPath  = "kaniko/ssl/certs/.ca-certificates.crt.sha256"
+)
+
 // caStampWrongDigest is a well-formed stamp naming a digest the untouched
 // bundle cannot have (all zeroes), isolating the comparison from the stamp
 // side: the bundle is clean, the expected value is not.
@@ -447,13 +458,13 @@ func matrixCases() []matrixCase {
 
 		// CertificateAudit is an AND of five criteria: the CA bundle exists, the
 		// ca-certificates stamp file exists and yields one SHA-256 digest, the
-		// bundle's SHA-256 equals that digest, SSL_CERT_FILE is set to the
-		// bundle path, and — only where /etc/ssl/certs/java/cacerts exists — the
-		// Java truststore likewise matches its own stamp file. Nothing here
-		// depends on a hash pinned in the datastream, so no fixture needs to move
-		// when an upstream bundle rolls. The pass fixture also sets
-		// SSL_CERT_FILE; the fail fixtures each isolate one failing dimension
-		// while holding the others valid.
+		// bundle's SHA-256 equals that digest, SSL_CERT_FILE names a copy of the
+		// bundle carrying that same digest, and — only where
+		// /etc/ssl/certs/java/cacerts exists — the Java truststore likewise
+		// matches its own stamp file. Nothing here depends on a hash pinned in
+		// the datastream, so no fixture needs to move when an upstream bundle
+		// rolls. The pass fixtures also set SSL_CERT_FILE; the fail fixtures each
+		// isolate one failing dimension while holding the others valid.
 		{
 			name:          "certificate_audit/pass_clean",
 			containerVars: []string{"SSL_CERT_FILE=/etc/ssl/certs/ca-certificates.crt"},
@@ -462,7 +473,7 @@ func matrixCases() []matrixCase {
 		{
 			// Hash dimension: tampered bundle, SSL_CERT_FILE still valid.
 			name:          "certificate_audit/fail_tampered_bundle",
-			ops:           []overlay.Op{overlay.AppendFile("etc/ssl/certs/ca-certificates.crt", caTamper)},
+			ops:           []overlay.Op{overlay.AppendFile(caBundlePath, caTamper)},
 			containerVars: []string{"SSL_CERT_FILE=/etc/ssl/certs/ca-certificates.crt"},
 			want:          map[string]results.Result{ruleCertificateAudit: results.Fail},
 		},
@@ -523,6 +534,79 @@ func matrixCases() []matrixCase {
 				overlay.AddFile(javaTrustStorePath, javaTrustStore, 0o444, 0, 0),
 			},
 			containerVars: []string{"SSL_CERT_FILE=/etc/ssl/certs/ca-certificates.crt"},
+			want:          map[string]results.Result{ruleCertificateAudit: results.Fail},
+		},
+		{
+			// Kaniko fallback branch: the bundle is copied to the /kaniko location
+			// and SSL_CERT_FILE names that copy, the layout
+			// cgr.dev/chainguard/kaniko ships. No stamp file sits beside the copy,
+			// so it is held to the digest in the system stamp at /etc/ssl/certs,
+			// which it matches.
+			name:          "certificate_audit/pass_kaniko_bundle",
+			ops:           []overlay.Op{overlay.CopyFile(caBundlePath, kanikoCABundlePath)},
+			containerVars: []string{"SSL_CERT_FILE=/kaniko/ssl/certs/ca-certificates.crt"},
+			want:          map[string]results.Result{ruleCertificateAudit: results.Pass},
+		},
+		{
+			// Kaniko own-stamp branch: a stamp shipped beside the copy is what the
+			// copy is checked against. The system stamp records the same digest
+			// here, so this case proves the branch is reachable, not merely that
+			// the fallback still fires — fail_kaniko_own_stamp_wrong_digest below
+			// separates the two.
+			name: "certificate_audit/pass_kaniko_own_stamp",
+			ops: []overlay.Op{
+				overlay.CopyFile(caBundlePath, kanikoCABundlePath),
+				overlay.CopyFile(caStampPath, kanikoCAStampPath),
+			},
+			containerVars: []string{"SSL_CERT_FILE=/kaniko/ssl/certs/ca-certificates.crt"},
+			want:          map[string]results.Result{ruleCertificateAudit: results.Pass},
+		},
+		{
+			// Precedence: an untouched copy beside a stamp naming a digest it
+			// cannot have. The system stamp would match, so the rule may only fail
+			// if the stamp beside the copy takes priority over it rather than the
+			// two being OR'd.
+			name: "certificate_audit/fail_kaniko_own_stamp_wrong_digest",
+			ops: []overlay.Op{
+				overlay.CopyFile(caBundlePath, kanikoCABundlePath),
+				overlay.CopyFile(caStampPath, kanikoCAStampPath),
+				overlay.ReplaceFile(kanikoCAStampPath, caStampWrongDigest),
+			},
+			containerVars: []string{"SSL_CERT_FILE=/kaniko/ssl/certs/ca-certificates.crt"},
+			want:          map[string]results.Result{ruleCertificateAudit: results.Fail},
+		},
+		{
+			// Precedence, unparseable variant: a stamp beside the copy that yields
+			// no digest is a present stamp, not an absent one, so the fallback must
+			// not rescue it. This is the case a "no digest collected" test would
+			// conflate with the file being missing.
+			name: "certificate_audit/fail_kaniko_malformed_own_stamp",
+			ops: []overlay.Op{
+				overlay.CopyFile(caBundlePath, kanikoCABundlePath),
+				overlay.CopyFile(caStampPath, kanikoCAStampPath),
+				overlay.ReplaceFile(kanikoCAStampPath, caStampMalformed),
+			},
+			containerVars: []string{"SSL_CERT_FILE=/kaniko/ssl/certs/ca-certificates.crt"},
+			want:          map[string]results.Result{ruleCertificateAudit: results.Fail},
+		},
+		{
+			// Hash dimension on the /kaniko copy: the copy diverges from the digest
+			// the system stamp records while the /etc bundle stays clean. Accepting
+			// the alternative location must not mean accepting it unverified.
+			name: "certificate_audit/fail_kaniko_tampered_bundle",
+			ops: []overlay.Op{
+				overlay.CopyFile(caBundlePath, kanikoCABundlePath),
+				overlay.AppendFile(kanikoCABundlePath, caTamper),
+			},
+			containerVars: []string{"SSL_CERT_FILE=/kaniko/ssl/certs/ca-certificates.crt"},
+			want:          map[string]results.Result{ruleCertificateAudit: results.Fail},
+		},
+		{
+			// Existence dimension on the /kaniko copy: SSL_CERT_FILE names it but no
+			// such file was laid down, so naming an accepted path is not on its own
+			// enough to pass.
+			name:          "certificate_audit/fail_kaniko_env_without_bundle",
+			containerVars: []string{"SSL_CERT_FILE=/kaniko/ssl/certs/ca-certificates.crt"},
 			want:          map[string]results.Result{ruleCertificateAudit: results.Fail},
 		},
 		{
