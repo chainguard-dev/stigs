@@ -13,7 +13,7 @@
 #     /etc/ssl/certs/.ca-certificates.crt.sha256
 #
 # Expected result: a clean scan with no failures attributable to these rules.
-FROM cgr.dev/chainguard/wolfi-base:latest@sha256:30f03343947c7ae3581fda727a6e2aa7b8ce7009b7bfc2ab8d5c9483ace5812f
+FROM cgr.dev/chainguard/wolfi-base:latest@sha256:07e60ff6586b56f03c625e27b604f9f7d29498fef32f099f6560f0d207b4a056
 
 # Suppress OrbStack's automatic root-CA injection so the baked CA bundle in
 # the image is identical to the upstream wolfi-base bundle. Without this, the
