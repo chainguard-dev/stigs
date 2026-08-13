@@ -3,10 +3,11 @@
 #
 # CertificateAudit violation fixture.
 #
-# Appends a bogus trust anchor to /etc/ssl/certs/ca-certificates.crt so
-# the SHA-256 of the baked bundle diverges from the pinned value the
-# CertificateAudit OVAL check expects. The rule must FAIL.
-FROM cgr.dev/chainguard/wolfi-base:latest@sha256:02dab76bd852a70556b5b2002195c8a5fdab77d323c433bf6642aab080489795
+# Appends a bogus trust anchor to /etc/ssl/certs/ca-certificates.crt without
+# touching the ca-certificates stamp file, so the SHA-256 of the baked bundle
+# diverges from the digest recorded in /etc/ssl/certs/.ca-certificates.crt.sha256
+# that the CertificateAudit OVAL check compares it against. The rule must FAIL.
+FROM cgr.dev/chainguard/wolfi-base:latest@sha256:07e60ff6586b56f03c625e27b604f9f7d29498fef32f099f6560f0d207b4a056
 
 LABEL dev.orbstack.add-ca-certificates=false
 

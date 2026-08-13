@@ -1,5 +1,6 @@
 # Fixture: cabundle-tampered
 #
 # /etc/ssl/certs/ca-certificates.crt has extra content appended, so its
-# SHA-256 no longer matches the pinned hash. CertificateAudit must FAIL.
+# SHA-256 no longer matches the digest recorded in the package's stamp file
+# /etc/ssl/certs/.ca-certificates.crt.sha256. CertificateAudit must FAIL.
 xccdf_mil.disa.stig_rule_SV-263659r982563_rule=fail

@@ -2,6 +2,8 @@ package scan_test
 
 import (
 	"bytes"
+	"crypto/sha256"
+	"encoding/hex"
 	"errors"
 	"fmt"
 	"os"
@@ -317,8 +319,42 @@ var plainHTTPRepo = []byte("http://insecure.example.com/alpine\n")
 var commentedAndHTTPSRepos = []byte("# http://insecure.example.com/alpine\nhttps://packages.example.com/alpine\n")
 
 // caTamper appends content to the CA bundle so its SHA-256 diverges from the
-// datastream's pinned hash, failing the filehash58 state.
+// digest recorded in the stamp file, failing the filehash58 state.
 var caTamper = []byte("\n# tamper\n-----BEGIN CERTIFICATE-----\nTAMPERED\n-----END CERTIFICATE-----\n")
+
+// caStampPath is the sha256sum-format stamp file the ca-certificates package
+// ships next to the bundle. CertificateAudit reads the expected digest out of
+// it instead of pinning one in the datastream.
+const caStampPath = "etc/ssl/certs/.ca-certificates.crt.sha256"
+
+// caStampWrongDigest is a well-formed stamp naming a digest the untouched
+// bundle cannot have (all zeroes), isolating the comparison from the stamp
+// side: the bundle is clean, the expected value is not.
+var caStampWrongDigest = []byte(strings.Repeat("0", 64) + "  ca-certificates.crt\n")
+
+// caStampMalformed has no line matching the object's
+// `^([0-9a-fA-F]{64})[ \t]+\*?ca-certificates\.crt$` pattern, so the digest
+// variable collects nothing and the stamp-file existence test fails.
+var caStampMalformed = []byte("not a checksum line\n")
+
+// The Java truststore half of CertificateAudit is conditional: it only applies
+// to images that ship /etc/ssl/certs/java/cacerts. The offline base is
+// wolfi-base, which has no Java, so these fixtures synthesize the pair. The
+// truststore's real format is irrelevant here — the check is a SHA-256
+// comparison, so opaque bytes exercise it exactly as a real JKS would.
+const (
+	javaTrustStorePath = "etc/ssl/certs/java/cacerts"
+	javaStampPath      = "etc/ssl/certs/java/.cacerts.sha256"
+)
+
+var javaTrustStore = []byte("synthetic truststore bytes, not a real JKS")
+
+// javaStamp returns a sha256sum-format stamp naming content's digest, matching
+// what the package ships next to the truststore: "<digest>  cacerts".
+func javaStamp(content []byte) []byte {
+	sum := sha256.Sum256(content)
+	return []byte(hex.EncodeToString(sum[:]) + "  cacerts\n")
+}
 
 // activeShadowEntry is an /etc/shadow line whose password field is a
 // traditional DES crypt hash (not "!" or "*"), which the UserPasswordConfigured
@@ -333,10 +369,11 @@ var activeShadowEntry = []byte("compliance-test:ZZx/p0vU8jVbA:19000:0:99999:7:::
 // field, the case a hashed-password fixture never exercises.
 var emptyShadowPassword = []byte("emptyacct::19000:0:99999:7:::\n")
 
-// extraShadowUser is a line appended after the trailing `nobody:` entry, which
-// the NoUsers obj:2 pattern `^nobody:.*\n(.+)` matches, failing the none_exist
-// "no users after nobody" test.
-var extraShadowUser = []byte("intruder:!::0:::::\n")
+// lockedShadowUser is a locked ("!") entry appended after the trailing
+// `nobody:` line, mirroring what apko writes for image run-as users. The
+// NoUsers pattern `^[^:]+:(?![!*])[^:\n]*:` must NOT match it — locked
+// service accounts cannot log in and are permitted.
+var lockedShadowUser = []byte("nonroot:!::0:::::\n")
 
 // fipsModuleCnf, opensslCnf, and apkFIPSPackages together satisfy all seven
 // DetectOpenSsl criteria: the two config files must exist, both FIPS packages
@@ -508,12 +545,15 @@ func matrixCases() []matrixCase {
 			want: map[string]results.Result{rulePackageSignature: results.Pass},
 		},
 
-		// CertificateAudit is an AND of three criteria: the CA bundle exists, its
-		// SHA-256 matches the datastream's pinned hash (the base ref is read from
-		// the same pin the update-ca-cert workflow keeps in lockstep with that
-		// hash), and SSL_CERT_FILE is set to the bundle path. The pass fixture
-		// therefore also sets SSL_CERT_FILE; the fail fixtures each isolate one
-		// failing dimension while holding the others valid.
+		// CertificateAudit is an AND of five criteria: the CA bundle exists, the
+		// ca-certificates stamp file exists and yields one SHA-256 digest, the
+		// bundle's SHA-256 equals that digest, SSL_CERT_FILE is set to the
+		// bundle path, and — only where /etc/ssl/certs/java/cacerts exists — the
+		// Java truststore likewise matches its own stamp file. Nothing here
+		// depends on a hash pinned in the datastream, so no fixture needs to move
+		// when an upstream bundle rolls. The pass fixture also sets
+		// SSL_CERT_FILE; the fail fixtures each isolate one failing dimension
+		// while holding the others valid.
 		{
 			name:          "certificate_audit/pass_clean",
 			containerVars: []string{"SSL_CERT_FILE=/etc/ssl/certs/ca-certificates.crt"},
@@ -523,6 +563,65 @@ func matrixCases() []matrixCase {
 			// Hash dimension: tampered bundle, SSL_CERT_FILE still valid.
 			name:          "certificate_audit/fail_tampered_bundle",
 			ops:           []overlay.Op{overlay.AppendFile("etc/ssl/certs/ca-certificates.crt", caTamper)},
+			containerVars: []string{"SSL_CERT_FILE=/etc/ssl/certs/ca-certificates.crt"},
+			want:          map[string]results.Result{ruleCertificateAudit: results.Fail},
+		},
+		{
+			// Hash dimension from the stamp side: clean bundle, stamp claims a
+			// digest it cannot have.
+			name:          "certificate_audit/fail_wrong_stamp_digest",
+			ops:           []overlay.Op{overlay.ReplaceFile(caStampPath, caStampWrongDigest)},
+			containerVars: []string{"SSL_CERT_FILE=/etc/ssl/certs/ca-certificates.crt"},
+			want:          map[string]results.Result{ruleCertificateAudit: results.Fail},
+		},
+		{
+			// Stamp dimension: stamp present but unparseable, so there is no
+			// expected digest to compare against.
+			name:          "certificate_audit/fail_malformed_stamp",
+			ops:           []overlay.Op{overlay.ReplaceFile(caStampPath, caStampMalformed)},
+			containerVars: []string{"SSL_CERT_FILE=/etc/ssl/certs/ca-certificates.crt"},
+			want:          map[string]results.Result{ruleCertificateAudit: results.Fail},
+		},
+		{
+			// Stamp dimension: image ships no stamp file at all (e.g. a base
+			// image whose ca-certificates predates it). The rule must not pass
+			// vacuously.
+			name:          "certificate_audit/fail_missing_stamp",
+			ops:           []overlay.Op{overlay.RemoveFile(caStampPath)},
+			containerVars: []string{"SSL_CERT_FILE=/etc/ssl/certs/ca-certificates.crt"},
+			want:          map[string]results.Result{ruleCertificateAudit: results.Fail},
+		},
+		{
+			// Java dimension: a synthesized truststore agreeing with its stamp
+			// must keep the rule passing. The base has no Java, so this is the
+			// only fixture exercising the "present and matching" OR branch.
+			name: "certificate_audit/pass_java_truststore",
+			ops: []overlay.Op{
+				overlay.AddFile(javaTrustStorePath, javaTrustStore, 0o444, 0, 0),
+				overlay.AddFile(javaStampPath, javaStamp(javaTrustStore), 0o444, 0, 0),
+			},
+			containerVars: []string{"SSL_CERT_FILE=/etc/ssl/certs/ca-certificates.crt"},
+			want:          map[string]results.Result{ruleCertificateAudit: results.Pass},
+		},
+		{
+			// Java dimension: truststore present but its stamp names a digest
+			// for different content, i.e. a truststore modified in place.
+			name: "certificate_audit/fail_java_wrong_stamp",
+			ops: []overlay.Op{
+				overlay.AddFile(javaTrustStorePath, javaTrustStore, 0o444, 0, 0),
+				overlay.AddFile(javaStampPath, javaStamp([]byte("other content")), 0o444, 0, 0),
+			},
+			containerVars: []string{"SSL_CERT_FILE=/etc/ssl/certs/ca-certificates.crt"},
+			want:          map[string]results.Result{ruleCertificateAudit: results.Fail},
+		},
+		{
+			// Java dimension: truststore present with no stamp beside it. The
+			// absent-truststore OR branch must not rescue this — there is a
+			// truststore, it just cannot be verified.
+			name: "certificate_audit/fail_java_missing_stamp",
+			ops: []overlay.Op{
+				overlay.AddFile(javaTrustStorePath, javaTrustStore, 0o444, 0, 0),
+			},
 			containerVars: []string{"SSL_CERT_FILE=/etc/ssl/certs/ca-certificates.crt"},
 			want:          map[string]results.Result{ruleCertificateAudit: results.Fail},
 		},
@@ -556,15 +655,26 @@ func matrixCases() []matrixCase {
 			want: map[string]results.Result{ruleUserPasswordConfigured: results.Fail},
 		},
 
-		// NoUsers: clean base ends /etc/shadow with the `nobody:` line; nothing
-		// follows it.
+		// NoUsers: clean base has only locked entries in /etc/shadow.
 		{
 			name: "no_users/pass_clean",
 			want: map[string]results.Result{ruleNoUsers: results.Pass},
 		},
+		// A locked entry after `nobody` is what apko writes for run-as
+		// users; it cannot log in and must not fail the check.
 		{
-			name: "no_users/fail_extra_user",
-			ops:  []overlay.Op{overlay.AppendFile("etc/shadow", extraShadowUser)},
+			name: "no_users/pass_locked_extra_user",
+			ops:  []overlay.Op{overlay.AppendFile("etc/shadow", lockedShadowUser)},
+			want: map[string]results.Result{ruleNoUsers: results.Pass},
+		},
+		{
+			name: "no_users/fail_unlocked_user",
+			ops:  []overlay.Op{overlay.AppendFile("etc/shadow", activeShadowEntry)},
+			want: map[string]results.Result{ruleNoUsers: results.Fail},
+		},
+		{
+			name: "no_users/fail_empty_password_user",
+			ops:  []overlay.Op{overlay.AppendFile("etc/shadow", emptyShadowPassword)},
 			want: map[string]results.Result{ruleNoUsers: results.Fail},
 		},
 
@@ -794,7 +904,7 @@ func TestSCERulesExcludedFromMatrix(t *testing.T) {
 func TestParseWolfiBaseRef(t *testing.T) {
 	t.Parallel()
 
-	const pinned = wolfiBaseRepo + ":latest@sha256:02dab76bd852a70556b5b2002195c8a5fdab77d323c433bf6642aab080489795"
+	const pinned = wolfiBaseRepo + ":latest@sha256:07e60ff6586b56f03c625e27b604f9f7d29498fef32f099f6560f0d207b4a056"
 
 	realDockerfile, err := os.ReadFile(filepath.Clean(filepath.Join("..", "..", "..", "e2e", "fixtures", "baseline-clean", "Dockerfile")))
 	if err != nil {

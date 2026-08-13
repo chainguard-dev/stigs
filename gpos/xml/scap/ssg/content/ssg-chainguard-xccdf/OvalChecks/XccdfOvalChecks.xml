@@ -4579,7 +4579,7 @@
         code protection mechanisms are examples of privileged functions that require protection from
         non-privileged users. <html:pre>
           Script Verification:
-          To manually verify, run command 'cat /etc/shadow and verify that no additional users exist
+          To manually verify, run command 'cat /etc/shadow and verify that every entry's password field is locked ('!' or '*'), i.e. no login-capable users exist
         </html:pre>
       </description>
       <check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
@@ -4592,7 +4592,7 @@
       <description> Setting the most restrictive default permissions ensures that when new accounts
         are created they do not have unnecessary access. <html:pre>
           Script Verification:
-          To manually verify, run command 'cat /etc/shadow and verify that no additional users exist
+          To manually verify, run command 'cat /etc/shadow and verify that every entry's password field is locked ('!' or '*'), i.e. no login-capable users exist
         </html:pre>
       </description>
       <check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
@@ -4612,7 +4612,7 @@
         other than those accesses explicitly identified and documented by the organization when
         related to the use of anonymous access. <html:pre>
           Script Verification:
-          To manually verify, run command 'cat /etc/shadow and verify that no additional users exist
+          To manually verify, run command 'cat /etc/shadow and verify that every entry's password field is locked ('!' or '*'), i.e. no login-capable users exist
         </html:pre>
       </description>
       <check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
@@ -4637,7 +4637,7 @@
         requirements, many operating systems can be integrated with enterprise-level
         authentication/access mechanisms that meet or exceed access control policy requirements. <html:pre>
         Script Verification:
-          To manually verify, run command 'cat /etc/shadow and verify that no additional users exist
+          To manually verify, run command 'cat /etc/shadow and verify that every entry's password field is locked ('!' or '*'), i.e. no login-capable users exist
         </html:pre>
       </description>
       <check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
@@ -4662,7 +4662,7 @@
         system resources. This may include isolating the administrative interface on a different
         security domain and with additional access controls. <html:pre>
           Script Verification:
-          To manually verify, run command 'cat /etc/shadow and verify that no additional users exist
+          To manually verify, run command 'cat /etc/shadow and verify that every entry's password field is locked ('!' or '*'), i.e. no login-capable users exist
         </html:pre>
       </description>
       <check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
@@ -4676,7 +4676,7 @@
         they do not have authorization. When operating systems provide the capability to change user
         authenticators, it is critical the user re-authenticate. <html:pre>
           Script Verification:
-          To manually verify, run command 'cat /etc/shadow and verify that no additional users exist
+          To manually verify, run command 'cat /etc/shadow and verify that every entry's password field is locked ('!' or '*'), i.e. no login-capable users exist
         </html:pre>
       </description>
       <check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
@@ -4689,7 +4689,7 @@
         they do not have authorization. When operating systems provide the capability to change
         security roles, it is critical the user re-authenticate. <html:pre>
           Script Verification:
-          To manually verify, run command 'cat /etc/shadow and verify that no additional users exist
+          To manually verify, run command 'cat /etc/shadow and verify that every entry's password field is locked ('!' or '*'), i.e. no login-capable users exist
         </html:pre>
       </description>
       <check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
@@ -4709,7 +4709,7 @@
         with enterprise-level authentication/access/auditing mechanisms that meet or exceed access
         control policy requirements. <html:pre>
           Script Verification:
-          To manually verify, run command 'cat /etc/shadow and verify that no additional users exist
+          To manually verify, run command 'cat /etc/shadow and verify that every entry's password field is locked ('!' or '*'), i.e. no login-capable users exist
         </html:pre>
       </description>
       <check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
@@ -4729,7 +4729,7 @@
         enterprise-level authentication/access/auditing mechanisms that meet or exceed access
         control policy requirements. <html:pre>
           Script Verification:
-          To manually verify, run command 'cat /etc/shadow and verify that no additional users exist
+          To manually verify, run command 'cat /etc/shadow and verify that every entry's password field is locked ('!' or '*'), i.e. no login-capable users exist
         </html:pre>
       </description>
       <check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
@@ -4752,7 +4752,7 @@
         accounts (e.g., shared privilege accounts) or for detailed accountability of individual
         activity. <html:pre>
           Script Verification:
-          To manually verify, run command 'cat /etc/shadow and verify that no additional users exist
+          To manually verify, run command 'cat /etc/shadow and verify that every entry's password field is locked ('!' or '*'), i.e. no login-capable users exist
         </html:pre>
       </description>
       <check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
@@ -4770,7 +4770,7 @@
         operate at a higher privilege level and therefore should be excluded from the
         organization-defined software list after review. <html:pre>
           Script Verification:
-          To manually verify, run command 'cat /etc/shadow and verify that no additional users exist
+          To manually verify, run command 'cat /etc/shadow and verify that every entry's password field is locked ('!' or '*'), i.e. no login-capable users exist
         </html:pre>
       </description>
       <check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
@@ -4801,7 +4801,7 @@
         access control require identity-based access control, that limitation is not required for
         this use of discretionary access control. <html:pre>
           Script Verification:
-          To manually verify, run command 'cat /etc/shadow and verify that no additional users exist
+          To manually verify, run command 'cat /etc/shadow and verify that every entry's password field is locked ('!' or '*'), i.e. no login-capable users exist
         </html:pre>
       </description>
       <check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
@@ -4822,7 +4822,7 @@
         enterprise-level authentication/access mechanisms that meet or exceed access control policy
         requirements. <html:pre>
           Script Verification:
-          To manually verify, run command 'cat /etc/shadow and verify that no additional users exist
+          To manually verify, run command 'cat /etc/shadow and verify that every entry's password field is locked ('!' or '*'), i.e. no login-capable users exist
         </html:pre>
       </description>
       <check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
@@ -4852,7 +4852,7 @@
         transferred; using the information system to monitor account usage; and using automated
         telephonic notification to report atypical system account usage. <html:pre>
           Script Verification:
-          To manually verify, run command 'cat /etc/shadow and verify that no additional users exist
+          To manually verify, run command 'cat /etc/shadow and verify that every entry's password field is locked ('!' or '*'), i.e. no login-capable users exist
         </html:pre>
       </description>
       <check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
@@ -4866,7 +4866,7 @@
         Non-privileged users should coordinate any sharing of information with an SA through shared
         resources. <html:pre>
           Script Verification:
-          To manually verify, run command 'cat /etc/shadow and verify that no additional users exist
+          To manually verify, run command 'cat /etc/shadow and verify that every entry's password field is locked ('!' or '*'), i.e. no login-capable users exist
         </html:pre>
       </description>
       <check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
@@ -4882,7 +4882,7 @@
         sufficient detail to reconstruct events to determine the actual account involved in the
         activity. <html:pre>
           Script Verification:
-          To manually verify, run command 'cat /etc/shadow and verify that no additional users exist
+          To manually verify, run command 'cat /etc/shadow and verify that every entry's password field is locked ('!' or '*'), i.e. no login-capable users exist
         </html:pre>
       </description>
       <check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
@@ -4898,7 +4898,7 @@
         been obtained. Operating systems need to track periods of inactivity and disable application
         identifiers after 35 days of inactivity. <html:pre>
           Script Verification:
-          To manually verify, run command 'cat /etc/shadow and verify that no additional users exist
+          To manually verify, run command 'cat /etc/shadow and verify that every entry's password field is locked ('!' or '*'), i.e. no login-capable users exist
         </html:pre>
       </description>
       <check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">

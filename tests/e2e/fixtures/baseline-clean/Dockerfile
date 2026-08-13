@@ -9,10 +9,11 @@
 #   - LibraryPermissions: /usr/lib owned by root:root
 #   - VarLogPermissions: /var/log owned by root:root
 #   - NoUsers: no interactive user accounts beyond the image default
-#   - CertificateAudit: /etc/ssl/certs/ca-certificates.crt matches the pinned SHA-256
+#   - CertificateAudit: /etc/ssl/certs/ca-certificates.crt matches the SHA-256 in
+#     /etc/ssl/certs/.ca-certificates.crt.sha256
 #
 # Expected result: a clean scan with no failures attributable to these rules.
-FROM cgr.dev/chainguard/wolfi-base:latest@sha256:02dab76bd852a70556b5b2002195c8a5fdab77d323c433bf6642aab080489795
+FROM cgr.dev/chainguard/wolfi-base:latest@sha256:07e60ff6586b56f03c625e27b604f9f7d29498fef32f099f6560f0d207b4a056
 
 # Suppress OrbStack's automatic root-CA injection so the baked CA bundle in
 # the image is identical to the upstream wolfi-base bundle. Without this, the

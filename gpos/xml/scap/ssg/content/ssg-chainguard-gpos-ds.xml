@@ -32,11 +32,11 @@
   <ds:component id="scap_org.open-scap_comp_all-resolved-xccdf-v3r2.xml" timestamp="2016-02-23T14:39:05">
     <ns0:Benchmark xmlns:html="http://www.w3.org/1999/xhtml" id="xccdf_org.open-scap.sce-community-content_benchmark_all" resolved="1" xml:lang="en">
       <ns0:status date="2016-02-23">draft</ns0:status>
-      <ns0:title xml:lang="en">Datastream XCCDF Checklist Beta GPOS v3r2p14</ns0:title>
+      <ns0:title xml:lang="en">Datastream XCCDF Checklist Beta GPOS v3r2p15</ns0:title>
       <ns0:description>This XCCDF document provides a basic security check for a Linux system.</ns0:description>
       <ns0:notice id="disclaimer" xml:lang="en"/>
       <ns0:front-matter xml:lang="en"/>
-      <ns0:version>3.2.14</ns0:version>
+      <ns0:version>3.2.15</ns0:version>
       <ns0:model system="urn:xccdf:scoring:default"/>
       <ns0:model system="urn:xccdf:scoring:flat"/>
       <ns0:Profile id="xccdf_basic_profile_.check">
@@ -5658,8 +5658,7 @@
                         anomalous accounts supports the concepts of least privilege and least
                         functionality which reduce the attack surface of the system. <html:pre>
                         Script Verification:
-                            To manually verify, run command 'cat /etc/shadow and verify that no
-                        additional users exist
+                            To manually verify, run command 'cat /etc/shadow and verify that every entry's password field is locked ('!' or '*'), i.e. no login-capable users exist
                         </html:pre>
                     </ns0:description>
           <ns0:ident system="http://cyber.mil/cci">CCI-003628</ns0:ident>
@@ -5681,8 +5680,7 @@
                         mechanisms or malicious code protection mechanisms are examples of
                         privileged functions that require protection from non-privileged users. <html:pre>
                         Script Verification:
-                            To manually verify, run command 'cat /etc/shadow and verify that no
-                        additional users exist
+                            To manually verify, run command 'cat /etc/shadow and verify that every entry's password field is locked ('!' or '*'), i.e. no login-capable users exist
                         </html:pre>
                     </ns0:description>
           <ns0:ident system="http://cyber.mil/cci">CCI-002235</ns0:ident>
@@ -5698,8 +5696,7 @@
                         ensures that when new accounts are created they do not have unnecessary
                         access. <html:pre>
                             Script Verification:
-                            To manually verify, run command 'cat /etc/shadow and verify that no
-                        additional users exist
+                            To manually verify, run command 'cat /etc/shadow and verify that every entry's password field is locked ('!' or '*'), i.e. no login-capable users exist
                         </html:pre>
                     </ns0:description>
           <ns0:ident system="http://cyber.mil/cci">CCI-000366</ns0:ident>
@@ -5723,8 +5720,7 @@
                         identified and documented by the organization when related to the use of
                         anonymous access. <html:pre>
                             Script Verification:
-                            To manually verify, run command 'cat /etc/shadow and verify that no
-                        additional users exist
+                            To manually verify, run command 'cat /etc/shadow and verify that every entry's password field is locked ('!' or '*'), i.e. no login-capable users exist
                         </html:pre>
                     </ns0:description>
           <ns0:ident system="http://cyber.mil/cci">CCI-000804</ns0:ident>
@@ -5754,8 +5750,7 @@
                         authentication/access mechanisms that meet or exceed access control policy
                         requirements. <html:pre>
                             Script Verification:
-                            To manually verify, run command 'cat /etc/shadow and verify that no
-                        additional users exist
+                            To manually verify, run command 'cat /etc/shadow and verify that every entry's password field is locked ('!' or '*'), i.e. no login-capable users exist
                         </html:pre>
                     </ns0:description>
           <ns0:ident system="http://cyber.mil/cci">CCI-001682</ns0:ident>
@@ -5785,8 +5780,7 @@
                         isolating the administrative interface on a different security domain and
                         with additional access controls. <html:pre>
                             Script Verification:
-                            To manually verify, run command 'cat /etc/shadow and verify that no
-                        dditional users exist
+                            To manually verify, run command 'cat /etc/shadow and verify that every entry's password field is locked ('!' or '*'), i.e. no login-capable users exist
                         </html:pre>
                     </ns0:description>
           <ns0:ident system="http://cyber.mil/cci">CCI-001082</ns0:ident>
@@ -5802,8 +5796,7 @@
                         operating systems provide the capability to change user authenticators, it
                         is critical the user reauthenticate. <html:pre>
                             Script Verification:
-                            To manually verify, run command 'cat /etc/shadow and verify that no
-                        additional users exist
+                            To manually verify, run command 'cat /etc/shadow and verify that every entry's password field is locked ('!' or '*'), i.e. no login-capable users exist
                         </html:pre>
                     </ns0:description>
           <ns0:ident system="http://cyber.mil/cci">CCI-002038</ns0:ident>
@@ -5819,8 +5812,7 @@
                         operating systems provide the capability to change security roles, it is
                         critical the user reauthenticate. <html:pre>
                             Script Verification:
-                            To manually verify, run command 'cat /etc/shadow and verify that no
-                        additional users exist
+                            To manually verify, run command 'cat /etc/shadow and verify that every entry's password field is locked ('!' or '*'), i.e. no login-capable users exist
                         </html:pre>
                     </ns0:description>
           <ns0:ident system="http://cyber.mil/cci">CCI-002038</ns0:ident>
@@ -5843,8 +5835,7 @@
                         authentication/access/auditing mechanisms that meet or exceed access control
                         policy requirements. <html:pre>
                             Script Verification:
-                            To manually verify, run command 'cat /etc/shadow and verify that no
-                        additional users exist
+                            To manually verify, run command 'cat /etc/shadow and verify that every entry's password field is locked ('!' or '*'), i.e. no login-capable users exist
                         </html:pre>
                     </ns0:description>
           <ns0:ident system="http://cyber.mil/cci">CCI-000015</ns0:ident>
@@ -5867,8 +5858,7 @@
                         authentication/access/auditing mechanisms that meet or exceed access control
                         policy requirements. <html:pre>
                             Script Verification:
-                            To manually verify, run command 'cat /etc/shadow and verify that no
-                        additional users exist
+                            To manually verify, run command 'cat /etc/shadow and verify that every entry's password field is locked ('!' or '*'), i.e. no login-capable users exist
                         </html:pre>
                     </ns0:description>
           <ns0:ident system="http://cyber.mil/cci">CCI-000015</ns0:ident>
@@ -5895,8 +5885,7 @@
                         unique identification of individuals in group accounts (e.g., shared
                         privilege accounts) or for detailed accountability of individual activity. <html:pre>
                         Script Verification:
-                            To manually verify, run command 'cat /etc/shadow and verify that no
-                        additional users exist
+                            To manually verify, run command 'cat /etc/shadow and verify that every entry's password field is locked ('!' or '*'), i.e. no login-capable users exist
                         </html:pre>
                     </ns0:description>
           <ns0:ident system="http://cyber.mil/cci">CCI-000764</ns0:ident>
@@ -5916,8 +5905,7 @@
                         are required to operate at a higher privilege level and therefore should be
                         excluded from the organization-defined software list after review.
                         ScriptVerification:
-                        To manually verify, run command 'cat /etc/shadow and verify that no
-                        additional users exist
+                        To manually verify, run command 'cat /etc/shadow and verify that every entry's password field is locked ('!' or '*'), i.e. no login-capable users exist
                     </ns0:description>
           <ns0:ident system="http://cyber.mil/cci">CCI-002233</ns0:ident>
           <ns0:check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
@@ -5952,8 +5940,7 @@
                         identity-based access control, that limitation is not required for this use
                         of discretionary access control. <html:pre>
                             Script Verification:
-                            To manually verify, run command 'cat /etc/shadow and verify that no
-                        additional users exist
+                            To manually verify, run command 'cat /etc/shadow and verify that every entry's password field is locked ('!' or '*'), i.e. no login-capable users exist
                         </html:pre>
                     </ns0:description>
           <ns0:ident system="http://cyber.mil/cci">CCI-002165</ns0:ident>
@@ -5977,8 +5964,7 @@
                         authentication/access mechanisms that meet or exceed access control policy
                         requirements. <html:pre>
                             Script Verification:
-                            To manually verify, run command 'cat /etc/shadow and verify that no
-                        additional users exist
+                            To manually verify, run command 'cat /etc/shadow and verify that every entry's password field is locked ('!' or '*'), i.e. no login-capable users exist
                         </html:pre>
                     </ns0:description>
           <ns0:ident system="http://cyber.mil/cci">CCI-000016</ns0:ident>
@@ -6014,8 +6000,7 @@
                         using automated telephonic notification to report atypical system account
                         usage. <html:pre>
                             Script Verification:
-                            To manually verify, run command 'cat /etc/shadow and verify that no
-                        additional users exist
+                            To manually verify, run command 'cat /etc/shadow and verify that every entry's password field is locked ('!' or '*'), i.e. no login-capable users exist
                         </html:pre>
                     </ns0:description>
           <ns0:ident system="http://cyber.mil/cci">CCI-000015</ns0:ident>
@@ -6031,8 +6016,7 @@
                         information of a sensitive nature. Non-privileged users should coordinate
                         any sharing of information with an SA through shared resources. <html:pre>
                         Script Verification:
-                            To manually verify, run command 'cat /etc/shadow and verify that no
-                        additional users exist
+                            To manually verify, run command 'cat /etc/shadow and verify that every entry's password field is locked ('!' or '*'), i.e. no login-capable users exist
                         </html:pre>
                     </ns0:description>
           <ns0:ident system="http://cyber.mil/cci">CCI-000366</ns0:ident>
@@ -6049,8 +6033,7 @@
                         users. The organization must maintain audit trails in sufficient detail to
                         reconstruct events to determine the actual account involved in the activity. <html:pre>
                         Script Verification:
-                            To manually verify, run command 'cat /etc/shadow and verify that no
-                        additional users exist
+                            To manually verify, run command 'cat /etc/shadow and verify that every entry's password field is locked ('!' or '*'), i.e. no login-capable users exist
                         </html:pre>
                     </ns0:description>
           <ns0:ident system="http://cyber.mil/cci">CCI-000135</ns0:ident>
@@ -6068,8 +6051,7 @@
                         been obtained. Operating systems need to track periods of inactivity and
                         disable application identifiers after 35 days of inactivity. <html:pre>
                         Script Verification:
-                            To manually verify, run command 'cat /etc/shadow and verify that no
-                        additional users exist
+                            To manually verify, run command 'cat /etc/shadow and verify that every entry's password field is locked ('!' or '*'), i.e. no login-capable users exist
                         </html:pre>
                     </ns0:description>
           <ns0:ident system="http://cyber.mil/cci">CCI-003627</ns0:ident>
@@ -6242,9 +6224,14 @@
                         or certificate store maintains a list of trusted root certificates. <html:pre>
                         Script Verification:
                             To manually verify, Ensure the ca-certificates package has not been
-                        modified using apk audit or by ensuring the sha256 value matches the trusted
-                        value, and that the SSL_CERT_FILE environment variable configured on the
-                        image or container is set to /etc/ssl/certs/ca-certificates.crt.
+                        modified using apk audit, or by running 'cd /etc/ssl/certs &amp;&amp;
+                        sha256sum -c .ca-certificates.crt.sha256' so the bundle matches the digest
+                        the package recorded for it, and that the SSL_CERT_FILE environment variable
+                        configured on the image or container is set to
+                        /etc/ssl/certs/ca-certificates.crt. On Java-based images, which additionally
+                        ship a truststore at /etc/ssl/certs/java/cacerts, also run 'cd
+                        /etc/ssl/certs/java &amp;&amp; sha256sum -c .cacerts.sha256'. Images with no
+                        /etc/ssl/certs/java/cacerts have no truststore to verify.
                         </html:pre>
                     </ns0:description>
           <ns0:ident system="http://cyber.mil/cci">CCI-004909</ns0:ident>
@@ -6650,44 +6637,34 @@
         <oval:timestamp>2024-05-29T12:00:00</oval:timestamp>
       </generator>
       <definitions>
-        <definition id="oval:org.NoUsers:def:1" version="1" class="compliance">
+        <definition id="oval:org.NoUsers:def:1" version="2" class="compliance">
           <metadata>
-            <title>Check for Unauthorized Users in /etc/shadow</title>
-            <description>Ensure there are no unauthorized users in the /etc/shadow file below the 'nobody' line.</description>
+            <title>Check for Login-Capable Users in /etc/shadow</title>
+            <description>Ensure every entry in /etc/shadow is locked (password field starts with '!' or '*'), i.e. there are no login-capable user accounts. Locked service accounts, such as those apko creates for image run-as users, cannot log in and are permitted.</description>
             <reference source="CIS"/>
             <affected family="unix">
               <platform>Chainguard</platform>
             </affected>
           </metadata>
           <criteria operator="AND">
-            <criterion comment="Check that the 'nobody' line is present" test_ref="oval:org.NoUsers:tst:1"/>
-            <criterion comment="Check for unauthorized users after the 'nobody' line" test_ref="oval:org.NoUsers:tst:2"/>
+            <criterion comment="Check that no unlocked entries exist in /etc/shadow" test_ref="oval:org.NoUsers:tst:1"/>
           </criteria>
         </definition>
       </definitions>
       <tests>
-        <!-- Test to check the presence of 'nobody' line -->
-        <textfilecontent54_test xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#independent" check="all" check_existence="at_least_one_exists" comment="Check presence of 'nobody' line in /etc/shadow" id="oval:org.NoUsers:tst:1" version="1">
+        <!-- Test that no entry has an unlocked (login-capable) password field -->
+        <textfilecontent54_test xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#independent" check="all" check_existence="none_exist" comment="Check for unlocked entries in /etc/shadow" id="oval:org.NoUsers:tst:1" version="2">
           <object object_ref="oval:org.NoUsers:obj:1"/>
-        </textfilecontent54_test>
-        <!-- Test to check for any lines after 'nobody' -->
-        <textfilecontent54_test xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#independent" check="all" check_existence="none_exist" comment="Check for unauthorized users after the 'nobody' line in /etc/shadow" id="oval:org.NoUsers:tst:2" version="1">
-          <object object_ref="oval:org.NoUsers:obj:2"/>
         </textfilecontent54_test>
       </tests>
       <objects>
-        <!-- Object to find the 'nobody' line -->
-        <textfilecontent54_object xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#independent" id="oval:org.NoUsers:obj:1" version="1">
+        <!-- Object matching any entry whose password field does not start with '!' or '*'.
+             This intentionally matches empty password fields (passwordless login) too.
+             Same pattern as UserPasswordConfiguredTest's oval:org.example:obj:6. -->
+        <textfilecontent54_object xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#independent" id="oval:org.NoUsers:obj:1" version="2">
           <path>/etc</path>
           <filename>shadow</filename>
-          <pattern operation="pattern match">^nobody:.*</pattern>
-          <instance datatype="int">1</instance>
-        </textfilecontent54_object>
-        <!-- Object to find any lines after 'nobody' -->
-        <textfilecontent54_object xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#independent" id="oval:org.NoUsers:obj:2" version="1">
-          <path>/etc</path>
-          <filename>shadow</filename>
-          <pattern operation="pattern match">^nobody:.*\n(.+)</pattern>
+          <pattern operation="pattern match">^[^:]+:(?![!*])[^:\n]*:</pattern>
           <instance datatype="int">1</instance>
         </textfilecontent54_object>
       </objects>
@@ -6866,15 +6843,23 @@
         <definition id="oval:org.CABundleHash:def:1" version="1" class="compliance">
           <metadata>
             <title>Validate SHA-256 hash of CA bundle</title>
-            <description>Passes only if the CA bundle exists, has the correct hash, and the SSL_CERT_FILE environment variable configured on the image or container is set to /etc/ssl/certs/ca-certificates.crt.</description>
+            <description>Passes only if the CA bundle exists, its SHA-256 matches the digest recorded in the ca-certificates package stamp file /etc/ssl/certs/.ca-certificates.crt.sha256, and the SSL_CERT_FILE environment variable configured on the image or container is set to /etc/ssl/certs/ca-certificates.crt. Java images additionally ship a JKS/PKCS12 truststore at /etc/ssl/certs/java/cacerts; when that file is present it must likewise match the digest in /etc/ssl/certs/java/.cacerts.sha256. Images without Java carry no truststore and are unaffected.</description>
             <affected family="unix">
               <platform>Chainguard</platform>
             </affected>
           </metadata>
           <criteria operator="AND">
             <criterion test_ref="oval:org.CABundleHash:tst:1" comment="Ensure CA bundle file exists"/>
-            <criterion test_ref="oval:org.CABundleHash:tst:2" comment="Ensure CA bundle hash matches expected"/>
+            <criterion test_ref="oval:org.CABundleHash:tst:4" comment="Ensure CA bundle checksum stamp file exists and is well formed"/>
+            <criterion test_ref="oval:org.CABundleHash:tst:2" comment="Ensure CA bundle hash matches the checksum stamp file"/>
             <criterion test_ref="oval:org.CABundleHash:tst:3" comment="Ensure SSL_CERT_FILE is set to the system CA bundle path"/>
+            <criteria operator="OR" comment="Java truststore, where one is present, matches its checksum stamp file">
+              <criterion test_ref="oval:org.CABundleHash:tst:5" comment="No Java truststore present (non-Java image)"/>
+              <criteria operator="AND">
+                <criterion test_ref="oval:org.CABundleHash:tst:6" comment="Ensure Java truststore checksum stamp file exists and is well formed"/>
+                <criterion test_ref="oval:org.CABundleHash:tst:7" comment="Ensure Java truststore hash matches the checksum stamp file"/>
+              </criteria>
+            </criteria>
           </criteria>
         </definition>
       </definitions>
@@ -6882,14 +6867,27 @@
         <unix:file_test id="oval:org.CABundleHash:tst:1" version="1" check="all" check_existence="only_one_exists" comment="Ensure CA bundle file exists">
           <unix:object object_ref="oval:org.CABundleHash:obj:1"/>
         </unix:file_test>
-        <ind:filehash58_test id="oval:org.CABundleHash:tst:2" version="1" check="all" check_existence="only_one_exists" comment="Check that CA bundle file matches expected SHA-256 hash">
+        <ind:filehash58_test id="oval:org.CABundleHash:tst:2" version="1" check="all" check_existence="only_one_exists" comment="Check that CA bundle file matches the SHA-256 recorded in its checksum stamp file">
           <ind:object object_ref="oval:org.CABundleHash:obj:2"/>
           <ind:state state_ref="oval:org.CABundleHash:ste:1"/>
         </ind:filehash58_test>
+        <ind:textfilecontent54_test id="oval:org.CABundleHash:tst:4" version="1" check="all" check_existence="only_one_exists" comment="Checksum stamp file exists and contains a single SHA-256 digest for ca-certificates.crt">
+          <ind:object object_ref="oval:org.CABundleHash:obj:4"/>
+        </ind:textfilecontent54_test>
         <ind:environmentvariable58_test id="oval:org.CABundleHash:tst:3" version="1" check="all" check_existence="all_exist" comment="SSL_CERT_FILE equals /etc/ssl/certs/ca-certificates.crt">
           <ind:object object_ref="oval:org.CABundleHash:obj:3"/>
           <ind:state state_ref="oval:org.CABundleHash:ste:2"/>
         </ind:environmentvariable58_test>
+        <unix:file_test id="oval:org.CABundleHash:tst:5" version="1" check="all" check_existence="none_exist" comment="No Java truststore at /etc/ssl/certs/java/cacerts">
+          <unix:object object_ref="oval:org.CABundleHash:obj:5"/>
+        </unix:file_test>
+        <ind:textfilecontent54_test id="oval:org.CABundleHash:tst:6" version="1" check="all" check_existence="only_one_exists" comment="Java truststore stamp file exists and contains a single SHA-256 digest for cacerts">
+          <ind:object object_ref="oval:org.CABundleHash:obj:6"/>
+        </ind:textfilecontent54_test>
+        <ind:filehash58_test id="oval:org.CABundleHash:tst:7" version="1" check="all" check_existence="only_one_exists" comment="Check that the Java truststore matches the SHA-256 recorded in its checksum stamp file">
+          <ind:object object_ref="oval:org.CABundleHash:obj:7"/>
+          <ind:state state_ref="oval:org.CABundleHash:ste:3"/>
+        </ind:filehash58_test>
       </tests>
       <objects>
         <unix:file_object id="oval:org.CABundleHash:obj:1" version="1">
@@ -6903,16 +6901,47 @@
           <ind:pid xsi:nil="true" datatype="int"/>
           <ind:name>SSL_CERT_FILE</ind:name>
         </ind:environmentvariable58_object>
+        <ind:textfilecontent54_object id="oval:org.CABundleHash:obj:4" version="1" comment="SHA-256 digest recorded by the ca-certificates package alongside the bundle">
+          <ind:path>/etc/ssl/certs</ind:path>
+          <ind:filename>.ca-certificates.crt.sha256</ind:filename>
+          <ind:pattern operation="pattern match">^([0-9a-fA-F]{64})[ \t]+\*?ca-certificates\.crt$</ind:pattern>
+          <ind:instance datatype="int">1</ind:instance>
+        </ind:textfilecontent54_object>
+        <unix:file_object id="oval:org.CABundleHash:obj:5" version="1" comment="Java truststore, present only in Java-based images">
+          <unix:filepath>/etc/ssl/certs/java/cacerts</unix:filepath>
+        </unix:file_object>
+        <ind:textfilecontent54_object id="oval:org.CABundleHash:obj:6" version="1" comment="SHA-256 digest recorded alongside the Java truststore">
+          <ind:path>/etc/ssl/certs/java</ind:path>
+          <ind:filename>.cacerts.sha256</ind:filename>
+          <ind:pattern operation="pattern match">^([0-9a-fA-F]{64})[ \t]+\*?cacerts$</ind:pattern>
+          <ind:instance datatype="int">1</ind:instance>
+        </ind:textfilecontent54_object>
+        <ind:filehash58_object id="oval:org.CABundleHash:obj:7" version="1">
+          <ind:filepath>/etc/ssl/certs/java/cacerts</ind:filepath>
+          <ind:hash_type>SHA-256</ind:hash_type>
+        </ind:filehash58_object>
       </objects>
       <states>
         <ind:filehash58_state id="oval:org.CABundleHash:ste:1" version="1">
           <ind:hash_type>SHA-256</ind:hash_type>
-          <ind:hash>61efbd6d3f829f71039c57b29dd37d15ac7f33c4ece861aaef8c7d7a519cd1d9</ind:hash>
+          <ind:hash datatype="string" operation="case insensitive equals" var_ref="oval:org.CABundleHash:var:1" var_check="all"/>
         </ind:filehash58_state>
         <ind:environmentvariable58_state id="oval:org.CABundleHash:ste:2" version="1">
           <ind:value datatype="string" operation="equals">/etc/ssl/certs/ca-certificates.crt</ind:value>
         </ind:environmentvariable58_state>
+        <ind:filehash58_state id="oval:org.CABundleHash:ste:3" version="1">
+          <ind:hash_type>SHA-256</ind:hash_type>
+          <ind:hash datatype="string" operation="case insensitive equals" var_ref="oval:org.CABundleHash:var:2" var_check="all"/>
+        </ind:filehash58_state>
       </states>
+      <variables>
+        <local_variable id="oval:org.CABundleHash:var:1" version="1" datatype="string" comment="Expected CA bundle SHA-256, read from /etc/ssl/certs/.ca-certificates.crt.sha256">
+          <object_component object_ref="oval:org.CABundleHash:obj:4" item_field="subexpression"/>
+        </local_variable>
+        <local_variable id="oval:org.CABundleHash:var:2" version="1" datatype="string" comment="Expected Java truststore SHA-256, read from /etc/ssl/certs/java/.cacerts.sha256">
+          <object_component object_ref="oval:org.CABundleHash:obj:6" item_field="subexpression"/>
+        </local_variable>
+      </variables>
     </oval_definitions>
   </ds:extended-component>
 </ds:data-stream-collection>
