@@ -163,6 +163,52 @@ func TestAppendFileRejectsNonRegular(t *testing.T) {
 	}
 }
 
+// TestCopyFile proves the destination reproduces the source's content, mode and
+// ownership byte for byte, that the source survives untouched, and that the copy
+// reflects an earlier op that mutated the source (ops run in declaration order).
+func TestCopyFile(t *testing.T) {
+	t.Parallel()
+
+	content := randBytes(48)
+	extra := randBytes(16)
+	base := buildTar(t, map[string]fileSpec{
+		"etc/bundle": {content: content, mode: 0o600, uid: 11, gid: 13},
+	})
+
+	got := apply(t, base,
+		AppendFile("etc/bundle", extra),
+		CopyFile("etc/bundle", "kaniko/bundle"),
+	)
+	order, byName := readEntries(t, got)
+
+	want := fileSpec{content: append(append([]byte{}, content...), extra...), mode: 0o600, uid: 11, gid: 13}
+	if diff := cmp.Diff(want, byName["kaniko/bundle"], cmp.AllowUnexported(fileSpec{})); diff != "" {
+		t.Errorf("copy mismatch (-want,+got):\n%s", diff)
+	}
+	if diff := cmp.Diff(want, byName["etc/bundle"], cmp.AllowUnexported(fileSpec{})); diff != "" {
+		t.Errorf("source mutated by copy (-want,+got):\n%s", diff)
+	}
+	if diff := cmp.Diff([]string{"etc/bundle", "kaniko/bundle"}, order); diff != "" {
+		t.Errorf("order mismatch (-want,+got):\n%s", diff)
+	}
+}
+
+// TestCopyFileRejectsNonRegular proves CopyFile reading a base member that is
+// not a regular file (here a directory) returns a wrapped ErrNotRegular, the
+// same failure mode AppendFile has, rather than producing a bogus entry.
+func TestCopyFileRejectsNonRegular(t *testing.T) {
+	t.Parallel()
+
+	base := buildRawTar(t,
+		tar.Header{Name: "etc/", Typeflag: tar.TypeDir, Mode: 0o755},
+	)
+	var out bytes.Buffer
+	err := Apply(bytes.NewReader(base), []Op{CopyFile("etc/", "kaniko/etc")}, &out)
+	if !errors.Is(err, ErrNotRegular) {
+		t.Fatalf("Apply error = %v, want errors.Is ErrNotRegular", err)
+	}
+}
+
 func TestReplaceFile(t *testing.T) {
 	t.Parallel()
 
@@ -315,6 +361,8 @@ func TestApplyErrors(t *testing.T) {
 		{"append missing path", AppendFile("etc/absent", []byte("y"))},
 		{"chown missing path", Chown("etc/absent", 1, 1)},
 		{"add existing path", AddFile("etc/present", []byte("y"), 0o644, 0, 0)},
+		{"copy missing source", CopyFile("etc/absent", "etc/copy")},
+		{"copy onto existing path", CopyFile("etc/present", "etc/present")},
 	}
 
 	for _, tt := range tests {

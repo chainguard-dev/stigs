@@ -6228,7 +6228,14 @@
                         sha256sum -c .ca-certificates.crt.sha256' so the bundle matches the digest
                         the package recorded for it, and that the SSL_CERT_FILE environment variable
                         configured on the image or container is set to
-                        /etc/ssl/certs/ca-certificates.crt. On Java-based images, which additionally
+                        /etc/ssl/certs/ca-certificates.crt. Images that carry a second copy of the
+                        bundle under /kaniko may instead point SSL_CERT_FILE at
+                        /kaniko/ssl/certs/ca-certificates.crt, provided that copy carries the digest
+                        recorded for it: run 'cd /kaniko/ssl/certs &amp;&amp; sha256sum -c
+                        .ca-certificates.crt.sha256' where a stamp file is shipped beside the copy,
+                        and otherwise check it against the system stamp file with 'cd
+                        /kaniko/ssl/certs &amp;&amp; sha256sum -c
+                        /etc/ssl/certs/.ca-certificates.crt.sha256'. On Java-based images, which additionally
                         ship a truststore at /etc/ssl/certs/java/cacerts, also run 'cd
                         /etc/ssl/certs/java &amp;&amp; sha256sum -c .cacerts.sha256'. Images with no
                         /etc/ssl/certs/java/cacerts have no truststore to verify.
@@ -6687,7 +6694,7 @@
         <definition id="oval:org.CABundleHash:def:1" version="1" class="compliance">
           <metadata>
             <title>Validate SHA-256 hash of CA bundle</title>
-            <description>Passes only if the CA bundle exists, its SHA-256 matches the digest recorded in the ca-certificates package stamp file /etc/ssl/certs/.ca-certificates.crt.sha256, and the SSL_CERT_FILE environment variable configured on the image or container is set to /etc/ssl/certs/ca-certificates.crt. Java images additionally ship a JKS/PKCS12 truststore at /etc/ssl/certs/java/cacerts; when that file is present it must likewise match the digest in /etc/ssl/certs/java/.cacerts.sha256. Images without Java carry no truststore and are unaffected.</description>
+            <description>Passes only if the CA bundle exists, its SHA-256 matches the digest recorded in the ca-certificates package stamp file /etc/ssl/certs/.ca-certificates.crt.sha256, and the SSL_CERT_FILE environment variable configured on the image or container is set to /etc/ssl/certs/ca-certificates.crt. Images that carry a second copy of the bundle at /kaniko/ssl/certs/ca-certificates.crt may point SSL_CERT_FILE there instead; that copy is then held to the digest in its own stamp file /kaniko/ssl/certs/.ca-certificates.crt.sha256 where the image ships one, and otherwise to the digest in the system stamp file. A stamp file beside the copy takes precedence, so it cannot be sidestepped by the system one, and an unverified or divergent copy cannot satisfy the rule. Java images additionally ship a JKS/PKCS12 truststore at /etc/ssl/certs/java/cacerts; when that file is present it must likewise match the digest in /etc/ssl/certs/java/.cacerts.sha256. Images without Java carry no truststore and are unaffected.</description>
             <affected family="unix">
               <platform>Chainguard</platform>
             </affected>
@@ -6696,7 +6703,23 @@
             <criterion test_ref="oval:org.CABundleHash:tst:1" comment="Ensure CA bundle file exists"/>
             <criterion test_ref="oval:org.CABundleHash:tst:4" comment="Ensure CA bundle checksum stamp file exists and is well formed"/>
             <criterion test_ref="oval:org.CABundleHash:tst:2" comment="Ensure CA bundle hash matches the checksum stamp file"/>
-            <criterion test_ref="oval:org.CABundleHash:tst:3" comment="Ensure SSL_CERT_FILE is set to the system CA bundle path"/>
+            <criteria operator="OR" comment="SSL_CERT_FILE names a copy of the CA bundle verified against a checksum stamp file">
+              <criterion test_ref="oval:org.CABundleHash:tst:3" comment="Ensure SSL_CERT_FILE is set to the system CA bundle path"/>
+              <criteria operator="AND" comment="Images carrying the bundle under /kaniko may point SSL_CERT_FILE at that copy">
+                <criterion test_ref="oval:org.CABundleHash:tst:8" comment="Ensure the /kaniko CA bundle copy exists"/>
+                <criteria operator="OR" comment="The /kaniko copy matches its own checksum stamp file where one is shipped beside it, otherwise the system one">
+                  <criteria operator="AND" comment="Stamp file shipped beside the /kaniko copy takes precedence">
+                    <criterion test_ref="oval:org.CABundleHash:tst:11" comment="Ensure the /kaniko checksum stamp file exists and is well formed"/>
+                    <criterion test_ref="oval:org.CABundleHash:tst:12" comment="Ensure the /kaniko CA bundle copy matches the /kaniko checksum stamp file"/>
+                  </criteria>
+                  <criteria operator="AND" comment="No stamp file beside the /kaniko copy, so fall back to the system one">
+                    <criterion test_ref="oval:org.CABundleHash:tst:13" comment="No checksum stamp file beside the /kaniko CA bundle copy"/>
+                    <criterion test_ref="oval:org.CABundleHash:tst:9" comment="Ensure the /kaniko CA bundle copy matches the system checksum stamp file"/>
+                  </criteria>
+                </criteria>
+                <criterion test_ref="oval:org.CABundleHash:tst:10" comment="Ensure SSL_CERT_FILE is set to the /kaniko CA bundle path"/>
+              </criteria>
+            </criteria>
             <criteria operator="OR" comment="Java truststore, where one is present, matches its checksum stamp file">
               <criterion test_ref="oval:org.CABundleHash:tst:5" comment="No Java truststore present (non-Java image)"/>
               <criteria operator="AND">
@@ -6732,6 +6755,27 @@
           <ind:object object_ref="oval:org.CABundleHash:obj:7"/>
           <ind:state state_ref="oval:org.CABundleHash:ste:3"/>
         </ind:filehash58_test>
+        <unix:file_test id="oval:org.CABundleHash:tst:8" version="1" check="all" check_existence="only_one_exists" comment="Ensure the /kaniko CA bundle copy exists">
+          <unix:object object_ref="oval:org.CABundleHash:obj:8"/>
+        </unix:file_test>
+        <ind:filehash58_test id="oval:org.CABundleHash:tst:9" version="1" check="all" check_existence="only_one_exists" comment="Check that the /kaniko CA bundle copy matches the SHA-256 recorded in the system ca-certificates checksum stamp file">
+          <ind:object object_ref="oval:org.CABundleHash:obj:9"/>
+          <ind:state state_ref="oval:org.CABundleHash:ste:1"/>
+        </ind:filehash58_test>
+        <ind:environmentvariable58_test id="oval:org.CABundleHash:tst:10" version="1" check="all" check_existence="all_exist" comment="SSL_CERT_FILE equals /kaniko/ssl/certs/ca-certificates.crt">
+          <ind:object object_ref="oval:org.CABundleHash:obj:3"/>
+          <ind:state state_ref="oval:org.CABundleHash:ste:4"/>
+        </ind:environmentvariable58_test>
+        <ind:textfilecontent54_test id="oval:org.CABundleHash:tst:11" version="1" check="all" check_existence="only_one_exists" comment="Checksum stamp file beside the /kaniko copy exists and contains a single SHA-256 digest for ca-certificates.crt">
+          <ind:object object_ref="oval:org.CABundleHash:obj:10"/>
+        </ind:textfilecontent54_test>
+        <ind:filehash58_test id="oval:org.CABundleHash:tst:12" version="1" check="all" check_existence="only_one_exists" comment="Check that the /kaniko CA bundle copy matches the SHA-256 recorded in the stamp file beside it">
+          <ind:object object_ref="oval:org.CABundleHash:obj:9"/>
+          <ind:state state_ref="oval:org.CABundleHash:ste:5"/>
+        </ind:filehash58_test>
+        <unix:file_test id="oval:org.CABundleHash:tst:13" version="1" check="all" check_existence="none_exist" comment="No checksum stamp file at /kaniko/ssl/certs/.ca-certificates.crt.sha256">
+          <unix:object object_ref="oval:org.CABundleHash:obj:11"/>
+        </unix:file_test>
       </tests>
       <objects>
         <unix:file_object id="oval:org.CABundleHash:obj:1" version="1">
@@ -6764,6 +6808,22 @@
           <ind:filepath>/etc/ssl/certs/java/cacerts</ind:filepath>
           <ind:hash_type>SHA-256</ind:hash_type>
         </ind:filehash58_object>
+        <unix:file_object id="oval:org.CABundleHash:obj:8" version="1" comment="CA bundle copy, present only in images that carry one under /kaniko">
+          <unix:filepath>/kaniko/ssl/certs/ca-certificates.crt</unix:filepath>
+        </unix:file_object>
+        <ind:filehash58_object id="oval:org.CABundleHash:obj:9" version="1">
+          <ind:filepath>/kaniko/ssl/certs/ca-certificates.crt</ind:filepath>
+          <ind:hash_type>SHA-256</ind:hash_type>
+        </ind:filehash58_object>
+        <ind:textfilecontent54_object id="oval:org.CABundleHash:obj:10" version="1" comment="SHA-256 digest recorded beside the /kaniko CA bundle copy, where the image ships one">
+          <ind:path>/kaniko/ssl/certs</ind:path>
+          <ind:filename>.ca-certificates.crt.sha256</ind:filename>
+          <ind:pattern operation="pattern match">^([0-9a-fA-F]{64})[ \t]+\*?ca-certificates\.crt$</ind:pattern>
+          <ind:instance datatype="int">1</ind:instance>
+        </ind:textfilecontent54_object>
+        <unix:file_object id="oval:org.CABundleHash:obj:11" version="1" comment="Stamp file beside the /kaniko copy, as a file so its absence is distinguishable from it being unparseable">
+          <unix:filepath>/kaniko/ssl/certs/.ca-certificates.crt.sha256</unix:filepath>
+        </unix:file_object>
       </objects>
       <states>
         <ind:filehash58_state id="oval:org.CABundleHash:ste:1" version="1">
@@ -6777,6 +6837,13 @@
           <ind:hash_type>SHA-256</ind:hash_type>
           <ind:hash datatype="string" operation="case insensitive equals" var_ref="oval:org.CABundleHash:var:2" var_check="all"/>
         </ind:filehash58_state>
+        <ind:environmentvariable58_state id="oval:org.CABundleHash:ste:4" version="1">
+          <ind:value datatype="string" operation="equals">/kaniko/ssl/certs/ca-certificates.crt</ind:value>
+        </ind:environmentvariable58_state>
+        <ind:filehash58_state id="oval:org.CABundleHash:ste:5" version="1">
+          <ind:hash_type>SHA-256</ind:hash_type>
+          <ind:hash datatype="string" operation="case insensitive equals" var_ref="oval:org.CABundleHash:var:3" var_check="all"/>
+        </ind:filehash58_state>
       </states>
       <variables>
         <local_variable id="oval:org.CABundleHash:var:1" version="1" datatype="string" comment="Expected CA bundle SHA-256, read from /etc/ssl/certs/.ca-certificates.crt.sha256">
@@ -6784,6 +6851,9 @@
         </local_variable>
         <local_variable id="oval:org.CABundleHash:var:2" version="1" datatype="string" comment="Expected Java truststore SHA-256, read from /etc/ssl/certs/java/.cacerts.sha256">
           <object_component object_ref="oval:org.CABundleHash:obj:6" item_field="subexpression"/>
+        </local_variable>
+        <local_variable id="oval:org.CABundleHash:var:3" version="1" datatype="string" comment="Expected /kaniko CA bundle SHA-256, read from /kaniko/ssl/certs/.ca-certificates.crt.sha256 where the image ships one">
+          <object_component object_ref="oval:org.CABundleHash:obj:10" item_field="subexpression"/>
         </local_variable>
       </variables>
     </oval_definitions>

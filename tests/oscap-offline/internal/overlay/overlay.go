@@ -141,6 +141,23 @@ func AddFile(path string, content []byte, mode int64, uid, gid int) Op {
 	}
 }
 
+// CopyFile adds a new regular-file entry at dst holding a copy of src's
+// content, mode and ownership, letting a fixture reproduce a base file at a
+// second path (e.g. the CA bundle a kaniko image carries under /kaniko) without
+// restating its bytes. src must exist and be a regular file, otherwise Apply
+// returns a wrapped ErrNotFound or ErrNotRegular; dst must not already exist,
+// otherwise it returns a wrapped ErrExists. The copy is taken when the op runs,
+// so an earlier op that mutates src is reflected in dst.
+func CopyFile(src, dst string) Op {
+	return func(p *plan) {
+		e := p.requireReg(src)
+		if e == nil {
+			return
+		}
+		AddFile(dst, e.data, e.hdr.Mode, e.hdr.Uid, e.hdr.Gid)(p)
+	}
+}
+
 // Chown changes only the uid and gid of an existing entry. The path must exist,
 // otherwise Apply returns a wrapped ErrNotFound.
 func Chown(path string, uid, gid int) Op {

@@ -1,0 +1,7 @@
+# Fixture: cabundle-kaniko
+#
+# The CA bundle is carried at /kaniko/ssl/certs/ca-certificates.crt and
+# SSL_CERT_FILE names it, the layout cgr.dev/chainguard/kaniko ships. That copy
+# still matches the digest recorded in /etc/ssl/certs/.ca-certificates.crt.sha256,
+# so CertificateAudit must PASS.
+xccdf_mil.disa.stig_rule_SV-263659r982563_rule=pass

@@ -2,10 +2,10 @@
 // filesystem tar, producing a deterministic fixture tar.
 //
 // Each transform is an Op constructed by one of the exported helpers
-// (AppendFile, AddFile, Chown). Apply reads a base tar, applies the ops in
-// declaration order, and writes a PAX-format tar containing the surviving base
-// entries in their original order followed by any added entries in
-// op-declaration order.
+// (AppendFile, AddFile, CopyFile, Chown). Apply reads a base tar, applies the
+// ops in declaration order, and writes a PAX-format tar containing the
+// surviving base entries in their original order followed by any added entries
+// in op-declaration order.
 //
 // Ownership and permissions are written directly into the tar headers, so the
 // resulting uid, gid and mode of every entry are determined entirely by the
@@ -13,10 +13,11 @@
 // process. Declaring root ownership (uid 0, gid 0) yields a root-owned header
 // even when the harness runs unprivileged.
 //
-// Ops that target a missing path (AppendFile, Chown) or that add an
-// already-present path (AddFile) cause Apply to return a wrapped ErrNotFound or
-// ErrExists; AppendFile additionally returns a wrapped ErrNotRegular when its
-// target is not a regular file. Callers should match with errors.Is.
+// Ops that target a missing path (AppendFile, CopyFile's source, Chown) or that
+// add an already-present path (AddFile, CopyFile's destination) cause Apply to
+// return a wrapped ErrNotFound or ErrExists; AppendFile and CopyFile
+// additionally return a wrapped ErrNotRegular when the entry whose content they
+// read is not a regular file. Callers should match with errors.Is.
 //
 // Every base member and every added path must be a clean, local, relative path
 // with no NUL byte; a member that is absolute or contains ".." causes Apply to
