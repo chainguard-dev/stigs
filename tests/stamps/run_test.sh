@@ -87,11 +87,19 @@ v="$(variant kaniko_sidecar_disagrees)"
 cp "${base}/etc/ssl/certs/ca-certificates.crt" "${v}/kaniko/ssl/certs/ca-certificates.crt"
 printf '%064d  ca-certificates.crt\n' 0 > "${v}/kaniko/ssl/certs/.ca-certificates.crt.sha256"
 
+# A copy with no sidecar of its own is held to the system sidecar instead
+# (tst:13 + tst:9), so "no sidecar" is permitted only while the copy still
+# matches. A diverged copy has to fail: permitting the branch without checking
+# its premise would pass an image the rule rejects.
+v="$(variant kaniko_copy_diverges)"
+echo "a different bundle" > "${v}/kaniko/ssl/certs/ca-certificates.crt"
+
 # name | variant | want_exit | substring the output must contain
 CASES=(
   "pristine image passes|clean|0|matches .ca-certificates.crt.sha256"
   "image without Java skips the truststore|no_java|0|etc/ssl/certs/java/cacerts: absent"
-  "kaniko copy without a sidecar is permitted|kaniko_without_sidecar|0|absent, permitted"
+  "kaniko copy without a sidecar passes while it matches the system one|kaniko_without_sidecar|0|matches the system sidecar it falls back to"
+  "kaniko copy without a sidecar that diverges from the system one fails|kaniko_copy_diverges|1|does not match the system sidecar it falls back to"
   "missing system sidecar is named, not a tar error|missing_system_sidecar|1|etc/ssl/certs/.ca-certificates.crt.sha256 missing"
   "missing Java sidecar is named, not a tar error|missing_java_sidecar|1|etc/ssl/certs/java/.cacerts.sha256 missing"
   "sidecar digest that disagrees fails|wrong_digest|1|does not match the digest"

@@ -52,13 +52,18 @@ DEFAULT_IMAGES="${STAMP_IMAGES:-cgr.dev/chainguard/jre:latest}"
 #               sidecar (tst:13 + tst:9), so only a present-but-wrong sidecar
 #               is a failure.
 #
-# /kaniko is listed for completeness but is not reachable on a public image;
-# see the coverage note printed at the end of a run.
+# /kaniko is carried only by cgr.dev/chainguard-private/kaniko, so it is not
+# reached by the default public image. Pass that ref explicitly to cover it
+# wherever credentials for it exist; a run reports what it did not reach.
 SIDECARS=(
   "oval:org.CABundleHash:obj:4|etc/ssl/certs|.ca-certificates.crt.sha256|ca-certificates.crt|yes"
   "oval:org.CABundleHash:obj:6|etc/ssl/certs/java|.cacerts.sha256|cacerts|yes"
   "oval:org.CABundleHash:obj:10|kaniko/ssl/certs|.ca-certificates.crt.sha256|ca-certificates.crt|no"
 )
+
+# Directories this run actually inspected, so the closing coverage note can
+# report what was left out rather than a fixed list.
+INSPECTED_DIRS=""
 
 die() {
   # ::error:: is picked up as an annotation under Actions and is harmless
@@ -122,6 +127,14 @@ check_image() {
   done
   rm -f "${tarball}"
 
+  # The digest the criteria fall back to for a bundle copy that ships no
+  # sidecar of its own. Read once, before the loop, so the fallback check does
+  # not depend on the order of SIDECARS.
+  local system_digest=""
+  if [ -f "${workdir}/etc/ssl/certs/.ca-certificates.crt.sha256" ]; then
+    system_digest="$(cut -d' ' -f1 < "${workdir}/etc/ssl/certs/.ca-certificates.crt.sha256")"
+  fi
+
   for entry in "${SIDECARS[@]}"; do
     local obj_id sidecar store required pattern
     obj_id="$(echo "${entry}" | cut -d'|' -f1)"
@@ -140,7 +153,23 @@ check_image() {
       if [ "${required}" = "yes" ]; then
         die "${dir}/${sidecar} missing from ${ref}, but ${dir}/${store} is present; CertificateAudit will fail on clean images"
       fi
-      note "${dir}/${sidecar}: absent, permitted (rule falls back to the system sidecar)"
+      # Absence is permitted, but not unconditionally: the criteria fall back
+      # to holding this copy to the *system* sidecar (tst:13 + tst:9), so the
+      # fallback has a premise of its own and it has to be checked here too.
+      # Permitting the branch without checking it would let a diverged copy
+      # pass this guard and fail the rule, which is the miss the guard exists
+      # to prevent.
+      if [ -z "${system_digest}" ]; then
+        die "${dir}/${store} in ${ref} has no sidecar and there is no system sidecar to fall back to; CertificateAudit will fail on clean images"
+      fi
+      local copy_digest
+      copy_digest="$(sha256sum "${workdir}/${dir}/${store}" | cut -d' ' -f1)"
+      if [ "${copy_digest}" != "${system_digest}" ]; then
+        die "${dir}/${store} in ${ref} ships no sidecar and does not match the system sidecar it falls back to (${copy_digest} vs ${system_digest}); CertificateAudit will fail on clean images"
+      fi
+      note "${dir}/${store}: no sidecar of its own, and matches the system sidecar it falls back to"
+      INSPECTED_DIRS="${INSPECTED_DIRS} ${dir}"
+      checked=$((checked + 1))
       continue
     fi
 
@@ -156,6 +185,7 @@ check_image() {
     fi
 
     note "${dir}/${store}: matches ${sidecar}, and ${sidecar} matches ${obj_id}'s pattern"
+    INSPECTED_DIRS="${INSPECTED_DIRS} ${dir}"
     if [ -n "${STAMP_DIGEST_FILE:-}" ]; then
       printf '%s %s\n' "${dir}/${store}" \
         "$(sha256sum "${workdir}/${dir}/${store}" | cut -d' ' -f1)" \
@@ -178,15 +208,19 @@ main() {
 
   # Say what was not covered, so a green run is not read as "the whole rule's
   # premise is guarded".
-  cat <<'EOF'
-
-Not covered by this guard:
-  - /kaniko/ssl/certs — only present on cgr.dev/chainguard-private/kaniko,
-    which needs registry credentials this workflow does not have.
-  - var/lib/ecs/deps/execute-command/certs/tls-ca-bundle.pem — the image build
-    writes a sidecar for it, but CertificateAudit does not read it, so there is
-    no premise to guard yet.
-EOF
+  echo
+  echo "Not covered by this run:"
+  case " ${INSPECTED_DIRS} " in
+    *" kaniko/ssl/certs "*) ;;
+    *)
+      echo "  - /kaniko/ssl/certs — no inspected image carried it. It exists on"
+      echo "    cgr.dev/chainguard-private/kaniko, which needs registry credentials;"
+      echo "    pass that ref explicitly to cover it where they are available."
+      ;;
+  esac
+  echo "  - var/lib/ecs/deps/execute-command/certs/tls-ca-bundle.pem — the image"
+  echo "    build writes a sidecar for it, but CertificateAudit does not read it,"
+  echo "    so there is no premise to guard yet."
 }
 
 main "$@"
