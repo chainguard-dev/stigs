@@ -45,6 +45,25 @@ test-offline-clean:
 
 .PHONY: test-offline test-offline-clean
 
+# Trust-store sidecar guard. CertificateAudit pins no digest; it reads each
+# expected value from a sidecar file the image build writes beside the trust
+# store. This target checks that premise against a real image: the sidecars
+# exist, agree with the files they name, and are formatted so the OVAL's own
+# regex (read from the datastream, not copied) matches them. The daily
+# update-ca-cert workflow runs the same script.
+#
+# Override the images with STAMP_IMAGES="ref [ref ...]".
+test-stamps:
+	@tests/stamps/run.sh
+
+# Exercise the guard's failure paths against synthetic images, with `crane`
+# stubbed so no registry or network is needed. These are the paths a green
+# daily run never reaches.
+test-stamps-selftest:
+	@tests/stamps/run_test.sh
+
+.PHONY: test-stamps test-stamps-selftest
+
 # Extract the XCCDF Benchmark block from the datastream and diff it
 # against BASE_REF (default: origin/main). STIGViewer v3 loads the full
 # datastream directly, so this target's job is to surface content drift

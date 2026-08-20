@@ -8,6 +8,7 @@ on:
     branches: ['main']
     paths:
       - 'tests/oscap-offline/**'
+      - 'tests/stamps/**'
       - 'gpos/**'
       - 'Makefile'
       - '.github/workflows/offline-tests.yaml'
@@ -16,6 +17,7 @@ on:
     branches: ['main']
     paths:
       - 'tests/oscap-offline/**'
+      - 'tests/stamps/**'
       - 'gpos/**'
       - 'Makefile'
       - '.github/workflows/offline-tests.yaml'
@@ -63,6 +65,13 @@ jobs:
         with:
           go-version-file: 'tests/oscap-offline/go.mod'
           cache-dependency-path: 'tests/oscap-offline/go.sum'
+
+      # Hermetic: `crane` is stubbed and the fixtures are built on disk, so this
+      # needs no registry access and adds no allowed endpoints. It covers the
+      # trust-store guard's failure paths, which the daily update-ca-cert run
+      # never reaches because it only ever sees a healthy image.
+      - name: Run trust-store sidecar guard self-test
+        run: make test-stamps-selftest
 
       - name: Run offline harness
         run: make test-offline
