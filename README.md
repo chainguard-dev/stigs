@@ -18,6 +18,17 @@ checks do not apply.  For more information on scanning containers see
 [DISA's Container Hardening
 Whitepaper](https://dl.dod.cyber.mil/wp-content/uploads/devsecops/pdf/Final_DevSecOps_Enterprise_Container_Hardening_Guide_1.2.pdf)
 
+### Check implementation notes
+
+The profile describes each check for the assessor reading a scan result. Notes
+aimed at maintainers of this repository — what each criterion asserts, why it is
+structured the way it is, and the pitfalls to avoid when changing it — live
+alongside them:
+
+- [CertificateAudit](./docs/certificate-audit.md) — trust-store digests, the
+  apko sidecar files they are read from, and how additional trust anchors come
+  to be covered by them.
+
 ## Getting Started
 
 The simplest way to get started is to use Chainguard's pre-packaged Chainguard

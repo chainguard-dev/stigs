@@ -6223,11 +6223,12 @@
                         certificate for a PKI system is an example of a trust anchor. A trust store
                         or certificate store maintains a list of trusted root certificates. <html:pre>
                         Script Verification:
-                            To manually verify, Ensure the ca-certificates package has not been
-                        modified using apk audit, or by running 'cd /etc/ssl/certs &amp;&amp;
-                        sha256sum -c .ca-certificates.crt.sha256' so the bundle matches the digest
-                        the package recorded for it, and that the SSL_CERT_FILE environment variable
-                        configured on the image or container is set to
+                            To manually verify, run the commands below in the image; on
+                        distroless images, which ship no shell, run them against an extracted
+                        root filesystem instead. Ensure the CA bundle matches the digest the
+                        image build recorded beside it by running 'cd /etc/ssl/certs &amp;&amp;
+                        sha256sum -c .ca-certificates.crt.sha256', and that the SSL_CERT_FILE
+                        environment variable configured on the image or container is set to
                         /etc/ssl/certs/ca-certificates.crt. Images that carry a second copy of the
                         bundle under /kaniko may instead point SSL_CERT_FILE at
                         /kaniko/ssl/certs/ca-certificates.crt, provided that copy carries the digest
@@ -6238,7 +6239,10 @@
                         /etc/ssl/certs/.ca-certificates.crt.sha256'. On Java-based images, which additionally
                         ship a truststore at /etc/ssl/certs/java/cacerts, also run 'cd
                         /etc/ssl/certs/java &amp;&amp; sha256sum -c .cacerts.sha256'. Images with no
-                        /etc/ssl/certs/java/cacerts have no truststore to verify.
+                        /etc/ssl/certs/java/cacerts have no truststore to verify. The .sha256
+                        files are recorded by the image build after all packages are installed
+                        and any additional trust anchors are merged, so they describe the image
+                        as built.
                         </html:pre>
                     </ns0:description>
           <ns0:ident system="http://cyber.mil/cci">CCI-004909</ns0:ident>
