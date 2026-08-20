@@ -26,8 +26,8 @@ structured the way it is, and the pitfalls to avoid when changing it — live
 alongside them:
 
 - [CertificateAudit](./docs/certificate-audit.md) — trust-store digests, the
-  apko sidecar files they are read from, and how to add approved CA
-  certificates.
+  apko sidecar files they are read from, and how additional trust anchors come
+  to be covered by them.
 
 ## Getting Started
 

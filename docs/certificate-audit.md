@@ -132,36 +132,52 @@ Then an `OR` for the Java truststore:
 - **`tst:5` uses `none_exist`** rather than testing for Java some other way,
   because a non-Java image must not fail for lacking a truststore.
 
-## Adding trust anchors (e.g. DoD roots)
+## How additional trust anchors reach the sidecars
 
-Add them **at image assembly time**, via apko's `certificates:` stanza — this is
-the approved path, and the one the rule is built around:
+An image may legitimately trust anchors beyond the Mozilla set — a DoD root, for
+example. This section describes the mechanism by which such an image ends up
+self-consistent, so that a passing result on one is understood rather than
+mistaken for a gap. It is not a procedure to follow: the build definition is an
+input to the image build, not something edited in the image under assessment.
+
+Additional anchors enter the image through apko's `certificates:` stanza, either
+as inline PEM (`additional:`) or from an installed package advertising a
+capability named in `providers:`:
 
 ```yaml
 certificates:
-  additional:                  # inline PEM
+  additional:
     - name: dod-root-ca-3
       content: |
         -----BEGIN CERTIFICATE-----
         ...
-  providers:                   # capability that packages `provides:`
+  providers:
     - custom-ca-certificates
 ```
 
-apko writes each cert to `usr/local/share/ca-certificates/<name>-<fingerprint>.crt`,
-appends it to every bundle in its `caBundlePaths`, inserts it into every Java
-truststore in `javaTruststorePaths` (alias `<name>-<fingerprint>`), and only then
-writes the sidecars. The rule passes, and it attests something meaningful: the
-trust stores are exactly what the approved build definition produced.
+For each such certificate apko writes
+`usr/local/share/ca-certificates/<name>-<fingerprint>.crt`, appends it to every
+bundle in `caBundlePaths`, and inserts it into every Java truststore in
+`javaTruststorePaths` under the alias `<name>-<fingerprint>`. Only then does it
+write the sidecars. `installCertificates` explicitly "replac[es] the role of
+update-ca-certificates post-install scripts", which is why no apk trigger has to
+run for the merged result to be recorded.
 
-`installCertificates` explicitly "replac[es] the role of update-ca-certificates
-post-install scripts", so this is the supported path.
+Two consequences follow, and they are the ones that matter when reading a
+result:
 
-**Do not** add trust anchors post-build in a derived Dockerfile
-(`COPY ca.crt … && RUN update-ca-certificates`). Nothing regenerates the
-sidecars, so they go stale and the rule fails. An anchor introduced that way was
-never declared in a reviewed build definition, so failing is correct — but it
-does mean the common derived-Dockerfile pattern must be migrated to the above.
+- An image built with additional anchors is **self-consistent**: its sidecars
+  cover the merged trust stores, so it passes. This is why the rule can be
+  applied to customised images at all, which a digest pinned in a shared
+  datastream could not be.
+- A trust store modified **after** the build — for instance by
+  `update-ca-certificates` in a derived build layer — leaves the sidecars
+  describing the pre-modification state, so the rule fails. Nothing in the image
+  regenerates them.
+
+Which of those two a given failure represents is worth establishing before
+treating it as tampering; see the Java re-encoding note below for a case that
+looks alarming and is not.
 
 ## Gotchas
 
