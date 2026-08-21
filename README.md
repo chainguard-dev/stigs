@@ -165,3 +165,35 @@ Adding a fixture:
 - Create `tests/e2e/fixtures/<name>/expected.txt` listing each rule
   ID you want to assert on, one per line, as
   `<rule-id>=<expected-result>`.
+
+### Trust-store sidecar guard
+
+Both tiers above scan images this repository builds. `CertificateAudit`
+additionally depends on something no fixture can assert: that *real*
+images still ship the trust-store checksum sidecars it reads, in the
+format its regexes expect. `make test-stamps` checks that premise
+against a live image, reading the expected patterns out of the
+datastream so the guard cannot drift from the definition it guards. The
+daily `.github/workflows/update-ca-cert.yaml` run invokes the same
+script, so an upstream change fails there rather than surfacing later as
+an unexplained failure on clean images.
+
+```bash
+make test-stamps            # default: cgr.dev/chainguard/jre:latest
+make test-stamps-selftest   # the guard's own failure paths; hermetic
+```
+
+The self-test stubs `crane` and builds its images on disk, so it needs
+no registry or network, and it runs on PRs via the offline workflow. It
+covers the failure paths specifically because a green daily run only
+ever sees a healthy image.
+
+Pass image references to widen coverage — `crane` uses the same registry
+credentials as `docker`. The `/kaniko` bundle-copy criteria are only
+reachable on a private image, so the default run does not cover them and
+says so; see
+[docs/certificate-audit.md](./docs/certificate-audit.md#covering-the-kaniko-criteria).
+
+```bash
+make test-stamps STAMP_IMAGES="cgr.dev/chainguard/jre:latest cgr.dev/chainguard-private/kaniko:latest"
+```

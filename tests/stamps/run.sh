@@ -121,7 +121,7 @@ check_image() {
   # every file is then explicitly accounted for below.
   local tarball="${workdir}/image.tar"
   crane export "${ref}" - > "${tarball}" \
-    || die "could not export ${ref}"
+    || die "could not export ${ref} (for a private ref, check registry credentials — cgr.dev needs a token issued for its own audience: 'chainctl auth login --audience=cgr.dev')"
   for dir in "${dirs[@]}"; do
     tar -C "${workdir}" -xf "${tarball}" "${dir}" 2>/dev/null || true
   done
