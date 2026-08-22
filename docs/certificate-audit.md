@@ -280,6 +280,64 @@ Two cautions when editing that matrix:
   variables, so a fixture blob can exist with no row referencing it and the
   suite still passes. Check the subtest count, not just the diff.
 
+### Guarding the premise
+
+Those fixtures test the rule against images this repository builds. They cannot
+tell you that a *real* image still ships sidecars in the shape the rule expects
+— which is the assumption the whole rule now rests on, and which upstream can
+change without warning. `tests/stamps/run.sh` covers that: for each trust store
+in an image it checks the sidecar exists, agrees with the file it names, and
+matches the regex the OVAL will apply. The pattern is read out of the datastream
+rather than copied, so the guard cannot drift from the definition it guards.
+
+    make test-stamps                     # default: cgr.dev/chainguard/jre:latest
+    make test-stamps-selftest            # failure paths, hermetic, no registry
+
+`jre` is the default because it is a public image carrying both the system and
+Java sidecars. The daily `update-ca-cert` workflow runs the same script, so a
+sidecar that disappears or changes format upstream fails there rather than
+surfacing later as a mysterious `CertificateAudit` failure on clean images.
+
+`run_test.sh` is where the failure paths live, with `crane` stubbed so the cases
+need no registry or network. It matters because a green daily run only ever sees
+a healthy image, so nothing else exercises the diagnostics.
+
+#### Covering the /kaniko criteria
+
+The `/kaniko` bundle copy exists only on `cgr.dev/chainguard-private/kaniko`, so
+the default run does not reach it and says so. Anyone with access to that image
+can cover it locally by naming it.
+
+`crane` reads the same credentials as `docker`, and `cgr.dev` is served by the
+`cgr` credential helper, which needs a token issued for the `cgr.dev` audience
+specifically:
+
+    chainctl auth login --audience=cgr.dev
+
+A plain `chainctl auth login` is not enough — that token is scoped to the
+console API, so `chainctl auth status` reports `Valid: True` while the pull
+still fails with `No matching credentials were found for "cgr.dev"`. The
+credential helper itself is usually already wired up (`chainctl auth
+configure-docker` will say so); the audience is the part that goes missing.
+
+    tests/stamps/run.sh cgr.dev/chainguard/jre:latest \
+                        cgr.dev/chainguard-private/kaniko:latest
+
+    # or, equivalently
+    make test-stamps STAMP_IMAGES="cgr.dev/chainguard/jre:latest cgr.dev/chainguard-private/kaniko:latest"
+
+A run reports what it did not reach, so passing that ref drops the `/kaniko`
+caveat from the closing note instead of printing it.
+
+This is deliberately not automated. Doing so would need two additions to the
+workflow's trust surface, not one: a credential for the private registry, and a
+second accepted signer identity, because that image is signed by
+`chainguard-dev/stereo/.github/workflows/release-containers.yaml` rather than
+the `chainguard-images/images/*` identity the workflow requires. The copy is
+currently byte-identical to its system bundle, so the drift being guarded
+against is remote; the trade was judged not worth it for now. Revisit if the
+`/kaniko` copy ever starts diverging, or gains a sidecar of its own.
+
 ## Known gaps
 
 - apko also stamps `var/lib/ecs/deps/execute-command/certs/tls-ca-bundle.pem`
@@ -293,3 +351,7 @@ Two cautions when editing that matrix:
   containing two matching lines silently uses the first.
 - Deleting `/etc/ssl/certs/java/cacerts` outright satisfies the Java `OR` via
   `tst:5`.
+- No automated run guards the `/kaniko` criteria against a real image; the
+  daily workflow inspects only public images. It is coverable on demand — see
+  [Covering the /kaniko criteria](#covering-the-kaniko-criteria) — and deferred
+  rather than declined.

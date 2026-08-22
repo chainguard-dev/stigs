@@ -92,49 +92,33 @@ jobs:
         run: |
           set -euo pipefail
 
-          # CertificateAudit no longer pins any hash in the datastream: the OVAL
-          # reads each expected digest out of the stamp file the owning package
-          # ships next to the file it describes, in sha256sum format —
+          # CertificateAudit pins no hash in the datastream: the OVAL reads each
+          # expected digest out of the sidecar file the image build writes next
+          # to the file it describes, in sha256sum format —
           #   /etc/ssl/certs/.ca-certificates.crt.sha256   (always)
           #   /etc/ssl/certs/java/.cacerts.sha256          (Java images only)
           # — and compares the real file against it. Nothing in this repo needs
           # updating when either rolls upstream.
           #
-          # This step guards the premise that replaced the pins: if a future
-          # image drops a stamp file, renames it, or ships one that disagrees
-          # with the file it names, the rule starts failing on clean images.
-          # Fail loudly here — daily — instead of finding out via a red E2E run.
+          # This step guards the premise that replaced the pins. The checks
+          # themselves live in tests/stamps/run.sh so they can be run and tested
+          # outside CI (`make test-stamps`, tests/stamps/run_test.sh) rather than
+          # existing only as inline YAML; it reads the expected format out of the
+          # datastream, so the guard cannot drift from the OVAL it guards.
           #
-          # The jre image is used because it carries BOTH stamps, so a single
-          # export covers the whole rule. wolfi-base has no Java and would leave
-          # the truststore criterion unguarded.
+          # The jre image is used because it carries BOTH sidecars the rule
+          # reads, so a single export covers them. wolfi-base has no Java and
+          # would leave the truststore criterion unguarded.
 
-          workdir=$(mktemp -d)
-          crane export "${STEPS_IMAGE_OUTPUTS_STAMP_FULL_REF}" - | \
-            tar -C "${workdir}" -x \
-              etc/ssl/certs/ca-certificates.crt \
-              etc/ssl/certs/.ca-certificates.crt.sha256 \
-              etc/ssl/certs/java/cacerts \
-              etc/ssl/certs/java/.cacerts.sha256
+          digests="${RUNNER_TEMP}/stamp-digests"
+          : > "${digests}"
+          STAMP_DIGEST_FILE="${digests}" \
+            tests/stamps/run.sh "${STEPS_IMAGE_OUTPUTS_STAMP_FULL_REF}"
 
-          # Both stamps must be present and correct. Checking each separately
-          # (rather than one combined sha256sum -c) keeps the error message
-          # specific about which trust store drifted.
-          for pair in "etc/ssl/certs:.ca-certificates.crt.sha256" "etc/ssl/certs/java:.cacerts.sha256"; do
-            dir="${pair%%:*}"
-            stamp="${pair#*:}"
-            if [ ! -f "${workdir}/${dir}/${stamp}" ]; then
-              echo "::error::${dir}/${stamp} missing from ${STAMP_IMAGE_REF}; CertificateAudit will fail on clean images"
-              exit 1
-            fi
-            if ! (cd "${workdir}/${dir}" && sha256sum -c "${stamp}"); then
-              echo "::error::${dir} contents do not match ${stamp} in ${STAMP_IMAGE_REF}; CertificateAudit will fail on clean images"
-              exit 1
-            fi
-          done
-
-          SHA=$(sha256sum "${workdir}/etc/ssl/certs/ca-certificates.crt" | cut -d' ' -f1)
-          JAVA_SHA=$(sha256sum "${workdir}/etc/ssl/certs/java/cacerts" | cut -d' ' -f1)
+          # Reported for the summary below; the guard already proved each of
+          # these equals the digest recorded in the sidecar beside it.
+          SHA=$(awk '$1=="etc/ssl/certs/ca-certificates.crt"{print $2}' "${digests}")
+          JAVA_SHA=$(awk '$1=="etc/ssl/certs/java/cacerts"{print $2}' "${digests}")
           echo "sha=${SHA}" >> "$GITHUB_OUTPUT"
 
           cat >> "$GITHUB_STEP_SUMMARY" <<EOF
