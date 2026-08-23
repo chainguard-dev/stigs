@@ -289,9 +289,17 @@ func (h harness) scanFixture(t *testing.T, ops []overlay.Op, containerVars []str
 //   - DetectOpenSsl gates its SSH criteria on these: the client checks apply
 //     only when openssh-client is recorded and the server checks only when
 //     openssh-server is recorded.
+// apkOpenSSHSftpServerStanza records openssh-sftp-server, which ships the
+// sftp-server subsystem binary sshd serves and is banned alongside the server.
+// It is listed separately from openssh-server in the pattern, so it needs its
+// own row: the "-sftp-server" spelling is not reached by the openssh-server
+// alternative, which is anchored against a version suffix rather than a word
+// one. This package was added to the ban list without the datastream copy
+// following, so the shipped rule missed it entirely — see the fail row below.
 var (
-	apkOpenSSHClientStanza = []byte("\nP:openssh-client\nV:9.9_p2-r0\nA:x86_64\n")
-	apkOpenSSHServerStanza = []byte("\nP:openssh-server\nV:9.9_p2-r0\nA:x86_64\n")
+	apkOpenSSHClientStanza     = []byte("\nP:openssh-client\nV:9.9_p2-r0\nA:x86_64\n")
+	apkOpenSSHServerStanza     = []byte("\nP:openssh-server\nV:9.9_p2-r0\nA:x86_64\n")
+	apkOpenSSHSftpServerStanza = []byte("\nP:openssh-sftp-server\nV:9.9_p2-r0\nA:x86_64\n")
 )
 
 // apkDropbearStanza is an apk installed-db record whose P: line matches the
@@ -519,6 +527,16 @@ func matrixCases() []matrixCase {
 			// so an `apk add openssh` image fails here too.)
 			name: "remote_access/fail_openssh_server_installed",
 			ops:  []overlay.Op{overlay.AppendFile("usr/lib/apk/db/installed", apkOpenSSHServerStanza)},
+			want: map[string]results.Result{ruleRemoteAccessServices: results.Fail},
+		},
+		{
+			// openssh-sftp-server ships the sftp-server subsystem and is banned in
+			// its own right. It is a distinct alternative in the pattern rather than
+			// a suffix of openssh-server, so nothing else covers it: before this row
+			// the datastream had lost the package while the standalone OVAL kept it,
+			// and no test noticed.
+			name: "remote_access/fail_openssh_sftp_server_installed",
+			ops:  []overlay.Op{overlay.AppendFile("usr/lib/apk/db/installed", apkOpenSSHSftpServerStanza)},
 			want: map[string]results.Result{ruleRemoteAccessServices: results.Fail},
 		},
 		{
