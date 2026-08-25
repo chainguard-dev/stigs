@@ -289,6 +289,7 @@ func (h harness) scanFixture(t *testing.T, ops []overlay.Op, containerVars []str
 //   - DetectOpenSsl gates its SSH criteria on these: the client checks apply
 //     only when openssh-client is recorded and the server checks only when
 //     openssh-server is recorded.
+//
 // apkOpenSSHSftpServerStanza records openssh-sftp-server, which ships the
 // sftp-server subsystem binary sshd serves and is banned alongside the server.
 // It is listed separately from openssh-server in the pattern, so it needs its

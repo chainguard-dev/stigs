@@ -1,0 +1,3 @@
+# Scan output written by the e2e harness and the stigviewer-check target.
+tests/e2e/out/
+out/
