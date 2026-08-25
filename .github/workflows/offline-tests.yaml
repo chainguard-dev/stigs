@@ -70,6 +70,13 @@ jobs:
       # needs no registry access and adds no allowed endpoints. It covers the
       # trust-store guard's failure paths, which the daily update-ca-cert run
       # never reaches because it only ever sees a healthy image.
+      # Repo-local file comparison: no registry, no network, no extra
+      # endpoints. Compares each standalone OVAL check against its copy in the
+      # datastream, which no schema validation covers because each copy is only
+      # ever checked against the schema in isolation.
+      - name: Check OVAL mirrors against the datastream
+        run: make validate_mirrors
+
       - name: Run trust-store sidecar guard self-test
         run: make test-stamps-selftest
 

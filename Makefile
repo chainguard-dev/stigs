@@ -15,7 +15,20 @@ validate_xml:
 
 validate: validate_checks validate_xml
 
-.PHONY: validate validate_xml validate_checks
+# Compare each standalone OVAL check against its copy inside the datastream.
+# The standalone files are the source the datastream is generated from
+# (chainguard-dev/oscap-playground embeds each one verbatim), but between SRG
+# bumps the datastream is edited by hand and nothing runs the generator, so the
+# two drift and it is the generated artifact that ships. validate_checks and
+# validate_xml only ever check each copy against its schema in isolation, so
+# neither notices. Differences that would change a scan verdict fail; purely
+# descriptive ones are logged.
+#
+# Runs as part of `make test-offline` too, since that runs the whole module.
+validate_mirrors:
+	cd tests/oscap-offline && go test -count=1 ./internal/mirrors/
+
+.PHONY: validate validate_xml validate_checks validate_mirrors
 
 # End-to-end scan harness. Each fixture under tests/e2e/fixtures/<name>/
 # builds a container image, runs oscap-docker against the in-repo datastream,

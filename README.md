@@ -124,6 +124,33 @@ against every individual OVAL definition under
 fall back to `cgr.dev/chainguard/openscap:latest-dev` when `oscap` is
 not installed on PATH.
 
+**Mirror consistency** — `make validate_mirrors` compares each standalone
+OVAL check against its copy embedded in the datastream. Schema
+validation cannot catch drift between them, because it only ever checks
+each copy against the schema in isolation; a change applied to one and
+not the other passes. That is not hypothetical — it is how
+`openssh-sftp-server` came to be banned by the standalone
+`RemoteAccessServices` check while the shipped datastream ignored it.
+
+The standalone files are the source the datastream is built from:
+`chainguard-dev/oscap-playground` assembles it when a new SRG version
+lands, embedding each standalone file verbatim. Between SRG bumps the
+datastream is edited by hand and the generator does not run, so keeping
+this check green is also what makes the next regeneration safe — if the
+datastream already matches what the in-repo sources would produce,
+rebuilding it cannot silently revert anything.
+
+Differences that would change a scan verdict fail; purely descriptive
+ones (titles, descriptions, `<reference source>`) are logged instead,
+since the two copies currently disagree on some of those without
+affecting any result — failing on them would mean disabling the check
+rather than fixing content.
+
+The comparison lives in
+`tests/oscap-offline/internal/mirrors` alongside its own unit tests, so
+it also runs as part of `make test-offline` and on PRs via the offline
+workflow.
+
 ### Tier 1 (fast) — offline Go harness
 
 `make test-offline` runs the `tests/oscap-offline` Go module. For each
