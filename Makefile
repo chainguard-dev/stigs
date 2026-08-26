@@ -26,7 +26,7 @@ validate: validate_checks validate_xml
 #
 # Runs as part of `make test-offline` too, since that runs the whole module.
 validate_mirrors:
-	cd tests/oscap-offline && go test -count=1 ./internal/mirrors/
+	cd tests/oscap-offline && go test -v -count=1 ./internal/mirrors/
 
 .PHONY: validate validate_xml validate_checks validate_mirrors
 
@@ -42,12 +42,17 @@ test-e2e-%:
 
 .PHONY: test-e2e
 
+# Run verbosely so the CI log names every test and subtest that executed. A
+# bare `go test` prints only `ok <package>`, which cannot distinguish a suite
+# that ran from one that silently covered less than expected — a newly added
+# table row or fixture that never runs looks identical to one that passes.
+#
 # Fast offline scan tier. Runs the tests/oscap-offline Go harness, which
 # scans an extracted rootfs with oscap pointed at it via OSCAP_PROBE_ROOT
 # (no privileged oscap-docker, no docker socket mount). Drives a per-OVAL-
 # definition pass+fail matrix and asserts the XCCDF rule verdicts.
 test-offline:
-	cd tests/oscap-offline && go test -race -count=1 ./...
+	cd tests/oscap-offline && go test -v -race -count=1 ./...
 
 # Clear the Go test cache so the next `test-offline` re-runs every scan from
 # scratch. The harness caches base tar(s) under a per-run temp dir (t.TempDir),
