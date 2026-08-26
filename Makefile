@@ -58,6 +58,27 @@ test-offline-clean:
 
 .PHONY: test-offline test-offline-clean
 
+# Formatting and static analysis for the Go test tooling. Neither was gated
+# anywhere until now: CI ran `go test` only, so an unformatted file reached main
+# unnoticed.
+#
+# gofmt -l is checked by its output rather than its exit status on purpose — it
+# exits 0 whether or not it lists anything, so `gofmt -l . && ...` silently
+# succeeds on unformatted input. `go test` runs only a subset of vet, so vet is
+# run in full here to cover the rest.
+lint-go:
+	@cd tests/oscap-offline && \
+	  unformatted=$$(gofmt -l .); \
+	  if [ -n "$$unformatted" ]; then \
+	    echo "::error::gofmt: these files are not formatted; run 'gofmt -w' on them:"; \
+	    echo "$$unformatted" | sed 's/^/  /'; \
+	    exit 1; \
+	  fi; \
+	  echo "gofmt: clean"; \
+	  go vet ./... && echo "go vet: clean"
+
+.PHONY: lint-go
+
 # Trust-store sidecar guard. CertificateAudit pins no digest; it reads each
 # expected value from a sidecar file the image build writes beside the trust
 # store. This target checks that premise against a real image: the sidecars
