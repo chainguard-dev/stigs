@@ -7,7 +7,7 @@
 # touching the ca-certificates stamp file, so the SHA-256 of the baked bundle
 # diverges from the digest recorded in /etc/ssl/certs/.ca-certificates.crt.sha256
 # that the CertificateAudit OVAL check compares it against. The rule must FAIL.
-FROM cgr.dev/chainguard/wolfi-base:latest@sha256:0a8fd427de5882aed77471b0a432c3675eda6b6a0ae952b5d640b46da628cdbe
+FROM cgr.dev/chainguard/wolfi-base:latest@sha256:19f7a7b40a11c435311e3784bd134c6b6f19677462440da48f96d5c84eefd669
 
 LABEL dev.orbstack.add-ca-certificates=false
 
