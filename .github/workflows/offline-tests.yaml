@@ -74,6 +74,12 @@ jobs:
       # endpoints. Compares each standalone OVAL check against its copy in the
       # datastream, which no schema validation covers because each copy is only
       # ever checked against the schema in isolation.
+      # Formatting and full vet. `go test` runs only a subset of vet and no
+      # formatting check at all, so without this an unformatted file reaches
+      # main unnoticed — which is how one did.
+      - name: Lint Go tooling
+        run: make lint-go
+
       - name: Check OVAL mirrors against the datastream
         run: make validate_mirrors
 

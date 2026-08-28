@@ -151,6 +151,13 @@ The comparison lives in
 it also runs as part of `make test-offline` and on PRs via the offline
 workflow.
 
+**Go tooling lint** — `make lint-go` checks `gofmt` and runs `go vet`
+in full across `tests/oscap-offline`. Neither was gated before: CI ran
+`go test` only, which applies no formatting check and only a subset of
+vet, so an unformatted file reached `main` unnoticed. Note `gofmt -l`
+exits 0 whether or not it lists anything, so the target inspects its
+output rather than its exit status.
+
 ### Tier 1 (fast) — offline Go harness
 
 `make test-offline` runs the `tests/oscap-offline` Go module. For each
