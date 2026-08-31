@@ -29,13 +29,14 @@
 // variable — is an error: the two copies would evaluate the same image
 // differently.
 //
-// Metadata (title, description, reference, affected) is a warning. The copies
-// disagree today on a <reference source> reading "Custom" in every standalone
-// file and "CIS" in five embedded blocks, which changes no verdict. Since
-// generation copies the standalone file verbatim, the standalone spelling is
-// canonical by construction and those embedded values are simply stale, but
-// correcting them is a content change to the shipped datastream and is not
-// bundled with the comparison itself.
+// Metadata (title, description, reference, affected) is reported separately,
+// because it does not change a verdict — but it is still a failure, since the
+// two copies agree on all of it. They did not always: five embedded blocks
+// carried a <reference source> of "CIS" against the standalone files' "Custom",
+// which is why this started out as a warning. Treating a difference that
+// changes no verdict as fatal while known instances existed would have meant
+// disabling the check rather than fixing content, so the content was corrected
+// first and the gate closed behind it.
 //
 // # Why entities, not a flat node list
 //

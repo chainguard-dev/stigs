@@ -6312,7 +6312,7 @@
           <metadata>
             <title>Check for OpenSSL FIPS Packages</title>
             <description>Ensure that the necessary OpenSSL FIPS packages and configuration files are present, and that the OPENSSL_CONF environment variable is either unset or set to /etc/ssl/openssl.cnf. Additionally verify that the OpenSSH client and server FIPS policy drop-ins (/etc/ssh/ssh_config.d/10-ssh-fips.conf and /etc/ssh/sshd_config.d/10-sshd-fips.conf) are present and pin the FIPS-approved ciphers, key-exchange, MAC, and signature algorithms. The main /etc/ssh/ssh_config and /etc/ssh/sshd_config must in turn Include their respective *_config.d/*.conf drop-in directories so the policy is applied. The client checks apply only when openssh-client is installed and the server checks only when openssh-server is installed.</description>
-            <reference source="CIS"/>
+            <reference source="Custom"/>
             <affected family="unix">
               <platform>Chainguard</platform>
             </affected>
@@ -6587,7 +6587,7 @@
           <metadata>
             <title>Check Library Permissions</title>
             <description>Ensure all libraries in /usr/lib have root:root permissions.</description>
-            <reference source="CIS"/>
+            <reference source="Custom"/>
             <affected family="unix">
               <platform>Chainguard</platform>
             </affected>
@@ -6652,7 +6652,7 @@
           <metadata>
             <title>Check for Login-Capable Users in /etc/shadow</title>
             <description>Ensure every entry in /etc/shadow is locked (password field starts with '!' or '*'), i.e. there are no login-capable user accounts. Locked service accounts, such as those apko creates for image run-as users, cannot log in and are permitted.</description>
-            <reference source="CIS"/>
+            <reference source="Custom"/>
             <affected family="unix">
               <platform>Chainguard</platform>
             </affected>
@@ -6774,7 +6774,7 @@
           <metadata>
             <title>No active/unlocked password field in /etc/shadow</title>
             <description>Chainguard container images must not ship interactive shadow password entries; every account must have its shadow field locked (&quot;!&quot; or &quot;*&quot;). This check FAILS if any line in /etc/shadow matches an active/unlocked password field, on the premise that hardened images have no interactive logins.</description>
-            <reference source="CIS"/>
+            <reference source="Custom"/>
             <affected family="unix">
               <platform>Chainguard</platform>
             </affected>
@@ -6812,7 +6812,7 @@
           <metadata>
             <title>Check Var/Log Permissions</title>
             <description>Ensure /var/log has root:root permissions.</description>
-            <reference source="CIS"/>
+            <reference source="Custom"/>
             <affected family="unix">
               <platform>Chainguard</platform>
             </affected>
