@@ -379,8 +379,14 @@ func TestRepositoryMirrorsMatch(t *testing.T) {
 	for _, f := range report.Functional {
 		t.Errorf("functional difference: %s", f)
 	}
+	// Descriptive differences fail too, now that the two copies agree on all of
+	// them. They were logged rather than failed while five embedded blocks still
+	// carried a <reference source> of "CIS" against the standalone files'
+	// "Custom" — a difference that changes no verdict, so failing on it would
+	// have meant disabling this test instead of fixing content. The content is
+	// fixed, so the gate closes behind it.
 	for _, f := range report.Descriptive {
-		t.Logf("descriptive difference (not fatal): %s", f)
+		t.Errorf("descriptive difference: %s", f)
 	}
 
 	// A run that paired nothing would otherwise read as success.

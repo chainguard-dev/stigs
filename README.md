@@ -140,11 +140,13 @@ this check green is also what makes the next regeneration safe — if the
 datastream already matches what the in-repo sources would produce,
 rebuilding it cannot silently revert anything.
 
-Differences that would change a scan verdict fail; purely descriptive
-ones (titles, descriptions, `<reference source>`) are logged instead,
-since the two copies currently disagree on some of those without
-affecting any result — failing on them would mean disabling the check
-rather than fixing content.
+Any difference fails, reported as either functional (criteria, tests,
+objects, states, variables — these change a scan verdict) or descriptive
+(titles, descriptions, `<reference source>` — these do not). Descriptive
+differences were logged rather than failed while five embedded blocks
+still carried a `<reference source>` of `CIS` against the standalone
+files' `Custom`; that content was corrected and the gate closed behind
+it.
 
 The comparison lives in
 `tests/oscap-offline/internal/mirrors` alongside its own unit tests, so
