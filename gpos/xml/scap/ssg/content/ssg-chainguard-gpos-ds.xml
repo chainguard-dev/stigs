@@ -17,7 +17,6 @@
       </ds:component-ref>
     </ds:checklists>
     <ds:checks>
-      <ds:component-ref id="scap_org.open-scap_cref_stub-oval.xml" xlink:href="#scap_org.open-scap_comp_stub-oval.xml"/>
       <ds:component-ref id="scap_org.open-scap_cref_PackageSignatureTest" xlink:href="#scap_org_ecomp_.packagesignaturecheck"/>
       <ds:component-ref id="scap_org.open-scap_cref_LibraryPermissionsTest" xlink:href="#scap_org_ecomp_.librarypermissions"/>
       <ds:component-ref id="scap_org.open-scap_cref_UserPasswordConfiguredTest" xlink:href="#scap_org_ecomp_.nopasswords"/>
@@ -6252,40 +6251,6 @@
         </ns0:Rule>
       </ns0:Group>
     </ns0:Benchmark>
-  </ds:component>
-  <ds:component id="scap_org.open-scap_comp_stub-oval.xml" timestamp="2025-07-16T18:40:00">
-    <oval-def:oval_definitions xmlns:oval-def="http://oval.mitre.org/XMLSchema/oval-definitions-5" xmlns:unix-def="http://oval.mitre.org/XMLSchema/oval-definitions-5#unix" xmlns:ind-def="http://oval.mitre.org/XMLSchema/oval-definitions-5#independent" xmlns:lin-def="http://oval.mitre.org/XMLSchema/oval-definitions-5#linux" xmlns:oval="http://oval.mitre.org/XMLSchema/oval-common-5" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://oval.mitre.org/XMLSchema/oval-definitions-5#unix unix-definitions-schema.xsd http://oval.mitre.org/XMLSchema/oval-definitions-5#independent independent-definitions-schema.xsd http://oval.mitre.org/XMLSchema/oval-definitions-5#linux linux-definitions-schema.xsd http://oval.mitre.org/XMLSchema/oval-definitions-5 oval-definitions-schema.xsd http://oval.mitre.org/XMLSchema/oval-common-5 oval-common-schema.xsd">
-      <oval-def:generator>
-        <oval:product_name>OpenSCAP</oval:product_name>
-        <oval:product_version>1.3.0</oval:product_version>
-        <oval:schema_version>5.11.1</oval:schema_version>
-        <oval:timestamp>2025-07-16T18:40:00</oval:timestamp>
-      </oval-def:generator>
-      <oval-def:definitions>
-        <oval-def:definition class="compliance" id="oval:org.stub:def:1" version="1">
-          <oval-def:metadata>
-            <oval-def:title>Stub OVAL Definition</oval-def:title>
-            <oval-def:description>This is a stub OVAL definition for manual checks that
-                            do not have automated OVAL content.</oval-def:description>
-          </oval-def:metadata>
-          <oval-def:criteria>
-            <oval-def:criterion comment="This is a manual check" test_ref="oval:org.stub:tst:1"/>
-          </oval-def:criteria>
-        </oval-def:definition>
-      </oval-def:definitions>
-      <oval-def:tests>
-        <ind-def:textfilecontent54_test check="all" check_existence="all_exist" comment="Manual check placeholder" id="oval:org.stub:tst:1" version="1">
-          <ind-def:object object_ref="oval:org.stub:obj:1"/>
-        </ind-def:textfilecontent54_test>
-      </oval-def:tests>
-      <oval-def:objects>
-        <ind-def:textfilecontent54_object id="oval:org.stub:obj:1" version="1">
-          <ind-def:filepath>/dev/null</ind-def:filepath>
-          <ind-def:pattern operation="pattern match">^$</ind-def:pattern>
-          <ind-def:instance datatype="int">1</ind-def:instance>
-        </ind-def:textfilecontent54_object>
-      </oval-def:objects>
-    </oval-def:oval_definitions>
   </ds:component>
   <ds:extended-component xmlns:oscap-sce-xccdf-stream="http://open-scap.org/page/SCE_xccdf_stream" id="scap_org_ecomp_.aslr" timestamp="2016-02-23T14:36:08">
     <oscap-sce-xccdf-stream:script>#!/bin/sh
