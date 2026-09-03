@@ -72,6 +72,60 @@ apko's own comment on `writeCABundleChecksums` states the purpose: "so
 downstream tooling (e.g. OpenSCAP) can verify they were not modified
 post-build." This rule is that downstream tooling.
 
+### Which images this rule can assess
+
+Because the expected digest comes from the sidecar, an image that has no sidecar
+has nothing to compare against — and the rule **fails** rather than skipping.
+That is deliberate: `tst:4`/`tst:6`/`tst:11` exist so a missing sidecar cannot
+pass vacuously, and `certificate_audit/fail_missing_stamp` pins it.
+
+The consequence is a floor on which images the rule can meaningfully assess:
+
+| image | outcome |
+| --- | --- |
+| built by apko **v1.2.30 or later** | assessable |
+| built by apko **v1.2.29 or earlier** | fails — no sidecars exist |
+| not built by apko at all | fails — no sidecars exist |
+
+v1.2.30 is the first release carrying `writeCABundleChecksums`; v1.2.29 does not
+have it. Every current Chainguard image is well past that, so this is not a
+concern for scanning what the registry serves today. It matters when scanning
+something older: an archived release, a customer's pinned image from before the
+change, or an image built by other tooling.
+
+**A failure caused by the floor is not distinguishable from a real one by the
+rule verdict alone** — both are `fail`. It *is* distinguishable from the scan
+artifact, in the per-test OVAL results, so no access to the image is needed and
+an archived results file can be read after the fact. Scan with `--oval-results`
+(or keep the ARF) and compare two tests:
+
+| | no usable sidecar | trust store actually drifted |
+| --- | --- | --- |
+| `tst:4` — sidecar exists and parses | `false` | `true` |
+| `tst:2` — bundle matches the sidecar digest | `error` | `false` |
+
+The `error` on `tst:2` is itself the tell: the variable behind the comparison
+collected no values, because there was no sidecar to read one from. A `false`
+there means a sidecar was read and disagreed.
+
+So `tst:4 false` says the rule *could not assess* this image — it predates the
+mechanism, or the sidecar is malformed — which is a different statement from
+"this image's trust stores were modified". `tst:4 true` with `tst:2 false` is
+the real finding. The same reading applies to `tst:6`/`tst:7` for the Java
+truststore and `tst:11`/`tst:12` for a `/kaniko` copy.
+
+Measured, not inferred: scanning an image with its sidecar removed and its
+bundle intact gives `tst:4 false`, `tst:2 error`; scanning one with the sidecar
+intact and the bundle appended to gives `tst:4 true`, `tst:2 false`. Both report
+the rule as `fail`.
+
+In-image, `ls -l /etc/ssl/certs/.ca-certificates.crt.sha256` answers the same
+question more directly, where you have a shell and the image to hand.
+
+Note this is a change in which images are assessable, not only in how. Under the
+previous design the expected digest was pinned in the datastream, so an old image
+could pass if its bundle happened to match that pin — no sidecar required.
+
 ## Why not a pinned digest
 
 The rule previously pinned the CA bundle's SHA-256 in the datastream. That had
@@ -128,7 +182,16 @@ Then an `OR` for the Java truststore:
   to the absent-truststore branch.
 - **`tst:13` before falling back to `tst:9`.** A sidecar beside the `/kaniko`
   copy takes precedence, so a divergent copy cannot sidestep its own sidecar by
-  appealing to the system one.
+  appealing to the system one. Which branch a real image takes has
+  changed. `kaniko/ssl/certs/ca-certificates.crt` was **not** in apko's
+  `caBundlePaths` at v1.2.35 but **is** at v1.2.43, and the published kaniko
+  image now ships `/kaniko/ssl/certs/.ca-certificates.crt.sha256` where in
+  August 2026 it did not. So real kaniko images have moved off the fallback and
+  onto `tst:11`/`tst:12`. Confirmed by running the guard against the image: the
+  copy matches its own sidecar, and that sidecar matches `obj:10`'s pattern —
+  the first time that pattern has been checked against anything other than a
+  synthetic fixture. Both branches remain fixture-covered, so nothing needs
+  changing; the fallback is now the path an *older* kaniko image would take.
 - **`tst:5` uses `none_exist`** rather than testing for Java some other way,
   because a non-Java image must not fail for lacking a truststore.
 
@@ -341,12 +404,8 @@ against is remote; the trade was judged not worth it for now. Revisit if the
 ## Known gaps
 
 - apko also stamps `var/lib/ecs/deps/execute-command/certs/tls-ca-bundle.pem`
-  (still in `caBundlePaths` as of apko v1.2.35). This rule neither checks that
+  (still in `caBundlePaths` as of apko v1.2.43). This rule neither checks that
   bundle nor its sidecar.
-- `CertificateAuditTest.xml` is the only OVAL component referenced by the
-  datastream with no standalone file under
-  `gpos/xml/scap/ssg/content/ssg-chainguard-xccdf/OvalDefinitions/`, so
-  `make validate_checks` does not validate this definition.
 - `<ind:instance>1</ind:instance>` with `only_one_exists` means a sidecar
   containing two matching lines silently uses the first.
 - Deleting `/etc/ssl/certs/java/cacerts` outright satisfies the Java `OR` via
