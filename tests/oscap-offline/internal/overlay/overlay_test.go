@@ -585,43 +585,177 @@ func TestPutFile(t *testing.T) {
 			t.Fatalf("Apply error = %v, want errors.Is ErrUnsafePath", err)
 		}
 	})
+
+	// PutFile narrows the re-pin fragility class but does not close it: a base
+	// that ships the path as something other than a regular file still fails,
+	// with ErrNotRegular instead of ErrExists. This is not hypothetical for the
+	// etc/ssl paths fixtures mutate -- the base ships etc/ssl/cert.pem and
+	// etc/ssl/certs/ca-bundle.crt as symlinks to ca-certificates.crt -- so the
+	// boundary is pinned rather than left to be discovered by a fixture author.
+	t.Run("rejects a non-regular target", func(t *testing.T) {
+		t.Parallel()
+
+		nonRegular := []struct {
+			name string
+			hdr  tar.Header
+		}{
+			{
+				name: "base ships the path as a directory",
+				hdr:  tar.Header{Name: "etc/ssl/openssl.cnf", Typeflag: tar.TypeDir, Mode: 0o755},
+			},
+			{
+				name: "base ships the path as a symlink",
+				hdr: tar.Header{
+					Name:     "etc/ssl/cert.pem",
+					Typeflag: tar.TypeSymlink,
+					Linkname: "certs/ca-certificates.crt",
+					Mode:     0o777,
+				},
+			},
+		}
+
+		for _, tc := range nonRegular {
+			t.Run(tc.name, func(t *testing.T) {
+				t.Parallel()
+				base := buildRawTar(t, tc.hdr)
+				var out bytes.Buffer
+				err := Apply(bytes.NewReader(base), []Op{PutFile(tc.hdr.Name, content, 0o644, 0, 0)}, &out)
+				if !errors.Is(err, ErrNotRegular) {
+					t.Fatalf("PutFile over %q (typeflag %q): Apply error = %v, want errors.Is ErrNotRegular",
+						tc.hdr.Name, tc.hdr.Typeflag, err)
+				}
+			})
+		}
+	})
+}
+
+// TestPutFileAfterRemoveFile pins that removing a path and then putting it back
+// emits it exactly once. RemoveFile drops the name from the entry map and from
+// the base ordering; were the ordering left alone, Apply would write the path
+// twice -- once from the base-order loop and again from the added loop --
+// producing a tar with a duplicated member that no op reports as an error.
+// PutFile's contract ("whether or not it already exists") invites this pairing,
+// so the guarantee is asserted rather than assumed.
+func TestPutFileAfterRemoveFile(t *testing.T) {
+	t.Parallel()
+
+	base := buildTar(t, map[string]fileSpec{
+		"etc/stamp": {content: []byte("original"), mode: 0o644, uid: 0, gid: 0},
+		"etc/keep":  {content: []byte("k"), mode: 0o644, uid: 0, gid: 0},
+	})
+
+	got := apply(t, base,
+		RemoveFile("etc/stamp"),
+		PutFile("etc/stamp", []byte("replacement"), 0o600, 1, 2),
+	)
+	order, byName := readEntries(t, got)
+
+	if diff := cmp.Diff([]string{"etc/keep", "etc/stamp"}, order); diff != "" {
+		t.Errorf("member order after remove-then-put (-want,+got):\n%s\nfull order: %v", diff, order)
+	}
+	// Re-added, not replaced: the entry is created fresh, so the PutFile
+	// mode/uid/gid apply rather than the removed entry's.
+	want := fileSpec{content: []byte("replacement"), mode: 0o600, uid: 1, gid: 2}
+	if diff := cmp.Diff(want, byName["etc/stamp"], cmp.AllowUnexported(fileSpec{})); diff != "" {
+		t.Errorf("re-added entry (-want,+got):\n%s", diff)
+	}
 }
 
 // TestPutFileIsDeterministic pins the property that makes fixtures reproducible:
 // the same ops over the same base produce byte-identical output, and applying
-// PutFile twice is indistinguishable from applying it once. Apply never mutates
-// its input, so nothing carries between runs — but that is worth asserting
-// rather than assuming, since the matrix shares one immutable base across every
-// subtest and a mutation would leak everywhere at once.
+// PutFile twice is indistinguishable from applying it once. The matrix shares
+// one base tar across every parallel subtest, so a PutFile whose second
+// application differed from its first would make a fixture's content depend on
+// what else ran.
+//
+// Both branches are covered, because they carry different bookkeeping: the
+// replace branch rewrites an entry in place, while the create branch appends to
+// the added list, and a repeat that appended a second time would emit the path
+// twice rather than once.
 func TestPutFileIsDeterministic(t *testing.T) {
+	t.Parallel()
+
+	content := []byte("fips = yes\n")
+
+	tests := []struct {
+		name  string
+		files map[string]fileSpec
+	}{
+		{
+			name: "replace branch: base already ships the path",
+			files: map[string]fileSpec{
+				"etc/ssl/openssl.cnf": {content: []byte("original"), mode: 0o644, uid: 0, gid: 0},
+				"etc/keep":            {content: []byte("k"), mode: 0o644, uid: 0, gid: 0},
+			},
+		},
+		{
+			name: "create branch: base lacks the path",
+			files: map[string]fileSpec{
+				"etc/keep": {content: []byte("k"), mode: 0o644, uid: 0, gid: 0},
+			},
+		},
+	}
+
+	for _, tc := range tests {
+		t.Run(tc.name, func(t *testing.T) {
+			t.Parallel()
+
+			base := buildTar(t, tc.files)
+			put := PutFile("etc/ssl/openssl.cnf", content, 0o600, 1, 2)
+
+			once := apply(t, base, put)
+			again := apply(t, base, put)
+			if !bytes.Equal(once, again) {
+				t.Errorf("same op over the same base produced different output: %d vs %d bytes", len(once), len(again))
+			}
+
+			twice := apply(t, base, put, put)
+			if !bytes.Equal(once, twice) {
+				order, _ := readEntries(t, twice)
+				t.Errorf("applying PutFile twice differed from applying it once: %d vs %d bytes; twice order = %v",
+					len(once), len(twice), order)
+			}
+		})
+	}
+}
+
+// TestApplyReusesABaseSafely pins what actually keeps the matrix's shared base
+// tar safe to reuse across parallel subtests.
+//
+// Note what is deliberately NOT asserted here: that Apply leaves the base bytes
+// unchanged. Apply takes an io.Reader and only ever copies out of it, so it
+// cannot write to a caller's slice through that signature -- such an assertion
+// would pass regardless of what Apply did internally, and would really be
+// testing buildTar. The falsifiable properties are that per-run state is not
+// shared between calls (Apply allocates a fresh plan each time) and that ops do
+// not retain and mutate the caller's content slice (bytes.Clone in AddFile and
+// ReplaceFile). The remaining guard, cp := *hdr when copying base headers, is
+// structural: a base header never escapes Apply by reference, which is not
+// observable from outside a single call.
+func TestApplyReusesABaseSafely(t *testing.T) {
 	t.Parallel()
 
 	base := buildTar(t, map[string]fileSpec{
 		"etc/ssl/openssl.cnf": {content: []byte("original"), mode: 0o644, uid: 0, gid: 0},
-		"etc/keep":            {content: []byte("k"), mode: 0o644, uid: 0, gid: 0},
 	})
 	content := []byte("fips = yes\n")
+	contentCopy := bytes.Clone(content)
 
-	once := apply(t, base, PutFile("etc/ssl/openssl.cnf", content, 0o600, 1, 2))
-	again := apply(t, base, PutFile("etc/ssl/openssl.cnf", content, 0o600, 1, 2))
-	if !bytes.Equal(once, again) {
-		t.Errorf("same ops over the same base produced different output: %d vs %d bytes", len(once), len(again))
+	// Two runs over one base: were any per-run state shared, the second would
+	// see the first's mutations.
+	first := apply(t, base, PutFile("etc/ssl/openssl.cnf", content, 0o600, 0, 0))
+	second := apply(t, base, PutFile("etc/ssl/openssl.cnf", content, 0o600, 0, 0))
+	if !bytes.Equal(first, second) {
+		t.Errorf("second Apply over the same base differed: %d vs %d bytes", len(first), len(second))
 	}
 
-	twice := apply(t, base,
-		PutFile("etc/ssl/openssl.cnf", content, 0o600, 1, 2),
-		PutFile("etc/ssl/openssl.cnf", content, 0o600, 1, 2),
+	// The caller's content slice must not be retained by the op and then mutated
+	// by a later one, which would change what an earlier fixture asserted.
+	_ = apply(t, base,
+		PutFile("etc/ssl/openssl.cnf", content, 0o600, 0, 0),
+		AppendFile("etc/ssl/openssl.cnf", []byte("appended")),
 	)
-	if !bytes.Equal(once, twice) {
-		t.Errorf("applying PutFile twice differed from applying it once: %d vs %d bytes", len(once), len(twice))
-	}
-
-	// The base bytes must be untouched, or the shared base would drift across subtests.
-	pristine := buildTar(t, map[string]fileSpec{
-		"etc/ssl/openssl.cnf": {content: []byte("original"), mode: 0o644, uid: 0, gid: 0},
-		"etc/keep":            {content: []byte("k"), mode: 0o644, uid: 0, gid: 0},
-	})
-	if !bytes.Equal(base, pristine) {
-		t.Error("Apply mutated the base tar it was given")
+	if !bytes.Equal(content, contentCopy) {
+		t.Errorf("op mutated the caller's content slice: got %q, want %q", content, contentCopy)
 	}
 }

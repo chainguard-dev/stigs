@@ -7,6 +7,7 @@ import (
 	"fmt"
 	"io"
 	"path/filepath"
+	"slices"
 	"strings"
 )
 
@@ -103,12 +104,19 @@ func ReplaceFile(path string, content []byte) Op {
 
 // RemoveFile drops an existing entry from the produced tar. The path must
 // already exist, otherwise Apply returns a wrapped ErrNotFound.
+//
+// The name is dropped from the base ordering as well as the entry map, so a
+// later op that re-adds the same path (AddFile, or PutFile taking its create
+// branch) emits exactly one member for it, positioned with the added entries.
+// Leaving the name in the ordering would make Apply write the path twice: once
+// from the base-order loop and again from the added loop.
 func RemoveFile(path string) Op {
 	return func(p *plan) {
 		if p.require(path) == nil {
 			return
 		}
 		delete(p.byName, path)
+		p.order = slices.DeleteFunc(p.order, func(n string) bool { return n == path })
 	}
 }
 
@@ -156,12 +164,35 @@ func AddFile(path string, content []byte, mode int64, uid, gid int) Op {
 //
 // Use AddFile instead only where a fixture's point is that the path was absent,
 // so that the base gaining it should be a loud failure rather than absorbed.
+// Note that PutFile deliberately absorbs base drift rather than reporting it, so
+// it is not the place to learn what the base ships; assert that directly against
+// the base tar instead.
 //
 // mode, uid and gid apply only when the entry is created; an existing entry
 // keeps its own, since a fixture replacing content is not usually trying to
-// restate permissions.
+// restate permissions. A fixture that means to pin an existing entry's
+// attributes must say so with Chown rather than relying on these, which is why
+// no OVAL check should read permissions on a path a fixture only ever PutFiles.
+//
+// The target must be absent or a regular file: an existing directory or symlink
+// at path yields a wrapped ErrNotRegular, since replacing such an entry's
+// content cannot produce a valid tar. That matters because the base does ship
+// symlinks next to the paths fixtures mutate (etc/ssl/cert.pem and
+// etc/ssl/certs/ca-bundle.crt both alias ca-certificates.crt), so a fixture
+// targeting a CA-bundle alias hits this rather than replacing the link.
+//
+// Pairing PutFile with RemoveFile on one path is safe: RemoveFile drops the name
+// from the base ordering, so the re-add emits a single member.
 func PutFile(path string, content []byte, mode int64, uid, gid int) Op {
 	return func(p *plan) {
+		// Checked here as well as in AddFile so the guarantee is local: the
+		// replace branch below indexes byName directly and never runs AddFile's
+		// validation, relying otherwise on the invariant that every key in
+		// byName was already vetted at base ingest or by AddFile.
+		if !safePath(path) {
+			p.fail(fmt.Errorf("putting %q: %w", path, ErrUnsafePath))
+			return
+		}
 		if _, ok := p.byName[path]; ok {
 			ReplaceFile(path, content)(p)
 			return
