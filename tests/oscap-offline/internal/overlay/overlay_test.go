@@ -520,3 +520,108 @@ func TestApplyNoOps(t *testing.T) {
 		t.Errorf("no-op Apply changed entries (-want,+got):\n%s", diff)
 	}
 }
+
+// TestPutFile covers both directions of the upsert, plus the property that
+// motivated it: the same op works whether or not the base ships the path, so a
+// fixture stops depending on that and stops breaking when the base is re-pinned.
+func TestPutFile(t *testing.T) {
+	t.Parallel()
+
+	content := []byte("fips = yes\n")
+
+	t.Run("replaces an existing file and keeps its header", func(t *testing.T) {
+		t.Parallel()
+		base := buildTar(t, map[string]fileSpec{
+			"etc/ssl/openssl.cnf": {content: randBytes(40), mode: 0o444, uid: 7, gid: 9},
+		})
+		got := apply(t, base, PutFile("etc/ssl/openssl.cnf", content, 0o600, 0, 0))
+		_, byName := readEntries(t, got)
+		// mode/uid/gid come from the existing entry, not the PutFile arguments.
+		want := fileSpec{content: content, mode: 0o444, uid: 7, gid: 9}
+		if diff := cmp.Diff(want, byName["etc/ssl/openssl.cnf"], cmp.AllowUnexported(fileSpec{})); diff != "" {
+			t.Errorf("PutFile over an existing entry (-want,+got):\n%s", diff)
+		}
+	})
+
+	t.Run("adds the file when the base does not have it", func(t *testing.T) {
+		t.Parallel()
+		base := buildTar(t, map[string]fileSpec{
+			"etc/other": {content: []byte("x"), mode: 0o644, uid: 0, gid: 0},
+		})
+		got := apply(t, base, PutFile("etc/ssl/openssl.cnf", content, 0o600, 3, 4))
+		_, byName := readEntries(t, got)
+		want := fileSpec{content: content, mode: 0o600, uid: 3, gid: 4}
+		if diff := cmp.Diff(want, byName["etc/ssl/openssl.cnf"], cmp.AllowUnexported(fileSpec{})); diff != "" {
+			t.Errorf("PutFile creating an entry (-want,+got):\n%s", diff)
+		}
+	})
+
+	t.Run("same op succeeds against both bases", func(t *testing.T) {
+		t.Parallel()
+		// The regression this exists for: AddFile fails on the with-file base
+		// and ReplaceFile fails on the without-file one, so neither can express
+		// a fixture that must survive the base gaining or losing the path.
+		withFile := buildTar(t, map[string]fileSpec{
+			"etc/ssl/openssl.cnf": {content: []byte("old"), mode: 0o644, uid: 0, gid: 0},
+		})
+		without := buildTar(t, map[string]fileSpec{
+			"etc/keep": {content: []byte("k"), mode: 0o644, uid: 0, gid: 0},
+		})
+		for name, base := range map[string][]byte{"base has the file": withFile, "base lacks it": without} {
+			var out bytes.Buffer
+			if err := Apply(bytes.NewReader(base), []Op{PutFile("etc/ssl/openssl.cnf", content, 0o644, 0, 0)}, &out); err != nil {
+				t.Errorf("%s: Apply = %v, want nil", name, err)
+			}
+		}
+	})
+
+	t.Run("rejects an unsafe path", func(t *testing.T) {
+		t.Parallel()
+		base := buildTar(t, map[string]fileSpec{
+			"etc/keep": {content: []byte("k"), mode: 0o644, uid: 0, gid: 0},
+		})
+		var out bytes.Buffer
+		if err := Apply(bytes.NewReader(base), []Op{PutFile("../escape", content, 0o644, 0, 0)}, &out); !errors.Is(err, ErrUnsafePath) {
+			t.Fatalf("Apply error = %v, want errors.Is ErrUnsafePath", err)
+		}
+	})
+}
+
+// TestPutFileIsDeterministic pins the property that makes fixtures reproducible:
+// the same ops over the same base produce byte-identical output, and applying
+// PutFile twice is indistinguishable from applying it once. Apply never mutates
+// its input, so nothing carries between runs — but that is worth asserting
+// rather than assuming, since the matrix shares one immutable base across every
+// subtest and a mutation would leak everywhere at once.
+func TestPutFileIsDeterministic(t *testing.T) {
+	t.Parallel()
+
+	base := buildTar(t, map[string]fileSpec{
+		"etc/ssl/openssl.cnf": {content: []byte("original"), mode: 0o644, uid: 0, gid: 0},
+		"etc/keep":            {content: []byte("k"), mode: 0o644, uid: 0, gid: 0},
+	})
+	content := []byte("fips = yes\n")
+
+	once := apply(t, base, PutFile("etc/ssl/openssl.cnf", content, 0o600, 1, 2))
+	again := apply(t, base, PutFile("etc/ssl/openssl.cnf", content, 0o600, 1, 2))
+	if !bytes.Equal(once, again) {
+		t.Errorf("same ops over the same base produced different output: %d vs %d bytes", len(once), len(again))
+	}
+
+	twice := apply(t, base,
+		PutFile("etc/ssl/openssl.cnf", content, 0o600, 1, 2),
+		PutFile("etc/ssl/openssl.cnf", content, 0o600, 1, 2),
+	)
+	if !bytes.Equal(once, twice) {
+		t.Errorf("applying PutFile twice differed from applying it once: %d vs %d bytes", len(once), len(twice))
+	}
+
+	// The base bytes must be untouched, or the shared base would drift across subtests.
+	pristine := buildTar(t, map[string]fileSpec{
+		"etc/ssl/openssl.cnf": {content: []byte("original"), mode: 0o644, uid: 0, gid: 0},
+		"etc/keep":            {content: []byte("k"), mode: 0o644, uid: 0, gid: 0},
+	})
+	if !bytes.Equal(base, pristine) {
+		t.Error("Apply mutated the base tar it was given")
+	}
+}

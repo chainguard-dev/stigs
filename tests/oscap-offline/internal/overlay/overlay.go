@@ -141,6 +141,35 @@ func AddFile(path string, content []byte, mode int64, uid, gid int) Op {
 	}
 }
 
+// PutFile gives path the given content whether or not it already exists:
+// replacing an existing regular file's content in place, keeping its header and
+// position in the tar, or adding a new entry with the supplied mode and
+// ownership if there is nothing there.
+//
+// This is what a fixture wants when its intent is "this file holds this
+// content", which is most of them. AddFile and ReplaceFile each assert the
+// opposite precondition, so a fixture using either is implicitly betting on
+// whether the base image ships that path — a bet that expires silently whenever
+// the base image is re-pinned. That is not hypothetical: the base gained
+// /etc/ssl/openssl.cnf, and every fixture that had been adding it started
+// failing with ErrExists before any scan ran.
+//
+// Use AddFile instead only where a fixture's point is that the path was absent,
+// so that the base gaining it should be a loud failure rather than absorbed.
+//
+// mode, uid and gid apply only when the entry is created; an existing entry
+// keeps its own, since a fixture replacing content is not usually trying to
+// restate permissions.
+func PutFile(path string, content []byte, mode int64, uid, gid int) Op {
+	return func(p *plan) {
+		if _, ok := p.byName[path]; ok {
+			ReplaceFile(path, content)(p)
+			return
+		}
+		AddFile(path, content, mode, uid, gid)(p)
+	}
+}
+
 // CopyFile adds a new regular-file entry at dst holding a copy of src's
 // content, mode and ownership, letting a fixture reproduce a base file at a
 // second path (e.g. the CA bundle a kaniko image carries under /kaniko) without
