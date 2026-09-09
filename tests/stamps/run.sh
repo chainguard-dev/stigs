@@ -52,9 +52,18 @@ DEFAULT_IMAGES="${STAMP_IMAGES:-cgr.dev/chainguard/jre:latest}"
 #               sidecar (tst:13 + tst:9), so only a present-but-wrong sidecar
 #               is a failure.
 #
-# /kaniko is carried only by cgr.dev/chainguard-private/kaniko, so it is not
-# reached by the default public image. Pass that ref explicitly to cover it
-# wherever credentials for it exist; a run reports what it did not reach.
+# obj:10 stays required=no because older kaniko images legitimately ship no
+# sidecar beside the /kaniko copy and the criteria fall back for them. Note this
+# is no longer the branch a current image takes: the copy entered apko's
+# caBundlePaths by v1.2.43 and now carries its own sidecar, so production
+# resolves through tst:11 + tst:12. The consequence of required=no is therefore
+# that a sidecar going *missing* from an image that should have one will not
+# fail this guard, only one that is present and wrong.
+#
+# /kaniko is carried only by cgr.dev/chainguard-private/kaniko — there is no
+# public kaniko image — so it is not reached by the default public image. Pass
+# that ref explicitly to cover it wherever credentials for it exist; a run
+# reports what it did not reach.
 SIDECARS=(
   "oval:org.CABundleHash:obj:4|etc/ssl/certs|.ca-certificates.crt.sha256|ca-certificates.crt|yes"
   "oval:org.CABundleHash:obj:6|etc/ssl/certs/java|.cacerts.sha256|cacerts|yes"
