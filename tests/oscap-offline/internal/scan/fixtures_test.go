@@ -464,8 +464,8 @@ var (
 // them. Returned fresh each call so callers may append without aliasing.
 func fipsCoreOps() []overlay.Op {
 	return []overlay.Op{
-		overlay.AddFile("etc/ssl/fipsmodule.cnf", fipsModuleCnf, 0o644, 0, 0),
-		overlay.AddFile("etc/ssl/openssl.cnf", opensslCnf, 0o644, 0, 0),
+		overlay.PutFile("etc/ssl/fipsmodule.cnf", fipsModuleCnf, 0o644, 0, 0),
+		overlay.PutFile("etc/ssl/openssl.cnf", opensslCnf, 0o644, 0, 0),
 		overlay.AppendFile("usr/lib/apk/db/installed", apkFIPSPackages),
 		overlay.AppendFile("usr/lib/apk/db/installed", apkOpenSSHClientStanza),
 		overlay.AppendFile("usr/lib/apk/db/installed", apkOpenSSHServerStanza),
@@ -479,10 +479,10 @@ func fipsCoreOps() []overlay.Op {
 // each call so callers may append without aliasing.
 func fipsPresentOps() []overlay.Op {
 	return append(fipsCoreOps(),
-		overlay.AddFile("etc/ssh/ssh_config", sshConfigMain, 0o644, 0, 0),
-		overlay.AddFile("etc/ssh/sshd_config", sshdConfigMain, 0o644, 0, 0),
-		overlay.AddFile("etc/ssh/ssh_config.d/10-ssh-fips.conf", sshFipsClientConf, 0o644, 0, 0),
-		overlay.AddFile("etc/ssh/sshd_config.d/10-sshd-fips.conf", sshFipsServerConf, 0o644, 0, 0),
+		overlay.PutFile("etc/ssh/ssh_config", sshConfigMain, 0o644, 0, 0),
+		overlay.PutFile("etc/ssh/sshd_config", sshdConfigMain, 0o644, 0, 0),
+		overlay.PutFile("etc/ssh/ssh_config.d/10-ssh-fips.conf", sshFipsClientConf, 0o644, 0, 0),
+		overlay.PutFile("etc/ssh/sshd_config.d/10-sshd-fips.conf", sshFipsServerConf, 0o644, 0, 0),
 	)
 }
 
@@ -630,8 +630,8 @@ func matrixCases() []matrixCase {
 			// only fixture exercising the "present and matching" OR branch.
 			name: "certificate_audit/pass_java_truststore",
 			ops: []overlay.Op{
-				overlay.AddFile(javaTrustStorePath, javaTrustStore, 0o444, 0, 0),
-				overlay.AddFile(javaStampPath, javaStamp(javaTrustStore), 0o444, 0, 0),
+				overlay.PutFile(javaTrustStorePath, javaTrustStore, 0o444, 0, 0),
+				overlay.PutFile(javaStampPath, javaStamp(javaTrustStore), 0o444, 0, 0),
 			},
 			containerVars: []string{"SSL_CERT_FILE=/etc/ssl/certs/ca-certificates.crt"},
 			want:          map[string]results.Result{ruleCertificateAudit: results.Pass},
@@ -641,8 +641,8 @@ func matrixCases() []matrixCase {
 			// for different content, i.e. a truststore modified in place.
 			name: "certificate_audit/fail_java_wrong_stamp",
 			ops: []overlay.Op{
-				overlay.AddFile(javaTrustStorePath, javaTrustStore, 0o444, 0, 0),
-				overlay.AddFile(javaStampPath, javaStamp([]byte("other content")), 0o444, 0, 0),
+				overlay.PutFile(javaTrustStorePath, javaTrustStore, 0o444, 0, 0),
+				overlay.PutFile(javaStampPath, javaStamp([]byte("other content")), 0o444, 0, 0),
 			},
 			containerVars: []string{"SSL_CERT_FILE=/etc/ssl/certs/ca-certificates.crt"},
 			want:          map[string]results.Result{ruleCertificateAudit: results.Fail},
@@ -653,7 +653,7 @@ func matrixCases() []matrixCase {
 			// truststore, it just cannot be verified.
 			name: "certificate_audit/fail_java_missing_stamp",
 			ops: []overlay.Op{
-				overlay.AddFile(javaTrustStorePath, javaTrustStore, 0o444, 0, 0),
+				overlay.PutFile(javaTrustStorePath, javaTrustStore, 0o444, 0, 0),
 			},
 			containerVars: []string{"SSL_CERT_FILE=/etc/ssl/certs/ca-certificates.crt"},
 			want:          map[string]results.Result{ruleCertificateAudit: results.Fail},
@@ -807,9 +807,18 @@ func matrixCases() []matrixCase {
 		},
 
 		// DetectOpenSsl is inverted: a vanilla wolfi-base lacks the OpenSSL FIPS
-		// module config, packages, and OpenSSH FIPS drop-ins this rule requires, so
-		// the CLEAN tree FAILS. The "pass" fixtures synthesize every required file
-		// and package record via fipsPresentOps.
+		// module config, the FIPS apk packages, and the OpenSSH FIPS drop-ins this
+		// rule requires, so the CLEAN tree FAILS. The "pass" fixtures synthesize
+		// every required file and package record via fipsPresentOps.
+		//
+		// The base does now ship /etc/ssl/openssl.cnf, which it did not when these
+		// fixtures were written, so that file's absence is no longer part of why
+		// the clean tree fails. fail_clean_no_fips is deliberately op-free: it
+		// asserts that an *unmodified* image fails, which is what a real scan of
+		// wolfi-base yields. That means its discriminating power tracks whatever
+		// the base ships — but it degrades loudly, not silently: if the base ever
+		// gained the FIPS module config and packages, this row would flip to pass
+		// and fail the suite rather than quietly assert less.
 		{
 			name: "detect_openssl/fail_clean_no_fips",
 			want: map[string]results.Result{ruleDetectOpenSsl: results.Fail},
@@ -845,8 +854,8 @@ func matrixCases() []matrixCase {
 			// irrelevant — the rule fails purely on the OpenSSL package dimension.
 			name: "detect_openssl/fail_doc_subpackage_only",
 			ops: []overlay.Op{
-				overlay.AddFile("etc/ssl/fipsmodule.cnf", fipsModuleCnf, 0o644, 0, 0),
-				overlay.AddFile("etc/ssl/openssl.cnf", opensslCnf, 0o644, 0, 0),
+				overlay.PutFile("etc/ssl/fipsmodule.cnf", fipsModuleCnf, 0o644, 0, 0),
+				overlay.PutFile("etc/ssl/openssl.cnf", opensslCnf, 0o644, 0, 0),
 				overlay.AppendFile("usr/lib/apk/db/installed", apkFIPSPackagesDocSubpkg),
 			},
 			want: map[string]results.Result{ruleDetectOpenSsl: results.Fail},
@@ -858,8 +867,8 @@ func matrixCases() []matrixCase {
 			// fails. Isolates the SSH drop-in file-existence dimension.
 			name: "detect_openssl/fail_missing_ssh_fips_conf",
 			ops: append(fipsCoreOps(),
-				overlay.AddFile("etc/ssh/ssh_config", sshConfigMain, 0o644, 0, 0),
-				overlay.AddFile("etc/ssh/sshd_config", sshdConfigMain, 0o644, 0, 0),
+				overlay.PutFile("etc/ssh/ssh_config", sshConfigMain, 0o644, 0, 0),
+				overlay.PutFile("etc/ssh/sshd_config", sshdConfigMain, 0o644, 0, 0),
 			),
 			want: map[string]results.Result{ruleDetectOpenSsl: results.Fail},
 		},
@@ -870,10 +879,10 @@ func matrixCases() []matrixCase {
 			// dimension (and proves the server branch is enforced when installed).
 			name: "detect_openssl/fail_wrong_ssh_fips_value",
 			ops: append(fipsCoreOps(),
-				overlay.AddFile("etc/ssh/ssh_config", sshConfigMain, 0o644, 0, 0),
-				overlay.AddFile("etc/ssh/sshd_config", sshdConfigMain, 0o644, 0, 0),
-				overlay.AddFile("etc/ssh/ssh_config.d/10-ssh-fips.conf", sshFipsClientConf, 0o644, 0, 0),
-				overlay.AddFile("etc/ssh/sshd_config.d/10-sshd-fips.conf", sshFipsServerConfWrongCipher, 0o644, 0, 0),
+				overlay.PutFile("etc/ssh/ssh_config", sshConfigMain, 0o644, 0, 0),
+				overlay.PutFile("etc/ssh/sshd_config", sshdConfigMain, 0o644, 0, 0),
+				overlay.PutFile("etc/ssh/ssh_config.d/10-ssh-fips.conf", sshFipsClientConf, 0o644, 0, 0),
+				overlay.PutFile("etc/ssh/sshd_config.d/10-sshd-fips.conf", sshFipsServerConfWrongCipher, 0o644, 0, 0),
 			),
 			want: map[string]results.Result{ruleDetectOpenSsl: results.Fail},
 		},
@@ -884,8 +893,8 @@ func matrixCases() []matrixCase {
 			// drop-in-wiring dimension — a drop-in that is never sourced is inert.
 			name: "detect_openssl/fail_ssh_config_missing_include",
 			ops: append(fipsCoreOps(),
-				overlay.AddFile("etc/ssh/ssh_config.d/10-ssh-fips.conf", sshFipsClientConf, 0o644, 0, 0),
-				overlay.AddFile("etc/ssh/sshd_config.d/10-sshd-fips.conf", sshFipsServerConf, 0o644, 0, 0),
+				overlay.PutFile("etc/ssh/ssh_config.d/10-ssh-fips.conf", sshFipsClientConf, 0o644, 0, 0),
+				overlay.PutFile("etc/ssh/sshd_config.d/10-sshd-fips.conf", sshFipsServerConf, 0o644, 0, 0),
 			),
 			want: map[string]results.Result{ruleDetectOpenSsl: results.Fail},
 		},
@@ -896,12 +905,12 @@ func matrixCases() []matrixCase {
 			// and no server drop-in. This mirrors the cgr.dev go-fips image.
 			name: "detect_openssl/pass_client_only_no_server",
 			ops: []overlay.Op{
-				overlay.AddFile("etc/ssl/fipsmodule.cnf", fipsModuleCnf, 0o644, 0, 0),
-				overlay.AddFile("etc/ssl/openssl.cnf", opensslCnf, 0o644, 0, 0),
+				overlay.PutFile("etc/ssl/fipsmodule.cnf", fipsModuleCnf, 0o644, 0, 0),
+				overlay.PutFile("etc/ssl/openssl.cnf", opensslCnf, 0o644, 0, 0),
 				overlay.AppendFile("usr/lib/apk/db/installed", apkFIPSPackages),
 				overlay.AppendFile("usr/lib/apk/db/installed", apkOpenSSHClientStanza),
-				overlay.AddFile("etc/ssh/ssh_config", sshConfigMain, 0o644, 0, 0),
-				overlay.AddFile("etc/ssh/ssh_config.d/10-ssh-fips.conf", sshFipsClientConf, 0o644, 0, 0),
+				overlay.PutFile("etc/ssh/ssh_config", sshConfigMain, 0o644, 0, 0),
+				overlay.PutFile("etc/ssh/ssh_config.d/10-ssh-fips.conf", sshFipsClientConf, 0o644, 0, 0),
 			},
 			want: map[string]results.Result{ruleDetectOpenSsl: results.Pass},
 		},
@@ -910,8 +919,8 @@ func matrixCases() []matrixCase {
 			// the rule PASSES on the OpenSSL criteria alone with no ssh files present.
 			name: "detect_openssl/pass_no_openssh_installed",
 			ops: []overlay.Op{
-				overlay.AddFile("etc/ssl/fipsmodule.cnf", fipsModuleCnf, 0o644, 0, 0),
-				overlay.AddFile("etc/ssl/openssl.cnf", opensslCnf, 0o644, 0, 0),
+				overlay.PutFile("etc/ssl/fipsmodule.cnf", fipsModuleCnf, 0o644, 0, 0),
+				overlay.PutFile("etc/ssl/openssl.cnf", opensslCnf, 0o644, 0, 0),
 				overlay.AppendFile("usr/lib/apk/db/installed", apkFIPSPackages),
 			},
 			want: map[string]results.Result{ruleDetectOpenSsl: results.Pass},
@@ -923,8 +932,8 @@ func matrixCases() []matrixCase {
 			// FAILS — proving the server gate enforces when openssh-server is present.
 			name: "detect_openssl/fail_server_installed_missing_config",
 			ops: []overlay.Op{
-				overlay.AddFile("etc/ssl/fipsmodule.cnf", fipsModuleCnf, 0o644, 0, 0),
-				overlay.AddFile("etc/ssl/openssl.cnf", opensslCnf, 0o644, 0, 0),
+				overlay.PutFile("etc/ssl/fipsmodule.cnf", fipsModuleCnf, 0o644, 0, 0),
+				overlay.PutFile("etc/ssl/openssl.cnf", opensslCnf, 0o644, 0, 0),
 				overlay.AppendFile("usr/lib/apk/db/installed", apkFIPSPackages),
 				overlay.AppendFile("usr/lib/apk/db/installed", apkOpenSSHServerStanza),
 			},
