@@ -339,8 +339,11 @@ const caStampPath = "etc/ssl/certs/.ca-certificates.crt.sha256"
 // caBundlePath and kanikoCABundlePath are the two locations CertificateAudit
 // accepts SSL_CERT_FILE pointing at, as tar member paths (rootfs-relative, no
 // leading slash). kanikoCAStampPath is the stamp file the /kaniko copy is
-// checked against where one is shipped beside it; cgr.dev/chainguard/kaniko
-// ships none today, so the copy falls back to the stamp at caStampPath.
+// checked against where one is shipped beside it. The only kaniko image
+// published is cgr.dev/chainguard-private/kaniko (there is no public one), and
+// it does ship that sidecar as of apko v1.2.43, so real images now resolve
+// through tst:11/tst:12; the fallback to caStampPath is what an older kaniko
+// image takes. Both branches are covered by fixtures below.
 const (
 	caBundlePath       = "etc/ssl/certs/ca-certificates.crt"
 	kanikoCABundlePath = "kaniko/ssl/certs/ca-certificates.crt"
