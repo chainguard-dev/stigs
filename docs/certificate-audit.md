@@ -426,6 +426,16 @@ still fails with `No matching credentials were found for "cgr.dev"`. The
 credential helper itself is usually already wired up (`chainctl auth
 configure-docker` will say so); the audience is the part that goes missing.
 
+To check the audience you actually need, ask for it by name:
+
+    chainctl auth status --audience cgr.dev
+
+Without `--audience` the command reports on the console-API token, which is the
+one that is valid whether or not the `cgr.dev` login has happened — so a bare
+`chainctl auth status` is the reason this failure is easy to misdiagnose in both
+directions. Note the flag is not a pure read: if the `cgr.dev` token has
+expired, asking for its status re-requests one.
+
     tests/stamps/run.sh cgr.dev/chainguard/jre:latest \
                         cgr.dev/chainguard-private/kaniko:latest
 
@@ -441,19 +451,27 @@ second accepted signer identity, because that image is signed by
 `chainguard-dev/stereo/.github/workflows/release-containers.yaml` rather than
 the `chainguard-images/images/*` identity the workflow requires.
 
-That trade was originally made on the grounds that the copy was byte-identical
-to its system bundle and carried no sidecar of its own, making the drift being
-guarded against remote — and it named "gains a sidecar of its own" as the thing
-that should prompt a revisit. That has now happened (see
-[Why each guard exists](#why-each-guard-exists)), so the original rationale no
-longer applies as written.
+That trade was originally made on two grounds — the copy was byte-identical to
+its system bundle, and it carried no sidecar of its own — and it named "gains a
+sidecar of its own" as the thing that should prompt a revisit. Exactly one of
+those has changed. Checked against the image directly:
 
-The trade still looks right, but for a narrower reason: the two additions to the
-trust surface are unchanged, while the copy having its own sidecar means a
-divergent copy is now caught by `tst:11`/`tst:12` against that sidecar rather
-than needing to be caught by the fallback. What the sidecar's arrival does cost
-is guard coverage rather than criteria coverage, which is recorded under
-[Known gaps](#known-gaps).
+| | |
+|---|---|
+| `kaniko/ssl/certs/.ca-certificates.crt.sha256` | now shipped (86 bytes) |
+| `kaniko/ssl/certs/ca-certificates.crt` vs the system bundle | still byte-identical (`b8d83784…`) |
+| the copy vs its own sidecar | matches |
+| that sidecar vs `obj:10`'s pattern | matches, exactly one line |
+
+So the revisit trigger has fired, but the divergence the guard exists to catch
+still has not occurred.
+
+The trade still looks right, for a narrower reason than before: the two
+additions to the trust surface are unchanged, and the copy having its own
+sidecar means a divergent copy would now be caught by `tst:11`/`tst:12` against
+that sidecar rather than having to be caught by the fallback. What the sidecar's
+arrival does cost is guard coverage rather than criteria coverage, which is
+recorded under [Known gaps](#known-gaps).
 
 ## Known gaps
 
