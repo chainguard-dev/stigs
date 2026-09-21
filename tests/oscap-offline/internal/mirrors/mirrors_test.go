@@ -362,11 +362,14 @@ func repoPaths(t *testing.T) (dsPath, dir string) {
 }
 
 // TestRepositoryMirrorsMatch is the assertion that guards the repository: every
-// standalone OVAL check must match the copy of it embedded in the datastream.
+// standalone OVAL check must match the copy of it embedded in the datastream,
+// and every embedded definition must have a standalone file.
 //
-// A functional difference fails. A descriptive one is logged, because the two
-// copies disagree today on a <reference source> that changes no verdict, and
-// failing on that would mean disabling this test rather than fixing content.
+// All three classes fail: functional differences, descriptive differences, and
+// definitions present only in the datastream. Each was logged rather than
+// failed at some point while real content disagreed; the comments below record
+// what closed each gate, because "logged" is the state to return to if a future
+// disagreement is judged not worth fixing.
 func TestRepositoryMirrorsMatch(t *testing.T) {
 	t.Parallel()
 
@@ -395,8 +398,16 @@ func TestRepositoryMirrorsMatch(t *testing.T) {
 	}
 	t.Logf("compared %d standalone OVAL file(s) against the datastream", report.Checked)
 
+	// Unmirrored definitions fail too, now that the list is empty. The stub OVAL
+	// definition removed in #172 was its only permanent entry, and it was logged
+	// rather than failed while that stub was still embedded. With the list empty
+	// the gate closes behind it: the generator can reintroduce a datastream-only
+	// component (oscap-playground's has_stub_oval flag does exactly that), and
+	// nothing else in the suite would notice.
 	for _, ids := range report.Unmirrored {
-		t.Logf("present only in the datastream, so not evaluable with `oscap oval eval` "+
-			"and with no input for regeneration: %s", ids)
+		t.Errorf("definition present only in the datastream, so it cannot be evaluated with "+
+			"`oscap oval eval` and regeneration has no input for it: %s\n"+
+			"\tadd the standalone file under %s, or remove the embedded block if it is unreachable",
+			ids, dir)
 	}
 }
