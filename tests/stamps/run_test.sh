@@ -145,6 +145,49 @@ else
   printf 'ok   guard rejects an image where nothing was verified\n'
 fi
 
+# An object id the datastream does not define must abort the run, not fall
+# through with an empty pattern.
+#
+# This is the one failure path where a silent pass is a single edit away.
+# `oval_pattern` exits non-zero for an unresolvable id, but its caller consumes
+# it as `pattern="$(oval_pattern "${obj_id}")"` and then runs
+# `grep -Pq -- "${pattern}"` — and an empty pattern matches anything. So the
+# only thing converting "could not read the regex" into a failure is `set -e`
+# aborting on the failed command substitution. Wrapping that call in a
+# conditional, or appending `|| true`, would turn the format check into a
+# no-op that still reports every sidecar as matching. Nothing else in this
+# suite would notice, because every other case supplies a datastream where all
+# three ids resolve.
+#
+# The mutation is a realistic one rather than a corrupt file: the datastream
+# renames an object and SIDECARS is not updated to follow.
+renamed_ds="${WORK}/datastream-obj4-renamed.xml"
+sed 's/oval:org\.CABundleHash:obj:4/oval:org.CABundleHash:obj:404/g' \
+  "${HERE}/../../gpos/xml/scap/ssg/content/ssg-chainguard-gpos-ds.xml" > "${renamed_ds}"
+if grep -qF 'oval:org.CABundleHash:obj:4"' "${renamed_ds}"; then
+  printf 'FAIL oval_pattern fixture is not what it claims\n     obj:4 still present in %s after the rename\n' "${renamed_ds}"
+  failed=1
+else
+  set +e
+  out="$(DATASTREAM="${renamed_ds}" "${GUARD}" clean 2>&1)"; got_exit=$?
+  set -e
+  if [ "${got_exit}" -eq 0 ]; then
+    printf 'FAIL unresolvable OVAL object id aborts the run\n     want non-zero, got exit 0 — an empty pattern matched and the format check silently passed:\n%s\n' \
+      "${out}"
+    failed=1
+  elif ! printf '%s' "${out}" | grep -qF "no pattern for oval:org.CABundleHash:obj:4"; then
+    printf 'FAIL unresolvable OVAL object id aborts the run\n     exit %s as expected, but output did not name the unresolvable id:\n%s\n' \
+      "${got_exit}" "${out}"
+    failed=1
+  elif printf '%s' "${out}" | grep -qF "matches oval:org.CABundleHash:obj:4's pattern"; then
+    printf 'FAIL unresolvable OVAL object id aborts the run\n     exit %s, but a sidecar was still reported as matching a pattern that could not be read:\n%s\n' \
+      "${got_exit}" "${out}"
+    failed=1
+  else
+    printf 'ok   unresolvable OVAL object id aborts the run\n'
+  fi
+fi
+
 if [ "${failed}" -ne 0 ]; then
   echo "FAILED" >&2
   exit 1
