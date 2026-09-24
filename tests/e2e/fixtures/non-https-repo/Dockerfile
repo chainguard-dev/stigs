@@ -6,7 +6,7 @@
 # Injects a non-https repository URL into /etc/apk/repositories so the
 # textfilecontent54 pattern ^(?!\s*#)(?!.*https://).+$ must match at
 # least one line and the rule must FAIL.
-FROM cgr.dev/chainguard/wolfi-base:latest@sha256:1d95114038f76513a9ace6fca107d5582b08c65981f81f61cb56bf7fd2ef216d
+FROM cgr.dev/chainguard/wolfi-base:latest@sha256:b6bfe8564bb0630778b04df06b42e78acf221e9540703cfc03d040ab7f91e357
 
 LABEL dev.orbstack.add-ca-certificates=false
 
