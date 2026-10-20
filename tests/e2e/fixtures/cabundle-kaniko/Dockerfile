@@ -11,7 +11,7 @@
 # CertificateAudit accepts the alternative location only when the copy carries
 # the digest the ca-certificates stamp file at /etc/ssl/certs records, which an
 # untouched copy does. The rule must therefore PASS.
-FROM cgr.dev/chainguard/wolfi-base:latest@sha256:256c88bb066424045021090932d50be93c8e3f2ce3586707702a401b146f3e43
+FROM cgr.dev/chainguard/wolfi-base:latest@sha256:d68b2b10db0ddb2c6d9cb3a7720ecab5ca19b4b430fd592cd07c23d7da971b56
 
 # Suppress OrbStack's automatic root-CA injection so the bundle (and the copy
 # taken from it) is identical to the upstream wolfi-base bundle the stamp file
