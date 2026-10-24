@@ -9,7 +9,7 @@
 # "$"-prefixed hashes and would have let this slip through; the corrected
 # ^[^:]+:(?![!*])[^:\n]*: pattern matches any unlocked field, so the
 # UserPasswordConfigured rule must FAIL.
-FROM cgr.dev/chainguard/wolfi-base:latest@sha256:81211e15a86ea1d5357f284482af45730c51de45eaf10ad9ce205d6bfc2df323
+FROM cgr.dev/chainguard/wolfi-base:latest@sha256:d69a74aa929a006d05880a9287fbbf89aa278d55d7239955331f239122824ba6
 
 LABEL dev.orbstack.add-ca-certificates=false
 
