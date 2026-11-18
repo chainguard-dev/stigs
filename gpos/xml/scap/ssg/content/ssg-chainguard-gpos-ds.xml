@@ -4019,7 +4019,7 @@
                             openssh, openssh-server, openssh-sftp-server, dropbear,
                         tigervnc, tigervnc-server, tigervnc-viewer,
                             xrdp, xorgxrdp, vsftpd, proftpd, webmin, cockpit, cockpit-ws,
-                        cockpit-bridge, nfs-utils, samba, samba-server, samba-client, samba-common,
+                        cockpit-bridge, nfs-utils, nfs-utils-rpc-nfsd, nfs-utils-rpc-mountd, samba, samba-server, samba-client, samba-common,
                         rsh, telnet
                         </html:pre>
                     </ns0:description>
@@ -4054,7 +4054,7 @@
                             openssh, openssh-server, openssh-sftp-server, dropbear,
                         tigervnc, tigervnc-server, tigervnc-viewer,
                             xrdp, xorgxrdp, vsftpd, proftpd, webmin, cockpit, cockpit-ws,
-                        cockpit-bridge, nfs-utils, samba, samba-server, samba-client, samba-common,
+                        cockpit-bridge, nfs-utils, nfs-utils-rpc-nfsd, nfs-utils-rpc-mountd, samba, samba-server, samba-client, samba-common,
                         rsh, telnet
                         </html:pre>
                     </ns0:description>
@@ -4089,7 +4089,7 @@
                             openssh, openssh-server, openssh-sftp-server, dropbear,
                         tigervnc, tigervnc-server, tigervnc-viewer,
                             xrdp, xorgxrdp, vsftpd, proftpd, webmin, cockpit, cockpit-ws,
-                        cockpit-bridge, nfs-utils, samba, samba-server, samba-client, samba-common,
+                        cockpit-bridge, nfs-utils, nfs-utils-rpc-nfsd, nfs-utils-rpc-mountd, samba, samba-server, samba-client, samba-common,
                         rsh, telnet
                         </html:pre>
                     </ns0:description>
@@ -4124,7 +4124,7 @@
                             openssh, openssh-server, openssh-sftp-server, dropbear,
                         tigervnc, tigervnc-server, tigervnc-viewer,
                             xrdp, xorgxrdp, vsftpd, proftpd, webmin, cockpit, cockpit-ws,
-                        cockpit-bridge, nfs-utils, samba, samba-server, samba-client, samba-common,
+                        cockpit-bridge, nfs-utils, nfs-utils-rpc-nfsd, nfs-utils-rpc-mountd, samba, samba-server, samba-client, samba-common,
                         rsh, telnet
                         </html:pre>
                     </ns0:description>
@@ -4153,7 +4153,7 @@
                             openssh, openssh-server, openssh-sftp-server, dropbear,
                         tigervnc, tigervnc-server, tigervnc-viewer,
                             xrdp, xorgxrdp, vsftpd, proftpd, webmin, cockpit, cockpit-ws,
-                        cockpit-bridge, nfs-utils, samba, samba-server, samba-client, samba-common,
+                        cockpit-bridge, nfs-utils, nfs-utils-rpc-nfsd, nfs-utils-rpc-mountd, samba, samba-server, samba-client, samba-common,
                         rsh, telnet
                         </html:pre>
                     </ns0:description>
@@ -4181,7 +4181,7 @@
                             openssh, openssh-server, openssh-sftp-server, dropbear,
                         tigervnc, tigervnc-server, tigervnc-viewer,
                             xrdp, xorgxrdp, vsftpd, proftpd, webmin, cockpit, cockpit-ws,
-                        cockpit-bridge, nfs-utils, samba, samba-server, samba-client, samba-common,
+                        cockpit-bridge, nfs-utils, nfs-utils-rpc-nfsd, nfs-utils-rpc-mountd, samba, samba-server, samba-client, samba-common,
                         rsh, telnet
                         </html:pre>
                     </ns0:description>
@@ -4201,7 +4201,7 @@
                             openssh, openssh-server, openssh-sftp-server, dropbear,
                         tigervnc, tigervnc-server, tigervnc-viewer,
                             xrdp, xorgxrdp, vsftpd, proftpd, webmin, cockpit, cockpit-ws,
-                        cockpit-bridge, nfs-utils, samba, samba-server, samba-client, samba-common,
+                        cockpit-bridge, nfs-utils, nfs-utils-rpc-nfsd, nfs-utils-rpc-mountd, samba, samba-server, samba-client, samba-common,
                         rsh, telnet
                         </html:pre>
                     </ns0:description>
@@ -4227,7 +4227,7 @@
                             openssh, openssh-server, openssh-sftp-server, dropbear,
                         tigervnc, tigervnc-server, tigervnc-viewer,
                             xrdp, xorgxrdp, vsftpd, proftpd, webmin, cockpit, cockpit-ws,
-                        cockpit-bridge, nfs-utils, samba, samba-server, samba-client, samba-common,
+                        cockpit-bridge, nfs-utils, nfs-utils-rpc-nfsd, nfs-utils-rpc-mountd, samba, samba-server, samba-client, samba-common,
                         rsh, telnet
                         </html:pre>
                     </ns0:description>
@@ -4258,7 +4258,7 @@
                             openssh, openssh-server, openssh-sftp-server, dropbear,
                         tigervnc, tigervnc-server, tigervnc-viewer,
                             xrdp, xorgxrdp, vsftpd, proftpd, webmin, cockpit, cockpit-ws,
-                        cockpit-bridge, nfs-utils, samba, samba-server, samba-client, samba-common,
+                        cockpit-bridge, nfs-utils, nfs-utils-rpc-nfsd, nfs-utils-rpc-mountd, samba, samba-server, samba-client, samba-common,
                         rsh, telnet
                         </html:pre>
                     </ns0:description>
@@ -4282,7 +4282,7 @@
                             openssh, openssh-server, openssh-sftp-server, dropbear,
                         tigervnc, tigervnc-server, tigervnc-viewer,
                             xrdp, xorgxrdp, vsftpd, proftpd, webmin, cockpit, cockpit-ws,
-                        cockpit-bridge, nfs-utils, samba, samba-server, samba-client, samba-common,
+                        cockpit-bridge, nfs-utils, nfs-utils-rpc-nfsd, nfs-utils-rpc-mountd, samba, samba-server, samba-client, samba-common,
                         rsh, telnet
                         </html:pre>
                     </ns0:description>
@@ -4305,7 +4305,7 @@
                             openssh, openssh-server, openssh-sftp-server, dropbear,
                         tigervnc, tigervnc-server, tigervnc-viewer,
                             xrdp, xorgxrdp, vsftpd, proftpd, webmin, cockpit, cockpit-ws,
-                        cockpit-bridge, nfs-utils, samba, samba-server, samba-client, samba-common,
+                        cockpit-bridge, nfs-utils, nfs-utils-rpc-nfsd, nfs-utils-rpc-mountd, samba, samba-server, samba-client, samba-common,
                         rsh, telnet
                         </html:pre>
                     </ns0:description>
@@ -4339,7 +4339,7 @@
                             openssh, openssh-server, openssh-sftp-server, dropbear,
                         tigervnc, tigervnc-server, tigervnc-viewer,
                             xrdp, xorgxrdp, vsftpd, proftpd, webmin, cockpit, cockpit-ws,
-                        cockpit-bridge, nfs-utils, samba, samba-server, samba-client, samba-common,
+                        cockpit-bridge, nfs-utils, nfs-utils-rpc-nfsd, nfs-utils-rpc-mountd, samba, samba-server, samba-client, samba-common,
                         rsh, telnet
                         </html:pre>
                     </ns0:description>
@@ -4374,7 +4374,7 @@
                             openssh, openssh-server, openssh-sftp-server, dropbear,
                         tigervnc, tigervnc-server, tigervnc-viewer,
                             xrdp, xorgxrdp, vsftpd, proftpd, webmin, cockpit, cockpit-ws,
-                        cockpit-bridge, nfs-utils, samba, samba-server, samba-client, samba-common,
+                        cockpit-bridge, nfs-utils, nfs-utils-rpc-nfsd, nfs-utils-rpc-mountd, samba, samba-server, samba-client, samba-common,
                         rsh, telnet
                         </html:pre>
                     </ns0:description>
@@ -4396,7 +4396,7 @@
                             openssh, openssh-server, openssh-sftp-server, dropbear,
                         tigervnc, tigervnc-server, tigervnc-viewer,
                             xrdp, xorgxrdp, vsftpd, proftpd, webmin, cockpit, cockpit-ws,
-                        cockpit-bridge, nfs-utils, samba, samba-server, samba-client, samba-common,
+                        cockpit-bridge, nfs-utils, nfs-utils-rpc-nfsd, nfs-utils-rpc-mountd, samba, samba-server, samba-client, samba-common,
                         rsh, telnet
                         </html:pre>
                     </ns0:description>
@@ -4433,7 +4433,7 @@
                             openssh, openssh-server, openssh-sftp-server, dropbear,
                         tigervnc, tigervnc-server, tigervnc-viewer,
                             xrdp, xorgxrdp, vsftpd, proftpd, webmin, cockpit, cockpit-ws,
-                        cockpit-bridge, nfs-utils, samba, samba-server, samba-client, samba-common,
+                        cockpit-bridge, nfs-utils, nfs-utils-rpc-nfsd, nfs-utils-rpc-mountd, samba, samba-server, samba-client, samba-common,
                         rsh, telnet
                         </html:pre>
                     </ns0:description>
@@ -4457,7 +4457,7 @@
                             openssh, openssh-server, openssh-sftp-server, dropbear,
                         tigervnc, tigervnc-server, tigervnc-viewer,
                             xrdp, xorgxrdp, vsftpd, proftpd, webmin, cockpit, cockpit-ws,
-                        cockpit-bridge, nfs-utils, samba, samba-server, samba-client, samba-common,
+                        cockpit-bridge, nfs-utils, nfs-utils-rpc-nfsd, nfs-utils-rpc-mountd, samba, samba-server, samba-client, samba-common,
                         rsh, telnet
                         </html:pre>
                     </ns0:description>
@@ -4481,7 +4481,7 @@
                             openssh, openssh-server, openssh-sftp-server, dropbear,
                         tigervnc, tigervnc-server, tigervnc-viewer,
                             xrdp, xorgxrdp, vsftpd, proftpd, webmin, cockpit, cockpit-ws,
-                        cockpit-bridge, nfs-utils, samba, samba-server, samba-client, samba-common,
+                        cockpit-bridge, nfs-utils, nfs-utils-rpc-nfsd, nfs-utils-rpc-mountd, samba, samba-server, samba-client, samba-common,
                         rsh, telnet
                         </html:pre>
                     </ns0:description>
@@ -4502,7 +4502,7 @@
                             openssh, openssh-server, openssh-sftp-server, dropbear,
                         tigervnc, tigervnc-server, tigervnc-viewer,
                             xrdp, xorgxrdp, vsftpd, proftpd, webmin, cockpit, cockpit-ws,
-                        cockpit-bridge, nfs-utils, samba, samba-server, samba-client, samba-common,
+                        cockpit-bridge, nfs-utils, nfs-utils-rpc-nfsd, nfs-utils-rpc-mountd, samba, samba-server, samba-client, samba-common,
                         rsh, telnet
                         </html:pre>
                     </ns0:description>
@@ -4539,7 +4539,7 @@
                             openssh, openssh-server, openssh-sftp-server, dropbear,
                         tigervnc, tigervnc-server, tigervnc-viewer,
                             xrdp, xorgxrdp, vsftpd, proftpd, webmin, cockpit, cockpit-ws,
-                        cockpit-bridge, nfs-utils, samba, samba-server, samba-client, samba-common,
+                        cockpit-bridge, nfs-utils, nfs-utils-rpc-nfsd, nfs-utils-rpc-mountd, samba, samba-server, samba-client, samba-common,
                         rsh, telnet
                         </html:pre>
                     </ns0:description>
@@ -4566,7 +4566,7 @@
                             openssh, openssh-server, openssh-sftp-server, dropbear,
                         tigervnc, tigervnc-server, tigervnc-viewer,
                             xrdp, xorgxrdp, vsftpd, proftpd, webmin, cockpit, cockpit-ws,
-                        cockpit-bridge, nfs-utils, samba, samba-server, samba-client, samba-common,
+                        cockpit-bridge, nfs-utils, nfs-utils-rpc-nfsd, nfs-utils-rpc-mountd, samba, samba-server, samba-client, samba-common,
                         rsh, telnet
                         </html:pre>
                     </ns0:description>
@@ -4600,7 +4600,7 @@
                             openssh, openssh-server, openssh-sftp-server, dropbear,
                         tigervnc, tigervnc-server, tigervnc-viewer,
                             xrdp, xorgxrdp, vsftpd, proftpd, webmin, cockpit, cockpit-ws,
-                        cockpit-bridge, nfs-utils, samba, samba-server, samba-client, samba-common,
+                        cockpit-bridge, nfs-utils, nfs-utils-rpc-nfsd, nfs-utils-rpc-mountd, samba, samba-server, samba-client, samba-common,
                         rsh, telnet
                         </html:pre>
                     </ns0:description>
@@ -4631,7 +4631,7 @@
                             openssh, openssh-server, openssh-sftp-server, dropbear,
                         tigervnc, tigervnc-server, tigervnc-viewer,
                             xrdp, xorgxrdp, vsftpd, proftpd, webmin, cockpit, cockpit-ws,
-                        cockpit-bridge, nfs-utils, samba, samba-server, samba-client, samba-common,
+                        cockpit-bridge, nfs-utils, nfs-utils-rpc-nfsd, nfs-utils-rpc-mountd, samba, samba-server, samba-client, samba-common,
                         rsh, telnet
                         </html:pre>
                     </ns0:description>
@@ -4660,7 +4660,7 @@
                             openssh, openssh-server, openssh-sftp-server, dropbear,
                         tigervnc, tigervnc-server, tigervnc-viewer,
                             xrdp, xorgxrdp, vsftpd, proftpd, webmin, cockpit, cockpit-ws,
-                        cockpit-bridge, nfs-utils, samba, samba-server, samba-client, samba-common,
+                        cockpit-bridge, nfs-utils, nfs-utils-rpc-nfsd, nfs-utils-rpc-mountd, samba, samba-server, samba-client, samba-common,
                         rsh, telnet
                         </html:pre>
                     </ns0:description>
@@ -4686,7 +4686,7 @@
                             openssh, openssh-server, openssh-sftp-server, dropbear,
                         tigervnc, tigervnc-server, tigervnc-viewer,
                             xrdp, xorgxrdp, vsftpd, proftpd, webmin, cockpit, cockpit-ws,
-                        cockpit-bridge, nfs-utils, samba, samba-server, samba-client, samba-common,
+                        cockpit-bridge, nfs-utils, nfs-utils-rpc-nfsd, nfs-utils-rpc-mountd, samba, samba-server, samba-client, samba-common,
                         rsh, telnet
                         </html:pre>
                     </ns0:description>
@@ -4715,7 +4715,7 @@
                             openssh, openssh-server, openssh-sftp-server, dropbear,
                         tigervnc, tigervnc-server, tigervnc-viewer,
                             xrdp, xorgxrdp, vsftpd, proftpd, webmin, cockpit, cockpit-ws,
-                        cockpit-bridge, nfs-utils, samba, samba-server, samba-client, samba-common,
+                        cockpit-bridge, nfs-utils, nfs-utils-rpc-nfsd, nfs-utils-rpc-mountd, samba, samba-server, samba-client, samba-common,
                         rsh, telnet
                         </html:pre>
                     </ns0:description>
@@ -4752,7 +4752,7 @@
                             openssh, openssh-server, openssh-sftp-server, dropbear,
                         tigervnc, tigervnc-server, tigervnc-viewer,
                             xrdp, xorgxrdp, vsftpd, proftpd, webmin, cockpit, cockpit-ws,
-                        cockpit-bridge, nfs-utils, samba, samba-server, samba-client, samba-common,
+                        cockpit-bridge, nfs-utils, nfs-utils-rpc-nfsd, nfs-utils-rpc-mountd, samba, samba-server, samba-client, samba-common,
                         rsh, telnet
                         </html:pre>
                     </ns0:description>
@@ -4779,7 +4779,7 @@
                             openssh, openssh-server, openssh-sftp-server, dropbear,
                         tigervnc, tigervnc-server, tigervnc-viewer,
                             xrdp, xorgxrdp, vsftpd, proftpd, webmin, cockpit, cockpit-ws,
-                        cockpit-bridge, nfs-utils, samba, samba-server, samba-client, samba-common,
+                        cockpit-bridge, nfs-utils, nfs-utils-rpc-nfsd, nfs-utils-rpc-mountd, samba, samba-server, samba-client, samba-common,
                         rsh, telnet
                         </html:pre>
                     </ns0:description>
@@ -4802,7 +4802,7 @@
                             openssh, openssh-server, openssh-sftp-server, dropbear,
                         tigervnc, tigervnc-server, tigervnc-viewer,
                             xrdp, xorgxrdp, vsftpd, proftpd, webmin, cockpit, cockpit-ws,
-                        cockpit-bridge, nfs-utils, samba, samba-server, samba-client, samba-common,
+                        cockpit-bridge, nfs-utils, nfs-utils-rpc-nfsd, nfs-utils-rpc-mountd, samba, samba-server, samba-client, samba-common,
                         rsh, telnet
                         </html:pre>
                     </ns0:description>
@@ -4829,7 +4829,7 @@
                             openssh, openssh-server, openssh-sftp-server, dropbear,
                         tigervnc, tigervnc-server, tigervnc-viewer,
                             xrdp, xorgxrdp, vsftpd, proftpd, webmin, cockpit, cockpit-ws,
-                        cockpit-bridge, nfs-utils, samba, samba-server, samba-client, samba-common,
+                        cockpit-bridge, nfs-utils, nfs-utils-rpc-nfsd, nfs-utils-rpc-mountd, samba, samba-server, samba-client, samba-common,
                         rsh, telnet
                         </html:pre>
                     </ns0:description>
@@ -4856,7 +4856,7 @@
                             openssh, openssh-server, openssh-sftp-server, dropbear,
                         tigervnc, tigervnc-server, tigervnc-viewer,
                             xrdp, xorgxrdp, vsftpd, proftpd, webmin, cockpit, cockpit-ws,
-                        cockpit-bridge, nfs-utils, samba, samba-server, samba-client, samba-common,
+                        cockpit-bridge, nfs-utils, nfs-utils-rpc-nfsd, nfs-utils-rpc-mountd, samba, samba-server, samba-client, samba-common,
                         rsh, telnet
                         </html:pre>
                     </ns0:description>
@@ -4884,7 +4884,7 @@
                             openssh, openssh-server, openssh-sftp-server, dropbear,
                         tigervnc, tigervnc-server, tigervnc-viewer,
                             xrdp, xorgxrdp, vsftpd, proftpd, webmin, cockpit, cockpit-ws,
-                        cockpit-bridge, nfs-utils, samba, samba-server, samba-client, samba-common,
+                        cockpit-bridge, nfs-utils, nfs-utils-rpc-nfsd, nfs-utils-rpc-mountd, samba, samba-server, samba-client, samba-common,
                         rsh, telnet
                         </html:pre>
                     </ns0:description>
@@ -4906,7 +4906,7 @@
                             openssh, openssh-server, openssh-sftp-server, dropbear,
                         tigervnc, tigervnc-server, tigervnc-viewer,
                             xrdp, xorgxrdp, vsftpd, proftpd, webmin, cockpit, cockpit-ws,
-                        cockpit-bridge, nfs-utils, samba, samba-server, samba-client, samba-common,
+                        cockpit-bridge, nfs-utils, nfs-utils-rpc-nfsd, nfs-utils-rpc-mountd, samba, samba-server, samba-client, samba-common,
                         rsh, telnet
                         </html:pre>
                     </ns0:description>
@@ -4955,7 +4955,7 @@
                             openssh, openssh-server, openssh-sftp-server, dropbear,
                         tigervnc, tigervnc-server, tigervnc-viewer,
                             xrdp, xorgxrdp, vsftpd, proftpd, webmin, cockpit, cockpit-ws,
-                        cockpit-bridge, nfs-utils, samba, samba-server, samba-client, samba-common,
+                        cockpit-bridge, nfs-utils, nfs-utils-rpc-nfsd, nfs-utils-rpc-mountd, samba, samba-server, samba-client, samba-common,
                         rsh, telnet
                         </html:pre>
                     </ns0:description>
@@ -4986,7 +4986,7 @@
                             openssh, openssh-server, openssh-sftp-server, dropbear,
                         tigervnc, tigervnc-server, tigervnc-viewer,
                             xrdp, xorgxrdp, vsftpd, proftpd, webmin, cockpit, cockpit-ws,
-                        cockpit-bridge, nfs-utils, samba, samba-server, samba-client, samba-common,
+                        cockpit-bridge, nfs-utils, nfs-utils-rpc-nfsd, nfs-utils-rpc-mountd, samba, samba-server, samba-client, samba-common,
                         rsh, telnet
                         </html:pre>
                     </ns0:description>
@@ -5013,7 +5013,7 @@
                             openssh, openssh-server, openssh-sftp-server, dropbear,
                         tigervnc, tigervnc-server, tigervnc-viewer,
                             xrdp, xorgxrdp, vsftpd, proftpd, webmin, cockpit, cockpit-ws,
-                        cockpit-bridge, nfs-utils, samba, samba-server, samba-client, samba-common,
+                        cockpit-bridge, nfs-utils, nfs-utils-rpc-nfsd, nfs-utils-rpc-mountd, samba, samba-server, samba-client, samba-common,
                         rsh, telnet
                         </html:pre>
                     </ns0:description>
@@ -5043,7 +5043,7 @@
                             openssh, openssh-server, openssh-sftp-server, dropbear,
                         tigervnc, tigervnc-server, tigervnc-viewer,
                             xrdp, xorgxrdp, vsftpd, proftpd, webmin, cockpit, cockpit-ws,
-                        cockpit-bridge, nfs-utils, samba, samba-server, samba-client, samba-common,
+                        cockpit-bridge, nfs-utils, nfs-utils-rpc-nfsd, nfs-utils-rpc-mountd, samba, samba-server, samba-client, samba-common,
                         rsh, telnet
                         </html:pre>
                     </ns0:description>
@@ -5092,7 +5092,7 @@
                             openssh, openssh-server, openssh-sftp-server, dropbear,
                         tigervnc, tigervnc-server, tigervnc-viewer,
                             xrdp, xorgxrdp, vsftpd, proftpd, webmin, cockpit, cockpit-ws,
-                        cockpit-bridge, nfs-utils, samba, samba-server, samba-client, samba-common,
+                        cockpit-bridge, nfs-utils, nfs-utils-rpc-nfsd, nfs-utils-rpc-mountd, samba, samba-server, samba-client, samba-common,
                         rsh, telnet
                         </html:pre>
                     </ns0:description>
@@ -5113,7 +5113,7 @@
                             openssh, openssh-server, openssh-sftp-server, dropbear,
                         tigervnc, tigervnc-server, tigervnc-viewer,
                             xrdp, xorgxrdp, vsftpd, proftpd, webmin, cockpit, cockpit-ws,
-                        cockpit-bridge, nfs-utils, samba, samba-server, samba-client, samba-common,
+                        cockpit-bridge, nfs-utils, nfs-utils-rpc-nfsd, nfs-utils-rpc-mountd, samba, samba-server, samba-client, samba-common,
                         rsh, telnet
                         </html:pre>
                     </ns0:description>
@@ -5137,7 +5137,7 @@
                             openssh, openssh-server, openssh-sftp-server, dropbear,
                         tigervnc, tigervnc-server, tigervnc-viewer,
                             xrdp, xorgxrdp, vsftpd, proftpd, webmin, cockpit, cockpit-ws,
-                        cockpit-bridge, nfs-utils, samba, samba-server, samba-client, samba-common,
+                        cockpit-bridge, nfs-utils, nfs-utils-rpc-nfsd, nfs-utils-rpc-mountd, samba, samba-server, samba-client, samba-common,
                         rsh, telnet
                         </html:pre>
                     </ns0:description>
@@ -5166,7 +5166,7 @@
                             openssh, openssh-server, openssh-sftp-server, dropbear,
                         tigervnc, tigervnc-server, tigervnc-viewer,
                             xrdp, xorgxrdp, vsftpd, proftpd, webmin, cockpit, cockpit-ws,
-                        cockpit-bridge, nfs-utils, samba, samba-server, samba-client, samba-common,
+                        cockpit-bridge, nfs-utils, nfs-utils-rpc-nfsd, nfs-utils-rpc-mountd, samba, samba-server, samba-client, samba-common,
                         rsh, telnet
                         </html:pre>
                     </ns0:description>
@@ -5204,7 +5204,7 @@
                             openssh, openssh-server, openssh-sftp-server, dropbear,
                         tigervnc, tigervnc-server, tigervnc-viewer,
                             xrdp, xorgxrdp, vsftpd, proftpd, webmin, cockpit, cockpit-ws,
-                        cockpit-bridge, nfs-utils, samba, samba-server, samba-client, samba-common,
+                        cockpit-bridge, nfs-utils, nfs-utils-rpc-nfsd, nfs-utils-rpc-mountd, samba, samba-server, samba-client, samba-common,
                         rsh, telnet
                         </html:pre>
                     </ns0:description>
@@ -5233,7 +5233,7 @@
                             openssh, openssh-server, openssh-sftp-server, dropbear,
                         tigervnc, tigervnc-server, tigervnc-viewer,
                             xrdp, xorgxrdp, vsftpd, proftpd, webmin, cockpit, cockpit-ws,
-                        cockpit-bridge, nfs-utils, samba, samba-server, samba-client, samba-common,
+                        cockpit-bridge, nfs-utils, nfs-utils-rpc-nfsd, nfs-utils-rpc-mountd, samba, samba-server, samba-client, samba-common,
                         rsh, telnet
                         </html:pre>
                     </ns0:description>
@@ -5263,7 +5263,7 @@
                             openssh, openssh-server, openssh-sftp-server, dropbear,
                         tigervnc, tigervnc-server, tigervnc-viewer,
                             xrdp, xorgxrdp, vsftpd, proftpd, webmin, cockpit, cockpit-ws,
-                        cockpit-bridge, nfs-utils, samba, samba-server, samba-client, samba-common,
+                        cockpit-bridge, nfs-utils, nfs-utils-rpc-nfsd, nfs-utils-rpc-mountd, samba, samba-server, samba-client, samba-common,
                         rsh, telnet
                         </html:pre>
                     </ns0:description>
@@ -5293,7 +5293,7 @@
                             openssh, openssh-server, openssh-sftp-server, dropbear,
                         tigervnc, tigervnc-server, tigervnc-viewer,
                             xrdp, xorgxrdp, vsftpd, proftpd, webmin, cockpit, cockpit-ws,
-                        cockpit-bridge, nfs-utils, samba, samba-server, samba-client, samba-common,
+                        cockpit-bridge, nfs-utils, nfs-utils-rpc-nfsd, nfs-utils-rpc-mountd, samba, samba-server, samba-client, samba-common,
                         rsh, telnet
                         </html:pre>
                     </ns0:description>
@@ -5322,7 +5322,7 @@
                             openssh, openssh-server, openssh-sftp-server, dropbear,
                         tigervnc, tigervnc-server, tigervnc-viewer,
                             xrdp, xorgxrdp, vsftpd, proftpd, webmin, cockpit, cockpit-ws,
-                        cockpit-bridge, nfs-utils, samba, samba-server, samba-client, samba-common,
+                        cockpit-bridge, nfs-utils, nfs-utils-rpc-nfsd, nfs-utils-rpc-mountd, samba, samba-server, samba-client, samba-common,
                         rsh, telnet
                         </html:pre>
                     </ns0:description>
@@ -5352,7 +5352,7 @@
                             openssh, openssh-server, openssh-sftp-server, dropbear,
                         tigervnc, tigervnc-server, tigervnc-viewer,
                             xrdp, xorgxrdp, vsftpd, proftpd, webmin, cockpit, cockpit-ws,
-                        cockpit-bridge, nfs-utils, samba, samba-server, samba-client, samba-common,
+                        cockpit-bridge, nfs-utils, nfs-utils-rpc-nfsd, nfs-utils-rpc-mountd, samba, samba-server, samba-client, samba-common,
                         rsh, telnet
                         </html:pre>
                     </ns0:description>
@@ -6720,7 +6720,7 @@
         <textfilecontent54_object xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#independent" id="oval:org.RemoteAccessServices:obj:6" version="1">
           <path>/usr/lib/apk/db</path>
           <filename>installed</filename>
-          <pattern operation="pattern match">^P:(openssh|openssh-server|openssh-sftp-server|dropbear|tigervnc|tigervnc-server|tigervnc-viewer|xrdp|xorgxrdp|vsftpd|proftpd|webmin|cockpit|cockpit-ws|cockpit-bridge|nfs-utils|samba|samba-server|samba-client|samba-common|rsh|telnet)(-\d[\d.]*(-[a-z][a-z0-9-]*)?)?$</pattern>
+          <pattern operation="pattern match">^P:(openssh|openssh-server|openssh-sftp-server|dropbear|tigervnc|tigervnc-server|tigervnc-viewer|xrdp|xorgxrdp|vsftpd|proftpd|webmin|cockpit|cockpit-ws|cockpit-bridge|nfs-utils|nfs-utils-rpc-nfsd|nfs-utils-rpc-mountd|samba|samba-server|samba-client|samba-common|rsh|telnet)(-\d[\d.]*(-[a-z][a-z0-9-]*)?)?$</pattern>
           <instance datatype="int">1</instance>
         </textfilecontent54_object>
       </objects>
