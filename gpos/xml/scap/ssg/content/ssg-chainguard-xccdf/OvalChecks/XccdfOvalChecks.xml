@@ -3220,7 +3220,7 @@
           Script Verification:
           To manually verify, Ensure none of the following remote access packages exist in the
           folder /lib/apk/db/ Packages: openssh, openssh-server, openssh-sftp-server, dropbear, tigervnc, tigervnc-server, tigervnc-viewer, xrdp, xorgxrdp,
-        vsftpd, proftpd, webmin, cockpit, cockpit-ws, cockpit-bridge, nfs-utils, nfs-utils-rpc-nfsd, nfs-utils-rpc-mountd, samba,
+        vsftpd, proftpd, webmin, cockpit, cockpit-ws, cockpit-bridge, nfs-utils, nfs-utils-rpc-nfsd, nfs-utils-rpc-mountd, nfs-utils-nfsdctl, samba,
           samba-server, samba-client, samba-common, rsh, telnet
         </html:pre>
       </description>
@@ -3248,7 +3248,7 @@
         Script Verification:
           To manually verify, Ensure none of the following remote access packages exist in the
           folder /lib/apk/db/ Packages: openssh, openssh-server, openssh-sftp-server, dropbear, tigervnc, tigervnc-server, tigervnc-viewer, xrdp, xorgxrdp,
-        vsftpd, proftpd, webmin, cockpit, cockpit-ws, cockpit-bridge, nfs-utils, nfs-utils-rpc-nfsd, nfs-utils-rpc-mountd, samba,
+        vsftpd, proftpd, webmin, cockpit, cockpit-ws, cockpit-bridge, nfs-utils, nfs-utils-rpc-nfsd, nfs-utils-rpc-mountd, nfs-utils-nfsdctl, samba,
           samba-server, samba-client, samba-common, rsh, telnet
         </html:pre>
       </description>
@@ -3276,7 +3276,7 @@
         Script Verification:
           To manually verify, Ensure none of the following remote access packages exist in the
           folder /lib/apk/db/ Packages: openssh, openssh-server, openssh-sftp-server, dropbear, tigervnc, tigervnc-server, tigervnc-viewer, xrdp, xorgxrdp,
-        vsftpd, proftpd, webmin, cockpit, cockpit-ws, cockpit-bridge, nfs-utils, nfs-utils-rpc-nfsd, nfs-utils-rpc-mountd, samba,
+        vsftpd, proftpd, webmin, cockpit, cockpit-ws, cockpit-bridge, nfs-utils, nfs-utils-rpc-nfsd, nfs-utils-rpc-mountd, nfs-utils-nfsdctl, samba,
           samba-server, samba-client, samba-common, rsh, telnet
         </html:pre>
       </description>
@@ -3298,7 +3298,7 @@
         Script Verification:
           To manually verify, Ensure none of the following remote access packages exist in the
           folder /lib/apk/db/ Packages: openssh, openssh-server, openssh-sftp-server, dropbear, tigervnc, tigervnc-server, tigervnc-viewer, xrdp, xorgxrdp,
-        vsftpd, proftpd, webmin, cockpit, cockpit-ws, cockpit-bridge, nfs-utils, nfs-utils-rpc-nfsd, nfs-utils-rpc-mountd, samba,
+        vsftpd, proftpd, webmin, cockpit, cockpit-ws, cockpit-bridge, nfs-utils, nfs-utils-rpc-nfsd, nfs-utils-rpc-mountd, nfs-utils-nfsdctl, samba,
           samba-server, samba-client, samba-common, rsh, telnet
         </html:pre>
       </description>
@@ -3320,7 +3320,7 @@
         Script Verification:
           To manually verify, Ensure none of the following remote access packages exist in the
           folder /lib/apk/db/ Packages: openssh, openssh-server, openssh-sftp-server, dropbear, tigervnc, tigervnc-server, tigervnc-viewer, xrdp, xorgxrdp,
-        vsftpd, proftpd, webmin, cockpit, cockpit-ws, cockpit-bridge, nfs-utils, nfs-utils-rpc-nfsd, nfs-utils-rpc-mountd, samba,
+        vsftpd, proftpd, webmin, cockpit, cockpit-ws, cockpit-bridge, nfs-utils, nfs-utils-rpc-nfsd, nfs-utils-rpc-mountd, nfs-utils-nfsdctl, samba,
           samba-server, samba-client, samba-common, rsh, telnet
         </html:pre>
       </description>
@@ -3335,7 +3335,7 @@
           Script Verification:
           To manually verify, Ensure none of the following remote access packages exist in the
           folder /lib/apk/db/ Packages: openssh, openssh-server, openssh-sftp-server, dropbear, tigervnc, tigervnc-server, tigervnc-viewer, xrdp, xorgxrdp,
-        vsftpd, proftpd, webmin, cockpit, cockpit-ws, cockpit-bridge, nfs-utils, nfs-utils-rpc-nfsd, nfs-utils-rpc-mountd, samba,
+        vsftpd, proftpd, webmin, cockpit, cockpit-ws, cockpit-bridge, nfs-utils, nfs-utils-rpc-nfsd, nfs-utils-rpc-mountd, nfs-utils-nfsdctl, samba,
           samba-server, samba-client, samba-common, rsh, telnet
         </html:pre>
       </description>
@@ -3356,7 +3356,7 @@
           Script Verification:
           To manually verify, Ensure none of the following remote access packages exist in the
           folder /lib/apk/db/ Packages: openssh, openssh-server, openssh-sftp-server, dropbear, tigervnc, tigervnc-server, tigervnc-viewer, xrdp, xorgxrdp,
-        vsftpd, proftpd, webmin, cockpit, cockpit-ws, cockpit-bridge, nfs-utils, nfs-utils-rpc-nfsd, nfs-utils-rpc-mountd, samba,
+        vsftpd, proftpd, webmin, cockpit, cockpit-ws, cockpit-bridge, nfs-utils, nfs-utils-rpc-nfsd, nfs-utils-rpc-mountd, nfs-utils-nfsdctl, samba,
           samba-server, samba-client, samba-common, rsh, telnet
         </html:pre>
       </description>
@@ -3380,7 +3380,7 @@
           Script Verification:
           To manually verify, Ensure none of the following remote access packages exist in the
           folder /lib/apk/db/ Packages: openssh, openssh-server, openssh-sftp-server, dropbear, tigervnc, tigervnc-server, tigervnc-viewer, xrdp, xorgxrdp,
-        vsftpd, proftpd, webmin, cockpit, cockpit-ws, cockpit-bridge, nfs-utils, nfs-utils-rpc-nfsd, nfs-utils-rpc-mountd, samba,
+        vsftpd, proftpd, webmin, cockpit, cockpit-ws, cockpit-bridge, nfs-utils, nfs-utils-rpc-nfsd, nfs-utils-rpc-mountd, nfs-utils-nfsdctl, samba,
           samba-server, samba-client, samba-common, rsh, telnet
         </html:pre>
       </description>
@@ -3398,7 +3398,7 @@
           Script Verification:
           To manually verify, Ensure none of the following remote access packages exist in the
           folder /lib/apk/db/ Packages: openssh, openssh-server, openssh-sftp-server, dropbear, tigervnc, tigervnc-server, tigervnc-viewer, xrdp, xorgxrdp,
-        vsftpd, proftpd, webmin, cockpit, cockpit-ws, cockpit-bridge, nfs-utils, nfs-utils-rpc-nfsd, nfs-utils-rpc-mountd, samba,
+        vsftpd, proftpd, webmin, cockpit, cockpit-ws, cockpit-bridge, nfs-utils, nfs-utils-rpc-nfsd, nfs-utils-rpc-mountd, nfs-utils-nfsdctl, samba,
           samba-server, samba-client, samba-common, rsh, telnet
         </html:pre>
       </description>
@@ -3415,7 +3415,7 @@
         Script Verification:
           To manually verify, Ensure none of the following remote access packages exist in the
           folder /lib/apk/db/ Packages: openssh, openssh-server, openssh-sftp-server, dropbear, tigervnc, tigervnc-server, tigervnc-viewer, xrdp, xorgxrdp,
-        vsftpd, proftpd, webmin, cockpit, cockpit-ws, cockpit-bridge, nfs-utils, nfs-utils-rpc-nfsd, nfs-utils-rpc-mountd, samba,
+        vsftpd, proftpd, webmin, cockpit, cockpit-ws, cockpit-bridge, nfs-utils, nfs-utils-rpc-nfsd, nfs-utils-rpc-mountd, nfs-utils-nfsdctl, samba,
           samba-server, samba-client, samba-common, rsh, telnet
         </html:pre>
       </description>
@@ -3443,7 +3443,7 @@
           Script Verification:
           To manually verify, Ensure none of the following remote access packages exist in the
           folder /lib/apk/db/ Packages: openssh, openssh-server, openssh-sftp-server, dropbear, tigervnc, tigervnc-server, tigervnc-viewer, xrdp, xorgxrdp,
-        vsftpd, proftpd, webmin, cockpit, cockpit-ws, cockpit-bridge, nfs-utils, nfs-utils-rpc-nfsd, nfs-utils-rpc-mountd, samba,
+        vsftpd, proftpd, webmin, cockpit, cockpit-ws, cockpit-bridge, nfs-utils, nfs-utils-rpc-nfsd, nfs-utils-rpc-mountd, nfs-utils-nfsdctl, samba,
           samba-server, samba-client, samba-common, rsh, telnet
         </html:pre>
       </description>
@@ -3471,7 +3471,7 @@
           Script Verification:
           To manually verify, Ensure none of the following remote access packages exist in the
           folder /lib/apk/db/ Packages: openssh, openssh-server, openssh-sftp-server, dropbear, tigervnc, tigervnc-server, tigervnc-viewer, xrdp, xorgxrdp,
-        vsftpd, proftpd, webmin, cockpit, cockpit-ws, cockpit-bridge, nfs-utils, nfs-utils-rpc-nfsd, nfs-utils-rpc-mountd, samba,
+        vsftpd, proftpd, webmin, cockpit, cockpit-ws, cockpit-bridge, nfs-utils, nfs-utils-rpc-nfsd, nfs-utils-rpc-mountd, nfs-utils-nfsdctl, samba,
           samba-server, samba-client, samba-common, rsh, telnet
         </html:pre>
       </description>
@@ -3494,7 +3494,7 @@
           Script Verification:
           To manually verify, Ensure none of the following remote access packages exist in the
           folder /lib/apk/db/ Packages: openssh, openssh-server, openssh-sftp-server, dropbear, tigervnc, tigervnc-server, tigervnc-viewer, xrdp, xorgxrdp,
-        vsftpd, proftpd, webmin, cockpit, cockpit-ws, cockpit-bridge, nfs-utils, nfs-utils-rpc-nfsd, nfs-utils-rpc-mountd, samba,
+        vsftpd, proftpd, webmin, cockpit, cockpit-ws, cockpit-bridge, nfs-utils, nfs-utils-rpc-nfsd, nfs-utils-rpc-mountd, nfs-utils-nfsdctl, samba,
           samba-server, samba-client, samba-common, rsh, telnet
         </html:pre>
       </description>
@@ -3510,7 +3510,7 @@
           Script Verification:
           To manually verify, Ensure none of the following remote access packages exist in the
           folder /lib/apk/db/ Packages: openssh, openssh-server, openssh-sftp-server, dropbear, tigervnc, tigervnc-server, tigervnc-viewer, xrdp, xorgxrdp,
-        vsftpd, proftpd, webmin, cockpit, cockpit-ws, cockpit-bridge, nfs-utils, nfs-utils-rpc-nfsd, nfs-utils-rpc-mountd, samba,
+        vsftpd, proftpd, webmin, cockpit, cockpit-ws, cockpit-bridge, nfs-utils, nfs-utils-rpc-nfsd, nfs-utils-rpc-mountd, nfs-utils-nfsdctl, samba,
           samba-server, samba-client, samba-common, rsh, telnet
         </html:pre>
       </description>
@@ -3539,7 +3539,7 @@
           Script Verification:
           To manually verify, Ensure none of the following remote access packages exist in the
           folder /lib/apk/db/ Packages: openssh, openssh-server, openssh-sftp-server, dropbear, tigervnc, tigervnc-server, tigervnc-viewer, xrdp, xorgxrdp,
-        vsftpd, proftpd, webmin, cockpit, cockpit-ws, cockpit-bridge, nfs-utils, nfs-utils-rpc-nfsd, nfs-utils-rpc-mountd, samba,
+        vsftpd, proftpd, webmin, cockpit, cockpit-ws, cockpit-bridge, nfs-utils, nfs-utils-rpc-nfsd, nfs-utils-rpc-mountd, nfs-utils-nfsdctl, samba,
           samba-server, samba-client, samba-common, rsh, telnet
         </html:pre>
       </description>
@@ -3556,7 +3556,7 @@
           Script Verification:
           To manually verify, Ensure none of the following remote access packages exist in the
           folder /lib/apk/db/ Packages: openssh, openssh-server, openssh-sftp-server, dropbear, tigervnc, tigervnc-server, tigervnc-viewer, xrdp, xorgxrdp,
-        vsftpd, proftpd, webmin, cockpit, cockpit-ws, cockpit-bridge, nfs-utils, nfs-utils-rpc-nfsd, nfs-utils-rpc-mountd, samba,
+        vsftpd, proftpd, webmin, cockpit, cockpit-ws, cockpit-bridge, nfs-utils, nfs-utils-rpc-nfsd, nfs-utils-rpc-mountd, nfs-utils-nfsdctl, samba,
           samba-server, samba-client, samba-common, rsh, telnet
         </html:pre>
       </description>
@@ -3575,7 +3575,7 @@
           Script Verification:
           To manually verify, Ensure none of the following remote access packages exist in the
           folder /lib/apk/db/ Packages: openssh, openssh-server, openssh-sftp-server, dropbear, tigervnc, tigervnc-server, tigervnc-viewer, xrdp, xorgxrdp,
-        vsftpd, proftpd, webmin, cockpit, cockpit-ws, cockpit-bridge, nfs-utils, nfs-utils-rpc-nfsd, nfs-utils-rpc-mountd, samba,
+        vsftpd, proftpd, webmin, cockpit, cockpit-ws, cockpit-bridge, nfs-utils, nfs-utils-rpc-nfsd, nfs-utils-rpc-mountd, nfs-utils-nfsdctl, samba,
           samba-server, samba-client, samba-common, rsh, telnet
         </html:pre>
       </description>
@@ -3593,7 +3593,7 @@
           Script Verification:
           To manually verify, Ensure none of the following remote access packages exist in the
           folder /lib/apk/db/ Packages: openssh, openssh-server, openssh-sftp-server, dropbear, tigervnc, tigervnc-server, tigervnc-viewer, xrdp, xorgxrdp,
-        vsftpd, proftpd, webmin, cockpit, cockpit-ws, cockpit-bridge, nfs-utils, nfs-utils-rpc-nfsd, nfs-utils-rpc-mountd, samba,
+        vsftpd, proftpd, webmin, cockpit, cockpit-ws, cockpit-bridge, nfs-utils, nfs-utils-rpc-nfsd, nfs-utils-rpc-mountd, nfs-utils-nfsdctl, samba,
           samba-server, samba-client, samba-common, rsh, telnet
         </html:pre>
       </description>
@@ -3610,7 +3610,7 @@
           Script Verification:
           To manually verify, Ensure none of the following remote access packages exist in the
           folder /lib/apk/db/ Packages: openssh, openssh-server, openssh-sftp-server, dropbear, tigervnc, tigervnc-server, tigervnc-viewer, xrdp, xorgxrdp,
-        vsftpd, proftpd, webmin, cockpit, cockpit-ws, cockpit-bridge, nfs-utils, nfs-utils-rpc-nfsd, nfs-utils-rpc-mountd, samba,
+        vsftpd, proftpd, webmin, cockpit, cockpit-ws, cockpit-bridge, nfs-utils, nfs-utils-rpc-nfsd, nfs-utils-rpc-mountd, nfs-utils-nfsdctl, samba,
           samba-server, samba-client, samba-common, rsh, telnet
         </html:pre>
       </description>
@@ -3639,7 +3639,7 @@
           Script Verification:
           To manually verify, Ensure none of the following remote access packages exist in the
           folder /lib/apk/db/ Packages: openssh, openssh-server, openssh-sftp-server, dropbear, tigervnc, tigervnc-server, tigervnc-viewer, xrdp, xorgxrdp,
-        vsftpd, proftpd, webmin, cockpit, cockpit-ws, cockpit-bridge, nfs-utils, nfs-utils-rpc-nfsd, nfs-utils-rpc-mountd, samba,
+        vsftpd, proftpd, webmin, cockpit, cockpit-ws, cockpit-bridge, nfs-utils, nfs-utils-rpc-nfsd, nfs-utils-rpc-mountd, nfs-utils-nfsdctl, samba,
           samba-server, samba-client, samba-common, rsh, telnet
         </html:pre>
       </description>
@@ -3661,7 +3661,7 @@
           Script Verification:
           To manually verify, Ensure none of the following remote access packages exist in the
           folder /lib/apk/db/ Packages: openssh, openssh-server, openssh-sftp-server, dropbear, tigervnc, tigervnc-server, tigervnc-viewer, xrdp, xorgxrdp,
-        vsftpd, proftpd, webmin, cockpit, cockpit-ws, cockpit-bridge, nfs-utils, nfs-utils-rpc-nfsd, nfs-utils-rpc-mountd, samba,
+        vsftpd, proftpd, webmin, cockpit, cockpit-ws, cockpit-bridge, nfs-utils, nfs-utils-rpc-nfsd, nfs-utils-rpc-mountd, nfs-utils-nfsdctl, samba,
           samba-server, samba-client, samba-common, rsh, telnet
         </html:pre>
       </description>
@@ -3688,7 +3688,7 @@
         Script Verification:
           To manually verify, Ensure none of the following remote access packages exist in the
           folder /lib/apk/db/ Packages: openssh, openssh-server, openssh-sftp-server, dropbear, tigervnc, tigervnc-server, tigervnc-viewer, xrdp, xorgxrdp,
-        vsftpd, proftpd, webmin, cockpit, cockpit-ws, cockpit-bridge, nfs-utils, nfs-utils-rpc-nfsd, nfs-utils-rpc-mountd, samba,
+        vsftpd, proftpd, webmin, cockpit, cockpit-ws, cockpit-bridge, nfs-utils, nfs-utils-rpc-nfsd, nfs-utils-rpc-mountd, nfs-utils-nfsdctl, samba,
           samba-server, samba-client, samba-common, rsh, telnet
         </html:pre>
       </description>
@@ -3712,7 +3712,7 @@
           Script Verification:
           To manually verify, Ensure none of the following remote access packages exist in the
           folder /lib/apk/db/ Packages: openssh, openssh-server, openssh-sftp-server, dropbear, tigervnc, tigervnc-server, tigervnc-viewer, xrdp, xorgxrdp,
-        vsftpd, proftpd, webmin, cockpit, cockpit-ws, cockpit-bridge, nfs-utils, nfs-utils-rpc-nfsd, nfs-utils-rpc-mountd, samba,
+        vsftpd, proftpd, webmin, cockpit, cockpit-ws, cockpit-bridge, nfs-utils, nfs-utils-rpc-nfsd, nfs-utils-rpc-mountd, nfs-utils-nfsdctl, samba,
           samba-server, samba-client, samba-common, rsh, telnet
         </html:pre>
       </description>
@@ -3735,7 +3735,7 @@
           Script Verification:
           To manually verify, Ensure none of the following remote access packages exist in the
           folder /lib/apk/db/ Packages: openssh, openssh-server, openssh-sftp-server, dropbear, tigervnc, tigervnc-server, tigervnc-viewer, xrdp, xorgxrdp,
-        vsftpd, proftpd, webmin, cockpit, cockpit-ws, cockpit-bridge, nfs-utils, nfs-utils-rpc-nfsd, nfs-utils-rpc-mountd, samba,
+        vsftpd, proftpd, webmin, cockpit, cockpit-ws, cockpit-bridge, nfs-utils, nfs-utils-rpc-nfsd, nfs-utils-rpc-mountd, nfs-utils-nfsdctl, samba,
           samba-server, samba-client, samba-common, rsh, telnet
         </html:pre>
       </description>
@@ -3755,7 +3755,7 @@
           Script Verification:
           To manually verify, Ensure none of the following remote access packages exist in the
           folder /lib/apk/db/ Packages: openssh, openssh-server, openssh-sftp-server, dropbear, tigervnc, tigervnc-server, tigervnc-viewer, xrdp, xorgxrdp,
-        vsftpd, proftpd, webmin, cockpit, cockpit-ws, cockpit-bridge, nfs-utils, nfs-utils-rpc-nfsd, nfs-utils-rpc-mountd, samba,
+        vsftpd, proftpd, webmin, cockpit, cockpit-ws, cockpit-bridge, nfs-utils, nfs-utils-rpc-nfsd, nfs-utils-rpc-mountd, nfs-utils-nfsdctl, samba,
           samba-server, samba-client, samba-common, rsh, telnet
         </html:pre>
       </description>
@@ -3777,7 +3777,7 @@
           Script Verification:
           To manually verify, Ensure none of the following remote access packages exist in the
           folder /lib/apk/db/ Packages: openssh, openssh-server, openssh-sftp-server, dropbear, tigervnc, tigervnc-server, tigervnc-viewer, xrdp, xorgxrdp,
-        vsftpd, proftpd, webmin, cockpit, cockpit-ws, cockpit-bridge, nfs-utils, nfs-utils-rpc-nfsd, nfs-utils-rpc-mountd, samba,
+        vsftpd, proftpd, webmin, cockpit, cockpit-ws, cockpit-bridge, nfs-utils, nfs-utils-rpc-nfsd, nfs-utils-rpc-mountd, nfs-utils-nfsdctl, samba,
           samba-server, samba-client, samba-common, rsh, telnet
         </html:pre>
       </description>
@@ -3806,7 +3806,7 @@
           Script Verification:
           To manually verify, Ensure none of the following remote access packages exist in the
           folder /lib/apk/db/ Packages: openssh, openssh-server, openssh-sftp-server, dropbear, tigervnc, tigervnc-server, tigervnc-viewer, xrdp, xorgxrdp,
-        vsftpd, proftpd, webmin, cockpit, cockpit-ws, cockpit-bridge, nfs-utils, nfs-utils-rpc-nfsd, nfs-utils-rpc-mountd, samba,
+        vsftpd, proftpd, webmin, cockpit, cockpit-ws, cockpit-bridge, nfs-utils, nfs-utils-rpc-nfsd, nfs-utils-rpc-mountd, nfs-utils-nfsdctl, samba,
           samba-server, samba-client, samba-common, rsh, telnet
         </html:pre>
       </description>
@@ -3828,7 +3828,7 @@
           Script Verification:
           To manually verify, Ensure none of the following remote access packages exist in the
           folder /lib/apk/db/ Packages: openssh, openssh-server, openssh-sftp-server, dropbear, tigervnc, tigervnc-server, tigervnc-viewer, xrdp, xorgxrdp,
-        vsftpd, proftpd, webmin, cockpit, cockpit-ws, cockpit-bridge, nfs-utils, nfs-utils-rpc-nfsd, nfs-utils-rpc-mountd, samba,
+        vsftpd, proftpd, webmin, cockpit, cockpit-ws, cockpit-bridge, nfs-utils, nfs-utils-rpc-nfsd, nfs-utils-rpc-mountd, nfs-utils-nfsdctl, samba,
           samba-server, samba-client, samba-common, rsh, telnet
         </html:pre>
       </description>
@@ -3845,7 +3845,7 @@
           Script Verification:
           To manually verify, Ensure none of the following remote access packages exist in the
           folder /lib/apk/db/ Packages: openssh, openssh-server, openssh-sftp-server, dropbear, tigervnc, tigervnc-server, tigervnc-viewer, xrdp, xorgxrdp,
-        vsftpd, proftpd, webmin, cockpit, cockpit-ws, cockpit-bridge, nfs-utils, nfs-utils-rpc-nfsd, nfs-utils-rpc-mountd, samba,
+        vsftpd, proftpd, webmin, cockpit, cockpit-ws, cockpit-bridge, nfs-utils, nfs-utils-rpc-nfsd, nfs-utils-rpc-mountd, nfs-utils-nfsdctl, samba,
           samba-server, samba-client, samba-common, rsh, telnet
         </html:pre>
       </description>
@@ -3865,7 +3865,7 @@
         Script Verification:
           To manually verify, Ensure none of the following remote access packages exist in the
           folder /lib/apk/db/ Packages: openssh, openssh-server, openssh-sftp-server, dropbear, tigervnc, tigervnc-server, tigervnc-viewer, xrdp, xorgxrdp,
-        vsftpd, proftpd, webmin, cockpit, cockpit-ws, cockpit-bridge, nfs-utils, nfs-utils-rpc-nfsd, nfs-utils-rpc-mountd, samba,
+        vsftpd, proftpd, webmin, cockpit, cockpit-ws, cockpit-bridge, nfs-utils, nfs-utils-rpc-nfsd, nfs-utils-rpc-mountd, nfs-utils-nfsdctl, samba,
           samba-server, samba-client, samba-common, rsh, telnet
         </html:pre>
       </description>
@@ -3886,7 +3886,7 @@
           Script Verification:
           To manually verify, Ensure none of the following remote access packages exist in the
           folder /lib/apk/db/ Packages: openssh, openssh-server, openssh-sftp-server, dropbear, tigervnc, tigervnc-server, tigervnc-viewer, xrdp, xorgxrdp,
-        vsftpd, proftpd, webmin, cockpit, cockpit-ws, cockpit-bridge, nfs-utils, nfs-utils-rpc-nfsd, nfs-utils-rpc-mountd, samba,
+        vsftpd, proftpd, webmin, cockpit, cockpit-ws, cockpit-bridge, nfs-utils, nfs-utils-rpc-nfsd, nfs-utils-rpc-mountd, nfs-utils-nfsdctl, samba,
           samba-server, samba-client, samba-common, rsh, telnet
         </html:pre>
       </description>
@@ -3908,7 +3908,7 @@
           Script Verification:
           To manually verify, Ensure none of the following remote access packages exist in the
           folder /lib/apk/db/ Packages: openssh, openssh-server, openssh-sftp-server, dropbear, tigervnc, tigervnc-server, tigervnc-viewer, xrdp, xorgxrdp,
-        vsftpd, proftpd, webmin, cockpit, cockpit-ws, cockpit-bridge, nfs-utils, nfs-utils-rpc-nfsd, nfs-utils-rpc-mountd, samba,
+        vsftpd, proftpd, webmin, cockpit, cockpit-ws, cockpit-bridge, nfs-utils, nfs-utils-rpc-nfsd, nfs-utils-rpc-mountd, nfs-utils-nfsdctl, samba,
           samba-server, samba-client, samba-common, rsh, telnet
         </html:pre>
       </description>
@@ -3925,7 +3925,7 @@
           Script Verification:
           To manually verify, Ensure none of the following remote access packages exist in the
           folder /lib/apk/db/ Packages: openssh, openssh-server, openssh-sftp-server, dropbear, tigervnc, tigervnc-server, tigervnc-viewer, xrdp, xorgxrdp,
-        vsftpd, proftpd, webmin, cockpit, cockpit-ws, cockpit-bridge, nfs-utils, nfs-utils-rpc-nfsd, nfs-utils-rpc-mountd, samba,
+        vsftpd, proftpd, webmin, cockpit, cockpit-ws, cockpit-bridge, nfs-utils, nfs-utils-rpc-nfsd, nfs-utils-rpc-mountd, nfs-utils-nfsdctl, samba,
           samba-server, samba-client, samba-common, rsh, telnet
         </html:pre>
       </description>
@@ -3963,7 +3963,7 @@
         Script Verification:
           To manually verify, Ensure none of the following remote access packages exist in the
           folder /lib/apk/db/ Packages: openssh, openssh-server, openssh-sftp-server, dropbear, tigervnc, tigervnc-server, tigervnc-viewer, xrdp, xorgxrdp,
-        vsftpd, proftpd, webmin, cockpit, cockpit-ws, cockpit-bridge, nfs-utils, nfs-utils-rpc-nfsd, nfs-utils-rpc-mountd, samba,
+        vsftpd, proftpd, webmin, cockpit, cockpit-ws, cockpit-bridge, nfs-utils, nfs-utils-rpc-nfsd, nfs-utils-rpc-mountd, nfs-utils-nfsdctl, samba,
           samba-server, samba-client, samba-common, rsh, telnet
         </html:pre>
       </description>
@@ -3986,7 +3986,7 @@
           Script Verification:
           To manually verify, Ensure none of the following remote access packages exist in the
           folder /lib/apk/db/ Packages: openssh, openssh-server, openssh-sftp-server, dropbear, tigervnc, tigervnc-server, tigervnc-viewer, xrdp, xorgxrdp,
-        vsftpd, proftpd, webmin, cockpit, cockpit-ws, cockpit-bridge, nfs-utils, nfs-utils-rpc-nfsd, nfs-utils-rpc-mountd, samba,
+        vsftpd, proftpd, webmin, cockpit, cockpit-ws, cockpit-bridge, nfs-utils, nfs-utils-rpc-nfsd, nfs-utils-rpc-mountd, nfs-utils-nfsdctl, samba,
           samba-server, samba-client, samba-common, rsh, telnet
         </html:pre>
       </description>
@@ -4007,7 +4007,7 @@
         Script Verification:
           To manually verify, Ensure none of the following remote access packages exist in the
           folder /lib/apk/db/ Packages: openssh, openssh-server, openssh-sftp-server, dropbear, tigervnc, tigervnc-server, tigervnc-viewer, xrdp, xorgxrdp,
-        vsftpd, proftpd, webmin, cockpit, cockpit-ws, cockpit-bridge, nfs-utils, nfs-utils-rpc-nfsd, nfs-utils-rpc-mountd, samba,
+        vsftpd, proftpd, webmin, cockpit, cockpit-ws, cockpit-bridge, nfs-utils, nfs-utils-rpc-nfsd, nfs-utils-rpc-mountd, nfs-utils-nfsdctl, samba,
           samba-server, samba-client, samba-common, rsh, telnet
         </html:pre>
       </description>
@@ -4030,7 +4030,7 @@
           Script Verification:
           To manually verify, Ensure none of the following remote access packages exist in the
           folder /lib/apk/db/ Packages: openssh, openssh-server, openssh-sftp-server, dropbear, tigervnc, tigervnc-server, tigervnc-viewer, xrdp, xorgxrdp,
-        vsftpd, proftpd, webmin, cockpit, cockpit-ws, cockpit-bridge, nfs-utils, nfs-utils-rpc-nfsd, nfs-utils-rpc-mountd, samba,
+        vsftpd, proftpd, webmin, cockpit, cockpit-ws, cockpit-bridge, nfs-utils, nfs-utils-rpc-nfsd, nfs-utils-rpc-mountd, nfs-utils-nfsdctl, samba,
           samba-server, samba-client, samba-common, rsh, telnet
         </html:pre>
       </description>
@@ -4069,7 +4069,7 @@
           Script Verification:
           To manually verify, Ensure none of the following remote access packages exist in the
           folder /lib/apk/db/ Packages: openssh, openssh-server, openssh-sftp-server, dropbear, tigervnc, tigervnc-server, tigervnc-viewer, xrdp, xorgxrdp,
-        vsftpd, proftpd, webmin, cockpit, cockpit-ws, cockpit-bridge, nfs-utils, nfs-utils-rpc-nfsd, nfs-utils-rpc-mountd, samba,
+        vsftpd, proftpd, webmin, cockpit, cockpit-ws, cockpit-bridge, nfs-utils, nfs-utils-rpc-nfsd, nfs-utils-rpc-mountd, nfs-utils-nfsdctl, samba,
           samba-server, samba-client, samba-common, rsh, telnet
         </html:pre>
       </description>
@@ -4085,7 +4085,7 @@
           Script Verification:
           To manually verify, Ensure none of the following remote access packages exist in the
           folder /lib/apk/db/ Packages: openssh, openssh-server, openssh-sftp-server, dropbear, tigervnc, tigervnc-server, tigervnc-viewer, xrdp, xorgxrdp,
-        vsftpd, proftpd, webmin, cockpit, cockpit-ws, cockpit-bridge, nfs-utils, nfs-utils-rpc-nfsd, nfs-utils-rpc-mountd, samba,
+        vsftpd, proftpd, webmin, cockpit, cockpit-ws, cockpit-bridge, nfs-utils, nfs-utils-rpc-nfsd, nfs-utils-rpc-mountd, nfs-utils-nfsdctl, samba,
           samba-server, samba-client, samba-common, rsh, telnet
         </html:pre>
       </description>
@@ -4104,7 +4104,7 @@
           Script Verification:
           To manually verify, Ensure none of the following remote access packages exist in the
           folder /lib/apk/db/ Packages: openssh, openssh-server, openssh-sftp-server, dropbear, tigervnc, tigervnc-server, tigervnc-viewer, xrdp, xorgxrdp,
-        vsftpd, proftpd, webmin, cockpit, cockpit-ws, cockpit-bridge, nfs-utils, nfs-utils-rpc-nfsd, nfs-utils-rpc-mountd, samba,
+        vsftpd, proftpd, webmin, cockpit, cockpit-ws, cockpit-bridge, nfs-utils, nfs-utils-rpc-nfsd, nfs-utils-rpc-mountd, nfs-utils-nfsdctl, samba,
           samba-server, samba-client, samba-common, rsh, telnet
         </html:pre>
       </description>
@@ -4127,7 +4127,7 @@
           Script Verification:
           To manually verify, Ensure none of the following remote access packages exist in the
           folder /lib/apk/db/ Packages: openssh, openssh-server, openssh-sftp-server, dropbear, tigervnc, tigervnc-server, tigervnc-viewer, xrdp, xorgxrdp,
-        vsftpd, proftpd, webmin, cockpit, cockpit-ws, cockpit-bridge, nfs-utils, nfs-utils-rpc-nfsd, nfs-utils-rpc-mountd, samba,
+        vsftpd, proftpd, webmin, cockpit, cockpit-ws, cockpit-bridge, nfs-utils, nfs-utils-rpc-nfsd, nfs-utils-rpc-mountd, nfs-utils-nfsdctl, samba,
           samba-server, samba-client, samba-common, rsh, telnet
         </html:pre>
       </description>
@@ -4158,7 +4158,7 @@
           Script Verification:
           To manually verify, Ensure none of the following remote access packages exist in the
           folder /lib/apk/db/ Packages: openssh, openssh-server, openssh-sftp-server, dropbear, tigervnc, tigervnc-server, tigervnc-viewer, xrdp, xorgxrdp,
-        vsftpd, proftpd, webmin, cockpit, cockpit-ws, cockpit-bridge, nfs-utils, nfs-utils-rpc-nfsd, nfs-utils-rpc-mountd, samba,
+        vsftpd, proftpd, webmin, cockpit, cockpit-ws, cockpit-bridge, nfs-utils, nfs-utils-rpc-nfsd, nfs-utils-rpc-mountd, nfs-utils-nfsdctl, samba,
           samba-server, samba-client, samba-common, rsh, telnet
         </html:pre>
       </description>
@@ -4181,7 +4181,7 @@
           Script Verification:
           To manually verify, Ensure none of the following remote access packages exist in the
           folder /lib/apk/db/ Packages: openssh, openssh-server, openssh-sftp-server, dropbear, tigervnc, tigervnc-server, tigervnc-viewer, xrdp, xorgxrdp,
-        vsftpd, proftpd, webmin, cockpit, cockpit-ws, cockpit-bridge, nfs-utils, nfs-utils-rpc-nfsd, nfs-utils-rpc-mountd, samba,
+        vsftpd, proftpd, webmin, cockpit, cockpit-ws, cockpit-bridge, nfs-utils, nfs-utils-rpc-nfsd, nfs-utils-rpc-mountd, nfs-utils-nfsdctl, samba,
           samba-server, samba-client, samba-common, rsh, telnet
         </html:pre>
       </description>
@@ -4205,7 +4205,7 @@
           Script Verification:
           To manually verify, Ensure none of the following remote access packages exist in the
           folder /lib/apk/db/ Packages: openssh, openssh-server, openssh-sftp-server, dropbear, tigervnc, tigervnc-server, tigervnc-viewer, xrdp, xorgxrdp,
-        vsftpd, proftpd, webmin, cockpit, cockpit-ws, cockpit-bridge, nfs-utils, nfs-utils-rpc-nfsd, nfs-utils-rpc-mountd, samba,
+        vsftpd, proftpd, webmin, cockpit, cockpit-ws, cockpit-bridge, nfs-utils, nfs-utils-rpc-nfsd, nfs-utils-rpc-mountd, nfs-utils-nfsdctl, samba,
           samba-server, samba-client, samba-common, rsh, telnet
         </html:pre>
       </description>
@@ -4229,7 +4229,7 @@
           Script Verification:
           To manually verify, Ensure none of the following remote access packages exist in the
           folder /lib/apk/db/ Packages: openssh, openssh-server, openssh-sftp-server, dropbear, tigervnc, tigervnc-server, tigervnc-viewer, xrdp, xorgxrdp,
-        vsftpd, proftpd, webmin, cockpit, cockpit-ws, cockpit-bridge, nfs-utils, nfs-utils-rpc-nfsd, nfs-utils-rpc-mountd, samba,
+        vsftpd, proftpd, webmin, cockpit, cockpit-ws, cockpit-bridge, nfs-utils, nfs-utils-rpc-nfsd, nfs-utils-rpc-mountd, nfs-utils-nfsdctl, samba,
           samba-server, samba-client, samba-common, rsh, telnet
         </html:pre>
       </description>
@@ -4252,7 +4252,7 @@
         Script Verification:
           To manually verify, Ensure none of the following remote access packages exist in the
           folder /lib/apk/db/ Packages: openssh, openssh-server, openssh-sftp-server, dropbear, tigervnc, tigervnc-server, tigervnc-viewer, xrdp, xorgxrdp,
-        vsftpd, proftpd, webmin, cockpit, cockpit-ws, cockpit-bridge, nfs-utils, nfs-utils-rpc-nfsd, nfs-utils-rpc-mountd, samba,
+        vsftpd, proftpd, webmin, cockpit, cockpit-ws, cockpit-bridge, nfs-utils, nfs-utils-rpc-nfsd, nfs-utils-rpc-mountd, nfs-utils-nfsdctl, samba,
           samba-server, samba-client, samba-common, rsh, telnet
         </html:pre>
       </description>
@@ -4275,7 +4275,7 @@
           Script Verification:
           To manually verify, Ensure none of the following remote access packages exist in the
           folder /lib/apk/db/ Packages: openssh, openssh-server, openssh-sftp-server, dropbear, tigervnc, tigervnc-server, tigervnc-viewer, xrdp, xorgxrdp,
-        vsftpd, proftpd, webmin, cockpit, cockpit-ws, cockpit-bridge, nfs-utils, nfs-utils-rpc-nfsd, nfs-utils-rpc-mountd, samba,
+        vsftpd, proftpd, webmin, cockpit, cockpit-ws, cockpit-bridge, nfs-utils, nfs-utils-rpc-nfsd, nfs-utils-rpc-mountd, nfs-utils-nfsdctl, samba,
           samba-server, samba-client, samba-common, rsh, telnet
         </html:pre>
       </description>

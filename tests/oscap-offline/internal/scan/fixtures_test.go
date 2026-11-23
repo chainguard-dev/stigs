@@ -316,12 +316,13 @@ var apkDropbearStanza = []byte("\nP:dropbear\nV:2022.83-r3\nA:x86_64\n")
 // digit class and starts flagging legitimate packages.
 var apkDropbearConvertStanza = []byte("\nP:dropbear-convert\nV:2022.83-r3\nA:x86_64\n")
 
-// apkNfsUtilsRpcNfsdStanza / apkNfsUtilsRpcMountdStanza record the two NFS
-// server daemons, which nfs-utils ships as packages of their own since its
-// per-tool split (chainguard-dev/stereo#337500): rpc.nfsd starts the kernel
-// nfsd threads that serve NFS, and rpc.mountd answers MOUNT requests. Both are
-// banned, so an image that installs the server without the nfs-utils umbrella
-// still fails.
+// apkNfsUtilsRpcNfsdStanza / apkNfsUtilsNfsdctlStanza / apkNfsUtilsRpcMountdStanza
+// record the NFS server tools, which nfs-utils ships as packages of their own
+// since its per-tool split (chainguard-dev/stereo#337500): rpc.nfsd and its
+// replacement nfsdctl (`nfsdctl autostart`) both start the kernel nfsd threads
+// that serve NFS, and rpc.mountd answers MOUNT requests. All three are banned,
+// so an image that installs the server without the nfs-utils umbrella still
+// fails.
 //
 // apkNfsUtilsClientStanza records the nfs-utils-client metapackage together with
 // nfs-utils-nfsdcld, a leaf in the client group (it matches SLES nfs-client)
@@ -329,6 +330,7 @@ var apkDropbearConvertStanza = []byte("\nP:dropbear-convert\nV:2022.83-r3\nA:x86
 // alternatives are exact names, not an "nfs-utils-" prefix.
 var (
 	apkNfsUtilsRpcNfsdStanza   = []byte("\nP:nfs-utils-rpc-nfsd\nV:3.1.1-r2\nA:x86_64\n")
+	apkNfsUtilsNfsdctlStanza   = []byte("\nP:nfs-utils-nfsdctl\nV:3.1.1-r2\nA:x86_64\n")
 	apkNfsUtilsRpcMountdStanza = []byte("\nP:nfs-utils-rpc-mountd\nV:3.1.1-r2\nA:x86_64\n")
 	apkNfsUtilsClientStanza    = []byte("\nP:nfs-utils-client\nV:3.1.1-r2\nA:x86_64\n\nP:nfs-utils-nfsdcld\nV:3.1.1-r2\nA:x86_64\n")
 )
@@ -577,11 +579,17 @@ func matrixCases() []matrixCase {
 			want: map[string]results.Result{ruleRemoteAccessServices: results.Pass},
 		},
 		{
-			// The NFS server daemons are packaged on their own since the nfs-utils
-			// per-tool split, so recording either one without the nfs-utils
+			// The NFS server tools are packaged on their own since the nfs-utils
+			// per-tool split, so recording any one of them without the nfs-utils
 			// umbrella must still trip the rule.
 			name: "remote_access/fail_nfs_utils_rpc_nfsd_installed",
 			ops:  []overlay.Op{overlay.AppendFile("usr/lib/apk/db/installed", apkNfsUtilsRpcNfsdStanza)},
+			want: map[string]results.Result{ruleRemoteAccessServices: results.Fail},
+		},
+		{
+			// nfsdctl replaces rpc.nfsd: `nfsdctl autostart` starts the nfsd threads.
+			name: "remote_access/fail_nfs_utils_nfsdctl_installed",
+			ops:  []overlay.Op{overlay.AppendFile("usr/lib/apk/db/installed", apkNfsUtilsNfsdctlStanza)},
 			want: map[string]results.Result{ruleRemoteAccessServices: results.Fail},
 		},
 		{
